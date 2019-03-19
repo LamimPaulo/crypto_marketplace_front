@@ -1,0 +1,144 @@
+<template>
+  <div>
+    <table class="table table-lightborder table-striped">
+      <thead>
+      <tr>
+        <th></th>
+        <th> Criação</th>
+        <th> Transação</th>
+        <th> Tx</th>
+        <th> Moeda</th>
+        <th> Valor</th>
+        <th class="text-center"> Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="transaction in transactions">
+        <td>
+          <button @click.prevent="receiptModalTransactions(transaction)" class="btn btn-rounded btn-sm btn-primary"><i
+            class="os-icon os-icon-search"></i> </button>
+        </td>
+        <td> {{ transaction.dateLocal }}</td>
+        <td>
+          <!--transactions-->
+          <div class="value" v-if="transaction.category===1">
+            {{ transaction.coin.abbr}} {{ transaction.type === 1 ? 'Recebido' : 'Enviado' }}
+          </div>
+          <!--orders-->
+          <div class="value" v-if="transaction.category===2">
+            {{ transaction.type === 1 ? 'Ordem de Compra' : 'Ordem de Venda' }}
+          </div>
+          <!--deposits-->
+          <div class="value" v-if="transaction.category===3">
+            Depósito {{ transaction.coin.abbr}}
+          </div>
+          <!--drafts-->
+          <div class="value" v-if="transaction.category===4">
+            Saque {{ transaction.coin.abbr}}
+          </div>
+          <!--conversions-->
+          <div class="value" v-if="transaction.category===6">
+            Conversão {{ transaction.coin.abbr}}
+            <i class="os-icon os-icon-arrow-down-left text-success" v-if="transaction.type===1"></i>
+            <i class="os-icon os-icon-arrow-down-right text-danger" v-if="transaction.type===2"></i>
+          </div>
+          <!--mining-->
+          <div class="value" v-if="transaction.category===7">
+            <span v-if="transaction.type===1">Lucro </span>
+            <span v-if="transaction.type===2">Contratação </span>
+            Mineração
+          </div>
+          <!--transfer-->
+          <div class="value" v-if="transaction.category===8">
+            Transferência
+            <span v-if="transaction.type===1">Recebida</span>
+            <span v-if="transaction.type===2">Efetuada</span>
+          </div>
+          <!--Investimento-->
+          <div class="value" v-if="transaction.category===9">
+            <span v-if="transaction.type===1">Resgate</span>
+            <span v-if="transaction.type===2">Investimento</span>
+            Arbitragem
+          </div>
+          <!--Index Fund-->
+          <div class="value" v-if="transaction.category===10">
+            <span v-if="transaction.type===1">Venda</span>
+            <span v-if="transaction.type===2">Aquisição</span>
+            Index Fund
+          </div>
+
+        </td>
+        <td>
+          <!--transactions-->
+          <a target="_blank" :href="transaction.coin.tx_explorer + transaction.tx"
+             v-if="transaction.category===1">
+            {{ transaction.tx }}
+          </a>
+          <!--orders-->
+          <a target="_blank" :href="'/order/' + transaction.tx" v-else-if="transaction.category===2">
+            {{ transaction.tx }}
+          </a>
+          <!--conversions-->
+          <a target="_blank" :href="'/conversion/' + transaction.tx"
+             v-else-if="transaction.category===6||transaction.category===8">
+            {{ transaction.tx }}
+          </a>
+          <!--others-->
+          <span v-else> {{ transaction.tx }} </span>
+        </td>
+        <td> {{ transaction.coin.abbr}}</td>
+        <td>
+          {{ transaction.amountRounded }}
+        </td>
+        <td class="text-center"> {{ transaction.statusName}}</td>
+      </tr>
+
+
+      </tbody>
+    </table>
+    <detailed-transaction :transaction="transaction" v-show="isDetalisVisible" @close-token-modal="closeTokenModal"
+                          @retrieve-transactions="retrieveTransactions"/>
+
+
+    <receipt-modal-transactions :transaction="transaction" v-show="isReceiptVisible" @close-token-modal="closeTokenModal"
+                          @retrieve-transactions="retrieveTransactions"/>
+  </div>
+</template>
+
+<script>
+  import ReceiptModalTransactions from './../transactions/ReceiptModalTransactions'
+
+  export default {
+    name: "TableTransactionsList",
+    props: ['transactions'],
+    data() {
+      return {
+        isReceiptVisible: false,
+        isDetalisVisible: false,
+        transaction: {
+          coin: null
+        }
+      }
+    },
+    methods: {
+      receiptModalTransactions(transaction){
+        this.transaction = transaction
+        this.isReceiptVisible = true
+      },
+      closeTokenModal() {
+        this.isDetalisVisible = false;
+        this.isReceiptVisible = false
+      },
+      retrieveTransactions() {
+        this.$emit('retrieve-transactions')
+      }
+    },
+    components: {
+      ReceiptModalTransactions
+    }
+  }
+</script>
+
+<style scoped>
+
+</style>
