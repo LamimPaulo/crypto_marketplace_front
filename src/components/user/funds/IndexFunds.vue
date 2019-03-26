@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-headful title="Index Funds" description="Navi Capital"/>
+    <vue-headful title="Index Funds" description="Liquidex"/>
     <div class="loader" v-if="loader"></div>
     <div class="element-wrapper compact pt-2">
       <h6 class="element-header">

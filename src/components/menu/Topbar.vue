@@ -1,22 +1,21 @@
 <template>
-  <div class="top-bar color-scheme-dark">
-    <marquee-text :repeat="5" :duration="60">
-       <span v-for="coin in quotes">
+  <div class="sub-menu-i">
+    <marquee-text :repeat="10" :duration="30" v-for="coin in quotes">
+       <ul class="sub-menu">
+         <li class="badge badge-primary"> {{ coin.abbr }}</li>
 
-         <span class="badge badge-white mr-1"> {{ coin.abbr }}</span>
+         <li v-tooltip="'Vender '+coin.name" @click="showModalOrder(coin, 'sell', 'BRL')"
+               class="badge badge-danger" v-if="user.country_id===31">R$ {{ coin.quote[0].sell_quote | currency }}</li>
 
-         <span v-tooltip="'Vender '+coin.name" @click="showModalOrder(coin, 'sell', 'BRL')"
-               class="badge badge-danger mr-1" v-if="user.country_id===31">R$ {{ coin.quote[0].sell_quote | currency }}</span>
+         <li v-tooltip="'Vender '+coin.name" @click="showModalOrder(coin, 'sell', 'USD')"
+               class="badge badge-danger" v-else>$ {{ coin.quote[0].sell_quote }}</li>
 
-         <span v-tooltip="'Vender '+coin.name" @click="showModalOrder(coin, 'sell', 'USD')"
-               class="badge badge-danger mr-1" v-else>$ {{ coin.quote[0].sell_quote }}</span>
+         <li v-tooltip="'Comprar '+coin.name" @click="showModalOrder(coin, 'buy', 'BRL')"
+               class="badge badge-success" v-if="user.country_id===31">R$ {{ coin.quote[0].buy_quote | currency }}</li>
 
-         <span v-tooltip="'Comprar '+coin.name" @click="showModalOrder(coin, 'buy', 'BRL')"
-               class="badge badge-success mr-2" v-if="user.country_id===31">R$ {{ coin.quote[0].buy_quote | currency }}</span>
-
-         <span v-tooltip="'Comprar '+coin.name" @click="showModalOrder(coin, 'buy', 'USD')"
-               class="badge badge-success mr-2" v-else>$ {{ coin.quote[0].buy_quote }}</span>
-       </span>
+         <li v-tooltip="'Comprar '+coin.name" @click="showModalOrder(coin, 'buy', 'USD')"
+               class="badge badge-success" v-else>$ {{ coin.quote[0].buy_quote }}</li>
+       </ul>
     </marquee-text>
 
     <order-window :coin="coin" ref="orderWindow" @close-modal="closeModalOrder"
@@ -25,7 +24,7 @@
 </template>
 
 <script>
-  import DropdownProfile from './DropdownProfile';
+  import DropdownProfile from './DropdownProfile'
   import {mapGetters} from 'vuex'
   import Vue from 'vue'
   import MarqueeText from 'vue-marquee-text-component'

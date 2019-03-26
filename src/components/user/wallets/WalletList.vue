@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="loader" v-if="loader"></div>
-    <vue-headful title="Minhas Carteiras - Navi Capital" description="Navi Capital"/>
+    <vue-headful title="Minhas Carteiras - Liquidex" description="Liquidex"/>
 
     <div class="element-wrapper compact pt-4">
       <h6 class="element-header">

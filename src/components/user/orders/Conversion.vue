@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="loader" v-if="loader"></div>
-    <vue-headful title="Minhas Carteiras - Navi Capital" description="Navi Capital"/>
+    <vue-headful title="Minhas Carteiras - Liquidex" description="Liquidex"/>
 
     <div class="col-12">
       <div class="element-box">

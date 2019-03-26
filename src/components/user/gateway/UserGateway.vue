@@ -2,7 +2,7 @@
   <div class="all-wrapper solid-bg-all">
     <div class="loader" v-if="loader"></div>
 
-    <vue-headful title="Seu Gateway de Pagamentos" description="Navi Capital"/>
+    <vue-headful title="Seu Gateway de Pagamentos" description="Liquidex"/>
 
     <div class="layout-w">
       <menubar></menubar>

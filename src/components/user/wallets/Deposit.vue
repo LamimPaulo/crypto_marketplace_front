@@ -84,7 +84,7 @@
                         </div>
                     </div>
                     <div class="plan-description">
-                        <h6>NAVI Serviços Digitais LTDA</h6>
+                        <h6>Liquidex Ledger Safe LTDA</h6>
                         <p>
                             <span>Identificação</span>
                             <strong>20.924.974/0001-79</strong>

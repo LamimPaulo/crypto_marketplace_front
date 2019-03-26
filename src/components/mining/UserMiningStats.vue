@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-headful title="Status Mineração" description="Navi Capital"
+    <vue-headful title="Status Mineração" description="Liquidex"
     />
     <div class="content-box">
       <div class="loader" v-if="loader"></div>

@@ -1,6 +1,6 @@
 <template>
   <div class="all-wrapper solid-bg-all">
-    <vue-headful title="Seu Perfil" description="Navi Capital"
+    <vue-headful title="Seu Perfil" description="Liquidex"
     />
 
     <div class="layout-w">

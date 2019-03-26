@@ -53,8 +53,9 @@ TABLE OF CONTENTS
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-:root {
-  --blue: #047bf8;
+
+ :root {
+  --blue: #005093;
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
@@ -67,7 +68,7 @@ TABLE OF CONTENTS
   --white: #fff;
   --gray: #636c72;
   --gray-dark: #343a40;
-  --primary: #047bf8;
+  --primary: #005093;
   --secondary: #292b2c;
   --success: #24b314;
   --info: #5bc0de;
@@ -83,7 +84,7 @@ TABLE OF CONTENTS
   --breakpoint-xxl: 1450px;
   --breakpoint-xxxl: 1550px;
   --breakpoint-xxxxl: 1650px;
-  --font-family-sans-serif: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-sans-serif: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -113,7 +114,7 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 
 body {
   margin: 0;
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.5;
@@ -219,7 +220,7 @@ sup {
 }
 
 a {
-  color: #047bf8;
+  color: #005093;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -420,7 +421,7 @@ template {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 500;
   line-height: 1.2;
   color: #334152;
@@ -649,19 +650,22 @@ pre code {
 
 @media (min-width: 1450px) {
   .container {
-    max-width: 1380px;
+    /* max-width: 1380px; */
+    max-width: 1280px;
   }
 }
 
 @media (min-width: 1550px) {
   .container {
-    max-width: 1580px;
+    /* max-width: 1580px; */
+    max-width: 1280px;
   }
 }
 
 @media (min-width: 1650px) {
   .container {
-    max-width: 1680px;
+    /* max-width: 1680px; */
+    max-width: 1280px;
   }
 }
 
@@ -2976,7 +2980,6 @@ pre code {
   background-color: #fff;
   background-clip: padding-box;
   border: 2px solid #dde2ec;
-  border-radius: 4px;
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -2991,7 +2994,7 @@ pre code {
 .form-control:focus {
   color: #495057;
   background-color: #fff;
-  border-color: #047bf8;
+  border-color: #005093;
   outline: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -3546,8 +3549,8 @@ fieldset:disabled a.fc-button {
 
 .btn-primary, .all-wrapper .fc-button.fc-state-active {
   color: #fff;
-  background-color: #047bf8;
-  border-color: #047bf8;
+  background-color: #005093;
+  border-color: #005093;
 }
 
 .btn-primary:hover, .all-wrapper .fc-button.fc-state-active:hover {
@@ -3563,8 +3566,8 @@ fieldset:disabled a.fc-button {
 
 .btn-primary.disabled, .all-wrapper .disabled.fc-button.fc-state-active, .btn-primary:disabled, .all-wrapper .fc-button.fc-state-active:disabled {
   color: #fff;
-  background-color: #047bf8;
-  border-color: #047bf8;
+  background-color: #005093;
+  border-color: #005093;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active, .all-wrapper .fc-button.fc-state-active:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .all-wrapper .fc-button.fc-state-active:not(:disabled):not(.disabled).active,
@@ -3835,16 +3838,16 @@ fieldset:disabled a.fc-button {
 }
 
 .btn-outline-primary {
-  color: #047bf8;
+  color: #005093;
   background-color: transparent;
   background-image: none;
-  border-color: #047bf8;
+  border-color: #005093;
 }
 
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: #047bf8;
-  border-color: #047bf8;
+  background-color: #005093;
+  border-color: #005093;
 }
 
 .btn-outline-primary:focus, .btn-outline-primary.focus {
@@ -3853,15 +3856,15 @@ fieldset:disabled a.fc-button {
 }
 
 .btn-outline-primary.disabled, .btn-outline-primary:disabled {
-  color: #047bf8;
+  color: #005093;
   background-color: transparent;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff;
-  background-color: #047bf8;
-  border-color: #047bf8;
+  background-color: #005093;
+  border-color: #005093;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
@@ -4124,7 +4127,7 @@ fieldset:disabled a.fc-button {
 
 .btn-link {
   font-weight: 400;
-  color: #047bf8;
+  color: #005093;
   background-color: transparent;
 }
 
@@ -4331,7 +4334,7 @@ input[type="button"].btn-block {
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #047bf8;
+  background-color: #005093;
 }
 
 .dropdown-item.disabled, .dropdown-item:disabled {
@@ -4717,7 +4720,7 @@ input[type="button"].btn-block {
 
 .custom-control-input:checked ~ .custom-control-label::before {
   color: #fff;
-  background-color: #047bf8;
+  background-color: #005093;
 }
 
 .custom-control-input:focus ~ .custom-control-label::before {
@@ -4776,7 +4779,7 @@ input[type="button"].btn-block {
 }
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #047bf8;
+  background-color: #005093;
 }
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
@@ -4784,7 +4787,7 @@ input[type="button"].btn-block {
 }
 
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
-  background-color: #047bf8;
+  background-color: #005093;
 }
 
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::after {
@@ -4804,7 +4807,7 @@ input[type="button"].btn-block {
 }
 
 .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #047bf8;
+  background-color: #005093;
 }
 
 .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
@@ -4833,7 +4836,7 @@ input[type="button"].btn-block {
 }
 
 .custom-select:focus {
-  border-color: #047bf8;
+  border-color: #005093;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(4, 123, 248, 0.5);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(4, 123, 248, 0.5);
@@ -4891,13 +4894,13 @@ input[type="button"].btn-block {
 }
 
 .custom-file-input:focus ~ .custom-file-control {
-  border-color: #047bf8;
+  border-color: #005093;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 
 .custom-file-input:focus ~ .custom-file-control::before {
-  border-color: #047bf8;
+  border-color: #005093;
 }
 
 .custom-file-input:lang(en) ~ .custom-file-label::after {
@@ -5004,7 +5007,7 @@ input[type="button"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #047bf8;
+  background-color: #005093;
 }
 
 .nav-fill .nav-item {
@@ -5079,7 +5082,7 @@ input[type="button"].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #047bf8;
+  color: #005093;
   background-color: #fff;
   border: 1px solid #dee2e6;
 }
@@ -5116,8 +5119,8 @@ input[type="button"].btn-block {
 .page-item.active .page-link {
   z-index: 1;
   color: #fff;
-  background-color: #047bf8;
-  border-color: #047bf8;
+  background-color: #005093;
+  border-color: #005093;
 }
 
 .page-item.disabled .page-link {
@@ -5188,7 +5191,7 @@ input[type="button"].btn-block {
 
 .badge-primary {
   color: #fff;
-  background-color: #047bf8;
+  background-color: #005093;
 }
 
 .badge-primary[href]:hover, .badge-primary[href]:focus {
@@ -5456,7 +5459,7 @@ input[type="button"].btn-block {
   justify-content: center;
   color: #fff;
   text-align: center;
-  background-color: #047bf8;
+  background-color: #005093;
   -webkit-transition: width 0.6s ease;
   transition: width 0.6s ease;
 }
@@ -5676,7 +5679,7 @@ button.close {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5789,7 +5792,7 @@ button.close {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5907,7 +5910,7 @@ button.close {
   width: 1rem;
   margin-left: -0.5rem;
   content: "";
-  border-bottom: 0px solid #047bf8;
+  border-bottom: 0px solid #005093;
 }
 
 .bs-popover-left, .bs-popover-auto[x-placement^="left"] {
@@ -5941,7 +5944,7 @@ button.close {
   margin-bottom: 0;
   font-size: 0.9rem;
   color: #fff;
-  background-color: #047bf8;
+  background-color: #005093;
   border-bottom: 0px solid #046fdf;
   border-top-left-radius: calc(6px - 0px);
   border-top-right-radius: calc(6px - 0px);
@@ -6183,7 +6186,7 @@ button.close {
 }
 
 .bg-primary {
-  background-color: #047bf8 !important;
+  background-color: #005093 !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
@@ -6311,7 +6314,7 @@ button.bg-dark:focus {
 }
 
 .border-primary {
-  border-color: #047bf8 !important;
+  border-color: #005093 !important;
 }
 
 .border-secondary {
@@ -11001,7 +11004,7 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-  color: #047bf8 !important;
+  color: #005093 !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
@@ -11216,8 +11219,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 .table.table-editable td:hover {
   background-color: #fff;
-  -webkit-box-shadow: inset 0px 0px 0px 2px #047bf8;
-  box-shadow: inset 0px 0px 0px 2px #047bf8;
+  -webkit-box-shadow: inset 0px 0px 0px 2px #005093;
+  box-shadow: inset 0px 0px 0px 2px #005093;
 }
 
 .table.table-lightborder td {
@@ -11536,7 +11539,7 @@ label {
 }
 
 button, input, optgroup, select, textarea {
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
 }
 
@@ -11572,7 +11575,7 @@ select.form-control.rounded {
 }
 
 .form-control {
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .form-control.form-control-faded {
@@ -11606,7 +11609,7 @@ select.form-control.rounded {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 15px;
-  color: #047bf8;
+  color: #005093;
   position: absolute;
   top: 50%;
   left: 10px;
@@ -11680,7 +11683,7 @@ legend {
   display: block;
   margin-bottom: 1.5rem;
   position: relative;
-  color: #047bf8;
+  color: #005093;
 }
 
 legend span {
@@ -11754,7 +11757,7 @@ legend:before {
 .os-toggler-w.on .os-toggler-i .os-toggler-pill {
   -webkit-transform: translate(15px, -50%);
   transform: translate(15px, -50%);
-  background-color: #047bf8;
+  background-color: #005093;
 }
 
 /* 3d. Override bootstrap navigation styles */
@@ -11772,7 +11775,7 @@ legend:before {
 
 .nav.bigger {
   font-size: 1.25rem;
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 500;
 }
 
@@ -11791,7 +11794,7 @@ legend:before {
 
 .nav.upper {
   font-size: 0.9rem;
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -11842,7 +11845,7 @@ legend:before {
 }
 
 .nav-link.active i {
-  color: #047bf8;
+  color: #005093;
 }
 
 .nav-tabs .nav-item {
@@ -11873,7 +11876,7 @@ legend:before {
   content: "";
   width: 0%;
   height: 3px;
-  background-color: #047bf8;
+  background-color: #005093;
   position: absolute;
   bottom: -2px;
   left: 50%;
@@ -11909,12 +11912,12 @@ legend:before {
 .nav-pills .nav-item.show .nav-link {
   color: #fff;
   cursor: default;
-  background-color: #047bf8;
+  background-color: #005093;
 }
 
 /* 3e. Override bootstrap button styles */
 .toggled-buttons .btn-toggled {
-  border: 2px solid #047bf8;
+  border: 2px solid #005093;
   border: 2px solid transparent;
   border-radius: 6px;
   text-transform: uppercase;
@@ -11927,8 +11930,8 @@ legend:before {
 }
 
 .toggled-buttons .btn-toggled.on, .toggled-buttons .btn-toggled:hover {
-  border-color: #047bf8;
-  color: #047bf8;
+  border-color: #005093;
+  color: #005093;
 }
 
 .toggled-buttons .btn-toggled + .btn-toggled {
@@ -11942,7 +11945,7 @@ legend:before {
 }
 
 .toggled-buttons.solid .btn-toggled.on, .toggled-buttons.solid .btn-toggled:hover {
-  background-color: #047bf8;
+  background-color: #005093;
   color: #fff;
 }
 
@@ -12105,7 +12108,7 @@ legend:before {
 }
 
 .btn, .all-wrapper .fc-button {
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   outline: none;
   line-height: 1;
@@ -12163,7 +12166,7 @@ legend:before {
 }
 
 .btn.btn-underlined span, .all-wrapper .btn-underlined.fc-button span {
-  border-bottom: 2px solid #047bf8;
+  border-bottom: 2px solid #005093;
 }
 
 .btn.btn-underlined i, .all-wrapper .btn-underlined.fc-button i {
@@ -12216,7 +12219,7 @@ legend:before {
   display: inline-block;
   text-transform: uppercase;
   font-size: 0.585rem;
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .breadcrumb li a {
@@ -12523,7 +12526,7 @@ legend:before {
   width: 11px;
   height: 11px;
   top: 22px;
-  background-color: #047bf8;
+  background-color: #005093;
   -webkit-box-shadow: 0px 0px 0px 2px #fff;
   box-shadow: 0px 0px 0px 2px #fff;
   border-radius: 20px;
@@ -12579,7 +12582,7 @@ legend:before {
 
 /* DROPZONE */
 .dropzone {
-  border: 2px dashed #047bf8;
+  border: 2px dashed #005093;
   border-radius: 6px;
 }
 
@@ -12601,18 +12604,18 @@ legend:before {
 }
 
 .select2-container--default .select2-results__option[aria-selected=true] {
-  background-color: #047bf8;
+  background-color: #005093;
   color: #fff;
 }
 
 .select2-container--default.select2-container--focus .select2-selection--multiple {
   border-width: 2px;
-  border-color: #047bf8;
+  border-color: #005093;
 }
 
 .select2-dropdown {
   border-width: 2px;
-  border-color: #047bf8;
+  border-color: #005093;
 }
 
 .form-control {
@@ -12627,7 +12630,7 @@ legend:before {
 body .daterangepicker {
   -webkit-box-shadow: 3px 25px 50px rgba(77, 76, 132, 0.34);
   box-shadow: 3px 25px 50px rgba(77, 76, 132, 0.34);
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   border: none;
   padding: 15px;
   min-width: 540px;
@@ -12710,7 +12713,7 @@ body .daterangepicker .calendar td {
 }
 
 body .daterangepicker .calendar th.month {
-  color: #047bf8;
+  color: #005093;
 }
 
 body .daterangepicker .calendar-table {
@@ -13449,15 +13452,15 @@ body {
   min-height: 100%;
   position: relative;
   padding: 50px;
-  overflow-x: hidden;
+  /* overflow: hidden; */
 }
 
 body:before {
   content: "";
   position: absolute;
   z-index: -1;
-  background: -webkit-gradient(linear, left top, right bottom, from(#D7BBEA), to(#65A8F1));
-  background: linear-gradient(to bottom right, #D7BBEA, #65A8F1);
+  /* background: -webkit-gradient(linear, left top, right bottom, from(#D7BBEA), to(#65A8F1));
+  background: linear-gradient(to bottom right, #D7BBEA, #65A8F1); */
   top: 0px;
   left: 0px;
   bottom: 0px;
@@ -13511,6 +13514,16 @@ strong {
   background-size: contain;
   background-repeat: repeat;
   background-position: 0 0;
+  content: "";
+    position: fixed;
+    overflow: hidden;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+  
+    /* Preserve aspet ratio */
+    min-width: 100%;
 }
 
 .all-wrapper.no-padding-content .content-box {
@@ -13531,7 +13544,7 @@ strong {
 }
 
 .auth-wrapper .all-wrapper {
-  padding: 100px;
+  padding: 80px;
 }
 
 .section-heading {
@@ -13556,7 +13569,7 @@ strong {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   content: "";
-  background-color: #047bf8;
+  background-color: #005093;
   height: 5px;
   width: 40px;
   border-radius: 6px;
@@ -13638,7 +13651,7 @@ body.menu-side-right .layout-w {
   top: 10px;
   right: 10px;
   font-size: 14px;
-  color: #047bf8;
+  color: #005093;
   z-index: 999;
   cursor: pointer;
 }
@@ -13648,7 +13661,7 @@ body.menu-side-right .layout-w {
 }
 
 .content-panel-toggler {
-  background-color: #047bf8;
+  background-color: #005093;
   padding: 4px 10px;
   border-radius: 6px;
   color: #fff;
@@ -13731,7 +13744,7 @@ body.menu-side-right .layout-w {
 .demo-icons-list li a span {
   display: inline-block;
   position: absolute;
-  background-color: #047bf8;
+  background-color: #005093;
   color: #fff;
   padding: 4px 7px;
   border-radius: 4px;
@@ -14134,7 +14147,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-w .logged-user-menu.color-style-light ul li a i {
-  color: #047bf8;
+  color: #005093;
 }
 
 .menu-w .logged-user-menu.color-style-dark {
@@ -14142,7 +14155,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-w .logged-user-menu.color-style-bright {
-  background-color: #1b55e2;
+  background-color: #005093;
 }
 
 .menu-w .logged-user-menu.color-style-bright-alt {
@@ -14178,7 +14191,6 @@ body.menu-side-right .layout-w {
 
 .menu-w .logo-w {
   text-align: center;
-  padding: 14px 1rem 14px 1.7rem;
 }
 
 .menu-w .logo-w a {
@@ -14295,7 +14307,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-w ul.main-menu > li .icon-w {
-  color: #0073ff;
+  color: #005093;
   font-size: 27px;
   display: block;
   padding: 1rem 1rem 1rem 0rem;
@@ -14349,7 +14361,7 @@ body.menu-side-right .layout-w {
   content: "";
   width: 5px;
   height: 5px;
-  border: 1px solid #047bf8;
+  border: 1px solid #005093;
   position: absolute;
   left: -10px;
   top: 50%;
@@ -14373,13 +14385,13 @@ body.menu-side-right .layout-w {
   -webkit-transform: translate(-5px, -50%);
   transform: translate(-5px, -50%);
   border-radius: 6px;
-  background-color: #047bf8;
-  border-color: #047bf8;
+  background-color: #005093;
+  border-color: #005093;
 }
 
 .menu-w.color-scheme-light .messages-notifications,
 .menu-w.color-scheme-light .top-icon {
-  color: #047bf8;
+  color: #005093;
 }
 
 .menu-w.color-scheme-light .logo-w {
@@ -14399,11 +14411,11 @@ body.menu-side-right .layout-w {
 }
 
 .menu-w.color-scheme-light .logo-w .logo:hover .logo-label {
-  color: #047bf8;
+  color: #005093;
 }
 
 .menu-w.color-scheme-light .logo-w .logo:hover .logo-label:after {
-  background-color: #047bf8;
+  background-color: #005093;
 }
 
 .menu-w.color-scheme-dark {
@@ -14620,7 +14632,7 @@ body.menu-side-right .layout-w {
 .menu-w.sub-menu-style-flyout .sub-menu-header {
   font-size: 1.35rem;
   font-weight: 500;
-  color: #047bf8;
+  color: #005093;
   text-align: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   padding-bottom: 10px;
@@ -14666,11 +14678,11 @@ body.menu-side-right .layout-w {
   opacity: 0;
   -webkit-transform: translate(5px, -50%);
   transform: translate(5px, -50%);
-  background-color: #047bf8;
+  background-color: #005093;
 }
 
 .menu-w.sub-menu-style-flyout ul.sub-menu li a:hover {
-  color: #047bf8;
+  color: #005093;
   -webkit-transform: translateX(5px);
   transform: translateX(5px);
 }
@@ -14732,7 +14744,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-w.sub-menu-style-flyout.sub-menu-color-bright .sub-menu-w {
-  background-color: #1b55e2;
+  background-color: #005093;
 }
 
 .menu-w.sub-menu-style-over ul.main-menu > li {
@@ -14745,12 +14757,12 @@ body.menu-side-right .layout-w {
 }
 
 .menu-w.sub-menu-style-over ul.main-menu > li.active {
-  border-right-color: #1b55e2;
-  border-bottom-color: #1b55e2;
+  border-right-color: #005093;
+  border-bottom-color: #005093;
 }
 
 .menu-w.sub-menu-style-over ul.main-menu > li.active > a {
-  background-color: #1b55e2;
+  background-color: #005093;
   color: #fff;
 }
 
@@ -14780,7 +14792,7 @@ body.menu-side-right .layout-w {
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   position: absolute;
-  background-color: #1b55e2;
+  background-color: #005093;
   color: #fff;
   left: 100%;
   top: -100px;
@@ -14800,7 +14812,7 @@ body.menu-side-right .layout-w {
   letter-spacing: -0.5px;
   white-space: nowrap;
   overflow: hidden;
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 500;
 }
 
@@ -14912,7 +14924,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-w.sub-menu-style-over.sub-menu-color-light ul.main-menu > li.active > a .icon-w {
-  color: #047bf8;
+  color: #005093;
 }
 
 .menu-w.sub-menu-style-over.sub-menu-color-light.color-scheme-light ul.main-menu > li.active > a:before {
@@ -14933,7 +14945,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-w.sub-menu-style-over.sub-menu-color-bright ul.main-menu > li.active > a {
-  background-color: #1b55e2;
+  background-color: #005093;
 }
 
 .menu-w.menu-layout-mini {
@@ -15412,7 +15424,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-position-side.menu-w.menu-layout-mini.color-scheme-light .element-search:before {
-  color: #047bf8;
+  color: #005093;
 }
 
 .menu-position-side.menu-w.menu-layout-mini.color-scheme-dark .menu-actions {
@@ -15746,7 +15758,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-position-top.menu-w.menu-layout-full.color-scheme-light.sub-menu-color-light.sub-menu-style-inside ul.main-menu > li.active > a:before, .menu-position-top.menu-w.menu-layout-full.color-scheme-light.sub-menu-color-light.sub-menu-style-over ul.main-menu > li.active > a:before, .menu-position-top.menu-w.menu-layout-full.color-scheme-light.sub-menu-color-light.sub-menu-style-flyout ul.main-menu > li.active > a:before {
-  color: #047bf8;
+  color: #005093;
 }
 
 .menu-position-top.menu-w.menu-layout-full.color-scheme-light.sub-menu-color-light.sub-menu-style-inside ul.main-menu > li.active, .menu-position-top.menu-w.menu-layout-full.color-scheme-light.sub-menu-color-light.sub-menu-style-over ul.main-menu > li.active, .menu-position-top.menu-w.menu-layout-full.color-scheme-light.sub-menu-color-light.sub-menu-style-flyout ul.main-menu > li.active {
@@ -15754,7 +15766,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-position-top.menu-w.menu-layout-full.color-scheme-light.sub-menu-color-light.sub-menu-style-inside ul.main-menu > li.active span, .menu-position-top.menu-w.menu-layout-full.color-scheme-light.sub-menu-color-light.sub-menu-style-over ul.main-menu > li.active span, .menu-position-top.menu-w.menu-layout-full.color-scheme-light.sub-menu-color-light.sub-menu-style-flyout ul.main-menu > li.active span {
-  color: #047bf8;
+  color: #005093;
 }
 
 .menu-position-top.menu-w.menu-layout-full.color-scheme-dark.sub-menu-color-light.sub-menu-style-inside ul.main-menu > li.active > a:before, .menu-position-top.menu-w.menu-layout-full.color-scheme-dark.sub-menu-color-light.sub-menu-style-over ul.main-menu > li.active > a:before, .menu-position-top.menu-w.menu-layout-full.color-scheme-dark.sub-menu-color-light.sub-menu-style-flyout ul.main-menu > li.active > a:before {
@@ -15860,7 +15872,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-position-top.menu-w.menu-layout-compact ul.main-menu {
-  padding: 0px 10px;
+  padding: 0px;
 }
 
 .menu-position-top.menu-w.menu-layout-compact ul.main-menu .sub-header {
@@ -15933,7 +15945,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-position-top.menu-w ul.main-menu > li.selected .icon-w {
-  color: #047bf8;
+  color: #005093;
 }
 
 .menu-position-top.menu-w ul.main-menu > li.selected .sub-menu-w {
@@ -16019,7 +16031,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-position-top.menu-w.selected-menu-color-light ul.main-menu > li.selected > a .icon-w {
-  color: #047bf8 !important;
+  color: #005093 !important;
 }
 
 .menu-position-top.menu-w.selected-menu-color-light ul.main-menu > li.selected > a span {
@@ -16071,19 +16083,19 @@ body.menu-side-right .layout-w {
 }
 
 .menu-position-top.menu-w.selected-menu-color-bright ul.main-menu > li.selected {
-  border-right-color: #1b55e2;
+  border-right-color: #e9edf2;
 }
 
 .menu-position-top.menu-w.selected-menu-color-bright ul.main-menu > li.selected > a {
-  background-color: #1b55e2;
+  background-color: #b9bcc5;
 }
 
 .menu-position-top.menu-w.selected-menu-color-bright ul.main-menu > li.selected > a .icon-w {
-  color: #fff !important;
+  color: #005093 !important;
 }
 
 .menu-position-top.menu-w.selected-menu-color-bright ul.main-menu > li.selected > a span {
-  color: #fff;
+  color: #005093;
 }
 
 .menu-position-top.menu-w.selected-menu-color-bright ul.main-menu > li.selected > a:before {
@@ -16091,7 +16103,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-position-top.menu-w.selected-menu-color-bright ul.main-menu > li.selected .sub-menu-w {
-  background-color: #1b55e2;
+  background-color: #005093;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -16114,7 +16126,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-position-top.menu-w.sub-menu-style-over.sub-menu-color-bright ul.main-menu > li.active {
-  border-right-color: #1b55e2;
+  border-right-color: #005093;
 }
 
 .menu-position-top.menu-w.sub-menu-style-inside .sub-menu-w {
@@ -16180,7 +16192,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-position-top.menu-w.sub-menu-style-inside ul.main-menu > li.active .icon-w {
-  color: #047bf8;
+  color: #005093;
 }
 
 .menu-position-top.menu-w.sub-menu-style-inside ul.main-menu > li.active .sub-menu-w {
@@ -16194,7 +16206,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-position-top.menu-w.sub-menu-style-inside.sub-menu-color-light ul.main-menu > li.active .icon-w {
-  color: #047bf8;
+  color: #005093;
 }
 
 .menu-position-top.menu-w.sub-menu-style-inside.sub-menu-color-light ul.main-menu > li.active span {
@@ -16237,8 +16249,8 @@ body.menu-side-right .layout-w {
 }
 
 .menu-position-top.menu-w.sub-menu-style-inside.sub-menu-color-bright ul.main-menu > li.active {
-  background-color: #1b55e2;
-  border-right-color: #1b55e2;
+  background-color: #005093;
+  border-right-color: #005093;
 }
 
 .menu-position-top.menu-w.sub-menu-style-inside.sub-menu-color-bright ul.main-menu > li.active .icon-w {
@@ -16246,7 +16258,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-position-top.menu-w.sub-menu-style-inside.sub-menu-color-bright .sub-menu-w {
-  background-color: #1b55e2;
+  background-color: #005093;
 }
 
 .menu-position-top.menu-w.sub-menu-style-inside.sub-menu-color-bright .sub-menu-w ul.sub-menu li {
@@ -16348,7 +16360,7 @@ body.menu-side-right .layout-w {
 
 .menu-position-top.menu-w.menu-with-image.color-scheme-light .top-icon > .os-icon,
 .menu-position-top.menu-w.menu-with-image.color-scheme-light .messages-notifications > .os-icon {
-  color: #047bf8;
+  color: #005093;
   text-shadow: none;
 }
 
@@ -16357,7 +16369,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-position-top.menu-w.menu-with-image.color-scheme-light ul.main-menu .icon-w {
-  color: #047bf8;
+  color: #005093;
 }
 
 /*
@@ -16419,7 +16431,7 @@ body.menu-side-right .layout-w {
   margin-right: 20px;
   padding-right: 20px;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
-  color: #047bf8;
+  color: #005093;
 }
 
 .menu-mobile .mm-logo-buttons-w .mobile-menu-trigger {
@@ -16427,7 +16439,7 @@ body.menu-side-right .layout-w {
   text-align: right;
   font-size: 18px;
   cursor: pointer;
-  color: #047bf8;
+  color: #005093;
 }
 
 .menu-mobile .menu-and-user {
@@ -16560,7 +16572,7 @@ body.menu-side-right .layout-w {
 }
 
 .menu-mobile ul.main-menu > li .icon-w {
-  color: #0073ff;
+  color: #005093;
   font-size: 27px;
   display: block;
   padding: 1rem;
@@ -16753,7 +16765,7 @@ body.menu-side-right .layout-w {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 70px;
   flex: 0 0 70px;
-  color: #047bf8;
+  color: #005093;
   font-size: 30px;
 }
 
@@ -16841,7 +16853,7 @@ body.menu-side-right .layout-w {
 
 .element-wrapper .element-header:after {
   content: "";
-  background-color: #047bf8;
+  background-color: #005093;
   width: 25px;
   height: 4px;
   border-radius: 0px;
@@ -16991,7 +17003,7 @@ body.menu-side-right .layout-w {
 .el-tablo .value {
   font-size: 1rem;
   font-weight: 500;
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   letter-spacing: 1px;
   line-height: 1.2;
   display: inline-block;
@@ -17094,7 +17106,7 @@ body.menu-side-right .layout-w {
 }
 
 .el-tablo.highlight .value {
-  color: #047bf8;
+  color: #005093;
 }
 
 .el-tablo.bold-label .label {
@@ -17131,7 +17143,7 @@ a.el-tablo:hover {
 a.el-tablo:hover .value {
   -webkit-transform: translateY(-3px);
   transform: translateY(-3px);
-  color: #047bf8;
+  color: #005093;
 }
 
 a.el-tablo:hover .label {
@@ -17322,7 +17334,7 @@ a.el-tablo:hover .label {
 }
 
 .profile-tile .pt-new-icon {
-  background-color: #047bf8;
+  background-color: #005093;
   color: #fff;
   vertical-align: middle;
   display: inline-block;
@@ -17513,7 +17525,7 @@ a.el-tablo:hover .label {
 
 .users-list-w .user-w .user-action {
   width: 50px;
-  color: #047bf8;
+  color: #005093;
   font-size: 18px;
 }
 
@@ -17607,7 +17619,7 @@ a.el-tablo:hover .label {
 
 .os-tabs-controls.os-tabs-complex .nav-item .nav-link .tab-value {
   display: inline-block;
-  color: #047bf8;
+  color: #005093;
   margin-right: 10px;
   text-transform: none;
   letter-spacing: normal;
@@ -17820,7 +17832,7 @@ a.el-tablo:hover .label {
   position: absolute;
   content: "";
   height: 4px;
-  background-color: #047bf8;
+  background-color: #005093;
   left: 0px;
   right: 100%;
   bottom: -2px;
@@ -17844,7 +17856,7 @@ a.el-tablo:hover .label {
  #10. Invoice
 */
 .invoice-w {
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   max-width: 800px;
   position: relative;
   overflow: hidden;
@@ -18014,7 +18026,7 @@ a.el-tablo:hover .label {
 }
 
 .big-error-w h5 {
-  color: #047bf8;
+  color: #005093;
   margin-bottom: 3rem;
 }
 
@@ -18034,8 +18046,8 @@ a.el-tablo:hover .label {
 .auth-box-w {
   max-width: 450px;
   margin: 0px auto;
-  background-color: #fff;
-  border-radius: 6px;
+  background-color: #F2F3F4;
+  /* border-radius: 6px; */
   -webkit-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
 }
@@ -18051,13 +18063,12 @@ a.el-tablo:hover .label {
 
 .auth-box-w .logo-w {
   text-align: center;
-  padding: 20%;
+  padding: 5%;
 }
 
 .auth-box-w .auth-header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 1rem;
-  margin-bottom: 2rem;
   position: relative;
   z-index: 1;
   padding-left: 80px;
@@ -18065,7 +18076,7 @@ a.el-tablo:hover .label {
 
 .auth-box-w .auth-header:after {
   content: "";
-  background-color: #047bf8;
+  background-color: #005093;
   width: 32px;
   height: 7px;
   border-radius: 2px;
@@ -18076,7 +18087,7 @@ a.el-tablo:hover .label {
 }
 
 .auth-box-w form {
-  padding: 20px 80px;
+  padding: 0px 73px;
   padding-bottom: 60px;
 }
 
@@ -18092,7 +18103,7 @@ a.el-tablo:hover .label {
   position: absolute;
   bottom: 5px;
   font-size: 24px;
-  color: #047bf8;
+  color: #005093;
   left: -38px;
 }
 
@@ -18224,7 +18235,7 @@ a.el-tablo:hover .label {
 .timed-activity .ta-activity a {
   display: inline-block;
   padding-bottom: 1px;
-  border-bottom: 1px solid #047bf8;
+  border-bottom: 1px solid #005093;
 }
 
 .timed-activity .ta-activity a:hover {
@@ -18512,7 +18523,7 @@ a.el-tablo:hover .label {
 }
 
 .element-balances .balance.balance-v2 .balance-title {
-  color: #047bf8;
+  color: #005093;
 }
 
 .element-balances .balance.balance-v2 .balance-value {
@@ -18696,7 +18707,7 @@ a.el-tablo:hover .label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid #047bf8;
+  border: 1px solid #005093;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -18707,7 +18718,7 @@ a.el-tablo:hover .label {
 
 .todo-list .todo-item .ti-header {
   font-weight: 500;
-  color: #047bf8;
+  color: #005093;
 }
 
 .todo-list .todo-item .ti-sub-header {
@@ -18719,7 +18730,7 @@ a.el-tablo:hover .label {
 .todo-list .todo-item .ti-icon {
   margin-left: auto;
   font-size: 20px;
-  color: #047bf8;
+  color: #005093;
 }
 
 .todo-list .todo-item.complete {
@@ -18891,7 +18902,7 @@ a.el-tablo:hover .label {
 }
 
 a.with-avatar span {
-  border-bottom: 1px solid #047bf8;
+  border-bottom: 1px solid #005093;
 }
 
 .add-agent-btn i {
@@ -18905,7 +18916,7 @@ a.with-avatar span {
 .add-agent-btn span {
   display: inline-block;
   vertical-align: middle;
-  border-bottom: 1px solid #047bf8;
+  border-bottom: 1px solid #005093;
 }
 
 .centered-load-more-link {
@@ -18926,7 +18937,7 @@ a.with-avatar span {
 .centered-load-more-link span {
   display: inline-block;
   vertical-align: middle;
-  border-bottom: 1px solid #047bf8;
+  border-bottom: 1px solid #005093;
 }
 
 .centered-load-more-link:hover span {
@@ -20723,7 +20734,7 @@ Chat Styles
 
 .floated-chat-w .chat-head .user-w .user-title {
   margin-bottom: 2px;
-  color: #047bf8;
+  color: #005093;
 }
 
 .floated-chat-w .chat-head .user-w .user-role {
@@ -20733,7 +20744,7 @@ Chat Styles
 
 .floated-chat-w .chat-head .user-w .user-action {
   width: 50px;
-  color: #047bf8;
+  color: #005093;
   font-size: 18px;
 }
 
@@ -20791,7 +20802,7 @@ Chat Styles
 
 .floated-chat-w .chat-controls .message-input:focus {
   outline: none;
-  border-bottom: 1px solid #047bf8;
+  border-bottom: 1px solid #005093;
 }
 
 .floated-chat-w .chat-controls .chat-extra {
@@ -20902,7 +20913,7 @@ Chat Styles
   font-size: 20px;
   display: inline-block;
   vertical-align: middle;
-  color: #047bf8;
+  color: #005093;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
@@ -20924,7 +20935,7 @@ Chat Styles
   bottom: -1px;
   width: 5px;
   opacity: 0;
-  background-color: #047bf8;
+  background-color: #005093;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
@@ -20947,7 +20958,7 @@ Chat Styles
 }
 
 .ae-side-menu .ae-labels .ae-labels-header i {
-  color: #047bf8;
+  color: #005093;
   font-size: 20px;
   vertical-align: middle;
   display: inline-block;
@@ -20976,7 +20987,7 @@ Chat Styles
   width: 8px;
   height: 8px;
   border-radius: 10px;
-  background-color: #047bf8;
+  background-color: #005093;
   vertical-align: middle;
 }
 
@@ -21037,7 +21048,7 @@ Chat Styles
 }
 
 .ae-list-w .ael-head a i {
-  color: #047bf8;
+  color: #005093;
   font-size: 20px;
 }
 
@@ -21093,7 +21104,7 @@ Chat Styles
 }
 
 .ae-list-w .ae-list .ae-item.with-status.status-blue .user-avatar-w:before {
-  background-color: #047bf8;
+  background-color: #005093;
 }
 
 .ae-list-w .ae-list .ae-item.with-status.status-yellow .user-avatar-w:before {
@@ -21101,7 +21112,7 @@ Chat Styles
 }
 
 .ae-list-w .ae-list .ae-item.active {
-  background-color: #047bf8;
+  background-color: #005093;
   color: #fff;
 }
 
@@ -21132,7 +21143,7 @@ Chat Styles
 }
 
 .ae-list-w .ae-list .ae-item:hover.active {
-  background-color: #047bf8;
+  background-color: #005093;
 }
 
 .ae-list-w .ae-list .aei-image {
@@ -21196,7 +21207,7 @@ Chat Styles
 .ae-list-w .ae-load-more span {
   display: inline-block;
   vertical-align: middle;
-  border-bottom: 1px solid #047bf8;
+  border-bottom: 1px solid #005093;
 }
 
 .ae-list-w .ae-load-more:hover span {
@@ -21239,7 +21250,7 @@ Chat Styles
 }
 
 .ae-content-w .aec-head a i {
-  color: #047bf8;
+  color: #005093;
   font-size: 20px;
 }
 
@@ -21306,8 +21317,8 @@ Chat Styles
 
 .aec-full-message-w .more-messages:hover {
   cursor: pointer;
-  color: #047bf8;
-  border-bottom: 1px solid #047bf8;
+  color: #005093;
+  border-bottom: 1px solid #005093;
 }
 
 .aec-full-message-w.show-pack {
@@ -21419,7 +21430,7 @@ Chat Styles
 
 .aec-full-message-w .message-head .user-w .user-title {
   margin-bottom: 2px;
-  color: #047bf8;
+  color: #005093;
 }
 
 .aec-full-message-w .message-head .user-w .user-role {
@@ -21435,7 +21446,7 @@ Chat Styles
 
 .aec-full-message-w .message-head .user-w .user-action {
   width: 50px;
-  color: #047bf8;
+  color: #005093;
   font-size: 18px;
 }
 
@@ -21525,8 +21536,8 @@ Chat Styles
 }
 
 .aec-reply .reply-header h5 span {
-  color: #047bf8;
-  border-bottom: 1px dotted #047bf8;
+  color: #005093;
+  border-bottom: 1px dotted #005093;
   display: inline-block;
 }
 
@@ -21665,8 +21676,8 @@ Chat Styles
 }
 
 .color-scheme-dark .ae-content-w .aec-full-message-w .more-messages {
-  color: #047bf8;
-  border-bottom-color: #047bf8;
+  color: #005093;
+  border-bottom-color: #005093;
 }
 
 .color-scheme-dark .ae-content-w .aec-full-message-w .message-attachments .attachments-heading,
@@ -21689,7 +21700,7 @@ Chat Styles
 }
 
 .color-scheme-dark .ae-list-w .ae-item:hover {
-  background-color: #047bf8;
+  background-color: #005093;
 }
 
 .color-scheme-dark .ae-list-w .ae-item:hover .aei-sub-title {
@@ -21760,7 +21771,7 @@ Chat Styles
 }
 
 .projects-list .project-head .project-users .more {
-  background-color: #047bf8;
+  background-color: #005093;
   display: inline-block;
   vertical-align: middle;
   position: relative;
@@ -21941,7 +21952,7 @@ Chat Styles
 }
 
 .full-chat-w .full-chat-left .user-list .user-w:hover {
-  background-color: #047bf8;
+  background-color: #005093;
   cursor: pointer;
 }
 
@@ -21992,7 +22003,7 @@ Chat Styles
 .full-chat-w .full-chat-middle .user-info a {
   display: inline-block;
   vertical-align: middle;
-  border-bottom: 1px dotted #047bf8;
+  border-bottom: 1px dotted #005093;
 }
 
 .full-chat-w .full-chat-middle .user-info a:hover {
@@ -22158,7 +22169,7 @@ Chat Styles
 .full-chat-w .user-intro .user-intro-info .user-name {
   margin-top: 0px;
   margin-bottom: 0px;
-  color: #047bf8;
+  color: #005093;
 }
 
 .full-chat-w .user-intro .user-intro-info .user-sub {
@@ -22196,7 +22207,7 @@ Chat Styles
 }
 
 .full-chat-w .chat-info-section .ci-header i {
-  color: #047bf8;
+  color: #005093;
   font-size: 20px;
   margin-right: 10px;
   display: inline-block;
@@ -22229,7 +22240,7 @@ Chat Styles
 
 .full-chat-w .chat-info-section .ci-content .ci-file-list ul li a {
   font-size: 0.81rem;
-  border-bottom: 1px solid #047bf8;
+  border-bottom: 1px solid #005093;
 }
 
 .full-chat-w .chat-info-section .ci-content .ci-file-list ul li a:hover {
@@ -22306,12 +22317,12 @@ Pricing Plans Styles
 }
 
 .pricing-plan.with-hover-effect:hover .plan-price-w .price-value, .pricing-plan.highlight .plan-price-w .price-value {
-  color: #047bf8;
+  color: #005093;
 }
 
 .pricing-plan.with-hover-effect:hover .plan-head, .pricing-plan.highlight .plan-head {
-  -webkit-box-shadow: inset 0px 5px 0px #047bf8;
-  box-shadow: inset 0px 5px 0px #047bf8;
+  -webkit-box-shadow: inset 0px 5px 0px #005093;
+  box-shadow: inset 0px 5px 0px #005093;
 }
 
 .pricing-plan.with-hover-effect:hover .plan-name {
@@ -22340,9 +22351,9 @@ Pricing Plans Styles
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 1.5rem;
-  color: #047bf8;
+  color: #005093;
   font-weight: 500;
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   padding-bottom: 40px;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
@@ -22406,7 +22417,7 @@ Pricing Plans Styles
 
 .pricing-plan .plan-description ul li:before {
   content: '\e961';
-  color: #047bf8;
+  color: #005093;
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'osfont' !important;
   speak: none;
@@ -22526,7 +22537,7 @@ Pricing Plans Styles
 }
 
 .pipeline.white .pipeline-header .pipeline-value {
-  color: #047bf8;
+  color: #005093;
 }
 
 .pipeline.white .pipeline-item {
@@ -22555,7 +22566,7 @@ Pricing Plans Styles
 }
 
 .pipeline.white.lined-primary {
-  border-top: 5px solid #047bf8;
+  border-top: 5px solid #005093;
   border-radius: 0px 0px 4px 4px;
 }
 
@@ -22652,14 +22663,14 @@ Pricing Plans Styles
 .pipeline-item .pi-controls a {
   font-size: 16px;
   line-height: 14px;
-  color: #047bf8;
+  color: #005093;
   display: inline-block;
   vertical-align: middle;
 }
 
 .pipeline-item .pi-controls .pi-settings {
   display: inline-block;
-  color: #047bf8;
+  color: #005093;
   vertical-align: middle;
 }
 
@@ -22749,8 +22760,8 @@ Pricing Plans Styles
   line-height: 1;
   display: inline-block;
   background-color: #fff;
-  border: 1px solid #047bf8;
-  color: #047bf8;
+  border: 1px solid #005093;
+  color: #005093;
   margin-right: 2px;
   font-size: 0.72rem;
   border-radius: 4px;
@@ -22771,7 +22782,7 @@ Pricing Plans Styles
   margin-right: 5px;
   font-size: 16px;
   vertical-align: middle;
-  color: #047bf8;
+  color: #005093;
   display: inline-block;
 }
 
@@ -22931,7 +22942,7 @@ Pricing Plans Styles
 }
 
 .os-dropdown {
-  background-color: #047bf8;
+  background-color: #005093;
   color: #fff;
   padding: 20px 15px;
   position: absolute;
@@ -23119,7 +23130,7 @@ Pricing Plans Styles
 }
 
 .os-dropdown.light.message-list li > a .message-content .message-title {
-  color: #047bf8;
+  color: #005093;
 }
 
 /* 19. App - TODO */
@@ -23162,7 +23173,7 @@ TODO Application
 }
 
 .todo-app-w .todo-sidebar .todo-sidebar-section-header {
-  color: #047bf8;
+  color: #005093;
   position: relative;
 }
 
@@ -23195,7 +23206,7 @@ TODO Application
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   left: -30px;
-  color: #047bf8;
+  color: #005093;
   font-size: 16px;
   position: absolute;
   text-decoration: none;
@@ -23223,7 +23234,7 @@ TODO Application
 
 .todo-app-w .todo-sidebar ul.projects-list li:before {
   content: "\e981";
-  color: #047bf8;
+  color: #005093;
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'osfont' !important;
   speak: none;
@@ -23257,8 +23268,8 @@ TODO Application
 }
 
 .todo-app-w .todo-sidebar ul.projects-list li.add-new-project a {
-  color: #047bf8;
-  border-bottom: 1px solid #047bf8;
+  color: #005093;
+  border-bottom: 1px solid #005093;
   display: inline-block;
   font-size: 0.9rem;
 }
@@ -23344,7 +23355,7 @@ TODO Application
   transform: translateY(-50%);
   left: -30px;
   font-size: 18px;
-  color: #047bf8;
+  color: #005093;
 }
 
 .todo-app-w .todo-sidebar .todo-sidebar-section-sub-section .todo-sidebar-section-sub-header h6 {
@@ -23352,7 +23363,7 @@ TODO Application
   letter-spacing: 1px;
   font-size: 0.72rem;
   margin: 0px;
-  color: #047bf8;
+  color: #005093;
 }
 
 .todo-app-w .todo-sidebar .todo-sidebar-section-sub-section .todo-sidebar-section-sub-section-content ul {
@@ -23385,7 +23396,7 @@ TODO Application
 
 .todo-app-w .todo-content .todo-content-header {
   margin-bottom: 20px;
-  color: #047bf8;
+  color: #005093;
 }
 
 .todo-app-w .todo-content .todo-content-header i {
@@ -23414,7 +23425,7 @@ TODO Application
 
 .todo-app-w .todo-content .tasks-header-w .tasks-header-toggler {
   position: absolute;
-  color: #047bf8;
+  color: #005093;
   font-size: 18px;
   position: absolute;
   left: -30px;
@@ -23450,7 +23461,7 @@ TODO Application
 }
 
 .todo-app-w .todo-content .tasks-header-w .add-task-btn span {
-  border-bottom: 1px solid #047bf8;
+  border-bottom: 1px solid #005093;
 }
 
 .todo-app-w .todo-content .tasks-header-w .add-task-btn i.os-icon {
@@ -23460,7 +23471,7 @@ TODO Application
 
 .todo-app-w .todo-content .tasks-list-header {
   text-transform: uppercase;
-  color: #047bf8;
+  color: #005093;
   letter-spacing: 1px;
   font-size: 0.81rem;
   font-weight: 500;
@@ -23566,7 +23577,7 @@ TODO Application
 }
 
 .todo-app-w .todo-content .tasks-list li.draggable-task .todo-task-buttons .task-btn-edit {
-  color: #047bf8;
+  color: #005093;
 }
 
 .todo-app-w .todo-content .tasks-list li.draggable-task .todo-task-buttons .task-btn-delete {
@@ -23728,7 +23739,7 @@ TODO Application
 }
 
 .attached-media-w .attach-media-btn span {
-  border-bottom: 1px solid #047bf8;
+  border-bottom: 1px solid #005093;
 }
 
 .attached-media-w .attach-media-btn i.os-icon {
@@ -24351,7 +24362,7 @@ TODO Application
 
 .rentals-list-w .filter-side .filter-header:before {
   content: "";
-  background-color: #047bf8;
+  background-color: #005093;
   width: 7px;
   height: 7px;
   left: 20px;
@@ -24380,7 +24391,7 @@ TODO Application
 }
 
 .rentals-list-w .filter-side .select2.select2-container--default .select2-selection--multiple .select2-selection__choice {
-  border: 2px solid #047bf8;
+  border: 2px solid #005093;
   border-radius: 16px;
   font-size: 0.63rem;
   text-transform: uppercase;
@@ -24388,12 +24399,12 @@ TODO Application
   background-color: transparent;
   font-weight: 500;
   padding: 3px 8px;
-  color: #047bf8;
+  color: #005093;
   margin-right: 7px;
 }
 
 .rentals-list-w .filter-side .select2.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
-  color: #047bf8;
+  color: #005093;
 }
 
 .rentals-list-w .rentals-list {
@@ -24584,7 +24595,7 @@ TODO Application
 }
 
 .rentals-list-w .property-item .item-price strong {
-  color: #047bf8;
+  color: #005093;
   font-size: 1.8rem;
 }
 
@@ -24680,7 +24691,7 @@ TODO Application
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 1px;
-  color: #047bf8;
+  color: #005093;
 }
 
 .rentals-list-w .pagination-w .pagination-links .pagination .page-link {
@@ -24787,7 +24798,7 @@ TODO Application
 }
 
 .property-single .property-info-w .property-info-main .property-price strong {
-  color: #047bf8;
+  color: #005093;
   font-size: 2.5rem;
   display: block;
   line-height: 1;
@@ -24834,7 +24845,7 @@ TODO Application
 .property-single .property-info-w .property-info-main .property-features-highlight .feature i {
   display: inline-block;
   font-size: 30px;
-  color: #047bf8;
+  color: #005093;
 }
 
 .property-single .property-info-w .property-info-main .property-features-highlight .feature span {
@@ -24901,7 +24912,7 @@ TODO Application
 
 .property-single .property-info-w .property-info-main .item-features:before {
   content: "";
-  background-color: #047bf8;
+  background-color: #005093;
   width: 7px;
   height: 7px;
   left: -63px;
@@ -25048,7 +25059,7 @@ TODO Application
 
 .property-single .property-info-w .property-info-side .side-section .side-section-header:before {
   content: "";
-  background-color: #047bf8;
+  background-color: #005093;
   width: 7px;
   height: 7px;
   left: 50%;
@@ -25087,7 +25098,7 @@ TODO Application
 }
 
 .property-single .property-info-w .property-info-side .property-side-features .feature i {
-  color: #047bf8;
+  color: #005093;
   font-size: 30px;
   margin-right: 20px;
 }
@@ -25111,7 +25122,7 @@ TODO Application
 
 .property-single .property-info-w .property-section .property-section-header:before {
   content: "";
-  background-color: #047bf8;
+  background-color: #005093;
   width: 7px;
   height: 7px;
   left: -63px;
@@ -25208,7 +25219,7 @@ TODO Application
 
 .related-listings-w .property-section-big-header:before {
   content: "";
-  background-color: #047bf8;
+  background-color: #005093;
   width: 7px;
   height: 7px;
   left: 50%;
@@ -25323,7 +25334,7 @@ TODO Application
 }
 
 .related-listings-w .property-item .item-price strong {
-  color: #047bf8;
+  color: #005093;
   font-size: 1.8rem;
 }
 
@@ -25435,12 +25446,12 @@ body.rentals-wrapper .select2-results__option:last-child {
 }
 
 body.rentals-wrapper .select2-container--default .select2-results__option--highlighted[aria-selected] {
-  background-color: #047bf8;
+  background-color: #005093;
   color: #fff;
 }
 
 body.rentals-wrapper .select2-container--default .select2-results__option[aria-selected=true] {
-  background-color: #047bf8;
+  background-color: #005093;
   color: #fff;
 }
 
@@ -25468,7 +25479,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
   content: "";
   width: 26px;
   height: 26px;
-  background-color: #047bf8;
+  background-color: #005093;
   border-radius: 15px;
   right: -20px;
   position: absolute;
@@ -25487,7 +25498,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 }
 
 .footer-w .footer-i .heading-small {
-  color: #047bf8;
+  color: #005093;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 0.72rem;
@@ -25496,7 +25507,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 
 .footer-w .footer-i ul {
   list-style-type: square;
-  color: #047bf8;
+  color: #005093;
 }
 
 .footer-w .footer-i ul li {
@@ -25649,7 +25660,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 .support-index .load-more-tickets a span {
   display: inline-block;
   vertical-align: middle;
-  border-bottom: 1px solid #047bf8;
+  border-bottom: 1px solid #005093;
 }
 
 .support-index .load-more-tickets a i + span {
@@ -25786,15 +25797,15 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 }
 
 .support-index .support-ticket:hover, .support-index .support-ticket.active {
-  -webkit-box-shadow: 0px 5px 12px rgba(126, 142, 177, 0.2), 0px 0px 0px 2px #047bf8;
-  box-shadow: 0px 5px 12px rgba(126, 142, 177, 0.2), 0px 0px 0px 2px #047bf8;
+  -webkit-box-shadow: 0px 5px 12px rgba(126, 142, 177, 0.2), 0px 0px 0px 2px #005093;
+  box-shadow: 0px 5px 12px rgba(126, 142, 177, 0.2), 0px 0px 0px 2px #005093;
   -webkit-transform: translateY(-3px);
   transform: translateY(-3px);
   cursor: pointer;
 }
 
 .support-index .support-ticket:hover .ticket-title, .support-index .support-ticket.active .ticket-title {
-  color: #047bf8;
+  color: #005093;
 }
 
 .support-index .support-ticket.active {
@@ -25883,11 +25894,11 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 .support-index .st-foot .value {
   vertical-align: middle;
   display: inline-block;
-  color: #047bf8;
+  color: #005093;
 }
 
 .support-index .st-foot a.value span {
-  border-bottom: 1px solid #047bf8;
+  border-bottom: 1px solid #005093;
 }
 
 .support-index .st-foot a.value.with-avatar img {
@@ -25979,7 +25990,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 
 .support-index .support-ticket-content-w .support-ticket-content .show-ticket-info:hover span,
 .support-index .support-ticket-content-w .support-ticket-content .back-to-index:hover span {
-  color: #047bf8;
+  color: #005093;
 }
 
 .support-index .support-ticket-content-w .support-ticket-content .back-to-index i {
@@ -26025,7 +26036,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   font-size: 18px;
-  color: #047bf8;
+  color: #005093;
   text-decoration: none;
   cursor: pointer;
 }
@@ -26158,7 +26169,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
   padding-right: 20px;
   margin-bottom: 5px;
   background-color: #F6F7F8;
-  color: #047bf8;
+  color: #005093;
   border-radius: 6px;
   font-size: 0.72rem;
 }
@@ -26203,13 +26214,13 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
   position: absolute;
   top: 10px;
   right: 15px;
-  color: #047bf8;
+  color: #005093;
   text-decoration: none;
   font-size: 20px;
 }
 
 .support-index .support-ticket-content-w .support-ticket-info .info-header {
-  color: #047bf8;
+  color: #005093;
   text-align: center;
   margin-bottom: 15px;
 }
@@ -26314,7 +26325,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 }
 
 .support-index .support-ticket-content-w .support-ticket-info ul.users-list.as-tiles li a:hover span {
-  color: #047bf8;
+  color: #005093;
 }
 
 .support-index .support-ticket-content-w .support-ticket-info .customer {
@@ -26381,7 +26392,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 }
 
 .color-scheme-dark .support-index .support-ticket.active, .color-scheme-dark .support-index .support-ticket:hover {
-  background-color: #047bf8;
+  background-color: #005093;
 }
 
 .color-scheme-dark .support-index .support-ticket.active .ticket-title, .color-scheme-dark .support-index .support-ticket:hover .ticket-title {
@@ -26534,7 +26545,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 }
 
 .onboarding-modal .onboarding-content h1, .onboarding-modal .onboarding-content h2, .onboarding-modal .onboarding-content h3, .onboarding-modal .onboarding-content h4 {
-  color: #047bf8;
+  color: #005093;
   margin-bottom: 1.5rem;
 }
 
@@ -26576,7 +26587,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 12px;
-  color: #047bf8;
+  color: #005093;
   position: absolute;
   left: -20px;
   top: 45%;
@@ -26771,7 +26782,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 15px;
-  color: #047bf8;
+  color: #005093;
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -26817,7 +26828,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
   color: transparent;
   width: 10px;
   height: 10px;
-  background-color: #047bf8;
+  background-color: #005093;
   opacity: 0.2;
   border: none;
   -webkit-box-shadow: none;
@@ -26836,7 +26847,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 }
 
 .onboarding-modal .slick-dots li.slick-active button {
-  background-color: #047bf8;
+  background-color: #005093;
   opacity: 1;
 }
 
@@ -26905,7 +26916,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 
 .top-bar > ul li a:after {
   content: "";
-  background-color: #047bf8;
+  background-color: #005093;
   position: absolute;
   bottom: 0px;
   left: 50%;
@@ -26945,7 +26956,6 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 }
 
 .top-bar .logo-w img {
-  height: 25px;
   width: auto;
   display: inline-block;
   vertical-align: middle;
@@ -27045,7 +27055,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
   margin: 0px 1rem;
   position: relative;
   font-size: 24px;
-  color: #047bf8;
+  color: #fff;
 }
 
 .top-bar .messages-notifications .new-messages-count {
@@ -27068,7 +27078,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 
 .top-bar .top-icon {
   margin: 0px 1rem;
-  color: #047bf8;
+  color: #fff;
   font-size: 26px;
 }
 
@@ -27108,7 +27118,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 }
 
 .top-bar .logged-user-w .logged-user-menu {
-  background: #1b55e2;
+  background: #005093;
   -webkit-box-shadow: 0 10px 30px 0 rgba(27, 30, 35, 0.27);
   box-shadow: 0 10px 30px 0 rgba(27, 30, 35, 0.27);
   position: absolute;
@@ -27247,11 +27257,11 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 }
 
 .top-bar.color-scheme-light .logo-w .logo:hover .logo-label, .top-bar.color-scheme-transparent .logo-w .logo:hover .logo-label {
-  color: #047bf8;
+  color: #005093;
 }
 
 .top-bar.color-scheme-light .logo-w .logo:hover .logo-label:after, .top-bar.color-scheme-transparent .logo-w .logo:hover .logo-label:after {
-  background-color: #047bf8;
+  background-color: #005093;
 }
 
 .top-bar.color-scheme-dark, .top-bar.color-scheme-bright {
@@ -27316,7 +27326,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 }
 
 .top-bar.color-scheme-bright {
-  background-color: #1b55e2;
+  background-color: #005093;
 }
 
 /* 25. Search */
@@ -27444,14 +27454,14 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 }
 
 .search-with-suggestions-w .search-suggestions-group .ssg-header .ssg-icon {
-  color: #047bf8;
+  color: #005093;
   font-size: 20px;
   margin-right: 15px;
 }
 
 .search-with-suggestions-w .search-suggestions-group .ssg-header .ssg-name {
-  color: #047bf8;
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #005093;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 500;
   font-size: 0.99rem;
 }
@@ -27514,7 +27524,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 .search-with-suggestions-w .ssg-items.ssg-items-blocks .ssg-item:hover .item-name {
   -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
-  color: #047bf8;
+  color: #005093;
 }
 
 .search-with-suggestions-w .ssg-items.ssg-items-blocks .ssg-item:nth-child(even) {
@@ -27528,7 +27538,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 .search-with-suggestions-w .ssg-items.ssg-items-blocks .ssg-item .item-icon {
   font-size: 20px;
   margin-bottom: 5px;
-  color: #047bf8;
+  color: #005093;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
@@ -27576,7 +27586,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 .search-with-suggestions-w .ssg-items.ssg-items-list .ssg-item:hover .item-name {
   -webkit-transform: translateX(3px);
   transform: translateX(3px);
-  color: #047bf8;
+  color: #005093;
 }
 
 .search-with-suggestions-w .ssg-items.ssg-items-list .ssg-item:last-child {
@@ -27631,7 +27641,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 }
 
 .search-with-suggestions-w .ssg-items.ssg-items-boxed .ssg-item:hover .item-name {
-  color: #047bf8;
+  color: #005093;
 }
 
 .search-with-suggestions-w .ssg-items.ssg-items-boxed .ssg-item + .ssg-item {
@@ -27824,7 +27834,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 
 .floated-customizer-panel .fcp-header {
   font-weight: 500;
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   padding: 10px 0px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   margin-bottom: 20px;
@@ -27840,7 +27850,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 .floated-customizer-panel .fcp-header .icon-w {
   display: inline-block;
   vertical-align: middle;
-  color: #047bf8;
+  color: #005093;
   font-size: 24px;
   margin-right: 10px;
 }
@@ -27855,9 +27865,9 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 }
 
 .floated-customizer-panel .fcp-content .fcp-group-header {
-  color: #047bf8;
+  color: #005093;
   font-weight: 500;
-  font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 0.8rem;
@@ -27933,8 +27943,8 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 }
 
 .floated-customizer-panel .fcp-content .fcp-group-contents .fcp-field .fcp-colors .color-bright {
-  background-color: #047bf8;
-  border: 1px solid #047bf8;
+  background-color: #005093;
+  border: 1px solid #005093;
 }
 
 .floated-customizer-panel .fcp-content .fcp-group-contents .fcp-field .fcp-colors .color-dark {
@@ -28029,8 +28039,8 @@ body.color-scheme-dark .profile-tile .profile-tile-box, .content-panel.color-sch
 }
 
 body.color-scheme-dark, .content-panel.color-scheme-dark {
-  background-color: #293145;
-  color: #ccd9e8;
+  background-color: #e9edf2;
+  color: #455a64;
 }
 
 body.color-scheme-dark .post-box .post-text, .content-panel.color-scheme-dark .post-box .post-text {
@@ -28089,7 +28099,7 @@ body.color-scheme-dark .todo-list .todo-item, .content-panel.color-scheme-dark .
 }
 
 body.color-scheme-dark .todo-list .todo-item .ti-header, .content-panel.color-scheme-dark .todo-list .todo-item .ti-header {
-  color: #fff;
+  /* color: #fff; */
 }
 
 body.color-scheme-dark .todo-list .todo-item .ti-sub-header, .content-panel.color-scheme-dark .todo-list .todo-item .ti-sub-header {
@@ -28097,7 +28107,7 @@ body.color-scheme-dark .todo-list .todo-item .ti-sub-header, .content-panel.colo
 }
 
 body.color-scheme-dark .todo-list .todo-item .ti-icon, .content-panel.color-scheme-dark .todo-list .todo-item .ti-icon {
-  color: #fff;
+  color: #015193;
 }
 
 body.color-scheme-dark .todo-list .todo-item.complete, .content-panel.color-scheme-dark .todo-list .todo-item.complete {
@@ -28119,7 +28129,7 @@ body.color-scheme-dark .todo-list .todo-item.complete .ti-header, .content-panel
 body.color-scheme-dark h1, body.color-scheme-dark h2, body.color-scheme-dark h3, body.color-scheme-dark h4, body.color-scheme-dark h5, body.color-scheme-dark h6,
 body.color-scheme-dark .h1, body.color-scheme-dark .h2, body.color-scheme-dark .h3, body.color-scheme-dark .h4, body.color-scheme-dark .h5, body.color-scheme-dark .h6, .content-panel.color-scheme-dark h1, .content-panel.color-scheme-dark h2, .content-panel.color-scheme-dark h3, .content-panel.color-scheme-dark h4, .content-panel.color-scheme-dark h5, .content-panel.color-scheme-dark h6,
 .content-panel.color-scheme-dark .h1, .content-panel.color-scheme-dark .h2, .content-panel.color-scheme-dark .h3, .content-panel.color-scheme-dark .h4, .content-panel.color-scheme-dark .h5, .content-panel.color-scheme-dark .h6 {
-  color: #fff;
+  color: #455a64;
 }
 
 body.color-scheme-dark .text-muted, body.color-scheme-dark .invoice-body .invoice-desc .desc-value, .invoice-body .invoice-desc body.color-scheme-dark .desc-value, body.color-scheme-dark .invoice-body .invoice-desc .desc-value, .content-panel.color-scheme-dark .text-muted, .content-panel.color-scheme-dark .invoice-body .invoice-desc .desc-value, .invoice-body .invoice-desc .content-panel.color-scheme-dark .desc-value, .content-panel.color-scheme-dark .invoice-body .invoice-desc .desc-value {
@@ -28757,7 +28767,7 @@ body.color-scheme-dark .full-chat-w .full-chat-left .nav-link i, .content-panel.
 }
 
 body.color-scheme-dark .full-chat-w .full-chat-left .nav-link.active i, .content-panel.color-scheme-dark .full-chat-w .full-chat-left .nav-link.active i {
-  color: #047bf8;
+  color: #005093;
 }
 
 body.color-scheme-dark .full-chat-w .full-chat-left .element-search input, .content-panel.color-scheme-dark .full-chat-w .full-chat-left .element-search input {
@@ -29221,7 +29231,7 @@ Contents:
     background-color: #fff;
     padding: 3px 5px;
     border-radius: 4px;
-    color: #047bf8;
+    color: #005093;
   }
 
   .ae-list-w {
@@ -30329,8 +30339,8 @@ Contents:
 }
 
 .upload-btn-wrapper .btn {
-  border: 2px solid #047bf8;
-  color: #047bf8;
+  border: 2px solid #005093;
+  color: #005093;
   background-color: white;
   padding: 8px 20px;
   border-radius: 2px;

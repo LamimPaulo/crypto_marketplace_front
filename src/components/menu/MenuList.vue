@@ -103,5 +103,18 @@
 </script>
 
 <style scoped>
+  .menu-w .logo-w img {
+    width: 85%;
+  }
 
+  .menu-w {
+    height: 100%;
+    min-width: 260px;
+  }
+
+  .menu-w.menu-layout-compact {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 260px;
+    flex: 0 0 260px;
+  }
 </style>

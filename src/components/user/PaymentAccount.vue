@@ -1,6 +1,6 @@
 <template>
   <div class="content-box">
-    <vue-headful title="Dados de Pagamento - Navi" description="Navi Capital"/>
+    <vue-headful title="Dados de Pagamento - Liquidex" description="Liquidex"/>
     <div class="loader" v-if="loader"></div>
     <div class="row">
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="loader" v-if="loader"></div>
-    <vue-headful title="Níveis de usuário - Navi Capital" description="Navi Capital"/>
+    <vue-headful title="Níveis de usuário - Liquidex" description="Liquidex"/>
 
     <div class="element-wrapper compact pt-4">
       <div class="element-actions d-none d-sm-block">

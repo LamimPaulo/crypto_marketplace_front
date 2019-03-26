@@ -2,7 +2,7 @@
   <div>
     <div class="loader" v-if="loader"></div>
     <vue-headful
-      title="Gateway Navi"
+      title="Gateway Liquidex"
       description="Pagamento"
     />
     <div class="auth-wrapper">
@@ -10,7 +10,7 @@
         <div class="auth-box-w">
           <div class="logo-w">
             <a href="">
-              <img src="https://s3.amazonaws.com/navi-public/api/navicapital.png" alt="Navi" class="logo">
+              <img src="https://s3.amazonaws.com/navi-public/api/clients/3/cbed47c0-5323-4873-baf7-0284f80bbf0a.png" alt="Liquidex" class="logo">
             </a>
           </div>
           <div class="row">
@@ -202,7 +202,7 @@
 
   .auth-wrapper {
     margin: 0;
-    font-family: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 0.9rem;
     font-weight: 400;
     line-height: 1.5;

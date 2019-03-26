@@ -2,7 +2,7 @@
   <div class="all-wrapper solid-bg-all">
     <div class="loader" v-if="loader"></div>
 
-    <vue-headful title="Pagamentos Multinível" description="Navi Capital"/>
+    <vue-headful title="Pagamentos Multinível" description="Liquidex"/>
 
     <div class="layout-w">
       <menubar></menubar>
@@ -147,7 +147,7 @@
                       <div class="row mb-3">
                         <div class="col-6">
                           <div class="request-api">
-                            <h6>Saldos do Usuário na Plataforma Navi</h6>
+                            <h6>Saldos do Usuário na Plataforma Liquidex</h6>
                             <hr>
                             endpoint: <strong>/pharaos-gateway/balances</strong><br>
                             method: <strong>POST</strong>

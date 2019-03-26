@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-headful title="Arbitragem" description="Navi Capital"/>
+    <vue-headful title="Arbitragem" description="Liquidex"/>
     <div class="loader" v-if="loader"></div>
 
     <div class="content-box">

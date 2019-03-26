@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-headful title="Transações" description="Navi Capital"
+    <vue-headful title="Transações" description="Liquidex"
     />
     <div class="all-wrapper with-side-panel solid-bg-all">
       <div class="layout-w">

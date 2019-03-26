@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="loader" v-if="loader"></div>
-        <vue-headful title="Seu Perfil Navi" description="Navi Capital"
+        <vue-headful title="Seu Perfil Liquidex" description="Liquidex"
         />
         <div class="content-box">
 

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <!-------------------- START - Mobile Menu -------------------->
-    <div class="menu-mobile menu-activated-on-click color-scheme-dark">
+     <!-------------------- START - Mobile Menu -------------------->
+    <div class="menu-mobile menu-activated-on-click color-scheme-white">
       <div class="mm-logo-buttons-w">
         <a class="mm-logo" href="/dashboard"><img src="https://s3.amazonaws.com/navi-public/api/clients/3/cbed47c0-5323-4873-baf7-0284f80bbf0a.png"></a>
         <div class="mm-buttons">
@@ -28,7 +28,7 @@
           </div>
         </div>
         <!-------------------- START - Mobile Menu List -------------------->
-        <menu-list></menu-list>
+        <top-menu-list></top-menu-list>
 
         <ul class="main-menu">
           <li class="selected" v-tooltip.right="'Perfil'">
@@ -73,57 +73,23 @@
       </div>
     </div>
     <!-------------------- END - Mobile Menu -------------------->
+    <div class="menu-w color-scheme-light color-style-default menu-position-top menu-layout-compact sub-menu-style-over sub-menu-color-bright selected-menu-color-bright menu-activated-on-hover menu-has-selected-link">
+        <h1 class="menu-page-header">Liquidex</h1>
 
-    <!-------------------- START - Main Menu -------------------->
-    <div
-      class="menu-w selected-menu-color-light menu-has-selected-link menu-activated-on-click color-scheme-light color-style-default sub-menu-color-light menu-position-side menu-side-left menu-layout-compact sub-menu-style-inside">
-      <!-- <div class="logo-w">
-        <a class="logo" href="/dashboard">
-          <img src="https://s3.amazonaws.com/navi-public/api/clients/3/cbed47c0-5323-4873-baf7-0284f80bbf0a.png" class="logo">
-        </a>
-      </div>
-
-      <div class="logged-user-w avatar-inline">
-        <div class="logged-user-i">
-          <div class="avatar-w">
-            <img alt="" src="../../assets/img/avatar-dev.png">
-          </div>
-          <div class="logged-user-info-w">
-            <div class="logged-user-name">
-              {{ this.$store.state.user.name }}
-            </div>
-            <div class="logged-user-role">
-              {{ this.$store.state.user.level.name }}
-            </div>
-          </div>
-          <div class="logged-user-toggler-arrow">
-            <div class="os-icon os-icon-chevron-down"></div>
-          </div>
-          <DropdownProfile></DropdownProfile>
-
-        </div>
-      </div> -->
-
-      <h1 class="menu-page-header">
-        ...
-      </h1>
-
-      <menu-list></menu-list>
-
+        <top-menu-list></top-menu-list>
     </div>
-    <!-------------------- END - Main Menu -------------------->
   </div>
 </template>
 
 <script>
   import DropdownProfile from './DropdownProfile'
-  import MenuList from './MenuList'
+  import TopMenuList from './TopMenuList'
 
   export default {
-    name: "Menubar",
+    name: "TopMenu",
     components: {
       DropdownProfile,
-      MenuList
+      TopMenuList
     },
     data() {
       return {}
@@ -135,18 +101,4 @@
 </script>
 
 <style scoped>
-  .menu-w .logo-w img {
-    width: 85px;
-  }
-
-  .menu-w {
-    height: 100%;
-    min-width: 260px;
-  }
-
-  .menu-w.menu-layout-compact {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 260px;
-    flex: 0 0 260px;
-  }
 </style>

@@ -12,7 +12,7 @@
 
           <div class="receipt__header">
             <div class="receipt__logo-wrapper">
-              <img src="https://s3.amazonaws.com/navi-public/api/logo.png" alt="Navi" class="receipt__logo">
+              <img src="https://s3.amazonaws.com/navi-public/api/logo.png" alt="Liquidex" class="receipt__logo">
             </div>
 
             <div class="receipt__header-info">

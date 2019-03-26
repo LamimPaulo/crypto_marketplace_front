@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="loader" v-if="loader"></div>
-    <vue-headful title="Crypto Ativos" description="Navi Capital"/>
+    <vue-headful title="Crypto Ativos" description="Liquidex"/>
 
     <div class="element-wrapper compact">
       <h6 class="element-header">
