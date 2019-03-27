@@ -4,10 +4,10 @@
     />
 
     <div class="layout-w">
-      <menubar></menubar>
+      <!-- <menubar></menubar> -->
       <div class="content-w">
 
-        <topbar></topbar>
+        <!-- <topbar></topbar> -->
 
         <div class="content-i">
           <router-view></router-view>

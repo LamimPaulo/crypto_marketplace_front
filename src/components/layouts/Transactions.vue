@@ -1,13 +1,16 @@
 <template>
-  <div>
-    <vue-headful title="Transações" description="Liquidex"
-    />
+  <div class="container mt-3 mb-3">
+    <div class="loader" v-if="loader"></div>
+
+    <top-menu-user></top-menu-user>
+
+    <top-menu></top-menu>
+
+    <vue-headful title="Transações" description="Liquidex"/>
     <div class="all-wrapper with-side-panel solid-bg-all">
       <div class="layout-w">
-        <menubar></menubar>
+        <sidebar></sidebar>
         <div class="content-w">
-
-          <topbar></topbar>
 
           <div class="content-panel-toggler">
             <i class="os-icon os-icon-grid-squares-22"></i><span>Menu</span>
@@ -17,27 +20,29 @@
             <div class="content-box">
               <router-view></router-view>
             </div>
-            <sidebar></sidebar>
           </div>
 
         </div>
       </div>
       <div class="display-type"></div>
     </div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-  import Topbar from '../menu/Topbar'
-  import Menubar from '../menu/Menubar'
-  import Sidebar from '../menu/Sidebar'
+	import Sidebar from './../menu/Sidebar'
+	import TopMenu from './../menu/TopMenu';
+  import TopMenuUser from './../menu/TopMenuUser';    
+	import Footer from './Footer';
 
   export default {
     name: "Transactions",
     components: {
-      Topbar,
-      Menubar,
-      Sidebar
+      TopMenu,
+			TopMenuUser,
+      Footer,
+			Sidebar
     },
     data() {
       return {}

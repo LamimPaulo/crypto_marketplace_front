@@ -1,22 +1,25 @@
 <template>
   <div class="sub-menu-i">
-    <marquee-text :repeat="10" :duration="60" v-for="coin in quotes">
+
+    <marquee-text :repeat="5" :duration="60">
        <ul class="sub-menu">
-         <li class="badge badge-primary"> {{ coin.abbr }}</li>
+         <div v-for="coin in quotes">
+          <li class="badge badge-white ml-1"> <strong>{{ coin.abbr }}</strong> </li>
 
-         <li v-tooltip="'Vender '+coin.name" @click="showModalOrder(coin, 'sell', 'BRL')"
-               class="badge badge-danger" v-if="user.country_id===31">R$ {{ coin.quote[0].sell_quote | currency }}</li>
+          <li v-tooltip="'Vender '+coin.name" @click="showModalOrder(coin, 'sell', 'BRL')"
+                class="badge badge-danger" v-if="user.country_id===31">R$ {{ coin.quote[0].sell_quote | currency }}</li>
 
-         <li v-tooltip="'Vender '+coin.name" @click="showModalOrder(coin, 'sell', 'USD')"
-               class="badge badge-danger" v-else>$ {{ coin.quote[0].sell_quote }}</li>
+          <li v-tooltip="'Vender '+coin.name" @click="showModalOrder(coin, 'sell', 'USD')"
+                class="badge badge-danger" v-else>$ {{ coin.quote[0].sell_quote }}</li>
 
-         <li v-tooltip="'Comprar '+coin.name" @click="showModalOrder(coin, 'buy', 'BRL')"
-               class="badge badge-success" v-if="user.country_id===31">R$ {{ coin.quote[0].buy_quote | currency }}</li>
+          <li v-tooltip="'Comprar '+coin.name" @click="showModalOrder(coin, 'buy', 'BRL')"
+                class="badge badge-success" v-if="user.country_id===31">R$ {{ coin.quote[0].buy_quote | currency }}</li>
 
-         <li v-tooltip="'Comprar '+coin.name" @click="showModalOrder(coin, 'buy', 'USD')"
-               class="badge badge-success" v-else>$ {{ coin.quote[0].buy_quote }}</li>
+          <li v-tooltip="'Comprar '+coin.name" @click="showModalOrder(coin, 'buy', 'USD')"
+                class="badge badge-success" v-else>$ {{ coin.quote[0].buy_quote }}</li>
+         </div>
        </ul>
-    </marquee-text>
+    </marquee-text>    
 
     <order-window :coin="coin" ref="orderWindow" @close-modal="closeModalOrder"
                   v-show="isOrderWindowVisible"></order-window>
@@ -96,6 +99,7 @@
 
   .badge-white {
     background-color: #fff;
+    color: #3E4B5B;
   }
 
   .fs-img {
@@ -107,5 +111,11 @@
 
   .top-bar {
     min-height: 40px;
+  }
+  .sub-menu-w {
+      max-height: 22px;
+  }
+  .vue-tooltip {
+    top: -20px !important;
   }
 </style>

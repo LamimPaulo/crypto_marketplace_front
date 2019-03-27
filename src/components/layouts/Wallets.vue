@@ -1,43 +1,57 @@
 <template>
-  <div>
-    <vue-headful title="Transações" description="Liquidex"
-    />
-    <div class="all-wrapper with-side-panel solid-bg-all">
-      <div class="layout-w">
-        <menubar></menubar>
-        <div class="content-w">
 
-          <topbar></topbar>
+    <div class="container mt-3 mb-3">
+      <div class="loader" v-if="loader"></div>
 
-          <div class="content-panel-toggler">
-            <i class="os-icon os-icon-grid-squares-22"></i><span>Menu</span>
-          </div>
+      <top-menu-user></top-menu-user>
 
-          <div class="content-i">
-            <div class="content-box">
-              <router-view></router-view>
+      <top-menu></top-menu>
+
+      <vue-headful title="Transações" description="Liquidex"/>
+
+      <div class="all-wrapper with-side-panel solid-bg-all">
+        <div class="layout-w">
+          <sidebar></sidebar>
+          <div class="content-w">
+
+            <!-- <topbar></topbar> -->
+
+            <div class="content-panel-toggler">
+              <i class="os-icon os-icon-grid-squares-22"></i><span>Menu</span>
             </div>
-            <sidebar></sidebar>
-          </div>
 
+            <div class="content-i">
+              <div class="content-box">
+                <router-view></router-view>
+              </div>
+            </div>
+
+          </div>
         </div>
+        <div class="display-type"></div>
       </div>
-      <div class="display-type"></div>
-    </div>
+       <Footer></Footer>
   </div>
+
+
 </template>
 
 <script>
-  import Topbar from '../menu/Topbar'
-  import Menubar from '../menu/Menubar'
-  import Sidebar from '../menu/Sidebar'
+  import Menubar from './menu/Menubar'
+	import Sidebar from './menu/Sidebar'
+	import PieChart from './charts/PieChart';
+	import TopMenu from './menu/TopMenu';
+  import TopMenuUser from './menu/TopMenuUser';    
+	import Footer from './layouts/Footer';
 
   export default {
     name: "Wallets",
     components: {
-      Topbar,
+      TopMenu,
+			TopMenuUser,
       Menubar,
-      Sidebar
+      Footer,
+			Sidebar
     },
     data() {
       return {}

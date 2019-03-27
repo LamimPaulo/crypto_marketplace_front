@@ -10,7 +10,6 @@
         <div class="all-wrapper with-side-panel solid-bg-all">
             <div class="layout-w">
 
-                <!-- <menubar></menubar> -->
 
                 <sidebar></sidebar>
 
@@ -144,7 +143,6 @@
                         </div>
                         <!--Content-end-->
 
-                        <!-- <sidebar></sidebar> -->
 
                     </div>
 
@@ -159,8 +157,6 @@
 </template>
 
 <script>
-	// import Topbar from './menu/Topbar'
-    import Menubar from './menu/Menubar'
 	import Sidebar from './menu/Sidebar'
 	import PieChart from './charts/PieChart';
 	import TopMenu from './menu/TopMenu';
@@ -171,11 +167,9 @@
 	export default {
 		name: "Dashboard",
 		components: {
-            // Topbar,
             PieChart,
             TopMenu,
 			TopMenuUser,
-            Menubar,
             Footer,
 			Sidebar
 		},

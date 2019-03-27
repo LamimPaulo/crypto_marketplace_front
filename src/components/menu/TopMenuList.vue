@@ -1,7 +1,7 @@
 <template>
     <ul class="main-menu">
         <li class="sub-header"><span>Layouts</span></li>
-        <li class="has-sub-menu">
+        <li class="selected has-sub-menu">
             <a href="/dashboard">
                 <div class="icon-w">
                     <img  :src="require(`@/assets/img/svg_icons/customize-view.png`)" width="30px" alt="">
@@ -23,7 +23,7 @@
                         <li><a href="layouts_menu_top_image.html">Dashboard 6</a></li>
                     </ul>
                 </div> -->
-                <topbar></topbar>
+                <topbar></topbar> ahsoahsoha
             </div>
         </li>
         <li class="has-sub-menu">
