@@ -63,7 +63,7 @@
     transition: stroke-dasharray 0.3s ease-in-out, stroke-dashoffset 0.3s ease-in-out;
   }
 
-  $colors: #FF6600 ,#004C39 ,#4893E0 ,#C06C81 ,#C4ADFF ,#FF0000 ,#125442 ,#92D4F4 ,#335878 ,#A0B7FF ,#F0CC00 ,#23A47B ,#1D3775 ,#FFAD95 ,#EDA0FF ,#FF9900 ,#228B6B ,#326FC0 ,#F67780 ,#C191E8 ,#FF3300 ;
+  $colors: #FF6600 ,#004C39 ,#4893E0 ,#293144 ,#C4ADFF ,#FF0000 ,#125442 ,#92D4F4 ,#335878 ,#A0B7FF ,#F0CC00 ,#23A47B ,#1D3775 ,#FFAD95 ,#EDA0FF ,#FF9900 ,#228B6B ,#326FC0 ,#F67780 ,#C191E8 ,#FF3300 ;
 
   @for $i from 1 through length($colors) {
     .pie circle:nth-child(#{$i}) {

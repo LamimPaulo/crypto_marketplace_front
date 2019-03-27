@@ -54,6 +54,7 @@
 <style lang="">
 .footer {
     background-color: #babdc6;
+    background-image: url("https://www.transparenttextures.com/patterns/large-leather.png");
 }
 footer.footer {
     padding-top: 1rem;

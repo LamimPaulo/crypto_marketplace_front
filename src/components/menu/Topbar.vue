@@ -1,6 +1,6 @@
 <template>
   <div class="sub-menu-i">
-    <marquee-text :repeat="10" :duration="30" v-for="coin in quotes">
+    <marquee-text :repeat="10" :duration="60" v-for="coin in quotes">
        <ul class="sub-menu">
          <li class="badge badge-primary"> {{ coin.abbr }}</li>
 

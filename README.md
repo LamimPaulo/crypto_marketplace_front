@@ -28,3 +28,7 @@ https://wrappixel.com/demos/admin-templates/admin-pro/horizontal/index.html
 1: https://s3.amazonaws.com/navi-public/api/clients/3/cbed47c0-5323-4873-baf7-0284f80bbf0a.png
 
 2: https://s3.amazonaws.com/navi-public/api/clients/3/logosemfundo2.png
+
+
+### icons
+https://icons8.com/

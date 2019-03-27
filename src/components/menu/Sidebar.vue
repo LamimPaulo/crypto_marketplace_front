@@ -1,12 +1,12 @@
 <template>
   <div class="content-panel compact color-scheme-dark">
-    <div class="content-panel-close">
+    <!-- <div class="content-panel-close">
       <i class="os-icon os-icon-close"></i>
-    </div>
+    </div> -->
     <div class="element-wrapper">
-      <h6 class="element-header">
-        Conversão Rápida
-      </h6>
+      <h5 class="element-header">
+        <strong><img  :src="require(`@/assets/img/svg_icons/accounting.svg`)" width="30px" alt=""> Conversão Rápida</strong>
+      </h5>
       <div class="element-box-tp">
         <form action="">
           <div class="row">
@@ -103,7 +103,7 @@
 
     <div class="element-wrapper compact">
       <h6 class="element-header">
-        Verificação de Perfil
+        <img  :src="require(`@/assets/img/svg_icons/id-card.svg`)" width="30px" alt=""> Verificação de Perfil
       </h6>
       <div class="element-box-tp">
 
@@ -236,6 +236,8 @@
         </div>
       </div>
     </div>
+
+    <span class="animate-border"></span>
 
     <pin v-show="isPinVisible" ref="pinComponent"
                @close-pin-modal="closePinModal" @pin-data="handlePinData"/>
@@ -410,8 +412,85 @@
 </script>
 
 <style scoped>
-
+.content-panel {
+    border: 1px solid #cecece;
+    border-top: none;
+}
+.element-header {
+    font-weight: 500;
+    line-height: 1.2;
+}
   select option {
     color: #000;
   }
+
+.animate-border {
+  position: relative;
+  display: block;
+  width: auto;
+  height: 1px;
+  background: #b9bcc5; }
+
+.animate-border:before {
+  position: absolute;
+  content: "";
+  width: auto;
+  height: 3px;
+  left: 0;
+  bottom: 0;
+  border-left: 10px solid #293144;
+  border-right: 10px solid #293144;
+  -webkit-animation: animborder 2s linear infinite;
+  animation: animborder 2s linear infinite; }
+
+@-webkit-keyframes animborder {
+  0% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px); }
+  100% {
+    -webkit-transform: translateX(113px);
+    transform: translateX(113px); } }
+
+@keyframes animborder {
+  0% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px); }
+  100% {
+    -webkit-transform: translateX(113px);
+    transform: translateX(113px); } }
+
+.animate-border.border-white:after {
+  border-color: #293144; }
+
+.animate-border.border-yellow:after {
+  border-color: #F5B02E; }
+
+.animate-border.border-orange:after {
+  border-right-color: #b9bcc5;
+  border-left-color: #b9bcc5; }
+
+.animate-border.border-ash:after {
+  border-right-color: #EEF0EF;
+  border-left-color: #EEF0EF; }
+
+.animate-border.border-offwhite:after {
+  border-right-color: #F7F9F8;
+  border-left-color: #F7F9F8; }
+
+/* Animated heading border */
+@keyframes primary-short {
+  0% {
+    width: 15%; }
+  50% {
+    width: 90%; }
+  100% {
+    width: 10%; } }
+
+@keyframes primary-long {
+  0% {
+    width: 80%; }
+  50% {
+    width: 0%; }
+  100% {
+    width: 80%; } } 
 </style>

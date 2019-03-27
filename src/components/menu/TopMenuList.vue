@@ -1,19 +1,17 @@
 <template>
     <ul class="main-menu">
         <li class="sub-header"><span>Layouts</span></li>
-        <li class="selected has-sub-menu">
-        
-        <!-- <li class=""> -->
+        <li class="has-sub-menu">
             <a href="/dashboard">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <img  :src="require(`@/assets/img/svg_icons/customize-view.png`)" width="30px" alt="">
                 </div>
                 <span>Dashboard</span>
             </a>
             <div class="sub-menu-w">
                 <div class="sub-menu-header">Dashboard</div>
                 <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-layout"></i>
+                    <i class="fas fa-tachometer-alt"></i>
                 </div>
                 <!-- <div class="sub-menu-i">
                     <ul class="sub-menu">
@@ -28,41 +26,41 @@
                 <topbar></topbar>
             </div>
         </li>
-        <li>
+        <li class="has-sub-menu">
             <a href="/wallets/list">
-                <div class="icon-w"><div class="os-icon os-icon-wallet-loaded"></div></div>
+                <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/icons8-wallet-40.png`)" width="30px" alt=""></div>
                 <span>Carteiras</span>
             </a>
         </li>
-        <li>
+        <li class="has-sub-menu">
             <a href="/transactions/list">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-package"></div>
+                    <img  :src="require(`@/assets/img/svg_icons/icons8-exchange-40.png`)" width="30px" alt="">
                 </div>
                 <span>Transações</span>
             </a>
         </li>
-        <li>
+        <li class="has-sub-menu">
             <a href="/user/mining">
-                <div class="icon-w"><div class="os-icon os-icon-zap"></div></div>
+                <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/icons8-processor-40.png`)" width="30px" alt=""></div>
                 <span>Mineração</span>
             </a>
         </li>
-        <li>
+        <li class="has-sub-menu">
             <a href="/coin/assets">
-                <div class="icon-w"><div class="os-icon os-icon-layers"></div></div>
+                <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/icons8-coins-40.png`)" width="30px" alt=""></div>
                 <span>Crypto Ativos</span>
             </a>
         </li>
-        <li>
+        <li class="has-sub-menu">
             <a href="/index/fund">
-                <div class="icon-w"><div class="os-icon os-icon-target"></div></div>
+                <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/line-chart.png`)" width="30px" alt=""></div>
                 <span>Index Fund</span>
             </a>
         </li>
-        <li>
+        <li class="has-sub-menu">
             <a href="/trader/arbitrage">
-                <div class="icon-w"><div class="os-icon os-icon-activity"></div></div>
+                <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/icons8-increase-40.png`)" width="30px" alt=""></div>
                 <span>Arbitragem</span>
             </a>
         </li>
@@ -104,4 +102,22 @@
 </script>
 
 <style scoped>
+.main-menu {
+    border-bottom: 1px solid #fff;
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1450px) {
+    .menu-w.menu-layout-compact ul.main-menu > li > a {
+        font-size: 1rem;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1250px) {
+    .menu-w.menu-layout-compact ul.main-menu > li > a {
+        font-size: 0.6rem;
+    }
+}
 </style>
