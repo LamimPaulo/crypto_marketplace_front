@@ -121,6 +121,7 @@ body {
   color: #3E4B5B;
   text-align: left;
   background-color: #f4f6f9;
+  background-image: url("../img/bright-squares.png");
 }
 
 .marquee-text-wrap {
@@ -16513,27 +16514,27 @@ body.menu-side-right .layout-w {
   border-bottom: none;
 }
 
-.menu-mobile ul.main-menu > li.has-sub-menu > a:before {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'osfont' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  content: "\e91c";
-  font-size: 7px;
-  color: rgba(0, 0, 0, 0.5);
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  position: absolute;
-  top: 50%;
-  right: 10px;
-}
+/*.menu-mobile ul.main-menu > li.has-sub-menu > a:before {*/
+  /*!* use !important to prevent issues with browser extensions that change fonts *!*/
+  /*font-family: 'osfont' !important;*/
+  /*speak: none;*/
+  /*font-style: normal;*/
+  /*font-weight: normal;*/
+  /*font-variant: normal;*/
+  /*text-transform: none;*/
+  /*line-height: 1;*/
+  /*!* Better Font Rendering =========== *!*/
+  /*-webkit-font-smoothing: antialiased;*/
+  /*-moz-osx-font-smoothing: grayscale;*/
+  /*content: "\e91c";*/
+  /*font-size: 7px;*/
+  /*color: rgba(0, 0, 0, 0.5);*/
+  /*-webkit-transform: translateY(-50%);*/
+  /*transform: translateY(-50%);*/
+  /*position: absolute;*/
+  /*top: 50%;*/
+  /*right: 10px;*/
+/*}*/
 
 .menu-mobile ul.main-menu > li.has-sub-menu.active .sub-menu {
   display: block;
@@ -16847,7 +16848,7 @@ body.menu-side-right .layout-w {
   padding-bottom: 1rem;
   margin-bottom: 2rem;
   position: relative;
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 .element-wrapper .element-header:after {
@@ -29246,7 +29247,7 @@ Contents:
   .layout-w {
     -webkit-transition: all 0.6s ease;
     transition: all 0.6s ease;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
   }
 
   .content-box:after {

@@ -19,7 +19,7 @@
                 class="badge badge-success" v-else>$ {{ coin.quote[0].buy_quote }}</li>
          </div>
        </ul>
-    </marquee-text>    
+    </marquee-text>
 
     <order-window :coin="coin" ref="orderWindow" @close-modal="closeModalOrder"
                   v-show="isOrderWindowVisible"></order-window>
@@ -111,9 +111,6 @@
 
   .top-bar {
     min-height: 40px;
-  }
-  .sub-menu-w {
-      max-height: 22px;
   }
   .vue-tooltip {
     top: -20px !important;

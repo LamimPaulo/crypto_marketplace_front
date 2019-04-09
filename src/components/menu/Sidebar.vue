@@ -1,5 +1,5 @@
 <template>
-  <div class="content-panel compact color-scheme-dark">
+  <div class="content-panel compact color-scheme-light">
     <!-- <div class="content-panel-close">
       <i class="os-icon os-icon-close"></i>
     </div> -->
