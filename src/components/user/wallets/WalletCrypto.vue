@@ -28,17 +28,29 @@
 
             </div>
 
-            <div class="element-wrapper pb-4 mb-0" v-if="wallet.type===1">
-              <div class="element-box-tp">
-                <a class="btn btn-success" href="#" @click="openAddressWindow">
-                  <i class="os-icon os-icon-arrow-down-left"></i><span>Receber</span>
-                </a>
-
-                <a class="btn btn-grey" @click="openSendWindow" href="#">
-                  <i class="os-icon os-icon-arrow-up-right"></i><span>Enviar</span>
-                </a>
+            <div class="row">
+              <div class="col-xl-6 col-sm-6 mb-3">
+                <div @click="openAddressWindow" class="btn-receber text-white bg-success o-hidden h-100">
+                  <div class="card-body">
+                    <div class="card-body-icon">
+                      <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h4 class="text-white mr-5">Receber</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-6 col-sm-6 mb-3">
+                <div @click="openSendWindow" class="btn-receber text-white bg-primary o-hidden h-100">
+                  <div class="card-body">
+                    <div class="card-body-icon">
+                      <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <h4 class="text-white mr-5">Enviar</h4>
+                  </div>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -117,5 +129,42 @@
 </script>
 
 <style scoped>
-
+  .btn-receber {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  .card-body-icon {
+    position: absolute;
+    z-index: 0;
+    top: -1.25rem;
+    right: -1rem;
+    opacity: 0.4;
+    font-size: 5rem;
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+  }
+  .card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+  }
+  .card-footer {
+    padding: 0.75rem 1.25rem;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+  }
 </style>

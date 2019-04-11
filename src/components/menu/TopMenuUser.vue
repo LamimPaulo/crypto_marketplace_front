@@ -14,42 +14,6 @@
                     </div>
                     <div class="col-9 d-flex justify-content-end">
                         <div class="top-menu-controls">
-                            <!--------------------START - Settings Link in secondary top menu-------------------->
-<!--                            <div class="top-icon top-settings os-dropdown-trigger os-dropdown-position-left">-->
-<!--                                <i class="os-icon os-icon-ui-46"></i>-->
-<!--                                <div class="os-dropdown">-->
-<!--                                    <div class="icon-w">-->
-<!--                                        <i class="os-icon os-icon-ui-46"></i>-->
-<!--                                    </div>-->
-<!--                                    <ul>-->
-<!--                                        <li>-->
-<!--                                            <a href="users_profile_small.html">-->
-<!--                                                <i class="os-icon os-icon-ui-49"></i>-->
-<!--                                                <span>Profile Settings</span>-->
-<!--                                            </a>-->
-<!--                                        </li>-->
-<!--                                        <li>-->
-<!--                                            <a href="users_profile_small.html">-->
-<!--                                                <i class="os-icon os-icon-grid-10"></i>-->
-<!--                                                <span>Billing Info</span>-->
-<!--                                            </a>-->
-<!--                                        </li>-->
-<!--                                        <li>-->
-<!--                                            <a href="users_profile_small.html">-->
-<!--                                                <i class="os-icon os-icon-ui-44"></i>-->
-<!--                                                <span>My Invoices</span>-->
-<!--                                            </a>-->
-<!--                                        </li>-->
-<!--                                        <li>-->
-<!--                                            <a href="users_profile_small.html">-->
-<!--                                                <i class="os-icon os-icon-ui-15"></i>-->
-<!--                                                <span>Cancel Account</span>-->
-<!--                                            </a>-->
-<!--                                        </li>-->
-<!--                                    </ul>-->
-<!--                                </div>-->
-<!--                            </div>-->
-                            <!--------------------END - Settings Link in secondary top menu-------------------->
                             <!--------------------START - User avatar and menu in secondary top menu-------------------->
                             <div class="logged-user-w">
                                 <div class="logged-user-i">

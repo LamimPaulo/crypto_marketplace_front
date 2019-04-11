@@ -3,7 +3,7 @@
      <!-------------------- START - Mobile Menu -------------------->
     <div class="menu-mobile menu-activated-on-click color-scheme-white">
       <div class="mm-logo-buttons-w">
-        <a class="mm-logo" href="/dashboard"><img src="https://s3.amazonaws.com/navi-public/api/clients/3/cbed47c0-5323-4873-baf7-0284f80bbf0a.png"></a>
+        <a class="mm-logo" href="/dashboard">Liquedex</a>
         <div class="mm-buttons">
           <div class="content-panel-open">
             <div class="os-icon os-icon-grid-circles"></div>

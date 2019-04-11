@@ -415,6 +415,7 @@
 .content-panel {
     border: 1px solid #cecece;
     border-top: none;
+    background-color: #e6e6ea;
 }
 .element-header {
     font-weight: 500;

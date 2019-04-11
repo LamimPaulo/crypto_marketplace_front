@@ -16,7 +16,7 @@
                     <h4 class="text-center pb-3">
                         Login
                     </h4>
-                    <form action="#" @submit.prevent="login">
+                    <form action="#" @submit.prevent="FormSubmit">
                         <div class="form-group">
                             <label>Usuário, Email ou Telefone</label><input class="form-control" placeholder="Seu Login"
                                                                             type="text"
@@ -39,8 +39,12 @@
                         </div>
 
                         <div class="form-group">
-                            <vue-recaptcha ref="recaptcha" @verify="onVerify"
-                                           :sitekey="recaptcha_key"></vue-recaptcha>
+                            <vue-recaptcha
+                                    ref="recaptcha"
+                                    @verify="onCaptchaVerified"
+                                    size="invisible"
+                                    :sitekey="recaptcha_key">
+                            </vue-recaptcha>
                         </div>
 
                         <button type="submit" :disabled='!isFilled' class="btn btn-block btn-success btn-login"><strong>Entrar</strong></button>
@@ -67,22 +71,28 @@
 				recaptcha: '',
 				code_2fa: null,
 				loader: false,
-				recaptcha_key: '6LdalXQUAAAAAJ43fl5GigxzRINKDRTtPDPLmegz',
+				recaptcha_key: '6Le_sp0UAAAAANRsGDnP0JOs30RBk7xHAlxFgI5M',
 			}
 		},
 		computed: {
 			isFilled() {
-				return this.recaptcha && this.password && this.username;
+				return this.password && this.username;
 			}
 		},
 		methods: {
-			login() {
+
+            FormSubmit() {
+                this.loader = true;
+                this.$refs.recaptcha.execute()
+
+            },
+            onCaptchaVerified(token) {
 
 				this.loader = true;
 				this.$store.dispatch('retrieveToken', {
 					username: this.username,
 					password: this.password,
-					recaptcha: this.recaptcha,
+                    recaptcha: token,
 					code_2fa: this.code_2fa,
 				})
 					.then(this.$toasted.show('Verificando seus dados', {position: 'top-center'}).goAway(3000))

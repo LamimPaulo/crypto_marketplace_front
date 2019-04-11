@@ -7,7 +7,7 @@
                 </div>
                 <span>Dashboard</span>
             </a>
-            <div class="sub-menu-w" style="max-height: 24px !important;">
+            <div class="sub-menu-w" style="max-height: 24px !important; z-index: 99">
                 <topbar></topbar>
             </div>
         </li>
