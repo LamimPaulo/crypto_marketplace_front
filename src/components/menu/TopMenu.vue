@@ -3,7 +3,7 @@
      <!-------------------- START - Mobile Menu -------------------->
     <div class="menu-mobile menu-activated-on-click color-scheme-white">
       <div class="mm-logo-buttons-w">
-        <a class="mm-logo" href="/dashboard">Liquedex</a>
+        <a class="mm-logo" href="/dashboard">Liquidex</a>
         <div class="mm-buttons">
           <div class="content-panel-open">
             <div class="os-icon os-icon-grid-circles"></div>

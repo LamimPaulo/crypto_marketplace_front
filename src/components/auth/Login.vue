@@ -71,7 +71,7 @@
 				recaptcha: '',
 				code_2fa: null,
 				loader: false,
-				recaptcha_key: '6Le_sp0UAAAAANRsGDnP0JOs30RBk7xHAlxFgI5M',
+				recaptcha_key: `${process.env.INVISIBLE_RECAPTCHA_KEY}`
 			}
 		},
 		computed: {
@@ -109,9 +109,6 @@
 					this.$refs.recaptcha.reset();
 				})
 			},
-			onVerify(response) {
-				this.recaptcha = response;
-			}
 		},
 		components: {VueRecaptcha},
 	}

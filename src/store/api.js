@@ -4,11 +4,11 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
-axios.defaults.baseURL = 'http://localhost:8000/api';
+axios.defaults.baseURL = `${process.env.API_ROOT}`;
 
 export const store = new Vuex.Store({
 	state: {
-		token: (localStorage.getItem('navi_ico_access_token') && localStorage.getItem('navi_ico_access_token') !== 'undefined') ? localStorage.getItem('navi_ico_access_token') : null,
+		token: (localStorage.getItem('liquidex_access_token') && localStorage.getItem('liquidex_access_token') !== 'undefined') ? localStorage.getItem('liquidex_access_token') : null,
 		user: {
 			name: 'carregando...',
 			level: '-'
@@ -54,7 +54,7 @@ export const store = new Vuex.Store({
 				})
 					.then(response => {
 						const token = response.data.access_token
-						localStorage.setItem('navi_ico_access_token', token)
+						localStorage.setItem('liquidex_access_token', token)
 						context.commit('retrieveToken', token)
 						resolve(response)
 					})
@@ -70,12 +70,12 @@ export const store = new Vuex.Store({
 				return new Promise((resolve, reject) => {
 					axios.get('/logout')
 						.then(response => {
-							localStorage.removeItem('navi_ico_access_token')
+							localStorage.removeItem('liquidex_access_token')
 							context.commit('destroyToken')
 							resolve(response)
 						})
 						.catch(error => {
-							localStorage.removeItem('navi_ico_access_token')
+							localStorage.removeItem('liquidex_access_token')
 							context.commit('destroyToken')
 							reject(error)
 						})
@@ -131,7 +131,7 @@ export const store = new Vuex.Store({
 				})
 				.catch(error => {
 					if (error.response.status === 401) {
-						localStorage.removeItem('navi_ico_access_token')
+						localStorage.removeItem('liquidex_access_token')
 						context.commit('destroyToken')
 						this.$router.push({name: 'login'})
 					}
@@ -151,7 +151,7 @@ export const store = new Vuex.Store({
 		},
 		sendDocument(context, document) {
 			return new Promise((resolve, reject) => {
-				axios.post('/documents/store', document)
+				axios.post('/user/documents/store', document)
 					.then(response => {
 						resolve(response)
 					})
@@ -162,7 +162,7 @@ export const store = new Vuex.Store({
 		},
 		retrieveDocuments() {
 			return new Promise((resolve, reject) => {
-				axios.get('/documents/list')
+				axios.get('/user/documents/list')
 					.then(response => {
 						resolve(response)
 					})
