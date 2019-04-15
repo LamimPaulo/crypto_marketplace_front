@@ -29448,8 +29448,8 @@ Contents:
   }
 
   .menu-mobile {
-    width: 70px;
-    display: table-cell;
+    /*width: 70px;*/
+    display: block;
   }
 
   .menu-mobile .menu-and-user {
@@ -29519,12 +29519,12 @@ Contents:
 
   .menu-mobile ul.main-menu > li > a > span {
     position: absolute;
-    top: 10px;
+    top: 20px;
     left: 90px;
-    color: rgba(0, 0, 0, 0.2);
-    font-size: 1.53rem;
+    color: #3E4B5B;
+    font-size: 1rem;
     font-weight: 500;
-    display: none;
+    display: block;
     white-space: nowrap;
     z-index: 1000;
     padding: 0px;

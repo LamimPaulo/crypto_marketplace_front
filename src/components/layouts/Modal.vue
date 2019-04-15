@@ -49,7 +49,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 5;
+    z-index: 9999;
   }
 
   .vue-modal{
@@ -58,6 +58,7 @@
     overflow-x: auto;
     display: flex;
     flex-direction: column;
+    z-index: 9999;
   }
   .vue-modal-footer {
     padding: 15px;

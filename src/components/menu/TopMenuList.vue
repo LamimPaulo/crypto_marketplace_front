@@ -3,7 +3,7 @@
         <li class="selected has-sub-menu">
             <a href="/dashboard">
                 <div class="icon-w">
-                    <img  :src="require(`@/assets/img/svg_icons/customize-view.png`)" width="30px" alt="">
+                    <img :src="require(`@/assets/img/svg_icons/customize-view.png`)" width="30px" alt="">
                 </div>
                 <span>Dashboard</span>
             </a>

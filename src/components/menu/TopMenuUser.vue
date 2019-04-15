@@ -8,9 +8,11 @@
                 <div class="row">
 
                     <div class="col-3">
-                        <h1 class="text">
-                            <img src="https://s3.amazonaws.com/navi-public/api/clients/3/logosemfundo2.png" width="302px">
-                        </h1>
+                        <router-link to="/dashboard">
+                            <h1 class="text">
+                                <img src="https://s3.amazonaws.com/navi-public/api/clients/3/logosemfundo2.png" width="302px">
+                            </h1>
+                        </router-link>
                     </div>
                     <div class="col-9 d-flex justify-content-end">
                         <div class="top-menu-controls">

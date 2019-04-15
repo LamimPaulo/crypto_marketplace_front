@@ -1,29 +1,29 @@
 <template>
+
   <div class="element-wrapper">
-    <div class="element-box">
-      <h6 class="element-header">
-        Sua Atividade
-      </h6>
-      <div class="timed-activities compact">
-        <div class="timed-activity">
+    <h6 class="element-header">Atividades Recentes</h6>
+    <div class="element-box-tp">
 
-          <div class="ta-record-w">
-            <div class="ta-record" v-for="hist in logs">
-              <div class="ta-timestamp">
-                <strong>{{ hist.localCreated}}</strong>
-              </div>
-              <div class="ta-activity">
-                {{ hist.description }}
-              </div>
+      <div class="activity-boxes-w">
+
+        <div class="activity-box-w" v-for="hist in logs">
+          <div class="activity-time">{{ hist.localCreated}}</div>
+          <div class="activity-box">
+            <div class="activity-info">
+              <!--              <div class="activity-role">John Mayers</div>-->
+              <strong class="activity-title">{{ hist.description }}</strong>
             </div>
-
-
           </div>
+        </div>
+
+        <div v-if="!this.logs" class="activity-box-w">
+          <span class="badge badge-danger">Sem atividade recente!</span>
         </div>
 
       </div>
     </div>
   </div>
+
 </template>
 
 <script>

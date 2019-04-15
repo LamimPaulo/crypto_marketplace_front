@@ -146,6 +146,9 @@
     border-radius: 0.25rem;
     cursor: pointer;
   }
+  .btn-receber :hover {
+    background: #000;
+  }
   .card-body-icon {
     position: absolute;
     z-index: 0;
@@ -161,10 +164,5 @@
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     padding: 1.25rem;
-  }
-  .card-footer {
-    padding: 0.75rem 1.25rem;
-    background-color: rgba(0, 0, 0, 0.03);
-    border-top: 1px solid rgba(0, 0, 0, 0.125);
   }
 </style>
