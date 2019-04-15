@@ -10,7 +10,7 @@
 
                 <div class="col-sm-12 col-md-12 col-lg-7">
                     <div class="element-wrapper">
-                        <div class="element-box">
+                        <div class="element-box-tp">
 
                             <div class="element-info">
                                 <div class="element-info-with-icon">
@@ -35,9 +35,6 @@
                             <google2fa :user="user" @refresh="refresh()"
                                              @reset-token="resetToken()"></google2fa>
 
-                            <password-change :user="user" @refresh="refresh()"
-                                             @reset-token="resetToken()"></password-change>
-
                             <dados-pessoais :user="user" v-if="user.country_id===31" @refresh="refresh()"
                                             @reset-token="resetToken()"></dados-pessoais>
 
@@ -45,6 +42,9 @@
                                            v-else></personal-data>
 
                             <phone-verify :user="user" @refresh="refresh()" @reset-token="resetToken()"></phone-verify>
+
+                            <password-change :user="user" @refresh="refresh()"
+                                             @reset-token="resetToken()"></password-change>
 
                             <documents :documents="documents" v-if="user.country_id===31"
                                        @retrieve-documents="retrieveDocuments()"></documents>

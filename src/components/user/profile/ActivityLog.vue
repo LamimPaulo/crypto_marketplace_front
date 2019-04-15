@@ -17,7 +17,9 @@
         </div>
 
         <div v-if="!this.logs" class="activity-box-w">
-          <span class="badge badge-danger">Sem atividade recente!</span>
+          <div class="alert alert-warning borderless">
+            <h5 class="alert-heading">Sem Atividades Recentes!</h5>
+          </div>
         </div>
 
       </div>

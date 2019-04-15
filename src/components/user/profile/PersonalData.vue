@@ -1,5 +1,8 @@
 <template>
     <fieldset class="form-group" v-else>
+
+        <div class="post-media personal-data"></div>
+
         <legend v-if="data_group" @click.prevent="data_group=false">
             <span class="pull-left">Personal Data</span>
             <span class="pull-right"><i class="os-icon os-icon-arrow-down2"></i></span>
@@ -251,5 +254,11 @@
 
     .form-desc {
         border-bottom: none;
+    }
+
+    .personal-data {
+        background-image: url(../../../assets/img/icons/personal-data.png);
+        background-size: 80px;
+        background-repeat: no-repeat;
     }
 </style>

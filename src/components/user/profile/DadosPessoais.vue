@@ -1,72 +1,77 @@
 <template>
-    <fieldset class="form-group">
-        <legend v-if="data_group" @click.prevent="data_group=false">
-            <span class="pull-left">Dados Pessoais</span>
-            <span class="pull-right"><i class="os-icon os-icon-arrow-down2"></i></span>
-        </legend>
-        <legend v-if="!data_group" @click.prevent="data_group=true">
-            <span class="pull-left">Dados Pessoais</span>
-            <span class="pull-right"><i class="os-icon os-icon-arrow-right3"></i></span>
-        </legend>
+    <div class="post-box">
 
-        <form @submit.prevent="updateUser" v-if="data_group">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="cpf"> Cpf</label>
-                        <input class="form-control" placeholder="Cpf" required="required" type="text" id="cpf"
-                               @input="retrieveCpf"
-                               autocomplete="false"
-                               v-model="user.document" v-mask="['###.###.###-##']">
+        <div class="post-media personal-data"></div>
+
+        <fieldset class="post-content form-group">
+            <legend v-if="data_group" @click.prevent="data_group=false">
+                <span class="pull-left">Dados Pessoais</span>
+                <span class="pull-right"><i class="os-icon os-icon-arrow-down2"></i></span>
+            </legend>
+            <legend v-if="!data_group" @click.prevent="data_group=true">
+                <span class="pull-left">Dados Pessoais</span>
+                <span class="pull-right"><i class="os-icon os-icon-arrow-right3"></i></span>
+            </legend>
+
+            <form @submit.prevent="updateUser" v-if="data_group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="cpf"> Cpf</label>
+                            <input class="form-control" placeholder="Cpf" required="required" type="text" id="cpf"
+                                   @input="retrieveCpf"
+                                   autocomplete="false"
+                                   v-model="user.document" v-mask="['###.###.###-##']">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input class="form-control" placeholder="Seu Nome" type="text" id="name"
+                                   v-model="user.name"
+                                   disabled>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="name">Nome</label>
-                        <input class="form-control" placeholder="Seu Nome" type="text" id="name"
-                               v-model="user.name"
-                               disabled>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="nascimento"> Data de Nascimento</label>
+                            <input class="form-control" placeholder="Data de Nascimento" type="text" id="nascimento"
+                                   disabled v-model="user.birthdate">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="gender">Gênero</label>
+                            <input class="form-control" placeholder="Gênero" type="text" id="gender"
+                                   v-model="user.gender" disabled>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="nascimento"> Data de Nascimento</label>
-                        <input class="form-control" placeholder="Data de Nascimento" type="text" id="nascimento"
-                               disabled v-model="user.birthdate">
-                    </div>
+
+                <div class="form-group">
+                    <label for="mothersname"> Nome da Mãe</label>
+                    <input class="form-control" placeholder="Nome da Mãe" type="text" id="mothersname" disabled
+                           v-model="user.mothers_name">
                 </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="gender">Gênero</label>
-                        <input class="form-control" placeholder="Gênero" type="text" id="gender"
-                               v-model="user.gender" disabled>
-                    </div>
+                <div class="form-buttons-w text-right">
+                    <button class="btn btn-grey pull-left" type="button" @click.prevent="data_group=false"> Cancelar
+                    </button>
+                    <button class="btn btn-primary" type="button"
+                            @click.prevent="showTokenPinModal('updateUser', 9)" :disabled="!isUserFilled"> Atualizar
+                    </button>
                 </div>
-            </div>
+            </form>
 
-            <div class="form-group">
-                <label for="mothersname"> Nome da Mãe</label>
-                <input class="form-control" placeholder="Nome da Mãe" type="text" id="mothersname" disabled
-                       v-model="user.mothers_name">
-            </div>
-            <div class="form-buttons-w text-right">
-                <button class="btn btn-grey pull-left" type="button" @click.prevent="data_group=false"> Cancelar
-                </button>
-                <button class="btn btn-primary" type="button"
-                        @click.prevent="showTokenPinModal('updateUser', 9)" :disabled="!isUserFilled"> Atualizar
-                </button>
-            </div>
-        </form>
+            <div class="form-desc pb-0 mb-0" v-if="!data_group" @click.prevent="data_group=true"><em>clique para
+                atualizar seus dados pessoais</em></div>
 
-        <div class="form-desc pb-0 mb-0" v-if="!data_group" @click.prevent="data_group=true"><em>clique para
-            atualizar seus dados pessoais</em></div>
+            <token-pin v-show="isTokenPinVisible" ref="tokenPinComponent"
+                       @close-token-pin-modal="closeTokenPinModal" @token-data="handleTokenPinData"/>
 
-        <token-pin v-show="isTokenPinVisible" ref="tokenPinComponent"
-                   @close-token-pin-modal="closeTokenPinModal" @token-data="handleTokenPinData"/>
-
-    </fieldset>
+        </fieldset>
+    </div>
 </template>
 
 <script>
@@ -169,5 +174,10 @@
 
     .form-desc {
         border-bottom: none;
+    }
+    .personal-data {
+        background-image: url(../../../assets/img/icons/personal-data.png);
+        background-size: 80px;
+        background-repeat: no-repeat;
     }
 </style>

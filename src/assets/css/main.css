@@ -11696,7 +11696,7 @@ legend span {
 }
 
 legend:before {
-  content: "";
+  /*content: "";*/
   position: absolute;
   left: 0px;
   right: 0px;

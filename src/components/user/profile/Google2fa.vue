@@ -1,95 +1,99 @@
 <template>
-    <fieldset class="form-group">
-        <legend v-if="g2fa_group" @click.prevent="g2fa_group=false">
-            <span class="pull-left">Google 2FA</span>
-            <span class="badge badge-danger mb-2" v-if="!g2fa_activate.status">não habilitada</span>
-            <span class="badge badge-success mb-2" v-else>ativa</span>
-            <span class="pull-right"><i class="os-icon os-icon-arrow-down2"></i></span>
-        </legend>
-        <legend v-if="!g2fa_group" @click.prevent="g2fa_group=true">
-            <span class="pull-left">Google 2FA</span>
-            <span class="badge badge-danger mb-2" v-if="!g2fa_activate.status">não habilitada</span>
-            <span class="badge badge-success mb-2" v-else>ativa</span>
-            <span class="pull-right"><i class="os-icon os-icon-arrow-right3"></i></span>
-        </legend>
+    <div class="post-box">
+        <div class="post-media g2fa"></div>
 
-        <div v-if="g2fa_group">
-            <form @submit.prevent="activate2Fa" v-if="!g2fa_activate.status">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <strong>1º</strong> Abra seu App Google Authenticator 2FA em seu <a
-                            href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2"
-                            target="_blank">Android</a> ou <a
-                            href="https://itunes.apple.com/br/app/google-authenticator/id388497605?mt=8"
-                            target="_blank">Ios</a> e escaneie o QRCode abaixo:
+        <fieldset class="post-content form-group">
+            <legend v-if="g2fa_group" @click.prevent="g2fa_group=false">
+                <span class="pull-left">Google 2FA</span>
+                <span class="badge badge-danger mb-2" v-if="!g2fa_activate.status">não habilitada</span>
+                <span class="badge badge-success mb-2" v-else>ativa</span>
+                <span class="pull-right"><i class="os-icon os-icon-arrow-down2"></i></span>
+            </legend>
+            <legend v-if="!g2fa_group" @click.prevent="g2fa_group=true">
+                <span class="pull-left">Google 2FA</span>
+                <span class="badge badge-danger mb-2" v-if="!g2fa_activate.status">não habilitada</span>
+                <span class="badge badge-success mb-2" v-else>ativa</span>
+                <span class="pull-right"><i class="os-icon os-icon-arrow-right3"></i></span>
+            </legend>
+
+            <div v-if="g2fa_group">
+                <form @submit.prevent="activate2Fa" v-if="!g2fa_activate.status">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <strong>1º</strong> Abra seu App Google Authenticator 2FA em seu <a
+                                href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2"
+                                target="_blank">Android</a> ou <a
+                                href="https://itunes.apple.com/br/app/google-authenticator/id388497605?mt=8"
+                                target="_blank">Ios</a> e escaneie o QRCode abaixo:
+                        </div>
+
+                        <div class="col-sm-12 text-center mt-3 mb-3">
+                            <img :src="g2fa_activate.url" alt="">
+                        </div>
+
                     </div>
 
-                    <div class="col-sm-12 text-center mt-3 mb-3">
-                        <img :src="g2fa_activate.url" alt="">
-                    </div>
+                    <hr>
 
-                </div>
-
-                <hr>
-
-                <div class="row">
-                    <div class="col-sm-12 mt-3">
-                        <div class="form-group">
-                            <label for="code"><strong>2º</strong> Digite o Código gerado no Aplicativo</label>
-                            <input class="form-control" data-minlength="6" placeholder="Código de Ativação" id="code"
-                                   autocomplete="off"
-                                   required="required" type="text" v-model="g2fa_activate.code">
+                    <div class="row">
+                        <div class="col-sm-12 mt-3">
+                            <div class="form-group">
+                                <label for="code"><strong>2º</strong> Digite o Código gerado no Aplicativo</label>
+                                <input class="form-control" data-minlength="6" placeholder="Código de Ativação" id="code"
+                                       autocomplete="off"
+                                       required="required" type="text" v-model="g2fa_activate.code">
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="element-inner-desc text-danger mb-2" @click.prevent="pin_group=true">
-                    ATENÇÃO! Após ativar 2FA você vai precisar obrigatoriamente do Google Authenticator 2FA para acessar
-                    sua conta!
-                </div>
+                    <div class="element-inner-desc text-danger mb-2" @click.prevent="pin_group=true">
+                        ATENÇÃO! Após ativar 2FA você vai precisar obrigatoriamente do Google Authenticator 2FA para acessar
+                        sua conta!
+                    </div>
 
-                <div class="form-buttons-w text-right">
-                    <button class="btn btn-grey pull-left" type="button" @click.prevent="g2fa_group=false">
-                        Cancelar
-                    </button>
+                    <div class="form-buttons-w text-right">
+                        <button class="btn btn-grey pull-left" type="button" @click.prevent="g2fa_group=false">
+                            Cancelar
+                        </button>
 
-                    <button class="btn btn-primary" type="button"
-                            @click.prevent="showPinModal('activate2Fa')" :disabled="!isActivateFilled"> Ativar
-                    </button>
+                        <button class="btn btn-primary" type="button"
+                                @click.prevent="showPinModal('activate2Fa')" :disabled="!isActivateFilled"> Ativar
+                        </button>
 
-                </div>
-            </form>
+                    </div>
+                </form>
 
-            <form @submit.prevent="deactivate2Fa" v-if="g2fa_activate.status">
+                <form @submit.prevent="deactivate2Fa" v-if="g2fa_activate.status">
 
-                <div class="element-inner-desc text-danger mb-2" @click.prevent="pin_group=true">
-                    ATENÇÃO! Após desativar 2FA você não vai precisar do Google Authenticator 2FA para acessar
-                    sua conta!<br><br>
+                    <div class="element-inner-desc text-danger mb-2" @click.prevent="pin_group=true">
+                        ATENÇÃO! Após desativar 2FA você não vai precisar do Google Authenticator 2FA para acessar
+                        sua conta!<br><br>
 
-                    Sua conta fica mais segura com a 2FA ativa.
-                </div>
+                        Sua conta fica mais segura com a 2FA ativa.
+                    </div>
 
-                <div class="form-buttons-w text-right">
-                    <button class="btn btn-grey pull-left" type="button" @click.prevent="g2fa_group=false">
-                        Cancelar
-                    </button>
+                    <div class="form-buttons-w text-right">
+                        <button class="btn btn-grey pull-left" type="button" @click.prevent="g2fa_group=false">
+                            Cancelar
+                        </button>
 
-                    <button class="btn btn-primary" type="button"
-                            @click.prevent="showPinModal('deactivate2Fa')"> Desativar
-                    </button>
+                        <button class="btn btn-primary" type="button"
+                                @click.prevent="showPinModal('deactivate2Fa')"> Desativar
+                        </button>
 
-                </div>
-            </form>
-        </div>
+                    </div>
+                </form>
+            </div>
 
-        <div class="form-desc pb-0 mb-0" v-if="!g2fa_group" @click.prevent="g2fa_group=true">
-            <em>Clique para alterar a autenticação em 2 fatores:</em>
-        </div>
+            <div class="form-desc pb-0 mb-0" v-if="!g2fa_group" @click.prevent="g2fa_group=true">
+                <em>Clique para alterar a autenticação em 2 fatores:</em>
+            </div>
 
-        <pin v-show="isPinVisible" ref="pinComponent"
-             @close-pin-modal="closePinModal" @pin-data="handlePinData"/>
+            <pin v-show="isPinVisible" ref="pinComponent"
+                 @close-pin-modal="closePinModal" @pin-data="handlePinData"/>
 
-    </fieldset>
+        </fieldset>
+    </div>
 </template>
 
 <script>
@@ -201,5 +205,11 @@
 
     .form-desc {
         border-bottom: none;
+    }
+
+    .g2fa {
+        background-image: url(../../../assets/img/icons/g2fa.png);
+        background-size: 80px;
+        background-repeat: no-repeat;
     }
 </style>
