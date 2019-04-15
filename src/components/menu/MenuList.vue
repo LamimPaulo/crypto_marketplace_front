@@ -74,18 +74,6 @@
       </ul>
     </li>
 
-    <li class="has-sub-menu" v-tooltip.right="'Gateway Multinível'" v-if="user.level.is_gateway_mmn_elegible">
-      <a href="#">
-        <div class="icon-w">
-          <div class="os-icon os-icon-ui-54"></div>
-        </div>
-        <span>Integração Multinível</span>
-      </a>
-      <ul class="sub-menu">
-        <li><a href="/gateway-mmn">Api Key</a></li>
-        <li><a href="/gateway-mmn/payments">Transações</a></li>
-      </ul>
-    </li>
   </ul>
 </template>
 
