@@ -6,6 +6,7 @@ import SendResetPassword from './components/auth/SendResetPassword';
 import RequestResetPassword from './components/auth/RequestResetPassword';
 import Dashboard from './components/Dashboard';
 import Profile from './components/user/profile/Profile';
+import User from './components/layouts/User';
 import PaymentAccounts from './components/user/PaymentAccountNew';
 import PaymentAccount from './components/user/PaymentAccount';
 import UserLayout from './components/layouts/User';
@@ -76,7 +77,7 @@ const routes = [
   },
   {
     path: '/user',
-    component: Transactions,
+    component: User,
     meta: {requiresAuth: true},
     children: [
       {
