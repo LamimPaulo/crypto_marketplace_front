@@ -16,10 +16,6 @@
 
             <!-- <topbar></topbar> -->
 
-            <div class="content-panel-toggler">
-              <i class="os-icon os-icon-grid-squares-22"></i><span>Menu</span>
-            </div>
-
             <div class="content-i">
               <div class="content-box">
                 <router-view></router-view>

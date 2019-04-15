@@ -25,7 +25,6 @@ import UserGatewayPdv from './components/user/gateway/UserGatewayPdv';
 import Gateway from './components/user/gateway/Gateway';
 import IndexFunds from './components/user/funds/IndexFunds';
 import CoinAssets from './components/user/assets/CoinAssets';
-import UserConfigs from './components/user/configs/UserConfigs';
 
 const routes = [
   {
@@ -77,7 +76,7 @@ const routes = [
   },
   {
     path: '/user',
-    component: UserLayout,
+    component: Transactions,
     meta: {requiresAuth: true},
     children: [
       {
@@ -95,12 +94,7 @@ const routes = [
         name: 'payment-account',
         component: PaymentAccount,
         meta: {requiresAuth: true}
-      }, {
-        path: '/user-configs',
-        name: 'user-configs',
-        component: UserConfigs,
-        meta: {requiresAuth: true}
-      }
+      },
     ]
   },
   {

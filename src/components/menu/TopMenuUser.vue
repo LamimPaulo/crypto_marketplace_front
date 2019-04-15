@@ -47,12 +47,6 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="/user-configs">
-                                                    <i class="os-icon os-icon-settings"></i>
-                                                    <span>Configurações</span>
-                                                </a>
-                                            </li>
-                                            <li>
                                                 <a href="/logout">
                                                     <i class="os-icon os-icon-signs-11"></i>
                                                     <span>Sair</span>

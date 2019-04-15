@@ -59,38 +59,39 @@ Vue.use(VueCurrencyFilter,
 Vue.mixin({
 	methods: {
 		formatValue: value => value.replace('.', '').replace('.', '').replace(',', '.'),
+		formatCrypto: value => value.toFixed(8),
 		handleErrors: function (response) {
-
-			if (response.status === 401) {
-				this.$router.push({name: 'login'})
-			}
-
 			let toasted = this.$toasted;
-			toasted.show(response.data.message, {position: 'top-center'}).goAway(5000)
-
-			if (response.data.errors) {
-				if (response.data.status === 401) {
-					this.$router.push({name: 'login'})
+			if (response.status === 401 || response.data.status === 401) {
+				toasted.show("Sua sessão expirou, favor logar novamente!", {
+					position: 'top-center'
+				}).goAway(5000)
+				this.$router.push({name: 'login'})
+			} else {
+				toasted.show(response.data.message, {position: 'top-center'}).goAway(5000)
+				if (response.data.errors) {
+					let errors = response.data.errors
+					map(errors, function (value, key) {
+						toasted.show(value, {position: 'top-center'}).goAway(5000)
+					});
 				}
-				let errors = response.data.errors
-				map(errors, function (value, key) {
-					toasted.show(value, {position: 'bottom-left'}).goAway(4000)
-				});
 			}
 
 		},
 	}
 });
 
-Vue.config.devtools = false
-Vue.config.debug = false
-Vue.config.silent = true
 
 const router = new VueRouter({
 	routes,
 	mode: 'history'
 })
 
+if (process.env.NODE_ENV !== "local") {
+	Vue.config.devtools = false
+	Vue.config.debug = false
+	Vue.config.silent = true
+}
 
 router.beforeEach((to, from, next) => {
 	if (to.matched.some(record => record.meta.requiresAuth)) {

@@ -1185,7 +1185,40 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
+		},
+		get2FaQrCode() {
+			return new Promise((resolve, reject) => {
+				axios.get('/2fa/qr-code')
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		activate2Fa(context, data) {
+			return new Promise((resolve, reject) => {
+				axios.post('/2fa/activate', data)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		deactivate2Fa(context, data) {
+			return new Promise((resolve, reject) => {
+				axios.post('/2fa/deactivate', data)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
 
 	}
 })

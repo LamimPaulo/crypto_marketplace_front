@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="loader" v-if="loader"></div>
+
         <vue-headful title="Seu Perfil Liquidex" description="Liquidex"
         />
         <div class="content-box">
@@ -76,7 +77,7 @@
 		name: "profile",
 		data() {
 			return {
-				loader: true,
+				loader: false,
 				documents: {
 					selfie_status: 'not_found',
 					selfie_message: 'Arquivo ainda não enviado',
@@ -125,7 +126,7 @@
             Google2fa
 		},
 		mounted() {
-			this.retrieveDocuments()
+			//this.retrieveDocuments()
 		}
 	}
 </script>
