@@ -32,9 +32,9 @@
             </a>
         </li>
         <li class="has-sub-menu">
-            <a href="/coin/assets">
+            <a href="/levels">
                 <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/icons8-coins-40.png`)" width="30px" alt=""></div>
-                <span>Crypto Ativos</span>
+                <span>Níveis</span>
             </a>
         </li>
         <li class="has-sub-menu">
@@ -46,26 +46,10 @@
         <li class="has-sub-menu">
             <a href="/trader/arbitrage">
                 <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/icons8-increase-40.png`)" width="30px" alt=""></div>
-                <span>Arbitragem</span>
+                <span>Nanotech</span>
             </a>
         </li>
-        <li class="has-sub-menu" v-if="user.level.is_gateway_elegible">
-            <a href="#">
-                <div class="icon-w"><div class="os-icon os-icon-grid"></div></div>
-                <span>Gateway</span>
-            </a>
-            <div class="sub-menu-w">
-                <div class="sub-menu-header">Gateway</div>
-                <div class="sub-menu-icon"><i class="os-icon os-icon-grid"></i></div>
-                <div class="sub-menu-i">
-                    <ul class="sub-menu">
-                        <li><a href="/gateway">Api Key</a></li>
-                        <li><a href="/gateway/pdv">PDV</a></li>
-                        <li><a href="/gateway/payments">Transações</a></li>
-                    </ul>
-                </div>
-            </div>
-        </li>
+
     </ul>
 </template>
 
