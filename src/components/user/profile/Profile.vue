@@ -8,7 +8,7 @@
 
             <div class="row">
 
-                <div class="col-sm-12 col-md-12 col-lg-7">
+                <div class="col-sm-12 col-md-12 col-lg-8">
                     <div class="element-wrapper">
                         <div class="element-box-tp">
 
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-12 col-lg-5">
+                <div class="col-sm-12 col-md-12 col-lg-4">
                     <activity-log></activity-log>
                 </div>
 

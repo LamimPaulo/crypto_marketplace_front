@@ -47,39 +47,37 @@
   <footer class="footer">
     <div class="footer-left col-md-4 col-sm-6">
       <p class="about">
-        <span> About the company</span> Ut congue augue non tellus bibendum, in varius tellus condimentum. In scelerisque nibh tortor, sed rhoncus odio condimentum in. Sed sed est ut sapien ultrices eleifend.
+        <span> Sobre</span> A Liquidex é uma empresa de ativos digitais diferenciada baseada em cinco pilares: segurança, tecnologia, compliance, mineração e arbitragens. Todos eles sustentados pela experiência comprovada dos dirigentes nestas áreas tendo como acionista principal à holding MDX Group S/A.
       </p>
-      <div class="icons">
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-linkedin"></i></a>
-        <a href="#"><i class="fa fa-google-plus"></i></a>
-        <a href="#"><i class="fa fa-instagram"></i></a>
-      </div>
     </div>
     <div class="footer-center col-md-4 col-sm-6">
       <div>
-        <i class="fa fa-map-marker"></i>
-        <p><span> Street name and number</span> City, Country</p>
+        <i class="far fa-clock"></i>
+        <p><span> Seg-Sex</span> 09:00 às 17:00</p>
       </div>
       <div>
         <i class="fa fa-phone"></i>
-        <p> (+00) 0000 000 000</p>
+        <p> (+55) 48 99185-6171</p>
       </div>
       <div>
         <i class="fa fa-envelope"></i>
-        <p><a href="#"> office@company.com</a></p>
+        <p><a href="#"> atendimento@liquidex.com.br</a></p>
       </div>
     </div>
     <div class="footer-right col-md-4 col-sm-6">
       <h2> <span>Liqui</span>dex</h2>
       <p class="menu">
-        <a href="#"> Home</a> |
-        <a href="#"> About</a> |
-        <a href="#"> Services</a> |
-        <a href="#"> News</a> |
-        <a href="#"> Contact</a>
+        <a target="_blank" href="https://liquidex.com.br/#lqx"> Sobre</a> |
+        <a target="_blank" href="https://liquidex.com.br/#simulator"> Simulação</a> |
+        <a target="_blank" href="https://liquidex.com.br/#contact"> Contato</a> |
+        <a target="_blank" href="https://liquidex.com.br/#faq"> FAQ</a>
       </p>
+      <div class="icons">
+        <a href="https://www.facebook.com/liquidex" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
       <p class="name"> Liquidex &copy; 2019</p>
     </div>
   </footer>
@@ -109,6 +107,9 @@
     vertical-align: top;
   }
 
+  .footer .footer-right {
+    text-align: right;
+  }
 
   /* footer left*/
 

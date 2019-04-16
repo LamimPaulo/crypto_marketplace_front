@@ -26,31 +26,27 @@
                             </div>
                             <div class="pricing-plans row no-gutters">
                                 <div class="pricing-plan col-sm-3 with-hover-effect" v-for="level in levels">
-                                    <div class="plan-head">
-                                        <div class="plan-name">
-                                            {{ level.name}}
+                                    <div :class="'plan-head bt-' + level.name">
+                                        <div :class="'plan-name ' + level.name">
+                                            {{ level.name }}
                                         </div>
                                     </div>
                                     <div class="plan-description">
                                         <ul>
-                                            <li v-if="level.id>1">
+                                            <li :class="'li-' + level.name" v-if="level.id > 1">
                                                 Keycode
                                             </li>
 
-                                            <li v-else>
-                                                &nbsp;
-                                            </li>
-
-                                            <li>
+                                            <li :class="'li-' + level.name">
                                                 {{ level.btcDiary}} BTC/dia
                                             </li>
-                                            <li>
+                                            <li :class="'li-' + level.name">
                                                 {{ level.brlDiary}} /dia
                                             </li>
-                                            <li>
+                                            <li :class="'li-' + level.name">
                                                 {{ level.transactionAuto}} BTC/auto
                                             </li>
-                                            <li>
+                                            <li :class="'li-' + level.name">
                                                 {{ level.brokeragePercent}}% de Corretagem
                                             </li>
                                         </ul>
@@ -62,7 +58,7 @@
                                                @click.prevent="showTokenPinModal('buyLevelLqx', action, level.id)"
                                                href="#">{{ level.product.lqxValue }}LQX</a>
 
-                                            <a class="btn btn-success btn-block"
+                                            <a :class="'btn btn-block py-3 btn-' + level.name"
                                                @click.prevent="showTokenPinModal('buyLevelBrl', action, level.id)"
                                                href="#">{{ level.product.brlValue }}</a>
                                         </div>
@@ -80,7 +76,7 @@
                 </div>
             </div>
         </div>
-
+        <Footer></Footer>
         <token-pin v-show="isTokenPinVisible" ref="tokenPinComponent"
                    @close-token-pin-modal="closeTokenPinModal" @token-data="handleTokenPinData"/>
     </div>
@@ -208,5 +204,61 @@
 <style scoped>
     .alert {
         color: #fff;
+    }
+    .Free {
+        color: #94d1e4;
+    }
+    .bt-Free {
+        border-top: 5px solid #94d1e4;
+    }
+    .pricing-plan .plan-description ul .li-Free:before {
+        color: #94d1e4;
+    }
+    .btn-Free {
+        color: #fff;
+        background-color: #94d1e4;
+        border-color: #94d1e4;
+    }
+    .Basic {
+        color: #4eb3d3;
+    }
+    .bt-Basic {
+        border-top: 5px solid #4eb3d3;
+    }
+    .pricing-plan .plan-description ul .li-Basic:before {
+        color: #4eb3d3;
+    }
+    .btn-Basic {
+        color: #fff;
+        background-color: #4eb3d3;
+        border-color: #4eb3d3;
+    }
+    .Pro {
+        color: #2b8cbe;
+    }
+    .bt-Pro {
+        border-top: 5px solid #2b8cbe;
+    }
+    .pricing-plan .plan-description ul .li-Pro:before {
+        color: #2b8cbe;
+    }
+    .btn-Pro{
+        color: #fff;
+        background-color: #2b8cbe;
+        border-color: #2b8cbe;
+    }
+    .Gold {
+        color: #ffbd1b;
+    }
+    .bt-Gold {
+        border-top: 5px solid #ffbd1b;
+    }
+    .pricing-plan .plan-description ul .li-Gold:before {
+        color: #ffbd1b;
+    }
+    .btn-Gold  {
+        color: #fff;
+        background-color: #ffbd1b;
+        border-color: #ffbd1b;
     }
 </style>

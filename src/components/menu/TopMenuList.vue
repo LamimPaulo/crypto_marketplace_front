@@ -89,4 +89,5 @@
         font-size: 0.6rem;
     }
 }
+
 </style>

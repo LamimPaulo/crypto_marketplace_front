@@ -202,7 +202,7 @@
 
   .auth-wrapper {
     margin: 0;
-    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 0.9rem;
     font-weight: 400;
     line-height: 1.5;

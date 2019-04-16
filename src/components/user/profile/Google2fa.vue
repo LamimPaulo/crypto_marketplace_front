@@ -1,4 +1,5 @@
 <template>
+<div>
     <div class="post-box">
         <div class="post-media g2fa"></div>
 
@@ -89,11 +90,12 @@
                 <em>Clique para alterar a autenticação em 2 fatores:</em>
             </div>
 
-            <pin v-show="isPinVisible" ref="pinComponent"
-                 @close-pin-modal="closePinModal" @pin-data="handlePinData"/>
-
         </fieldset>
     </div>
+
+    <pin v-show="isPinVisible" ref="pinComponent"
+         @close-pin-modal="closePinModal" @pin-data="handlePinData"/>
+</div>
 </template>
 
 <script>

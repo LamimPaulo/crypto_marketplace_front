@@ -84,6 +84,7 @@ Vue.mixin({
 
 const router = new VueRouter({
 	routes,
+	linkExactActiveClass: "selected",
 	mode: 'history'
 })
 
