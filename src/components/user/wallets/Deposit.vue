@@ -30,7 +30,6 @@
                                     src="@/assets/img/logo-caixa-economica-federal-256.png"
                                     alt
                             >
-                            <img v-if="account.type==2" width="90px" src="@/assets/img/paypal.png" alt>
                         </div>
                         <div class="plan-btn-w">
                             <button
@@ -38,12 +37,6 @@
                                     v-if="account.type==1"
                                     @click.prevent="depositModalBank(account)"
                             >Selecionar
-                            </button>
-
-                            <button class="btn btn-primary btn-rounded"
-                                    v-else
-                                    @click.prevent="depositModalPaypal(account)">
-                                Selecionar
                             </button>
 
                         </div>
@@ -54,7 +47,6 @@
                             <span>Identificação:</span>
                             <strong>{{account.document}}</strong>
                         </p>
-                        <p v-if="account.type==2">Você pode enviar fundos para nossa conta paypal!</p>
                         <p>
                             <span v-if="account.type==2">Email:</span>
                             <strong>{{account.email}}</strong>
@@ -89,7 +81,6 @@
                             <span>Identificação</span>
                             <strong>20.924.974/0001-79</strong>
                         </p>
-                        <p>Você pode enviar fundos para nossa conta paypal!</p>
                         <p>
                             <span>Email:</span>
                             <strong>vendasnavi@hotmail.com</strong>
@@ -107,12 +98,6 @@
                 ref="DepositModalBank"
         ></deposit-modal-bank>
 
-        <deposit-modal-paypal
-                v-show="isDepositPaypalVisible"
-                @close-deposit-modal="closeDepositModalPaypal"
-                ref="DepositModalPaypal"
-        ></deposit-modal-paypal>
-
         <deposit-modal-neteller
                 v-show="isDepositNetellerVisible"
                 @close-deposit-modal="closeDepositModalNeteller"
@@ -126,7 +111,6 @@
 	import Vue from "vue";
 	import VueNumeric from "vue-numeric";
 	import DepositModalBank from "./deposit/DepositModalBank";
-	import DepositModalPaypal from "./deposit/DepositModalPaypal";
 	import DepositModalNeteller from "./deposit/DepositModalNeteller";
 	import {mapGetters} from "vuex";
 
@@ -137,7 +121,6 @@
 		data() {
 			return {
 				isDepositBankVisible: false,
-				isDepositPaypalVisible: false,
 				isDepositNetellerVisible: false,
 				accounts: {},
 				deposit: {
@@ -168,7 +151,6 @@
 		components: {
 			VueNumeric,
 			DepositModalBank,
-			DepositModalPaypal,
 			DepositModalNeteller
 		},
 		methods: {
@@ -191,10 +173,6 @@
 				this.isDepositBankVisible = true;
 				this.$refs.DepositModalBank.setAccount(account);
 			},
-			depositModalPaypal(account) {
-				this.isDepositPaypalVisible = true;
-				this.$refs.DepositModalPaypal.setAccount(account);
-			},
 			depositModalNeteller(account) {
 				this.isDepositNetellerVisible = true;
 				this.$refs.DepositModalNeteller.setAccount(account);
@@ -202,10 +180,6 @@
 			closeDepositModalBank() {
 				this.$emit("close-deposit-modal");
 				this.isDepositBankVisible = false;
-			},
-			closeDepositModalPaypal() {
-				this.$emit("close-deposit-modal");
-				this.isDepositPaypalVisible = false;
 			},
 			closeDepositModalNeteller() {
 				this.$emit("close-deposit-modal");
