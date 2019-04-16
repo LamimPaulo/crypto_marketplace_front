@@ -424,17 +424,6 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-		retrievePaymentProviders() {
-			return new Promise((resolve, reject) => {
-				axios.get('/providers')
-					.then(response => {
-						resolve(response)
-					})
-					.catch(error => {
-						reject(error)
-					})
-			})
-		},
 		retrieveAccounts(context) {
 			return new Promise((resolve, reject) => {
 				axios.get('/user/accountsList/')
@@ -761,20 +750,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
-		buyLevel(context, data) {
-			return new Promise((resolve, reject) => {
-				axios.post('/user/buy-level', {data})
-					.then(response => {
-						resolve(response)
-					})
-					.catch(error => {
-						reject(error)
-					})
-			})
-		}
-		,
+		},
 		retrieveUserMiningGatewayPending() {
 			return new Promise((resolve, reject) => {
 				axios.get('/mining/pending-gateway')
@@ -785,8 +761,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveUserMiningStats() {
 			return new Promise((resolve, reject) => {
 				axios.get('/mining/user-stats')
@@ -1211,6 +1186,17 @@ export const store = new Vuex.Store({
 		deactivate2Fa(context, data) {
 			return new Promise((resolve, reject) => {
 				axios.post('/2fa/deactivate', data)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		buyLevel(context, data) {
+			return new Promise((resolve, reject) => {
+				axios.post('/levels/buy', data)
 					.then(response => {
 						resolve(response)
 					})
