@@ -21,14 +21,14 @@
             <div class="value">
               {{ account.nickname }}
             </div>
-            <span class="sub-value">{{ account.provider.name }}</span>
+            <span class="sub-value" v-if="account.category===1">Conta Corrente</span>
+            <span class="sub-value" v-else>Conta Poupança</span>
           </td>
           <td class="text-right">
             <div class="value">
-              <router-link :to="{ name: 'payment-account', params: { id: account.id }}">alterar</router-link>
+              <router-link class="btn btn-sm btn-primary" :to="{ name: 'payment-account', params: { id: account.id }}">alterar</router-link>
             </div>
-            <span class="sub-value" v-if="account.type==='1'">{{ account.bank.code + ' - '+ account.bank.name }}</span>
-            <span class="sub-value" v-if="account.type==='2'">{{ account.email }}</span>
+            <span class="sub-value">{{ account.bank.code + ' - '+ account.bank.name }}</span>
           </td>
         </tr>
 
