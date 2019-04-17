@@ -1,5 +1,6 @@
 <template>
 
+<div>
     <div class="post-box">
 
         <div class="post-media pin-seg"></div>
@@ -54,11 +55,12 @@
                 para atualizar seu pin</em></div>
             <span v-if="!pin_group&&!user.pin_filled" class="badge badge-danger">você deve criar um pin para realizar as operações na plataforma</span>
 
-            <token v-show="isTokenVisible" ref="tokenComponent"
-                   @close-token-modal="closeTokenModal" @token-data="handleTokenData"/>
+
         </fieldset>
     </div>
-
+    <token v-show="isTokenVisible" ref="tokenComponent"
+           @close-token-modal="closeTokenModal" @token-data="handleTokenData"/>
+</div>
 
 </template>
 
