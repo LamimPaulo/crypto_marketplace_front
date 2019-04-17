@@ -30,7 +30,7 @@
                                         <div class="element-box-tp">
 
                                             <div class="row">
-                                                <div class="col-6 col-sm-3 col-xxl-2" v-for="wallet in wallets">
+                                                <div class="col-6 col-sm-4 col-xxl-2" v-for="wallet in wallets">
                                                     <a class="element-box el-tablo centered trend-in-corner smaller mb-3"
                                                        :href="`/wallet/f/${wallet.abbr}`" v-if="!wallet.is_crypto">
                                                         <div class="pt-avatar-w">
