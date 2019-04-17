@@ -26,12 +26,6 @@
             </a>
         </li>
         <li class="has-sub-menu">
-            <a href="/user/mining">
-                <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/icons8-processor-40.png`)" width="30px" alt=""></div>
-                <span>Mineração</span>
-            </a>
-        </li>
-        <li class="has-sub-menu">
             <a href="/levels">
                 <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/icons8-coins-40.png`)" width="30px" alt=""></div>
                 <span>Níveis</span>

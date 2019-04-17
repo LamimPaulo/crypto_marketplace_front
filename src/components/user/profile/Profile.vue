@@ -41,7 +41,7 @@
                             <personal-data :user="user" :documents="documents" @retrieve-documents="retrieveDocuments()"
                                            v-else></personal-data>
 
-                            <phone-verify :user="user" @refresh="refresh()" @reset-token="resetToken()"></phone-verify>
+<!--                            <phone-verify :user="user" @refresh="refresh()" @reset-token="resetToken()"></phone-verify>-->
 
                             <password-change :user="user" @refresh="refresh()"
                                              @reset-token="resetToken()"></password-change>
@@ -69,7 +69,7 @@
 	import PinChange from './PinChange'
 	import DadosPessoais from "./DadosPessoais";
 	import PersonalData from "./PersonalData";
-	import PhoneVerify from "./PhoneVerify";
+	// import PhoneVerify from "./PhoneVerify";
 	import Documents from "./Documents";
 	import Google2fa from "./Google2fa";
 
@@ -121,7 +121,7 @@
 			ActivityLog,
 			PasswordChange,
 			PinChange,
-			PhoneVerify,
+			// PhoneVerify,
 			Documents,
             Google2fa
 		},
