@@ -29486,15 +29486,15 @@ Contents:
     display: none;
   }
 
-  .menu-mobile .mm-logo-buttons-w {
-    text-align: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
+  /*.menu-mobile .mm-logo-buttons-w {*/
+  /*  text-align: center;*/
+  /*  -webkit-box-pack: center;*/
+  /*  -ms-flex-pack: center;*/
+  /*  justify-content: center;*/
+  /*}*/
 
   .menu-mobile .mm-logo-buttons-w .mm-buttons {
-    display: none;
+    display: block;
   }
 
   .menu-mobile .mm-logo-buttons-w .mm-logo {

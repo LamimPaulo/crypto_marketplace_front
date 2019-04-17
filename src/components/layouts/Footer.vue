@@ -45,12 +45,12 @@
 <!--    </div>-->
 <!--</footer>-->
   <footer class="footer">
-    <div class="footer-left col-md-4 col-sm-6">
+    <div class="footer-left col-md-6">
       <p class="about">
         <span> Sobre</span> A Liquidex é uma empresa de ativos digitais diferenciada baseada em cinco pilares: segurança, tecnologia, compliance, mineração e arbitragens. Todos eles sustentados pela experiência comprovada dos dirigentes nestas áreas tendo como acionista principal à holding MDX Group S/A.
       </p>
     </div>
-    <div class="footer-center col-md-4 col-sm-6">
+    <div class="footer-center col-md-6">
       <div>
         <i class="far fa-clock"></i>
         <p><span> Seg-Sex</span> 09:00 às 17:00</p>
@@ -64,7 +64,7 @@
         <p><a href="#"> atendimento@liquidex.com.br</a></p>
       </div>
     </div>
-    <div class="footer-right col-md-4 col-sm-6">
+    <div class="footer-right col-md-6">
       <h2> <span>Liqui</span>dex</h2>
       <p class="menu">
         <a target="_blank" href="https://liquidex.com.br/#lqx"> Sobre</a> |

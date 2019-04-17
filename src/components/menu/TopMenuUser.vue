@@ -9,7 +9,7 @@
 
                     <div class="col-3">
                         <router-link to="/dashboard">
-                            <h1 class="text">
+                            <h1 class="my-5">
                                 <img src="https://liquidex.com.br/assets/img/logo_w.png" style="width: 200px">
                             </h1>
                         </router-link>

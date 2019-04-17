@@ -80,7 +80,7 @@
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (max-width: 1250px) {
     .menu-w.menu-layout-compact ul.main-menu > li > a {
-        font-size: 0.6rem;
+        /*font-size: 0.6rem;*/
     }
 }
 
