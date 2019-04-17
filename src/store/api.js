@@ -51,6 +51,7 @@ export const store = new Vuex.Store({
 					username: credentials.username,
 					password: credentials.password,
 					recaptcha: credentials.recaptcha,
+					code_2fa: credentials.code_2fa,
 				})
 					.then(response => {
 						const token = response.data.access_token

@@ -10,7 +10,7 @@
                     <div class="col-3">
                         <router-link to="/dashboard">
                             <h1 class="text">
-                                <img src="https://s3.amazonaws.com/navi-public/api/clients/3/logosemfundo2.png" width="302px">
+                                <img src="https://liquidex.com.br/assets/img/logo_w.png" style="width: 200px">
                             </h1>
                         </router-link>
                     </div>

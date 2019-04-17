@@ -14,7 +14,6 @@
             <a class="element-box el-tablo centered trend-in-corner smaller mb-1" href="#">
 
               <div class="pt-avatar-w mt-2">
-                <img class="mt-1 fund_icon" width="60vw" alt="" :src="require(`@/assets/img/navi_index_fund.png`)">
 
               </div>
 
