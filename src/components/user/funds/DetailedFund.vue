@@ -24,7 +24,6 @@
                     <th></th>
                     <th>Moeda</th>
                     <th>Compõe</th>
-                    <th>Variação</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -32,22 +31,6 @@
                     <td><span :class="'marker-left color-' + i">{{coin.coin.symbol}}</span></td>
                     <td>{{coin.coin.abbr}}</td>
                     <td>{{coin.percent}} %</td>
-                    <td>
-                      <div class="badge badge-success" v-if="coin.percentChange > 0">
-                        <span>{{coin.percentChange}} %</span>
-                        <i class="os-icon os-icon-arrow-up6"></i>
-                      </div>
-
-                      <div class="badge badge-primary" v-if="coin.percentChange == 0">
-                        <span>{{coin.percentChange}} %</span>
-                        <i class="os-icon os-icon-arrow-right6"></i>
-                      </div>
-
-                      <div class="badge badge-danger" v-if="coin.percentChange < 0">
-                        <span>{{coin.percentChange}} %</span>
-                        <i class="os-icon os-icon-arrow-down6"></i>
-                      </div>
-                    </td>
                   </tr>
                   </tbody>
                 </table>

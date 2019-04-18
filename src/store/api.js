@@ -1055,18 +1055,6 @@ export const store = new Vuex.Store({
 			})
 		}
 		,
-		retrieveFundBalance(context, fund) {
-			return new Promise((resolve, reject) => {
-				axios.get('/funds/balance/' + fund)
-					.then(response => {
-						resolve(response)
-					})
-					.catch(error => {
-						reject(error)
-					})
-			})
-		}
-		,
 		retrieveFundChart(context, fund) {
 			return new Promise((resolve, reject) => {
 				axios.get('/funds/chart/' + fund)
@@ -1103,9 +1091,9 @@ export const store = new Vuex.Store({
 			})
 		}
 		,
-		sellIndexFund(context, fund) {
+		fundEarlyRedemption(context, fund) {
 			return new Promise((resolve, reject) => {
-				axios.post('/funds/sell', fund)
+				axios.post('/funds/earlyRedemption', fund)
 					.then(response => {
 						resolve(response)
 					})
@@ -1113,8 +1101,18 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
+		fundWithdrawal(context, fund) {
+			return new Promise((resolve, reject) => {
+				axios.post('/funds/withdrawal', fund)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
 		retrieveBuyTaxFund(context, fund) {
 			return new Promise((resolve, reject) => {
 				axios.post('/funds/estimate-buy-tax', fund)

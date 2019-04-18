@@ -56,7 +56,7 @@
               <div class="value" v-if="transaction.category===9">
                 <span v-if="transaction.type===1">Resgate</span>
                 <span v-if="transaction.type===2">Investimento</span>
-                Arbitragem
+                Nanotech
               </div>
               <!--Index Fund-->
               <div class="value" v-if="transaction.category===10">

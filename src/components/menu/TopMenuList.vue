@@ -34,7 +34,7 @@
         <li class="has-sub-menu">
             <a href="/index/fund">
                 <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/line-chart.png`)" width="30px" alt=""></div>
-                <span>Index Fund</span>
+                <span>Fundos de Investimento</span>
             </a>
         </li>
         <li class="has-sub-menu">

@@ -35,15 +35,15 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 
 Vue.filter('fixValue', function (value) {
-	return value.toFixed(8);
+	return parseFloat(value).toFixed(5);
 });
 
 Vue.filter('roundValue', function (value) {
-	return value.toFixed(0);
+	return parseFloat(value).toFixed(0);
 });
 
 Vue.filter('fixUsdCurrency', function (value) {
-	return value.toFixed(2);
+	return parseFloat(value).toFixed(2);
 });
 
 Vue.use(VueCurrencyFilter,
@@ -59,7 +59,7 @@ Vue.use(VueCurrencyFilter,
 Vue.mixin({
 	methods: {
 		formatValue: value => value.replace('.', '').replace('.', '').replace(',', '.'),
-		formatCrypto: value => value.toFixed(8),
+		formatCrypto: value => value.toFixed(5),
 		handleErrors: function (response) {
 			let toasted = this.$toasted;
 			if (response.status === 401 || response.data.status === 401) {
