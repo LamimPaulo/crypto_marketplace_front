@@ -136,7 +136,7 @@
     z-index: 99;
   }
 .receipt {
-  background: #fcffcd;
+  background: #fff;
   box-shadow: 2px 2px 20px 1px;
 
   position: fixed;
@@ -146,39 +146,14 @@
   width: auto;
   clear: both;
 
+  border-radius: 18px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
-}
-
-.receipt:before {
-  content: '';
-  position: absolute;
-  display: block;
-  height: 10px;
-  bottom: -10px;
-  left: 0;
-  right: 0;
-  background: linear-gradient(45deg, transparent 33.333%, #fcffcd 33.333%, #fcffcd 66.667%, transparent 66.667%), linear-gradient(-45deg, transparent 33.333%, #fcffcd 33.333%, #fcffcd 66.667%, transparent 66.667%);
-  background-size: 8px 20px;
-  /* toothSize doubleHeight */
-  background-position: 0 -10px;
-  /* horizontalOffset -height */
-}
-.receipt:after {
-  content: '';
-  position: absolute;
-  display: block;
-  height: 10px;
-  top: -10px;
-  left: 0;
-  right: 0;
-  background: linear-gradient(45deg, #fcffcd 33.333%, transparent 33.333%, transparent 66.667%, #fcffcd 66.667%), linear-gradient(-45deg, #fcffcd 33.333%, transparent 33.333%, transparent 66.667%, #fcffcd 66.667%);
-  background-size: 8px 20px;
-  /* toothSize doubleHeight */
-  background-position: 0 -10px;
-  /* horizontalOffset -height */
 }
 
 .receipt__header {
@@ -187,9 +162,9 @@
   align-items: flex-start;
 
   padding: 30px 30px 45px;
-  background: #fcffcd;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
+  background: #fff;
+  border-top-right-radius: 18px;
+  border-top-left-radius: 18px;
 }
 
 .receipt__logo-wrapper {
@@ -211,7 +186,7 @@
 .receipt__ref {
   display: block;
   font-size: 19px;
-  color: #939232;;
+  color: #005093;
   font-weight: 300;
 }
 
@@ -220,7 +195,7 @@
 }
 
 .receipt__subheader-wrapper {
-  background: #fcffcd;
+  background: #fff;
   padding-bottom: 20px;
 }
 
@@ -236,7 +211,7 @@
 }
 
 .receipt__help-text {
-  color: #939232;;
+  color: #005093;;
   font-weight: 300;
 }
 
@@ -262,7 +237,7 @@
   display: block;
   padding-top: 20px;
   margin-bottom: 20px;
-  border-top: 2px dashed #939232;;
+  border-top: 2px dashed #005093;;
 
   font-size: 18px;
 }
@@ -273,11 +248,11 @@
 
 .receipt__cart-item:last-child {
   margin-bottom: 0;
-  border-top: 2px solid #FFE155;
+  border-top: 2px solid #199de1;
 }
 
 .receipt__item-name {
-  color: #939232;;
+  color: #005093;;
   font-weight: 300;
 }
 
@@ -296,8 +271,8 @@
   padding: 30px 20px;
   border-top: 2px dashed #FF84A1;
 
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
 }
 
 .receipt__footer::before,
@@ -383,7 +358,7 @@
 }
 
 .receipt__cart {
-  background-color: #fcffcd;
+  background-color: #fff;
 
   transform-style: preserve-3d;
   transform-origin: top center;
@@ -393,7 +368,7 @@
 }
 
 .receipt__footer {
-  background-color: #fcffcd;
+  background-color: #fff;
 
   transform-style: preserve-3d;
   transform-origin: top center;
