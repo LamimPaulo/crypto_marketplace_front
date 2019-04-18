@@ -1,12 +1,12 @@
 <template>
   <div>
-    <vue-headful title="Arbitragem" description="Liquidex"/>
+    <vue-headful title="Nanotech" description="Liquidex"/>
     <div class="loader" v-if="loader"></div>
 
     <div class="content-box">
       <div class="element-wrapper">
         <h6 class="element-header">
-          Investimento Arbitragem
+          Investimento Nanotech
         </h6>
 
         <div class="element-box-tp mb-2">

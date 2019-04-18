@@ -41,21 +41,21 @@
       </a>
     </li>
 
-    <li class="" v-tooltip.right="'Index Fund'">
+    <li class="" v-tooltip.right="'Fundos de Investimento'">
       <a href="/index/fund">
         <div class="icon-w">
           <div class="os-icon os-icon-target"></div>
         </div>
-        <span>Index Fund</span>
+        <span>Fundos de Investimento</span>
       </a>
     </li>
 
-    <li class="" v-tooltip.right="'Arbitragem'">
+    <li class="" v-tooltip.right="'Nanotech'">
       <a href="/trader/arbitrage">
         <div class="icon-w">
           <div class="os-icon os-icon-activity"></div>
         </div>
-        <span>Arbitragem</span>
+        <span>Nanotech</span>
       </a>
     </li>
 
