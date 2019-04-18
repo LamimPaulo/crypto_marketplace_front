@@ -41,12 +41,12 @@
       </a>
     </li>
 
-    <li class="" v-tooltip.right="'Fundos de Investimento'">
+    <li class="" v-tooltip.right="'Investimentos'">
       <a href="/index/fund">
         <div class="icon-w">
           <div class="os-icon os-icon-target"></div>
         </div>
-        <span>Fundos de Investimento</span>
+        <span>Investimentos</span>
       </a>
     </li>
 

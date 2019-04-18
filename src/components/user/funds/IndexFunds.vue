@@ -287,7 +287,7 @@
 
             <template slot="body">
                 <div>
-                    <form @submit.prevent="sendOrderBuy">
+                    <form >
 
                         <div class="form-group row">
                             <label class="col-form-label col-sm-2" for="buyQuantity">
@@ -367,7 +367,7 @@
                                     Fechar
                                 </button>
                                 <button class="btn btn-primary" type="submit"
-                                        @click.prevent="showPinModal('sendOrderBuy')"
+                                        @click.prevent="showPinModal('buyIndexFund', 0)"
                                         :disabled="!isOrderBuyFilled">
                                     Confirmar
                                 </button>
@@ -558,6 +558,10 @@
 				this.isPinVisible = false;
 			},
 			handlePinData(data) {
+				this.isFundVisible = false,
+				this.isBuyWindowVisible = false,
+				this.isWithdrawalModalVisible = false,
+				this.isPinVisible = false,
 				this.token.pin = data.pin
 
 				if (data.method === 'buyIndexFund') {

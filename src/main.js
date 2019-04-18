@@ -42,8 +42,9 @@ Vue.filter('roundValue', function (value) {
 	return parseFloat(value).toFixed(0);
 });
 
-Vue.filter('fixUsdCurrency', function (value) {
-	return parseFloat(value).toFixed(2);
+Vue.filter('formatValue', function (value) {
+	let newValue = value.toString()
+	return newValue.replace('.', '').replace('.', '').replace(',', '.');
 });
 
 Vue.use(VueCurrencyFilter,
@@ -58,8 +59,6 @@ Vue.use(VueCurrencyFilter,
 
 Vue.mixin({
 	methods: {
-		formatValue: value => value.replace('.', '').replace('.', '').replace(',', '.'),
-		formatCrypto: value => value.toFixed(5),
 		handleErrors: function (response) {
 			let toasted = this.$toasted;
 			if (response.status === 401 || response.data.status === 401) {
