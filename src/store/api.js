@@ -535,8 +535,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveDraftTax(context, draft) {
 			return new Promise((resolve, reject) => {
 				axios.post('/draft/tax', draft)
@@ -547,8 +546,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		sendDraft(context, draft) {
 			return new Promise((resolve, reject) => {
 				axios.post('/draft/send', draft)
@@ -559,8 +557,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		sendCancelDraft(context, draft) {
 			return new Promise((resolve, reject) => {
 				axios.post('/draft/cancel', draft)
@@ -571,8 +568,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveBuyTax(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.post('/orders/estimateBuyTax/', order)
@@ -583,8 +579,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveSellTax(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.post('/orders/estimateSellTax/', order)
@@ -595,8 +590,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		sendOrderBuy(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.post('/orders/buy', order)
@@ -607,8 +601,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		sendOrderSell(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.post('/orders/sell', order)
@@ -619,8 +612,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveOrder(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.get('/order/' + order)
@@ -631,8 +623,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveCoinAssets(context) {
 			return new Promise((resolve, reject) => {
 				axios.get('/assets/coins')
@@ -643,8 +634,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveCoinAssetsChart(context) {
 			return new Promise((resolve, reject) => {
 				axios.get('/assets/coins-chart')
@@ -655,8 +645,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveConversion(context, data) {
 			return new Promise((resolve, reject) => {
 				axios.post('/convert', data)
@@ -667,8 +656,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveBuyConversion(context, data) {
 			return new Promise((resolve, reject) => {
 				axios.post('/convert-buy', data)
@@ -679,8 +667,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		convertAmount(context, data) {
 			return new Promise((resolve, reject) => {
 				axios.post('/convert-amount', data)
@@ -691,8 +678,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		convertBuyAmount(context, data) {
 			return new Promise((resolve, reject) => {
 				axios.post('/convert-buy-amount', data)
@@ -703,8 +689,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		conversionList(context) {
 			return new Promise((resolve, reject) => {
 				axios.get('/conversion-list')
@@ -715,8 +700,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		myCoinsList() {
 			return new Promise((resolve, reject) => {
 				axios.get('/my-coins-list')
@@ -727,8 +711,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveConversionTx(context, tx) {
 			return new Promise((resolve, reject) => {
 				axios.get('/conversion/' + tx)
@@ -739,8 +722,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveLevels(context) {
 			return new Promise((resolve, reject) => {
 				axios.get('/user/levels')
@@ -773,8 +755,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveUserRewardChart() {
 			return new Promise((resolve, reject) => {
 				axios.get('/mining/user-reward-chart')
@@ -785,8 +766,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		sendBuyThs(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.post('/mining/buy-ths', order)
@@ -797,8 +777,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveGatewayKey(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.get('/gateway/get-key', order)
@@ -809,8 +788,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		storeGatewayKey(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.post('/gateway/new-key', order)
@@ -821,8 +799,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		updateGatewayKey(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.post('/gateway/update-key', order)
@@ -833,8 +810,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrievePharaosGatewayKey(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.get('/pharaos-gateway/get-key', order)
@@ -845,8 +821,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		storePharaosGatewayKey(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.post('/pharaos-gateway/new-key', order)
@@ -857,8 +832,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		updatePharaosGatewayKey(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.post('/pharaos-gateway/update-key', order)
@@ -869,8 +843,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		estimateGatewayPayment(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.post('/gateway/estimate-payment', order)
@@ -881,8 +854,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		storeGatewayPayment(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.post('/gateway/new-payment', order)
@@ -893,8 +865,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveGatewayPaymentsList(context, page) {
 			return new Promise((resolve, reject) => {
 				axios.get('/gateway/list-payments?page=' + page)
@@ -905,8 +876,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveGatewayPayment(context, tx) {
 			return new Promise((resolve, reject) => {
 				axios.get('/gateway/tx/' + tx)
@@ -917,8 +887,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		updateGatewayPayment(context, transaction) {
 			return new Promise((resolve, reject) => {
 				axios.post('/gateway/update-tx/', transaction)
@@ -929,8 +898,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveFavAccount(context, email) {
 			return new Promise((resolve, reject) => {
 				axios.get('/user/fav-account/' + email)
@@ -941,8 +909,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveFavAccounts(context) {
 			return new Promise((resolve, reject) => {
 				axios.get('/user/fav-accounts/')
@@ -953,8 +920,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveSearchEmail(context, email) {
 			return new Promise((resolve, reject) => {
 				axios.post('/user/search-account', {
@@ -967,8 +933,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		storeFavAccount(context, email) {
 			return new Promise((resolve, reject) => {
 				axios.post('/user/fav-account', {
@@ -981,8 +946,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		sendTransfer(context, transfer) {
 			return new Promise((resolve, reject) => {
 				axios.post('/transactions/transfer', transfer)
@@ -993,8 +957,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveLastTrades(context) {
 			return new Promise((resolve, reject) => {
 				axios.get('/exchange/last-trades')
@@ -1005,11 +968,10 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveInvestmentData(context, id) {
 			return new Promise((resolve, reject) => {
-				axios.get('/investments/data/' + id)
+				axios.get('/nanotech/data/' + id)
 					.then(response => {
 						resolve(response)
 					})
@@ -1017,11 +979,10 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		sendInvestment(context, investment) {
 			return new Promise((resolve, reject) => {
-				axios.post('/investments/send/', investment)
+				axios.post('/nanotech/send/', investment)
 					.then(response => {
 						resolve(response)
 					})
@@ -1029,11 +990,10 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
-		draftInvestment(context, investment) {
+		},
+		withdrawalInvestment(context, investment) {
 			return new Promise((resolve, reject) => {
-				axios.post('/investments/draft/', investment)
+				axios.post('/nanotech/withdrawal/', investment)
 					.then(response => {
 						resolve(response)
 					})
@@ -1041,8 +1001,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveFundsList() {
 			return new Promise((resolve, reject) => {
 				axios.get('/funds/list')
@@ -1053,8 +1012,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveFundChart(context, fund) {
 			return new Promise((resolve, reject) => {
 				axios.get('/funds/chart/' + fund)
@@ -1065,8 +1023,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveUserFunds() {
 			return new Promise((resolve, reject) => {
 				axios.get('/funds/user-list/')
@@ -1077,8 +1034,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		buyIndexFund(context, fund) {
 			return new Promise((resolve, reject) => {
 				axios.post('/funds/buy', fund)
@@ -1089,8 +1045,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		fundEarlyRedemption(context, fund) {
 			return new Promise((resolve, reject) => {
 				axios.post('/funds/earlyRedemption', fund)
@@ -1123,8 +1078,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveSellTaxFund(context, fund) {
 			return new Promise((resolve, reject) => {
 				axios.post('/funds/estimate-sell-tax', fund)
@@ -1135,8 +1089,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveQuotes() {
 			return new Promise((resolve, reject) => {
 				axios.get('/coins/quotes')
@@ -1147,8 +1100,7 @@ export const store = new Vuex.Store({
 						reject(error)
 					})
 			})
-		}
-		,
+		},
 		retrieveServerTime() {
 			return new Promise((resolve, reject) => {
 				axios.get('/time')
@@ -1196,6 +1148,17 @@ export const store = new Vuex.Store({
 		buyLevel(context, data) {
 			return new Promise((resolve, reject) => {
 				axios.post('/levels/buy', data)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		retrieveMasternodes() {
+			return new Promise((resolve, reject) => {
+				axios.get('/masternode/list')
 					.then(response => {
 						resolve(response)
 					})

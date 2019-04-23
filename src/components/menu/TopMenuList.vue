@@ -26,6 +26,14 @@
             </a>
         </li>
         <li class="has-sub-menu">
+            <a href="/masternode">
+                <div class="icon-w">
+                    <img  :src="require(`@/assets/img/svg_icons/icons8-expensive-price-40.png`)" width="30px" alt="">
+                </div>
+                <span>Masternode</span>
+            </a>
+        </li>
+        <li class="has-sub-menu">
             <a href="/levels">
                 <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/icons8-coins-40.png`)" width="30px" alt=""></div>
                 <span>Níveis</span>
@@ -38,7 +46,7 @@
             </a>
         </li>
         <li class="has-sub-menu">
-            <a href="/trader/arbitrage">
+            <a href="/nanotech">
                 <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/icons8-increase-40.png`)" width="30px" alt=""></div>
                 <span>Nanotech</span>
             </a>

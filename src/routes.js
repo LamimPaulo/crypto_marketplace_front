@@ -17,7 +17,9 @@ import Order from './components/user/orders/Order';
 import WalletCrypto from './components/user/wallets/WalletCrypto';
 import WalletFiat from './components/user/wallets/WalletFiat';
 import Conversion from './components/user/orders/Conversion';
-import Arbitrage from './components/trader/Arbitrage';
+import NanotechLQX from './components/trader/NanotechLQX';
+import NanotechBTC from './components/trader/NanotechBTC';
+import Masternode from './components/Masternode/Masternode';
 import UserGateway from './components/user/gateway/UserGateway';
 import PharaosGateway from './components/user/pharaos-gateway/PharaosGateway';
 import UserGatewayPayments from './components/user/gateway/UserGatewayPayments';
@@ -154,14 +156,26 @@ const routes = [
 		]
 	},
 	{
-		path: '/nanotech',
+		path: '/investments',
 		component: UserLayout,
 		meta: {requiresAuth: true},
 		children: [
 			{
-				path: '/trader/arbitrage',
-				name: 'trader-arbitrage',
-				component: Arbitrage,
+				path: '/nanotech/lqx',
+				name: '/nanotech/lqx',
+				component: NanotechLQX,
+				meta: {requiresAuth: true}
+			},
+			{
+				path: '/nanotech/btc',
+				name: '/nanotech/btc',
+				component: NanotechBTC,
+				meta: {requiresAuth: true}
+			},
+			{
+				path: '/masternode',
+				name: '/masternode',
+				component: Masternode,
 				meta: {requiresAuth: true}
 			},
 		]
