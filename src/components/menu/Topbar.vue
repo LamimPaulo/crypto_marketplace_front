@@ -7,12 +7,10 @@
                       <h5 class="share-name"><a href="#">{{ coin.abbr }}</a></h5>
                       <div class="marketdata">
                           <div class="marketlastchange red" v-if="user.country_id===31"
-                               v-tooltip="'Vender '+coin.name"
                                @click="showModalOrder(coin, 'sell', 'BRL')">
                               R$ {{ coin.quote[0].sell_quote | currency }}
                           </div>
                           <div class="marketlastchange red" v-else
-                               v-tooltip="'Vender '+coin.name"
                                @click="showModalOrder(coin, 'sell', 'USD')">
                               $ {{ coin.quote[0].sell_quote }}
                           </div>
@@ -24,12 +22,10 @@
                           <i class="fa fa-caret-down red"></i>
                       </div>
                       <div class="marketpercent green" v-if="user.country_id===31"
-                           v-tooltip="'Comprar '+coin.name"
                            @click="showModalOrder(coin, 'buy', 'BRL')">
                           R$ {{ coin.quote[0].buy_quote | currency }}
                       </div>
                       <div class="marketlastchange green" v-else
-                           v-tooltip="'Comprar '+coin.name"
                            @click="showModalOrder(coin, 'buy', 'USD')">
                           $ {{ coin.quote[0].buy_quote }}
                       </div>
@@ -164,10 +160,12 @@
   .market .marketpercent.red i, .market .marketlastchange.red, .market .marketpercent.red {
       color: #f44336;
       font-size: .9em;
+      cursor: pointer;
   }
   .market .marketpercent.green i, .market .marketlastchange.green, .market .marketpercent.green {
       color: #26c281;
       font-size: 1.1em;
+      cursor: pointer;
   }
 
     .red {color: #f44336;}

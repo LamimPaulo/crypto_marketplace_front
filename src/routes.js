@@ -19,7 +19,7 @@ import WalletFiat from './components/user/wallets/WalletFiat';
 import Conversion from './components/user/orders/Conversion';
 import NanotechLQX from './components/trader/NanotechLQX';
 import NanotechBTC from './components/trader/NanotechBTC';
-import Masternode from './components/Masternode/Masternode';
+import Masternode from './components/masternode/Masternode';
 import UserGateway from './components/user/gateway/UserGateway';
 import PharaosGateway from './components/user/pharaos-gateway/PharaosGateway';
 import UserGatewayPayments from './components/user/gateway/UserGatewayPayments';

@@ -127,7 +127,7 @@ body {
 }
 
 .marquee-text-wrap {
-  width: 85vw;
+  /*width: 85vw;*/
 }
 
 [tabindex="-1"]:focus {
@@ -641,7 +641,8 @@ pre code {
 
 @media (min-width: 992px) {
   .container {
-    max-width: 960px;
+    /*max-width: 960px;*/
+    max-width: 1190px;
   }
 }
 
@@ -29602,6 +29603,9 @@ Contents:
 
 /* #10. Phones & Vertical Tablets (<= 768px) */
 @media (max-width: 768px) {
+  .sub-menu-w {
+    display: none;
+  }
   .element-balances.mobile-full-width > .balance {
     -webkit-box-flex: 1;
     -ms-flex: 1;
