@@ -13504,7 +13504,7 @@ strong {
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   max-width: 1600px;
-  margin: 0px auto;
+  margin-top: 25px;
   position: relative;
   min-height: 100%;
 }
@@ -29453,6 +29453,13 @@ Contents:
     display: block;
   }
 
+  .sub-menu-w {
+    display: none;
+  }
+  .all-wrapper {
+    margin-top: 0px;
+  }
+
   .menu-mobile .menu-and-user {
     display: block;
   }
@@ -30160,6 +30167,9 @@ Contents:
 
   .menu-mobile {
     display: block;
+  }
+  .all-wrapper {
+    margin-top: 0px;
   }
 
   .element-info .element-search {
