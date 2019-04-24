@@ -5,7 +5,7 @@
         <top-menu-user></top-menu-user>
 
         <top-menu></top-menu>
-        
+
         <vue-headful title="Dashboard Liquidex" description="Liquidex"/>
         <div class="all-wrapper with-side-panel solid-bg-all">
             <div class="layout-w">
@@ -41,7 +41,8 @@
                                                             <strong>{{ wallet.name}}</strong><br/>
                                                         </div>
                                                         <div class="value" v-if="wallet.abbr==='BRL'">
-                                                            R$ {{ parseFloat(wallet.wallets[0].balance_rounded) | currency}}
+                                                            R$ {{ parseFloat(wallet.wallets[0].balance_rounded) |
+                                                            currency}}
                                                         </div>
                                                         <div class="value" v-else>
                                                             $ {{ wallet.wallets[0].balance_rounded}}
@@ -98,9 +99,8 @@
                                                         <tr>
                                                             <th></th>
                                                             <th>Produto</th>
-                                                            <th>BTC</th>
-                                                            <th v-if="user.country_id===31">BRL</th>
-                                                            <th v-if="user.country_id!==31">USD</th>
+                                                            <th>LQX</th>
+                                                            <th>BRL</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -109,23 +109,25 @@
                                                             <td><span
                                                                     :class="'marker-left color-' + i">{{product.name}}</span>
                                                             </td>
-                                                            <td>{{product.value_btc}}</td>
-                                                            <td v-if="user.country_id===31">R$ {{product.value_brl}}
+                                                            <td>{{product.value_lqx | fixValue}}</td>
+                                                            <td>
+                                                                R$ {{product.value_brl | formatValue}}
                                                             </td>
-                                                            <td v-else>$ {{product.value_usd}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td></td>
                                                             <td class="text-center">Total</td>
                                                             <td>
-                                                                <button class="btn btn-primary">{{product_total.total_btc}} BTC</button>
+                                                                <button class="btn btn-primary">
+                                                                    {{product_total.value_lqx | fixValue}} BTC
+                                                                </button>
                                                             </td>
-                                                            <td v-if="user.country_id===31">
-                                                                <button class="btn btn-success">R$ {{product_total.total_brl}}</button>
+                                                            <td>
+                                                                <button class="btn btn-success">R$
+                                                                    {{product_total.value_brl | formatValue}}
+                                                                </button>
                                                             </td>
-                                                            <td v-else>
-                                                                <button class="btn btn-success">$ {{product_total.total_usd}}</button>
-                                                            </td>
+
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -156,17 +158,17 @@
 	import Sidebar from './menu/Sidebar'
 	import PieChart from './charts/PieChart';
 	import TopMenu from './menu/TopMenu';
-    import TopMenuUser from './menu/TopMenuUser';    
+	import TopMenuUser from './menu/TopMenuUser';
 	import Footer from './layouts/Footer';
 	import {mapGetters} from 'vuex'
 
 	export default {
 		name: "Dashboard",
 		components: {
-            PieChart,
-            TopMenu,
+			PieChart,
+			TopMenu,
 			TopMenuUser,
-            Footer,
+			Footer,
 			Sidebar
 		},
 		data() {
@@ -174,9 +176,8 @@
 				wallets: [],
 				products: [],
 				product_total: {
-					total_btc: 0,
+					total_lqx: 0,
 					total_brl: 0,
-					total_usd: 0,
 				},
 				chart: [1, 2, 3, 4],
 				count: null,

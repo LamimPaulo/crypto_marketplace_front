@@ -43,8 +43,8 @@ Vue.filter('roundValue', function (value) {
 });
 
 Vue.filter('formatValue', function (value) {
-	let newValue = value.toString()
-	return newValue.replace('.', '').replace('.', '').replace(',', '.');
+	let val = parseFloat(value).toFixed(2).replace('.', ',')
+	return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
 });
 
 Vue.use(VueCurrencyFilter,
