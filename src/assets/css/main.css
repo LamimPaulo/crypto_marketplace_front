@@ -63,7 +63,7 @@ TABLE OF CONTENTS
   --red: #c23b22;
   --orange: #fd7e14;
   --yellow: #fbe4a0;
-  --green: #24b314;
+  --green: #60c482;
   --teal: #20c997;
   --cyan: #5bc0de;
   --white: #fff;
@@ -71,7 +71,7 @@ TABLE OF CONTENTS
   --gray-dark: #343a40;
   --primary: #293144;
   --secondary: #292b2c;
-  --success: #24b314;
+  --success: #60c482;
   --info: #5bc0de;
   --warning: #fbe4a0;
   --danger: #c23b22;
@@ -3209,7 +3209,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   width: 100%;
   margin-top: 0.25rem;
   font-size: 80%;
-  color: #24b314;
+  color: #60c482;
 }
 
 .valid-tooltip {
@@ -3230,13 +3230,13 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .was-validated .form-control:valid, .form-control.is-valid, .was-validated
 .custom-select:valid,
 .custom-select.is-valid {
-  border-color: #24b314;
+  border-color: #60c482;
 }
 
 .was-validated .form-control:valid:focus, .form-control.is-valid:focus, .was-validated
 .custom-select:valid:focus,
 .custom-select.is-valid:focus {
-  border-color: #24b314;
+  border-color: #60c482;
   -webkit-box-shadow: 0 0 0 0.2rem rgba(36, 179, 20, 0.25);
   box-shadow: 0 0 0 0.2rem rgba(36, 179, 20, 0.25);
 }
@@ -3253,7 +3253,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 }
 
 .was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
-  color: #24b314;
+  color: #60c482;
 }
 
 .was-validated .form-check-input:valid ~ .valid-feedback,
@@ -3263,7 +3263,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 }
 
 .was-validated .custom-control-input:valid ~ .custom-control-label, .custom-control-input.is-valid ~ .custom-control-label {
-  color: #24b314;
+  color: #60c482;
 }
 
 .was-validated .custom-control-input:valid ~ .custom-control-label::before, .custom-control-input.is-valid ~ .custom-control-label::before {
@@ -3286,7 +3286,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 }
 
 .was-validated .custom-file-input:valid ~ .custom-file-label, .custom-file-input.is-valid ~ .custom-file-label {
-  border-color: #24b314;
+  border-color: #60c482;
 }
 
 .was-validated .custom-file-input:valid ~ .custom-file-label::before, .custom-file-input.is-valid ~ .custom-file-label::before {
@@ -3627,8 +3627,8 @@ fieldset:disabled a.fc-button {
 
 .btn-success {
   color: #fff;
-  background-color: #24b314;
-  border-color: #24b314;
+  background-color: #60c482;
+  border-color: #60c482;
 }
 
 .btn-success:hover {
@@ -3644,8 +3644,8 @@ fieldset:disabled a.fc-button {
 
 .btn-success.disabled, .btn-success:disabled {
   color: #fff;
-  background-color: #24b314;
-  border-color: #24b314;
+  background-color: #60c482;
+  border-color: #60c482;
 }
 
 .btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
@@ -3914,16 +3914,16 @@ fieldset:disabled a.fc-button {
 }
 
 .btn-outline-success {
-  color: #24b314;
+  color: #60c482;
   background-color: transparent;
   background-image: none;
-  border-color: #24b314;
+  border-color: #60c482;
 }
 
 .btn-outline-success:hover {
   color: #fff;
-  background-color: #24b314;
-  border-color: #24b314;
+  background-color: #60c482;
+  border-color: #60c482;
 }
 
 .btn-outline-success:focus, .btn-outline-success.focus {
@@ -3932,15 +3932,15 @@ fieldset:disabled a.fc-button {
 }
 
 .btn-outline-success.disabled, .btn-outline-success:disabled {
-  color: #24b314;
+  color: #60c482;
   background-color: transparent;
 }
 
 .btn-outline-success:not(:disabled):not(.disabled):active, .btn-outline-success:not(:disabled):not(.disabled).active,
 .show > .btn-outline-success.dropdown-toggle {
   color: #fff;
-  background-color: #24b314;
-  border-color: #24b314;
+  background-color: #60c482;
+  border-color: #60c482;
 }
 
 .btn-outline-success:not(:disabled):not(.disabled):active:focus, .btn-outline-success:not(:disabled):not(.disabled).active:focus,
@@ -5217,7 +5217,7 @@ input[type="button"].btn-block {
 
 .badge-success {
   color: #fff;
-  background-color: #24b314;
+  background-color: #60c482;
 }
 
 .badge-success[href]:hover, .badge-success[href]:focus {
@@ -6210,7 +6210,7 @@ button.bg-secondary:focus {
 }
 
 .bg-success {
-  background-color: #24b314 !important;
+  background-color: #60c482 !important;
 }
 
 a.bg-success:hover, a.bg-success:focus,
@@ -6326,7 +6326,7 @@ button.bg-dark:focus {
 }
 
 .border-success {
-  border-color: #24b314 !important;
+  border-color: #60c482 !important;
 }
 
 .border-info {
@@ -11024,7 +11024,7 @@ a.text-secondary:hover, a.text-secondary:focus {
 }
 
 .text-success {
-  color: #24b314 !important;
+  color: #60c482 !important;
 }
 
 a.text-success:hover, a.text-success:focus {
@@ -17035,7 +17035,7 @@ body.menu-side-right .layout-w {
 
 .el-tablo .trending-up {
   color: #fff;
-  background-color: #24b314;
+  background-color: #60c482;
 }
 
 .el-tablo .trending-down {
@@ -17044,7 +17044,7 @@ body.menu-side-right .layout-w {
 }
 
 .el-tablo .trending-up-basic {
-  color: #24b314;
+  color: #60c482;
   padding: 0px;
 }
 
@@ -17502,7 +17502,7 @@ a.el-tablo:hover .label {
 }
 
 .users-list-w .user-w.with-status.status-green .user-avatar-w:before {
-  background-color: #24b314;
+  background-color: #60c482;
 }
 
 .users-list-w .user-w.with-status.status-red .user-avatar-w:before {
@@ -18474,7 +18474,7 @@ a.el-tablo:hover .label {
 }
 
 .element-balances .balance-value .balance-value-success {
-  color: #24b314;
+  color: #60c482;
 }
 
 .element-balances span.trending {
@@ -18499,7 +18499,7 @@ a.el-tablo:hover .label {
 
 .element-balances span.trending-up {
   color: #fff;
-  background-color: #24b314;
+  background-color: #60c482;
 }
 
 .element-balances span.trending-down {
@@ -18508,7 +18508,7 @@ a.el-tablo:hover .label {
 }
 
 .element-balances span.trending-up-basic {
-  color: #24b314;
+  color: #60c482;
   padding: 0px;
 }
 
@@ -18738,11 +18738,11 @@ a.el-tablo:hover .label {
 
 .todo-list .todo-item.complete {
   opacity: 0.7;
-  border-color: #24b314;
+  border-color: #60c482;
 }
 
 .todo-list .todo-item.complete .ti-icon {
-  color: #24b314;
+  color: #60c482;
 }
 
 .todo-list .todo-item.complete .ti-header {
@@ -20721,7 +20721,7 @@ Chat Styles
 }
 
 .floated-chat-w .chat-head .user-w.with-status.status-green .user-avatar-w:before {
-  background-color: #24b314;
+  background-color: #60c482;
 }
 
 .floated-chat-w .chat-head .user-w.with-status.status-red .user-avatar-w:before {
@@ -21014,7 +21014,7 @@ Chat Styles
 }
 
 .ae-side-menu .ae-labels .ae-label.ae-label-green .label-pin {
-  background-color: #24b314;
+  background-color: #60c482;
 }
 
 .ae-side-menu .ae-labels .ae-label.ae-label-yellow .label-pin {
@@ -21099,7 +21099,7 @@ Chat Styles
 }
 
 .ae-list-w .ae-list .ae-item.with-status.status-green .user-avatar-w:before {
-  background-color: #24b314;
+  background-color: #60c482;
 }
 
 .ae-list-w .ae-list .ae-item.with-status.status-red .user-avatar-w:before {
@@ -21417,7 +21417,7 @@ Chat Styles
 }
 
 .aec-full-message-w .message-head .user-w.with-status.status-green .user-avatar-w:before {
-  background-color: #24b314;
+  background-color: #60c482;
 }
 
 .aec-full-message-w .message-head .user-w.with-status.status-red .user-avatar-w:before {
@@ -22573,7 +22573,7 @@ Pricing Plans Styles
 }
 
 .pipeline.white.lined-success {
-  border-top: 5px solid #24b314;
+  border-top: 5px solid #60c482;
   border-radius: 0px 0px 4px 4px;
 }
 
@@ -22691,7 +22691,7 @@ Pricing Plans Styles
 }
 
 .pipeline-item .pi-controls .status.status-green {
-  background-color: #24b314;
+  background-color: #60c482;
 }
 
 .pipeline-item .pi-controls .status.status-red {
@@ -23679,7 +23679,7 @@ TODO Application
 }
 
 .todo-app-w .todo-content .tasks-list li.draggable-task.success:before {
-  background-color: #24b314;
+  background-color: #60c482;
 }
 
 .draggable-task.gu-mirror {
@@ -28118,7 +28118,7 @@ body.color-scheme-dark .todo-list .todo-item.complete, .content-panel.color-sche
 }
 
 body.color-scheme-dark .todo-list .todo-item.complete .ti-icon, .content-panel.color-scheme-dark .todo-list .todo-item.complete .ti-icon {
-  color: #24b314;
+  color: #60c482;
 }
 
 body.color-scheme-dark .todo-list .todo-item.complete .ti-sub-header, .content-panel.color-scheme-dark .todo-list .todo-item.complete .ti-sub-header {

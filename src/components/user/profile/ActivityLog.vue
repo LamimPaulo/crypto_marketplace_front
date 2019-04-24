@@ -5,7 +5,6 @@
     <div class="element-box-tp">
 
       <div class="activity-boxes-w">
-        id="receipt"
         <div class="activity-box-w" v-for="hist in logs">
           <div class="activity-time">{{ hist.localCreated}}</div>
           <div class="activity-box">
