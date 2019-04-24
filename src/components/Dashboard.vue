@@ -28,7 +28,6 @@
                                             Dashboard
                                         </h6>
                                         <div class="element-box-tp">
-
                                             <div class="row">
                                                 <div class="col-6 col-sm-4 col-xxl-2" v-for="wallet in wallets">
                                                     <a class="element-box el-tablo centered trend-in-corner smaller mb-3"
@@ -153,6 +152,7 @@
 </template>
 
 <script>
+    import BModal from 'bootstrap-vue/es/components/modal/modal'
 	import Sidebar from './menu/Sidebar'
 	import PieChart from './charts/PieChart';
 	import TopMenu from './menu/TopMenu';
@@ -163,6 +163,7 @@
 	export default {
 		name: "Dashboard",
 		components: {
+            BModal,
             PieChart,
             TopMenu,
 			TopMenuUser,

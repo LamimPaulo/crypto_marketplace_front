@@ -3,8 +3,7 @@
      <!-------------------- START - Mobile Menu -------------------->
     <div class="menu-mobile menu-activated-on-click color-scheme-white">
       <div class="mm-logo-buttons-w">
-        <a class="mm-logo" href="/dashboard">Liquidex</a>
-        <div class="mm-buttons">
+        <div class="mm-buttons pulse">
           <div class="content-panel-open">
             <div class="os-icon os-icon-grid-circles"></div>
           </div>
@@ -101,4 +100,24 @@
 </script>
 
 <style scoped>
+  .pulse {
+    padding:20px;
+    border-radius: 50%;
+    position: relative;
+    background: rgba(62, 75, 90, 0.26);
+    -webkit-box-shadow: 0 0 0 0 rgba(62, 75, 90, 0.26);
+    box-shadow: 0 0 0 0 rgba(62, 75, 90, 0.26);
+    background-size:cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    -webkit-animation: pulse 1.25s infinite cubic-bezier(.66, 0, 0, 1);
+    animation: pulse 1.25s infinite cubic-bezier(.66, 0, 0, 1);
+  }
+  .pulse:hover
+  {
+    -webkit-animation: none;animation: none;
+  }
+
+  @-webkit-keyframes pulse {to {-webkit-box-shadow: 0 0 0 15px rgba(232, 76, 61, 0);box-shadow: 0 0 0 15px rgba(232, 76, 61, 0);}}
+  @keyframes pulse {to {-webkit-box-shadow: 0 0 0 15px rgba(232, 76, 61, 0);box-shadow: 0 0 0 15px rgba(232, 76, 61, 0);}}
 </style>

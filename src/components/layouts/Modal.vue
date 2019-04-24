@@ -1,3 +1,68 @@
+<template>
+  <transition name="vue-modal-fade">
+    <div class="vue-modal-backdrop" @click.self="close">
+      <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <slot name="header">
+                <h5 class="modal-title">default header</h5>
+              </slot>
+
+<!--              <button @click.self="closeModal" type="button" class="close" data-dismiss="modal" aria-label="Fechar modal">-->
+<!--                <span aria-hidden="true">&times;</span>-->
+<!--              </button>-->
+
+            </div>
+            <div class="modal-body">
+              <slot name="body">
+                default body
+              </slot>
+            </div>
+<!--            <div class="modal-footer">-->
+<!--              <slot name="footer">-->
+<!--                <button @click="close" type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close modal">-->
+<!--                  Fechar-->
+<!--                </button>-->
+<!--              </slot>-->
+<!--            </div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </transition>
+
+
+
+<!--  <div class="modal" tabindex="-1" role="dialog">-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--      <div class="modal-content">-->
+<!--        <div class="modal-header">-->
+<!--          <slot name="header">-->
+<!--            <h5 class="modal-title">default header</h5>-->
+<!--            <button  @click="close"type="button" class="close" data-dismiss="modal" aria-label="Fechar modal">-->
+<!--              <span aria-hidden="true">&times;</span>-->
+<!--            </button>-->
+<!--          </slot>-->
+<!--        </div>-->
+<!--        <div class="modal-body">-->
+<!--          <slot name="body">-->
+<!--            default body-->
+<!--          </slot>-->
+<!--        </div>-->
+<!--        <div class="modal-footer">-->
+<!--          <slot name="footer">-->
+<!--            <button @click="close" type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close modal">-->
+<!--              Fechar-->
+<!--            </button>-->
+<!--          </slot>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+</template>
 <script>
   export default {
     name: 'modal',
@@ -8,37 +73,11 @@
     },
   };
 </script>
-<template>
-  <transition name="vue-modal-fade">
-    <div class="vue-modal-backdrop" @click="close">
-      <div class="vue-modal" role="dialog">
-        <header class="vue-modal-header">
-          <slot name="header">
-            default header
-            <button type="button" class="btn-close" @click="close" aria-label="Fechar modal">
-              x
-            </button>
-          </slot>
-        </header>
-
-        <section class="vue-modal-body">
-          <slot name="body">
-            default body
-          </slot>
-        </section>
-
-        <footer class="vue-modal-footer">
-          <slot name="footer">
-            <button type="button" class="btn-green" @click="close" aria-label="Close modal" >
-              Fechar
-            </button>
-          </slot>
-        </footer>
-      </div>
-    </div>
-  </transition>
-</template>
 <style>
+  .modal {
+    display: block;
+    color: #000;
+  }
   .vue-modal-backdrop {
     position: fixed;
     top: 0;
@@ -50,6 +89,10 @@
     justify-content: center;
     align-items: center;
     z-index: 9999;
+  }
+
+  .os-tabs-w {
+    width: 100%;
   }
 
   .vue-modal{
