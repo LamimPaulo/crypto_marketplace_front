@@ -99,10 +99,6 @@
                                                 <button class="btn btn-primary"
                                                         @click.prevent="showDetailedFund(fund)"> Moedas
                                                 </button>
-
-                                                <button class="btn btn-success"
-                                                        @click.prevent="showBuyModal(fund, 'buy')">Adquirir
-                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -250,11 +246,6 @@
                                                             @click.prevent="showDetailedFund(balance.fund)">
                                                         Moedas
                                                     </button>
-                                                    <button class="btn btn-success mt-3"
-                                                            @click.prevent="showBuyModal(balance.fund, 'buy')">
-                                                        Adquirir
-                                                        +
-                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -277,116 +268,6 @@
         <detailed-fund v-show="isFundVisible" :fund="fund" ref="detailedComponent"
                        @close-detailed-modal="closeDetailedModal"></detailed-fund>
 
-        <modal v-show="isBuyWindowVisible">
-            <template slot="header">
-                <h6>
-                    <i class="os-icon os-icon-coins-4"></i>
-                    {{ orderBuy.fundName }}
-                </h6>
-            </template>
-
-            <template slot="body">
-                <div>
-                    <form >
-
-                        <div class="form-group row">
-                            <label class="col-form-label col-sm-2" for="buyQuantity">
-                                Quantidade</label>
-                            <div class="col-sm-4">
-                                <div class="input-group">
-                                    <input id="buyQuantity" class="form-control" type="text"
-                                           @input="retrieveBuyTax"
-                                           v-model="orderBuy.quotes" required>
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            cotas
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <label class="col-form-label col-sm-2" for="buyMarket"> Preço</label>
-                            <div class="col-sm-4">
-                                <div class="input-group">
-                                    <input id="buyMarket" class="form-control" type="text"
-                                           :value="orderBuy.priceLocal" required disabled>
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            {{ orderBuy.abbr }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-form-label col-sm-2"> Corretagem</label>
-                            <div class="col-sm-4">
-                                <div class="input-group">
-                                    <input class="form-control" type="text"
-                                           v-if="orderBuy.coin_id===2"
-                                           :value="orderBuy.tax | currency" disabled>
-                                    <input class="form-control" type="text"
-                                           v-else
-                                           :value="orderBuy.tax | fixValue" disabled>
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            {{ orderBuy.abbr }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <label class="col-form-label col-sm-2"> Valor Final</label>
-                            <div class="col-sm-4">
-                                <div class="input-group">
-                                    <input class="form-control" type="text"
-                                           v-if="orderBuy.coin_id===2"
-                                           :value="orderBuy.total | currency" disabled>
-                                    <input class="form-control" type="text"
-                                           v-else
-                                           :value="orderBuy.total | fixValue" disabled>
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            {{ orderBuy.abbr }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mt-4" v-if="!orderBuy.is_valid">
-                            <div class="col-12">
-                                <span class="alert alert-warning block">Preencha Corretamente a quantidade e verifique seu saldo para completar a operação.</span>
-                            </div>
-                        </div>
-
-                        <div class="row mt-2">
-                            <div class="col-12 text-center">
-                                <button class="btn btn-grey" type="button" @click="closeModal">
-                                    Fechar
-                                </button>
-                                <button class="btn btn-primary" type="submit"
-                                        @click.prevent="showPinModal('buyIndexFund', 0)"
-                                        :disabled="!isOrderBuyFilled">
-                                    Confirmar
-                                </button>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-            </template>
-
-            <template slot="footer">
-                    <span v-tooltip.right="'Balance atual de sua carteira'"><i
-                            class="os-icon os-icon-wallet-loaded"></i>
-                        {{ orderBuy.balance }}
-                        {{ orderBuy.abbr }}
-                    </span>
-            </template>
-        </modal>
-
         <pin v-show="isPinVisible" ref="pinComponent"
              @close-pin-modal="closePinModal" @pin-data="handlePinData"/>
 
@@ -399,7 +280,6 @@
 	import DetailedFund from './DetailedFund'
 	import Pin from './../../verifications/Pin'
 	import PieChart from './../../charts/PieChart';
-	import debounce from 'lodash/debounce'
 
 	export default {
 		name: "IndexFunds",
@@ -438,15 +318,6 @@
 			}
 		},
 		methods: {
-			showBuyModal(fund) {
-				this.isBuyWindowVisible = true
-				this.orderBuy.fund_id = fund.id
-				this.orderBuy.fundName = fund.name
-				this.orderBuy.price = fund.price
-				this.orderBuy.priceLocal = fund.priceLocal
-				this.orderBuy.abbr = fund.coin.abbr
-				this.orderBuy.balance = fund.coin.wallets[0].balance_rounded
-			},
 			closeModal() {
 				this.isBuyWindowVisible = false;
 			},
@@ -473,45 +344,6 @@
 						}
 					})
 			},
-			buyIndexFund() {
-				this.loader = true
-				this.$store.dispatch('buyIndexFund',
-					{
-						fund_id: this.orderBuy.fund_id,
-						quotes: this.orderBuy.quotes,
-						action: this.orderBuy.action,
-						pin: this.token.pin,
-					})
-					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
-						this.retrieveFunds()
-						this.retrieveUserFunds()
-					})
-					.catch(error => {
-						this.loader = false
-						if (error.response) {
-							this.handleErrors(error.response)
-						}
-					})
-			},
-			retrieveBuyTax: debounce(function (e) {
-				if (e.target.value > 0) {
-					this.$store.dispatch('retrieveBuyTaxFund', {
-						fund_id: this.orderBuy.fund_id,
-						quotes: this.orderBuy.quotes,
-					})
-						.then(response => {
-							this.orderBuy.price = response.data.price
-							this.orderBuy.tax = response.data.tax
-							this.orderBuy.total = response.data.total
-							this.orderBuy.is_valid = response.data.balance_valid
-						}).catch(error => {
-						if (error.response) {
-							this.handleErrors(error.response)
-						}
-					})
-				}
-			}, 500),
 			earlyWithdrawal() {
 				this.loader = true
 				this.$store.dispatch('fundEarlyRedemption', {
@@ -563,10 +395,6 @@
 				this.isWithdrawalModalVisible = false,
 				this.isPinVisible = false,
 				this.token.pin = data.pin
-
-				if (data.method === 'buyIndexFund') {
-					this.buyIndexFund()
-				}
 
 				if (data.method === 'earlyWithdrawal') {
 					this.earlyWithdrawal()
