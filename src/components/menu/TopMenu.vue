@@ -3,11 +3,11 @@
      <!-------------------- START - Mobile Menu -------------------->
     <div class="menu-mobile menu-activated-on-click color-scheme-white">
       <div class="mm-logo-buttons-w">
-        <div class="mm-buttons pulse">
+        <div class="mm-buttons">
           <div class="content-panel-open">
             <div class="os-icon os-icon-grid-circles"></div>
           </div>
-          <div class="mobile-menu-trigger">
+          <div class="mobile-menu-trigger pulse">
             <div class="os-icon os-icon-hamburger-menu-1"></div>
           </div>
         </div>

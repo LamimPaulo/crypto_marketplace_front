@@ -1,6 +1,6 @@
 <template>
     <ul class="main-menu">
-        <li class="selected has-sub-menu">
+        <li class="selected">
             <a href="/dashboard">
                 <div class="icon-w">
                     <img :src="require(`@/assets/img/svg_icons/customize-view.png`)" width="30px" alt="">
@@ -11,13 +11,13 @@
                 <topbar></topbar>
             </div>
         </li>
-        <li class="has-sub-menu">
+        <li>
             <a href="/wallets/list">
                 <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/icons8-wallet-40.png`)" width="30px" alt=""></div>
                 <span>Carteiras</span>
             </a>
         </li>
-        <li class="has-sub-menu">
+        <li>
             <a href="/transactions/list">
                 <div class="icon-w">
                     <img  :src="require(`@/assets/img/svg_icons/icons8-exchange-40.png`)" width="30px" alt="">
@@ -25,7 +25,7 @@
                 <span>Transações</span>
             </a>
         </li>
-        <li class="has-sub-menu">
+        <li>
             <a href="/masternode">
                 <div class="icon-w">
                     <img  :src="require(`@/assets/img/svg_icons/icons8-expensive-price-40.png`)" width="30px" alt="">
@@ -33,19 +33,19 @@
                 <span>Masternode</span>
             </a>
         </li>
-        <li class="has-sub-menu">
+        <li>
             <a href="/levels">
                 <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/icons8-coins-40.png`)" width="30px" alt=""></div>
                 <span>Níveis</span>
             </a>
         </li>
-        <li class="has-sub-menu">
+        <li>
             <a href="/index/fund">
                 <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/line-chart.png`)" width="30px" alt=""></div>
                 <span>Investimentos</span>
             </a>
         </li>
-        <li class="has-sub-menu">
+        <li>
             <a href="/nanotech/lqx">
                 <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/icons8-increase-40.png`)" width="30px" alt=""></div>
                 <span>Nanotech</span>
@@ -77,6 +77,9 @@
     border-bottom: 1px solid #fff;
 }
 
+ul.main-menu li:hover {
+    background-color: #b8bbc4;
+}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (max-width: 1450px) {
