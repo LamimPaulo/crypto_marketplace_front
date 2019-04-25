@@ -119,7 +119,7 @@
                                                             <td class="text-center">Total</td>
                                                             <td>
                                                                 <button class="btn btn-primary">
-                                                                    {{product_total.value_lqx | fixValue}} BTC
+                                                                    {{product_total.value_lqx | fixValue}} LQX
                                                                 </button>
                                                             </td>
                                                             <td>
@@ -162,70 +162,70 @@
     import Footer from './layouts/Footer';
     import {mapGetters} from 'vuex'
 
-    export default {
-        name: "Dashboard",
-        components: {
-            PieChart,
-            TopMenu,
-            TopMenuUser,
-            Footer,
-            Sidebar
-        },
-        data() {
-            return {
-                wallets: [],
-                products: [],
-                product_total: {
-                    total_lqx: 0,
-                    total_brl: 0,
-                },
-                chart: [1, 2, 3, 4],
-                count: null,
-                loader: true,
-            }
-        },
-        methods: {
-            retrieveWallets() {
-                this.$store.dispatch('retrieveWallets')
-                    .then(response => {
-                        this.wallets = response.data.wallets
-                        this.count = response.data.count
-                        this.loader = false
-                    })
-                    .catch(error => {
-                        if (error.response) {
-                            this.handleErrors(error.response)
-                        }
-                    })
-            },
-            retrieveProducts() {
-                this.$store.dispatch('retrieveDashboard')
-                    .then(response => {
-                        this.chart = response.data.chart
-                        this.$refs.chartComponent.setData(this.chart)
-                        this.products = response.data.products
-                        this.product_total = response.data.product_total
-                    })
-                    .catch(error => {
-                        if (error.response) {
-                            this.handleErrors(error.response)
-                        }
-                    })
-            },
-        },
-        mounted() {
-            this.retrieveWallets()
-            this.retrieveProducts()
-        },
-        beforeCreate: function () {
-            document.body.className = 'menu-position-side menu-side-left full-screen with-content-panel';
-        },
-        computed: {
-            ...mapGetters([
-                'user'
-            ]),
-        }
-    }
+	export default {
+		name: "Dashboard",
+		components: {
+			PieChart,
+			TopMenu,
+			TopMenuUser,
+			Footer,
+			Sidebar
+		},
+		data() {
+			return {
+				wallets: [],
+				products: [],
+				product_total: {
+					value_lqx: 0,
+					value_brl: 0,
+				},
+				chart: [1, 2, 3, 4],
+				count: null,
+				loader: true,
+			}
+		},
+		methods: {
+			retrieveWallets() {
+				this.$store.dispatch('retrieveWallets')
+					.then(response => {
+						this.wallets = response.data.wallets
+						this.count = response.data.count
+						this.loader = false
+					})
+					.catch(error => {
+						if (error.response) {
+							this.handleErrors(error.response)
+						}
+					})
+			},
+			retrieveProducts() {
+				this.$store.dispatch('retrieveDashboard')
+					.then(response => {
+						this.chart = response.data.chart
+						this.$refs.chartComponent.setData(this.chart)
+						this.products = response.data.products
+						this.product_total = response.data.product_total
+					})
+					.catch(error => {
+						if (error.response) {
+							this.handleErrors(error.response)
+						}
+					})
+			},
+		},
+		mounted() {
+			this.retrieveWallets()
+			this.retrieveProducts()
+		},
+		beforeCreate: function () {
+			document.body.className = 'menu-position-side menu-side-left full-screen with-content-panel';
+		},
+		computed: {
+			...mapGetters([
+				'user'
+			]),
+		}
+	}
 
 </script>
 

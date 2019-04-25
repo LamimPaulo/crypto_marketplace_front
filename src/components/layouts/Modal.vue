@@ -19,48 +19,18 @@
                 default body
               </slot>
             </div>
-<!--            <div class="modal-footer">-->
-<!--              <slot name="footer">-->
-<!--                <button @click="close" type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close modal">-->
-<!--                  Fechar-->
-<!--                </button>-->
-<!--              </slot>-->
-<!--            </div>-->
+            <div class="modal-footer">
+              <slot name="footer">
+                <button @click="close" type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close modal">
+                  Fechar
+                </button>
+              </slot>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </transition>
-
-
-
-<!--  <div class="modal" tabindex="-1" role="dialog">-->
-<!--    <div class="modal-dialog" role="document">-->
-<!--      <div class="modal-content">-->
-<!--        <div class="modal-header">-->
-<!--          <slot name="header">-->
-<!--            <h5 class="modal-title">default header</h5>-->
-<!--            <button  @click="close"type="button" class="close" data-dismiss="modal" aria-label="Fechar modal">-->
-<!--              <span aria-hidden="true">&times;</span>-->
-<!--            </button>-->
-<!--          </slot>-->
-<!--        </div>-->
-<!--        <div class="modal-body">-->
-<!--          <slot name="body">-->
-<!--            default body-->
-<!--          </slot>-->
-<!--        </div>-->
-<!--        <div class="modal-footer">-->
-<!--          <slot name="footer">-->
-<!--            <button @click="close" type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close modal">-->
-<!--              Fechar-->
-<!--            </button>-->
-<!--          </slot>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-
 
 </template>
 <script>
