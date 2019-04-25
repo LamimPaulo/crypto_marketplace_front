@@ -5,7 +5,7 @@
         <top-menu-user></top-menu-user>
 
         <top-menu></top-menu>
-        
+
         <vue-headful title="Dashboard Liquidex" description="Liquidex"/>
         <div class="all-wrapper with-side-panel solid-bg-all">
             <div class="layout-w">
@@ -28,6 +28,7 @@
                                             Dashboard
                                         </h6>
                                         <div class="element-box-tp">
+
                                             <div class="row">
                                                 <div class="col-6 col-sm-4 col-xxl-2" v-for="wallet in wallets">
                                                     <a class="element-box el-tablo centered trend-in-corner smaller mb-3"
@@ -40,7 +41,8 @@
                                                             <strong>{{ wallet.name}}</strong><br/>
                                                         </div>
                                                         <div class="value" v-if="wallet.abbr==='BRL'">
-                                                            R$ {{ parseFloat(wallet.wallets[0].balance_rounded) | currency}}
+                                                            R$ {{ parseFloat(wallet.wallets[0].balance_rounded) |
+                                                            currency}}
                                                         </div>
                                                         <div class="value" v-else>
                                                             $ {{ wallet.wallets[0].balance_rounded}}
@@ -97,9 +99,8 @@
                                                         <tr>
                                                             <th></th>
                                                             <th>Produto</th>
-                                                            <th>BTC</th>
-                                                            <th v-if="user.country_id===31">BRL</th>
-                                                            <th v-if="user.country_id!==31">USD</th>
+                                                            <th>LQX</th>
+                                                            <th>BRL</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -108,23 +109,25 @@
                                                             <td><span
                                                                     :class="'marker-left color-' + i">{{product.name}}</span>
                                                             </td>
-                                                            <td>{{product.value_btc}}</td>
-                                                            <td v-if="user.country_id===31">R$ {{product.value_brl}}
+                                                            <td>{{product.value_lqx | fixValue}}</td>
+                                                            <td>
+                                                                R$ {{product.value_brl | formatValue}}
                                                             </td>
-                                                            <td v-else>$ {{product.value_usd}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td></td>
                                                             <td class="text-center">Total</td>
                                                             <td>
-                                                                <button class="btn btn-primary">{{product_total.total_btc}} BTC</button>
+                                                                <button class="btn btn-primary">
+                                                                    {{product_total.value_lqx | fixValue}} BTC
+                                                                </button>
                                                             </td>
-                                                            <td v-if="user.country_id===31">
-                                                                <button class="btn btn-success">R$ {{product_total.total_brl}}</button>
+                                                            <td>
+                                                                <button class="btn btn-success">R$
+                                                                    {{product_total.value_brl | formatValue}}
+                                                                </button>
                                                             </td>
-                                                            <td v-else>
-                                                                <button class="btn btn-success">$ {{product_total.total_usd}}</button>
-                                                            </td>
+
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -152,80 +155,77 @@
 </template>
 
 <script>
-    import BModal from 'bootstrap-vue/es/components/modal/modal'
-	import Sidebar from './menu/Sidebar'
-	import PieChart from './charts/PieChart';
-	import TopMenu from './menu/TopMenu';
-    import TopMenuUser from './menu/TopMenuUser';    
-	import Footer from './layouts/Footer';
-	import {mapGetters} from 'vuex'
+    import Sidebar from './menu/Sidebar'
+    import PieChart from './charts/PieChart';
+    import TopMenu from './menu/TopMenu';
+    import TopMenuUser from './menu/TopMenuUser';
+    import Footer from './layouts/Footer';
+    import {mapGetters} from 'vuex'
 
-	export default {
-		name: "Dashboard",
-		components: {
-            BModal,
+    export default {
+        name: "Dashboard",
+        components: {
             PieChart,
             TopMenu,
-			TopMenuUser,
+            TopMenuUser,
             Footer,
-			Sidebar
-		},
-		data() {
-			return {
-				wallets: [],
-				products: [],
-				product_total: {
-					total_btc: 0,
-					total_brl: 0,
-					total_usd: 0,
-				},
-				chart: [1, 2, 3, 4],
-				count: null,
-				loader: true,
-			}
-		},
-		methods: {
-			retrieveWallets() {
-				this.$store.dispatch('retrieveWallets')
-					.then(response => {
-						this.wallets = response.data.wallets
-						this.count = response.data.count
-						this.loader = false
-					})
-					.catch(error => {
-						if (error.response) {
-							this.handleErrors(error.response)
-						}
-					})
-			},
-			retrieveProducts() {
-				this.$store.dispatch('retrieveDashboard')
-					.then(response => {
-						this.chart = response.data.chart
-						this.$refs.chartComponent.setData(this.chart)
-						this.products = response.data.products
-						this.product_total = response.data.product_total
-					})
-					.catch(error => {
-						if (error.response) {
-							this.handleErrors(error.response)
-						}
-					})
-			},
-		},
-		mounted() {
-			this.retrieveWallets()
-			this.retrieveProducts()
-		},
-		beforeCreate: function () {
-			document.body.className = 'menu-position-side menu-side-left full-screen with-content-panel';
-		},
-		computed: {
-			...mapGetters([
-				'user'
-			]),
-		}
-	}
+            Sidebar
+        },
+        data() {
+            return {
+                wallets: [],
+                products: [],
+                product_total: {
+                    total_lqx: 0,
+                    total_brl: 0,
+                },
+                chart: [1, 2, 3, 4],
+                count: null,
+                loader: true,
+            }
+        },
+        methods: {
+            retrieveWallets() {
+                this.$store.dispatch('retrieveWallets')
+                    .then(response => {
+                        this.wallets = response.data.wallets
+                        this.count = response.data.count
+                        this.loader = false
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.handleErrors(error.response)
+                        }
+                    })
+            },
+            retrieveProducts() {
+                this.$store.dispatch('retrieveDashboard')
+                    .then(response => {
+                        this.chart = response.data.chart
+                        this.$refs.chartComponent.setData(this.chart)
+                        this.products = response.data.products
+                        this.product_total = response.data.product_total
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.handleErrors(error.response)
+                        }
+                    })
+            },
+        },
+        mounted() {
+            this.retrieveWallets()
+            this.retrieveProducts()
+        },
+        beforeCreate: function () {
+            document.body.className = 'menu-position-side menu-side-left full-screen with-content-panel';
+        },
+        computed: {
+            ...mapGetters([
+                'user'
+            ]),
+        }
+    }
 
 </script>
 

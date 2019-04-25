@@ -46,7 +46,7 @@
             </a>
         </li>
         <li class="has-sub-menu">
-            <a href="/nanotech">
+            <a href="/nanotech/lqx">
                 <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/icons8-increase-40.png`)" width="30px" alt=""></div>
                 <span>Nanotech</span>
             </a>

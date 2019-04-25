@@ -147,11 +147,11 @@
                                                     <div class="balance-value" v-else>
                                                         <span class="d-xxl-none">
                                                             {{ balance.fund.coin.abbr}}
-                                                            {{ balance.balance_free | fixValue}}
+                                                            {{ balance.balance_free | formatValue}}
                                                         </span>
                                                         <span class="d-none d-xxl-inline-block">
                                                             {{ balance.fund.coin.abbr}}
-                                                            {{ balance.balance_free | fixValue }}]
+                                                            {{ balance.balance_free | formatValue }}]
                                                         </span>
 
                                                         <button class="btn btn-primary mr-1"
@@ -185,11 +185,11 @@
                                                     <div class="balance-value" v-else>
                                                         <span class="d-xxl-none">
                                                             {{ balance.fund.coin.abbr}}
-                                                            {{ balance.balance_blocked | fixValue}}
+                                                            {{ balance.balance_blocked | formatValue}}
                                                         </span>
                                                         <span class="d-none d-xxl-inline-block">
                                                             {{ balance.fund.coin.abbr}}
-                                                            {{ balance.balance_blocked | fixValue }}]
+                                                            {{ balance.balance_blocked | formatValue }}]
                                                         </span>
 
                                                         <button class="btn btn-danger mr-1"
