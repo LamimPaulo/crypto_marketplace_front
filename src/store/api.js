@@ -1035,17 +1035,17 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-		buyIndexFund(context, fund) {
-			return new Promise((resolve, reject) => {
-				axios.post('/funds/buy', fund)
-					.then(response => {
-						resolve(response)
-					})
-					.catch(error => {
-						reject(error)
-					})
-			})
-		},
+		// buyIndexFund(context, fund) {
+		// 	return new Promise((resolve, reject) => {
+		// 		axios.post('/funds/buy', fund)
+		// 			.then(response => {
+		// 				resolve(response)
+		// 			})
+		// 			.catch(error => {
+		// 				reject(error)
+		// 			})
+		// 	})
+		// },
 		fundEarlyRedemption(context, fund) {
 			return new Promise((resolve, reject) => {
 				axios.post('/funds/earlyRedemption', fund)

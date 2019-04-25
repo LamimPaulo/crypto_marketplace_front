@@ -25,28 +25,28 @@
                                 </h3>
                             </div>
                             <div class="pricing-plans row no-gutters">
-                                <div class="pricing-plan col-sm-3 with-hover-effect" v-for="level in levels">
-                                    <div :class="'plan-head bt-' + level.name">
-                                        <div :class="'plan-name ' + level.name">
+                                <div class="pricing-plan col-sm-3 with-hover-effect" v-if="level.id > 1" v-for="level in levels">
+                                    <div :class="'plan-head bt-level-' + level.id">
+                                        <div :class="'plan-name level-' + level.id">
                                             {{ level.name }}
                                         </div>
                                     </div>
                                     <div class="plan-description">
                                         <ul>
-                                            <li :class="'li-' + level.name" v-if="level.id > 1">
+                                            <li :class="'li-level-' + level.id" v-if="level.id > 1">
                                                 Keycode
                                             </li>
 
-                                            <li :class="'li-' + level.name">
+                                            <li :class="'li-level-' + level.id">
                                                 {{ level.btcDiary}} BTC/dia
                                             </li>
-                                            <li :class="'li-' + level.name">
+                                            <li :class="'li-level-' + level.id">
                                                 {{ level.brlDiary}} /dia
                                             </li>
-                                            <li :class="'li-' + level.name">
+                                            <li :class="'li-level-' + level.id">
                                                 {{ level.transactionAuto}} BTC/auto
                                             </li>
-                                            <li :class="'li-' + level.name">
+                                            <li :class="'li-level-' + level.id">
                                                 {{ level.brokeragePercent}}% de Corretagem
                                             </li>
                                         </ul>
@@ -205,58 +205,58 @@
     .alert {
         color: #fff;
     }
-    .Free {
+    .level-2 {
         color: #94d1e4;
     }
-    .bt-Free {
+    .bt-level-2 {
         border-top: 5px solid #94d1e4;
     }
-    .pricing-plan .plan-description ul .li-Free:before {
+    .pricing-plan .plan-description ul .li-level-2:before {
         color: #94d1e4;
     }
-    .btn-Free {
+    .btn-level-2 {
         color: #fff;
         background-color: #94d1e4;
         border-color: #94d1e4;
     }
-    .Basic {
+    .level-3 {
         color: #4eb3d3;
     }
-    .bt-Basic {
+    .bt-level-3 {
         border-top: 5px solid #4eb3d3;
     }
-    .pricing-plan .plan-description ul .li-Basic:before {
+    .pricing-plan .plan-description ul .li-level-3:before {
         color: #4eb3d3;
     }
-    .btn-Basic {
+    .btn-level-3 {
         color: #fff;
         background-color: #4eb3d3;
         border-color: #4eb3d3;
     }
-    .Pro {
+    .level-4 {
         color: #2b8cbe;
     }
-    .bt-Pro {
+    .bt-level-4 {
         border-top: 5px solid #2b8cbe;
     }
-    .pricing-plan .plan-description ul .li-Pro:before {
+    .pricing-plan .plan-description ul .li-level-4:before {
         color: #2b8cbe;
     }
-    .btn-Pro{
+    .btn-level-4{
         color: #fff;
         background-color: #2b8cbe;
         border-color: #2b8cbe;
     }
-    .Gold {
+    .level-5 {
         color: #ffbd1b;
     }
-    .bt-Gold {
+    .bt-level-5 {
         border-top: 5px solid #ffbd1b;
     }
-    .pricing-plan .plan-description ul .li-Gold:before {
+    .pricing-plan .plan-description ul .li-level-5:before {
         color: #ffbd1b;
     }
-    .btn-Gold  {
+    .btn-level-5  {
         color: #fff;
         background-color: #ffbd1b;
         border-color: #ffbd1b;
