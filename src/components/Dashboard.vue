@@ -77,7 +77,7 @@
                                         </h6>
                                         <div class="element-box-tp">
                                             <div class="row">
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-12 col-md-4">
                                                     <table class="table table-clean">
                                                         <thead>
                                                         <tr>
@@ -93,7 +93,7 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <div class="col-sm-8">
+                                                <div class="col-sm-12 col-md-8">
                                                     <table class="table table-clean">
                                                         <thead>
                                                         <tr>

@@ -59,7 +59,7 @@
 
   .pie circle {
     fill: none;
-    stroke-width: 32;
+    stroke-width: 16;
     transition: stroke-dasharray 0.3s ease-in-out, stroke-dashoffset 0.3s ease-in-out;
   }
 

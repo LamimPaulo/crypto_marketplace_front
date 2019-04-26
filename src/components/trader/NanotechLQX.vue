@@ -14,6 +14,16 @@
                     Nanotech {{ investment_data.coin }}
                 </h6>
 
+                <div class="element-box-tp">
+                    <div class="row">
+                        <div class="col-12 col-sm-4 col-xxl-3">
+<!--                            GRAPHS-->
+<!--                            NanotechChart-->
+                            <line-chart></line-chart>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="element-box-tp mb-2">
                     <div class="row">
 
@@ -320,7 +330,8 @@
 	import {mapGetters} from 'vuex'
 	import LastTrades from './LastTrades'
 	import Modal from './../layouts/Modal'
-	import Pin from './../verifications/Pin'
+    import Pin from './../verifications/Pin'
+    import LineChart from  './../charts/LineChart'
 
 	export default {
 		name: "Arbitrage",
@@ -496,6 +507,7 @@
 			}
 		},
 		components: {
+            LineChart,
 			LastTrades,
 			Modal,
 			Pin
