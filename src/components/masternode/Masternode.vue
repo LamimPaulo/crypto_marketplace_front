@@ -5,8 +5,9 @@
 
         <div class="content-box">
             <div class="element-wrapper">
-                <h6 class="element-header">
+                <h6>
                     Investimento Masternode
+                    <span class="animate-border mt-2 mb-3"></span>
                 </h6>
 
                 <div class="element-box-tp mb-2">

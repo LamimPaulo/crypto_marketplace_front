@@ -10,9 +10,18 @@
                         <i class="os-icon os-icon-external-link"></i><span> Nanotech LQX</span>
                     </a>
                 </div>
-                <h6 class="element-header">
+                <h6>
                     Nanotech {{ investment_data.coin }}
+                    <span class="animate-border my-3"></span>
                 </h6>
+
+                <div class="element-box-tp">
+                    <div class="row">
+                        <div class="col-12 col-sm-4 col-xxl-3">
+                            <btc-area-chart></btc-area-chart>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="element-box-tp mb-2">
                     <div class="row">
@@ -321,6 +330,7 @@
 	import LastTrades from './LastTrades'
 	import Modal from './../layouts/Modal'
 	import Pin from './../verifications/Pin'
+    import BtcAreaChart from  './../charts/BtcAreaChart'
 
 	export default {
 		name: "Arbitrage",
@@ -496,6 +506,7 @@
 			}
 		},
 		components: {
+            BtcAreaChart,
 			LastTrades,
 			Modal,
 			Pin

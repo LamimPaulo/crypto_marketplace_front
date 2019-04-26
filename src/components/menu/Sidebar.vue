@@ -104,13 +104,14 @@
         </div>
 
         <div class="element-wrapper compact">
-            <h6 class="element-header">
+            <h6>
                 <img :src="require(`@/assets/img/svg_icons/id-card.svg`)" width="30px" alt=""> Verificação de Perfil
+                <span class="animate-border mt-2 mb-3"></span>
             </h6>
             <div class="element-box-tp">
 
                 <div class="todo-list">
-                    <a class="todo-item" href="/levels" v-if="!user.api_key">
+                    <a class="todo-item" href="/levels" v-if="!user.api_key" style="border: 1px solid rgb(4, 123, 248);">
                         <div class="ti-info">
                             <div class="ti-header"> Key Code</div>
                             <div class="ti-sub-header"> Você não possui Key Code</div>
@@ -120,7 +121,7 @@
                         </div>
                     </a>
 
-                    <a class="todo-item" v-tooltip.right="'Clique para Copiar'" @click="copyAddress" v-else>
+                    <a class="todo-item" v-tooltip.right="'Clique para Copiar'" @click="copyAddress" v-else style="border: 1px solid rgb(4, 123, 248);">
                         <div class="ti-success">
                             <div class="ti-header"> Key Code</div>
                             <div class="ti-sub-header"> {{ user.api_key }}</div>
@@ -130,7 +131,7 @@
                         </div>
                     </a>
 
-                    <a class="todo-item" href="/payment-accounts" v-if="!count_accounts">
+                    <a class="todo-item" href="/payment-accounts" v-if="!count_accounts" >
                         <div class="ti-info">
                             <div class="ti-header"> Contas Bancárias</div>
                             <div class="ti-sub-header"> Você não possui contas cadastradas</div>
@@ -465,72 +466,6 @@
 
     select option {
         color: #000;
-    }
-
-    .animate-border {
-        position: relative;
-        display: block;
-        width: auto;
-        height: 1px;
-        background: #b9bcc5;
-    }
-
-    .animate-border:before {
-        position: absolute;
-        content: "";
-        width: auto;
-        height: 3px;
-        left: 0;
-        bottom: 0;
-        border-left: 10px solid #293144;
-        border-right: 10px solid #293144;
-        -webkit-animation: animborder 2s linear infinite;
-        animation: animborder 2s linear infinite;
-    }
-
-    @-webkit-keyframes animborder {
-        0% {
-            -webkit-transform: translateX(0px);
-            transform: translateX(0px);
-        }
-        100% {
-            -webkit-transform: translateX(113px);
-            transform: translateX(113px);
-        }
-    }
-
-    @keyframes animborder {
-        0% {
-            -webkit-transform: translateX(0px);
-            transform: translateX(0px);
-        }
-        100% {
-            -webkit-transform: translateX(113px);
-            transform: translateX(113px);
-        }
-    }
-
-    .animate-border.border-white:after {
-        border-color: #293144;
-    }
-
-    .animate-border.border-yellow:after {
-        border-color: #F5B02E;
-    }
-
-    .animate-border.border-orange:after {
-        border-right-color: #b9bcc5;
-        border-left-color: #b9bcc5;
-    }
-
-    .animate-border.border-ash:after {
-        border-right-color: #EEF0EF;
-        border-left-color: #EEF0EF;
-    }
-
-    .animate-border.border-offwhite:after {
-        border-right-color: #F7F9F8;
-        border-left-color: #F7F9F8;
     }
 
     /* Animated heading border */
