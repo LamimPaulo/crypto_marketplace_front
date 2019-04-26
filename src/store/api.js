@@ -136,7 +136,6 @@ export const store = new Vuex.Store({
 						context.commit('destroyToken')
 						this.$router.push({name: 'login'})
 					}
-					console.log(error.response)
 				})
 		},
 		retrieveCpf(context, document) {
