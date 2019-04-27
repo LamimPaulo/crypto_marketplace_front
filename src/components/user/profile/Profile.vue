@@ -41,8 +41,6 @@
                             <personal-data :user="user" :documents="documents" @retrieve-documents="retrieveDocuments()"
                                            v-else></personal-data>
 
-<!--                            <phone-verify :user="user" @refresh="refresh()" @reset-token="resetToken()"></phone-verify>-->
-
                             <password-change :user="user" @refresh="refresh()"
                                              @reset-token="resetToken()"></password-change>
 
@@ -69,7 +67,6 @@
 	import PinChange from './PinChange'
 	import DadosPessoais from "./DadosPessoais";
 	import PersonalData from "./PersonalData";
-	// import PhoneVerify from "./PhoneVerify";
 	import Documents from "./Documents";
 	import Google2fa from "./Google2fa";
 
@@ -77,7 +74,7 @@
 		name: "profile",
 		data() {
 			return {
-				loader: false,
+				loader: true,
 				documents: {
 					selfie_status: 'not_found',
 					selfie_message: 'Arquivo ainda não enviado',
@@ -121,12 +118,11 @@
 			ActivityLog,
 			PasswordChange,
 			PinChange,
-			// PhoneVerify,
 			Documents,
             Google2fa
 		},
 		mounted() {
-			//this.retrieveDocuments()
+			this.retrieveDocuments()
 		}
 	}
 </script>

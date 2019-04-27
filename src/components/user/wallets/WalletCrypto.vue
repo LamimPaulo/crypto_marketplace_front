@@ -3,7 +3,7 @@
     <div class="loader" v-if="loader"></div>
     <vue-headful title="Minhas Carteiras - Liquidex" description="Liquidex"/>
 
-    <div class="element-wrapper compact pt-0 pb-0">
+    <div class="element-wrapper compact mt-3 pt-0 pb-0">
       <div class="element-actions d-none d-sm-block">
         <a class="btn btn-primary btn-sm" href="/wallets/list">
           <i class="os-icon os-icon-arrow-left"></i><span> Ver Carteiras</span>
@@ -25,10 +25,9 @@
                   <span class="font-50">{{wallet.balance_rounded}}</span>
                 </div>
               </div>
-
             </div>
 
-            <div class="row">
+            <div class="row" v-if="wallet.coin.abbr!=='LQX'">
               <div class="col-xl-6 col-sm-6 mb-3">
                 <div @click="openAddressWindow" class="btn-receber text-white bg-success o-hidden h-100">
                   <div class="card-body">
