@@ -42,6 +42,10 @@ Vue.filter('roundValue', function (value) {
 	return parseFloat(value).toFixed(0);
 });
 
+Vue.filter('shortStr', function (value) {
+	return value.substring(1, 10)
+});
+
 Vue.filter('formatValue', function (value) {
 	let val = parseFloat(value).toFixed(2).replace('.', ',')
 	return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
