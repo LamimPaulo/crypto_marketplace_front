@@ -32,21 +32,17 @@
               <div class="element-box-tp">
 
                 <div class="row">
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <a class="btn btn-success d-sm-inline-flex mb-1 btn-block p-4 f-1rem" href="#" @click="openDepositWindow">
                       <i class="os-icon os-icon-arrow-down-left f-1rem"></i><span>Depositar</span>
                     </a>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <a class="btn btn-grey d-sm-inline-flex mb-1 btn-block p-4 f-1rem" href="#" @click="openDraftWindow">
                       <i class="os-icon os-icon-arrow-up-right f-1rem"></i><span>Saque</span>
                     </a>
                   </div>
-                  <div class="col-sm-4">
-                    <a class="btn btn-primary d-sm-inline-flex mb-1 btn-block p-4 f-1rem" @click="openSendWindow" href="#">
-                      <i class="os-icon os-icon-refresh-cw f-1rem"></i><span>Transferir</span>
-                    </a>
-                  </div>
+
                 </div>
 
 

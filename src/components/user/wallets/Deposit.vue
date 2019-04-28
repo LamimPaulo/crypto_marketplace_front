@@ -62,31 +62,6 @@
                         </p>
                     </div>
                 </div>
-
-                <div class="pricing-plan with-hover-effect col-md-4 col-sm-12 col-xs-12">
-                    <div class="plan-body">
-                        <div class="plan-price-w">
-                            <img width="90px" src="@/assets/img/neteller.png" alt>
-                        </div>
-                        <div class="plan-btn-w">
-                            <button class="btn btn-primary btn-rounded"
-                                    @click.prevent="depositModalNeteller(account)">
-                                Selecionar
-                            </button>
-                        </div>
-                    </div>
-                    <div class="plan-description">
-                        <h6>Liquidex Ledger Safe LTDA</h6>
-                        <p>
-                            <span>Identificação</span>
-                            <strong>20.924.974/0001-79</strong>
-                        </p>
-                        <p>
-                            <span>Email:</span>
-                            <strong>vendasnavi@hotmail.com</strong>
-                        </p>
-                    </div>
-                </div>
             </div>
 
             <!-- </form> -->
@@ -98,11 +73,6 @@
                 ref="DepositModalBank"
         ></deposit-modal-bank>
 
-        <deposit-modal-neteller
-                v-show="isDepositNetellerVisible"
-                @close-deposit-modal="closeDepositModalNeteller"
-                ref="DepositModalNeteller"
-        ></deposit-modal-neteller>
 
     </div>
 </template>
