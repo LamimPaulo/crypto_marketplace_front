@@ -9,7 +9,7 @@
           {{ this.$store.state.user.name }}
         </div>
         <div class="logged-user-role">
-          {{ this.$store.state.user.level.name }}
+          {{ this.$store.state.user.level.name }} - {{ this.$store.state.user.username }}
         </div>
       </div>
     </a>

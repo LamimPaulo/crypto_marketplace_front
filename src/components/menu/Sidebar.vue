@@ -15,7 +15,7 @@
                             <div class="form-group">
                                 <label for="">De</label>
                                 <select class="form-control" v-model="conversor.base" @change="conversorBaseChange">
-                                    <option :value="coin.abbr" v-for="coin in myCoins" selected> {{coin.abbr}}</option>
+                                    <option :value="coin.abbr" v-for="coin in myCoins" selected v-if="coin.abbr!=='LQX'"> {{coin.abbr}}</option>
 
                                 </select>
                             </div>

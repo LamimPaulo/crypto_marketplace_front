@@ -43,7 +43,7 @@ Vue.filter('roundValue', function (value) {
 });
 
 Vue.filter('shortStr', function (value) {
-	return value.substring(1, 10)
+	return value.substring(1, 32)
 });
 
 Vue.filter('formatValue', function (value) {

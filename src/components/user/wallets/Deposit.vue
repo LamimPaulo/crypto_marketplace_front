@@ -22,25 +22,6 @@
                 <div class="pricing-plan with-hover-effect col-md-4 col-sm-12 col-xs-12"
                      v-for="account in accounts"
                 >
-                    <div class="plan-body">
-                        <div class="plan-price-w">
-                            <img
-                                    v-if="account.type==1"
-                                    width="90px"
-                                    src="@/assets/img/logo-caixa-economica-federal-256.png"
-                                    alt
-                            >
-                        </div>
-                        <div class="plan-btn-w">
-                            <button
-                                    class="btn btn-primary btn-rounded"
-                                    v-if="account.type==1"
-                                    @click.prevent="depositModalBank(account)"
-                            >Selecionar
-                            </button>
-
-                        </div>
-                    </div>
                     <div class="plan-description">
                         <h6>{{account.name}}</h6>
                         <p>
@@ -51,7 +32,7 @@
                             <span v-if="account.type==2">Email:</span>
                             <strong>{{account.email}}</strong>
                         </p>
-                        <h6 v-if="account.type==1">CAIXA ECONÔMICA FEDERAL</h6>
+                        <h6 v-if="account.type==1">{{ account.bank.name }}</h6>
                         <p v-if="account.type==1">
                             <span>Agência</span>
                             <strong>{{account.agency}} {{account.agency_digit}}</strong>
@@ -60,6 +41,15 @@
                             <strong>{{account.account}} {{account.account_digit}}</strong>
                             <br>
                         </p>
+                        <div class="plan-btn-w">
+                            <button
+                                    class="btn btn-primary btn-rounded"
+                                    v-if="account.type==1"
+                                    @click.prevent="depositModalBank(account)"
+                            >Selecionar
+                            </button>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -143,18 +133,10 @@
 				this.isDepositBankVisible = true;
 				this.$refs.DepositModalBank.setAccount(account);
 			},
-			depositModalNeteller(account) {
-				this.isDepositNetellerVisible = true;
-				this.$refs.DepositModalNeteller.setAccount(account);
-			},
 			closeDepositModalBank() {
-				this.$emit("close-deposit-modal");
 				this.isDepositBankVisible = false;
 			},
-			closeDepositModalNeteller() {
-				this.$emit("close-deposit-modal");
-				this.isDepositNetellerVisible = false;
-			}
+
 		},
 		mounted() {
 			this.retrieveSystemAccounts()

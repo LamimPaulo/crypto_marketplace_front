@@ -29,6 +29,7 @@
                                             </div>
                                             <div class="logged-user-info-w">
                                                 <div class="logged-user-name">{{ this.$store.state.user.name }}</div>
+                                                <div class="logged-user-role">{{ this.$store.state.user.username }}</div>
                                                 <div class="logged-user-role">{{ this.$store.state.user.level.name }}</div>
                                             </div>
                                         </div>
