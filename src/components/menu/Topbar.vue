@@ -1,5 +1,5 @@
 <template>
-    <div class="sub-menu-i">
+    <div>
         <marquee-text class="dark-bg" :repeat="5" :duration="60">
             <div>
                 <div class="market" v-for="coin in quotes">
@@ -9,10 +9,6 @@
                             <div class="marketlastchange red" v-if="user.country_id===31"
                                  @click="showModalOrder(coin, 'sell', 'BRL')">
                                 R$ {{ coin.quote[0].sell_quote | currency }}
-                            </div>
-                            <div class="marketlastchange red" v-else
-                                 @click="showModalOrder(coin, 'sell', 'USD')">
-                                $ {{ coin.quote[0].sell_quote }}
                             </div>
                         </div>
                     </div>
@@ -24,10 +20,6 @@
                         <div class="marketpercent green" v-if="user.country_id===31"
                              @click="showModalOrder(coin, 'buy', 'BRL')">
                             R$ {{ coin.quote[0].buy_quote | currency }}
-                        </div>
-                        <div class="marketlastchange green" v-else
-                             @click="showModalOrder(coin, 'buy', 'USD')">
-                            $ {{ coin.quote[0].buy_quote }}
                         </div>
                     </div>
                 </div>

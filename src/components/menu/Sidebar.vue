@@ -15,7 +15,9 @@
                             <div class="form-group">
                                 <label for="">De</label>
                                 <select class="form-control" v-model="conversor.base" @change="conversorBaseChange">
-                                    <option :value="coin.abbr" v-for="coin in myCoins" selected v-if="coin.abbr!=='LQX'"> {{coin.abbr}}</option>
+                                    <option :value="coin.abbr" v-for="coin in myCoins" selected
+                                            v-if="coin.abbr!=='LQX'"> {{coin.abbr}}
+                                    </option>
 
                                 </select>
                             </div>
@@ -111,7 +113,8 @@
             <div class="element-box-tp">
 
                 <div class="todo-list">
-                    <a class="todo-item" href="/levels" v-if="!user.api_key" style="border: 1px solid rgb(4, 123, 248);">
+                    <a class="todo-item" href="/levels" v-if="!user.api_key"
+                       style="border: 1px solid rgb(4, 123, 248);">
                         <div class="ti-info">
                             <div class="ti-header"> Key Code</div>
                             <div class="ti-sub-header"> Você não possui Key Code</div>
@@ -121,7 +124,8 @@
                         </div>
                     </a>
 
-                    <a class="todo-item" v-tooltip.right="'Clique para Copiar'" @click="copyAddress" v-else style="border: 1px solid rgb(4, 123, 248);">
+                    <a class="todo-item" v-tooltip.right="'Clique para Copiar'" @click="copyAddress" v-else
+                       style="border: 1px solid rgb(4, 123, 248);">
                         <div class="ti-success">
                             <div class="ti-header"> Key Code</div>
                             <div class="ti-sub-header"> {{ user.api_key }}</div>
@@ -131,28 +135,31 @@
                         </div>
                     </a>
 
-                    <a class="todo-item" href="/payment-accounts" v-if="!count_accounts" >
-                        <div class="ti-info">
-                            <div class="ti-header"> Contas Bancárias</div>
-                            <div class="ti-sub-header"> Você não possui contas cadastradas</div>
-                        </div>
-                        <div class="ti-icon">
-                            <i class="os-icon os-icon-arrow-right7"></i>
-                        </div>
-                    </a>
-
-                    <a class="todo-item complete" href="/payment-accounts" v-if="count_accounts">
-                        <div class="ti-info">
-                            <div class="ti-header"> Contas Bancárias</div>
-                            <div class="ti-sub-header"> Você possui {{count_accounts}} conta{{count_accounts>1 ? 's' :
-                                ''}}
-                                cadastrada{{count_accounts>1 ? 's' : ''}}
+                    <div v-if="user.country_id===31">
+                        <a class="todo-item" href="/payment-accounts" v-if="!count_accounts">
+                            <div class="ti-info">
+                                <div class="ti-header"> Contas Bancárias</div>
+                                <div class="ti-sub-header"> Você não possui contas cadastradas</div>
                             </div>
-                        </div>
-                        <div class="ti-icon">
-                            <i class="os-icon os-icon-check"></i>
-                        </div>
-                    </a>
+                            <div class="ti-icon">
+                                <i class="os-icon os-icon-arrow-right7"></i>
+                            </div>
+                        </a>
+
+                        <a class="todo-item complete" href="/payment-accounts" v-if="count_accounts">
+                            <div class="ti-info">
+                                <div class="ti-header"> Contas Bancárias</div>
+                                <div class="ti-sub-header"> Você possui {{count_accounts}} conta{{count_accounts>1 ? 's'
+                                    :
+                                    ''}}
+                                    cadastrada{{count_accounts>1 ? 's' : ''}}
+                                </div>
+                            </div>
+                            <div class="ti-icon">
+                                <i class="os-icon os-icon-check"></i>
+                            </div>
+                        </a>
+                    </div>
 
                     <a class="todo-item error" href="/profile"
                        v-if="!user.pin_filled">

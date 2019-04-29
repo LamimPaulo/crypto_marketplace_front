@@ -1,15 +1,17 @@
 <template>
     <ul class="main-menu">
-        <li class="selected">
+        <li class="selected" v-if="user.country_id===31">
+            <div class="sub-menu-w" style="z-index: 50; margin-top: -25px">
+                <topbar></topbar>
+            </div>
+        </li>
+        <li>
             <a href="/dashboard">
                 <div class="icon-w">
                     <img :src="require(`@/assets/img/svg_icons/customize-view.png`)" width="30px" alt="">
                 </div>
                 <span>Dashboard</span>
             </a>
-            <div class="sub-menu-w" style="z-index: 99">
-                <topbar></topbar>
-            </div>
         </li>
         <li>
             <a href="/wallets/list">
@@ -51,6 +53,7 @@
                 <span>Nanotech</span>
             </a>
         </li>
+
 
     </ul>
 </template>

@@ -2,7 +2,7 @@
     <div class="content-box">
         <vue-headful title="Dados de Pagamento - Liquidex" description="Liquidex"/>
         <div class="loader" v-if="loader"></div>
-        <div class="row">
+        <div class="row" v-if="this.$store.state.user.country_id===31">
 
             <div class="col-sm-6">
                 <div class="element-wrapper">
@@ -135,7 +135,11 @@
             <token-pin v-show="isTokenPinVisible" ref="tokenPinComponent"
                        @close-token-pin-modal="closeTokenPinModal" @token-data="handleTokenPinData"/>
         </div>
-
+        <div class="row" v-else>
+            <div class="col-md-12 alert alert-info">
+                Your profile does not allow bank account registration.
+            </div>
+        </div>
     </div>
 </template>
 
