@@ -33,19 +33,19 @@
 
                 <div class="row">
                   <div class="col-sm-4">
-                    <a class="btn btn-success d-sm-inline-flex mb-1 btn-block p-4 f-1rem" href="#" @click="openDepositWindow">
-                      <i class="os-icon os-icon-arrow-down-left f-1rem"></i><span>Depositar</span>
-                    </a>
+                      <button @click="openDraftWindow" class="three">
+                          <h4 class="text-white">Saque</h4>
+                      </button>
                   </div>
                   <div class="col-sm-4">
-                    <a class="btn btn-grey d-sm-inline-flex mb-1 btn-block p-4 f-1rem" href="#" @click="openDraftWindow">
-                      <i class="os-icon os-icon-arrow-up-right f-1rem"></i><span>Saque</span>
-                    </a>
+                      <button @click="openDepositWindow" class="two">
+                          <h4 class="text-white">Depositar</h4>
+                      </button>
                   </div>
                   <div class="col-sm-4">
-                    <a class="btn btn-primary d-sm-inline-flex mb-1 btn-block p-4 f-1rem" @click="openSendWindow" href="#">
-                      <i class="os-icon os-icon-refresh-cw f-1rem"></i><span>Transferir</span>
-                    </a>
+                    <button @click="openSendWindow" class="four">
+                      <h4 class="text-white">Transferir</h4>
+                    </button>
                   </div>
                 </div>
 
@@ -176,5 +176,104 @@
   }
   .f-1rem {
     font-size: 1.5rem
+  }
+  .five, .four, .three, .two, .one {
+      border: none;
+      border-radius: 4px;
+      text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.48);
+      overflow: hidden;
+      padding: 20px 50px 20px 70px;
+      margin-bottom: 20px;
+      font-size: 20px;
+      position: relative;
+      color: white;
+      outline: none;
+      cursor: pointer;
+      width: 100%;
+      transition: background-position 0.7s, box-shadow 0.4s;
+      background-size: 110%;
+      font-family: "Oswald", sans-serif;
+  }
+  .five:hover, .four:hover, .three:hover, .two:hover, .one:hover {
+      background-position: 0% 30%;
+  }
+  .five:hover:after, .four:hover:after, .three:hover:after, .two:hover:after, .one:hover:after {
+      right: -40px;
+      transition: right 0.4s, transform 30s 0.2s linear;
+  }
+  .five:before, .four:before, .three:before, .two:before, .one:before, .five:after, .four:after, .three:after, .two:after, .one:after {
+      font-family: FontAwesome;
+      display: block;
+      position: absolute;
+  }
+  .five:before, .four:before, .three:before, .two:before, .one:before {
+      transition: all 1s;
+      font-size: 30px;
+      left: 25px;
+      top: 19px;
+  }
+  .five:after, .four:after, .three:after, .two:after, .one:after {
+      transition: right 0.4s, transform 0.2s;
+      font-size: 100px;
+      opacity: 0.3;
+      right: -120px;
+      top: -17px;
+  }
+
+  .two {
+      box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.16) inset, 0px 0px 10px 0px #E48A3C;
+      background-image: linear-gradient(to bottom, #E48A3C, rgba(222, 135, 61, .55)), url("~@/assets/img/btn-deposit-bck.jpg");
+  }
+  .two:hover {
+      box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.16) inset, 0px 0px 30px 0px #E48A3C;
+  }
+  .two:hover:after {
+      transform: scale(1);
+  }
+  .two:hover:before {
+      transform: scale(1.2);
+  }
+  .two:after, .two:before {
+      font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f1d8";
+  }
+  .two b {
+      color: #FFD9B4;
+      font-weight: 700;
+  }
+
+  .three {
+      background: #36C176;
+  }
+  .three:hover {
+      box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.16) inset, 0px 0px 30px 0px #36C176;
+  }
+  .three:hover:after {
+      transform: scale(1);
+  }
+  .three:hover:before {
+      transform: scale(1.2);
+  }
+  .three:after, .three:before {
+      font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f4c0";
+  }
+  .three b {
+      color: #63FFAC;
+      font-weight: 700;
+  }
+
+  .four {
+      background-image: linear-gradient(to bottom, #293144, rgba(41, 49, 68, 0.38)), url("~@/assets/img/btn-transfer-bkp.jpg");
+  }
+  .four:hover {
+      box-shadow: 0px 0px 0px 2px rgba(41, 49, 68, 0.38) inset, 0px 0px 30px 0px #293144;
+  }
+  .four:hover:after {
+      transform: rotate(3000deg);
+  }
+  .four:hover:before {
+      transform: rotate(360deg);
+  }
+  .four:after, .four:before {
+      font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f079";
   }
 </style>
