@@ -136,48 +136,7 @@
 </script>
 
 <style scoped>
-  .btn-receber {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 0.25rem;
-    cursor: pointer;
-  }
-  .card-body-icon {
-    position: absolute;
-    z-index: 0;
-    top: -1.25rem;
-    right: -1rem;
-    opacity: 0.4;
-    font-size: 5rem;
-    -webkit-transform: rotate(15deg);
-    transform: rotate(15deg);
-  }
-  .card-body {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    padding: 1.25rem;
-  }
-  .bg-grey {
-    color: #292b2c;
-    background-color: #dde2ec;
-    border-color: #dde2ec;
-  }
-  .f-1rem {
-    font-size: 1.5rem
-  }
-  .five, .four, .three, .two, .one {
+  .four, .three, .two {
       border: none;
       border-radius: 4px;
       text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.48);
@@ -194,25 +153,25 @@
       background-size: 110%;
       font-family: "Oswald", sans-serif;
   }
-  .five:hover, .four:hover, .three:hover, .two:hover, .one:hover {
+  .four:hover, .three:hover, .two:hover {
       background-position: 0% 30%;
   }
-  .five:hover:after, .four:hover:after, .three:hover:after, .two:hover:after, .one:hover:after {
+  .four:hover:after, .three:hover:after, .two:hover:after {
       right: -40px;
       transition: right 0.4s, transform 30s 0.2s linear;
   }
-  .five:before, .four:before, .three:before, .two:before, .one:before, .five:after, .four:after, .three:after, .two:after, .one:after {
+  .four:before, .three:before, .two:before, .four:after, .three:after, .two:after {
       font-family: FontAwesome;
       display: block;
       position: absolute;
   }
-  .five:before, .four:before, .three:before, .two:before, .one:before {
+  .four:before, .three:before, .two:before {
       transition: all 1s;
       font-size: 30px;
       left: 25px;
       top: 19px;
   }
-  .five:after, .four:after, .three:after, .two:after, .one:after {
+  .four:after, .three:after, .two:after {
       transition: right 0.4s, transform 0.2s;
       font-size: 100px;
       opacity: 0.3;

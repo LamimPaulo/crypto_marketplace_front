@@ -121,7 +121,7 @@
 
 <style scoped>
 
-  .five, .four, .three, .two, .one {
+  .three, .two {
       border: none;
       border-radius: 4px;
       text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.48);
@@ -138,25 +138,25 @@
       background-size: 110%;
       font-family: "Oswald", sans-serif;
   }
-  .five:hover, .four:hover, .three:hover, .two:hover, .one:hover {
+  .three:hover, .two:hover {
       background-position: 0% 30%;
   }
-  .five:hover:after, .four:hover:after, .three:hover:after, .two:hover:after, .one:hover:after {
+  .three:hover:after, .two:hover:after {
       right: -40px;
       transition: right 0.4s, transform 30s 0.2s linear;
   }
-  .five:before, .four:before, .three:before, .two:before, .one:before, .five:after, .four:after, .three:after, .two:after, .one:after {
+  .three:before, .two:before, .three:after, .two:after {
       font-family: FontAwesome;
       display: block;
       position: absolute;
   }
-  .five:before, .four:before, .three:before, .two:before, .one:before {
+  .three:before, .two:before {
       transition: all 1s;
       font-size: 30px;
       left: 25px;
       top: 19px;
   }
-  .five:after, .four:after, .three:after, .two:after, .one:after {
+  .three:after, .two:after {
       transition: right 0.4s, transform 0.2s;
       font-size: 100px;
       opacity: 0.3;
@@ -201,27 +201,6 @@
   }
   .three b {
       color: #63FFAC;
-      font-weight: 700;
-  }
-
-  .four {
-      box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.16) inset, 0px 0px 10px 0px #33E7EA;
-      background-image: linear-gradient(to bottom, #33E7EA, rgba(161, 245, 245, 0.24)), url("https://cdn2.itpro.co.uk/sites/itpro/files/server_room.jpg");
-  }
-  .four:hover {
-      box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.16) inset, 0px 0px 30px 0px #33E7EA;
-  }
-  .four:hover:after {
-      transform: rotate(3000deg);
-  }
-  .four:hover:before {
-      transform: rotate(360deg);
-  }
-  .four:after, .four:before {
-      font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f1d8";
-  }
-  .four b {
-      color: #1CF4FF;
       font-weight: 700;
   }
 </style>
