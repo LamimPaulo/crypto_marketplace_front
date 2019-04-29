@@ -36,7 +36,7 @@
         <li>
             <a href="/levels">
                 <div class="icon-w"><img  :src="require(`@/assets/img/svg_icons/icons8-coins-40.png`)" width="30px" alt=""></div>
-                <span>Níveis</span>
+                <span>Keycodes</span>
             </a>
         </li>
         <li>

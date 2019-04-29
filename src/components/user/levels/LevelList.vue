@@ -21,7 +21,7 @@
 
                             <div class="section-heading centered">
                                 <h3>
-                                    Níveis de Usuário
+                                    Compra de Key Code
                                 </h3>
                             </div>
                             <div class="pricing-plans row no-gutters">
