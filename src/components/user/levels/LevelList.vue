@@ -38,10 +38,10 @@
                                             </li>
 
                                             <li :class="'li-level-' + level.id">
-                                                {{ level.btcDiary}} BTC/dia
+                                                {{ level.btcDiary}} BTC
                                             </li>
                                             <li :class="'li-level-' + level.id">
-                                                {{ level.brlDiary}} /dia
+                                                R$ {{ level.brlDiary}}
                                             </li>
                                             <li :class="'li-level-' + level.id">
                                                 {{ level.transactionAuto}} BTC/auto
