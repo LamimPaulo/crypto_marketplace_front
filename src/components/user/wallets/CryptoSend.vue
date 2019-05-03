@@ -1,5 +1,5 @@
 <template>
-  <div class="element-wrapper mb-0 pb-0">
+  <div class="element-wrapper mb-0 pb-0" v-if="abbr!='LQX'">
     <div class="loader" v-if="loader"></div>
     <div class="element-box">
 
