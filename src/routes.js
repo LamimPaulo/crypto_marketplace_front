@@ -59,6 +59,12 @@ const routes = [
 		meta: {requiresVisitor: true}
 	},
 	{
+		path: '/signup',
+		name: 'signup',
+		component: Register,
+		meta: {requiresVisitor: true}
+	},
+	{
 		path: '/register/verify',
 		name: 'register-verify',
 		component: VerifyEmail,
