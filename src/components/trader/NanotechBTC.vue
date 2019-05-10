@@ -11,7 +11,7 @@
                     </a>
                 </div>
                 <h6 class="element-header mb-0">
-                    Nanotech {{ investment_data.coin }}
+                    {{ investment_data.name }}
                 </h6>
 
                 <div class="element-box-tp mb-2">
@@ -368,6 +368,7 @@
 					user_profit: 0,
 					total_user_investment: 0,
 					coin: 'BTC',
+					name: 'Nanotech',
                     chart: []
 				},
 				token: {
@@ -404,6 +405,7 @@
 				this.loader = true
 				this.$store.dispatch('retrieveInvestmentData', 2)
 					.then(response => {
+						this.investment_data.name = response.data.name
 						this.investment_data.average_profits.base = response.data.average_profits.base
 						this.investment_data.average_profits.current_month = response.data.average_profits.current_month
 						this.investment_data.average_profits.current_day = response.data.average_profits.current_day

@@ -48,7 +48,7 @@
                                             </li>
 
                                             <li :class="'li-level-' + level.id" v-if="user.user_level_id < level.id"
-                                            v-tooltip.top="'O valor de desconto é calculado em cima do valor pago pelo seu Keycode atual.'">
+                                                v-tooltip.top="'O valor de desconto é calculado em cima do valor pago pelo seu Keycode atual.'">
                                                 Bônus de Desc. {{ user.level.product.bonus_percent }}%
                                             </li>
 
@@ -74,17 +74,17 @@
                                                     parseFloat(user.level.product.bonus_percent) / 100) |
                                                     fixValue}}LQX</a>
 
-                                                <br>
-                                                ou
-                                                <br>
-                                                <br>
-                                                De:
-                                                <span class="price-crossed">
-                                                 {{ level.product.brlValue }} <br>
-                                            </span>
+                                                <span v-if="level.type===1">
+                                                    <br> ou <br><br>
+                                                    De:
+                                                    <span class="price-crossed">
+                                                     {{ level.product.brlValue }} <br>
+                                                    </span>
+                                                </span>
 
                                                 <!--BRL-->
                                                 <a class="btn btn-block btn-outline-secondary"
+                                                    v-if="level.type===1"
                                                    @click.prevent="showTokenPinModal('buyLevelBrl', action, level.id)"
                                                    href="#">Por: R$ {{ parseFloat(level.product.value) -
                                                     (parseFloat(user.level.product.value) *
@@ -251,91 +251,109 @@
         color: #fff;
     }
 
-    .level-2 {
+    .level-2, .level-8 {
         color: #94d1e4;
     }
 
-    .bt-level-2 {
+    .bt-level-2,
+    .bt-level-8 {
         border-top: 5px solid #94d1e4;
     }
 
-    .pricing-plan .plan-description ul .li-level-2:before {
+    .pricing-plan .plan-description ul .li-level-2:before,
+    .pricing-plan .plan-description ul .li-level-8:before {
         color: #94d1e4;
     }
 
-    .btn-level-2 {
+    .btn-level-2,
+    .btn-level-8 {
         color: #fff;
         background-color: #94d1e4;
         border-color: #94d1e4;
     }
 
-    .level-3 {
+    .level-3,
+    .level-9 {
         color: #4eb3d3;
     }
 
-    .bt-level-3 {
+    .bt-level-3,
+    .bt-level-9 {
         border-top: 5px solid #4eb3d3;
     }
 
-    .pricing-plan .plan-description ul .li-level-3:before {
+    .pricing-plan .plan-description ul .li-level-3:before,
+    .pricing-plan .plan-description ul .li-level-9:before {
         color: #4eb3d3;
     }
 
-    .btn-level-3 {
+    .btn-level-9 {
         color: #fff;
         background-color: #4eb3d3;
         border-color: #4eb3d3;
     }
 
-    .level-4 {
+    .level-4,
+    .level-10 {
         color: #2b8cbe;
     }
 
-    .bt-level-4 {
+    .bt-level-4,
+    .bt-level-10 {
         border-top: 5px solid #2b8cbe;
     }
 
-    .pricing-plan .plan-description ul .li-level-4:before {
+    .pricing-plan .plan-description ul .li-level-4:before,
+    .pricing-plan .plan-description ul .li-level-10:before {
         color: #2b8cbe;
     }
 
-    .btn-level-4 {
+    .btn-level-4,
+    .btn-level-10 {
         color: #fff;
         background-color: #2b8cbe;
         border-color: #2b8cbe;
     }
 
-    .level-5 {
+    .level-5,
+    .level-11 {
         color: #ffbd1b;
     }
 
-    .bt-level-5 {
+    .bt-level-5,
+    .bt-level-11 {
         border-top: 5px solid #ffbd1b;
     }
 
-    .pricing-plan .plan-description ul .li-level-5:before {
+    .pricing-plan .plan-description ul .li-level-5:before,
+    .pricing-plan .plan-description ul .li-level-11:before {
         color: #ffbd1b;
     }
 
-    .btn-level-5 {
+    .btn-level-5,
+    .btn-level-11 {
         color: #fff;
         background-color: #ffbd1b;
         border-color: #ffbd1b;
     }
 
-    .level-6 {
+    .level-6,
+    .level-12 {
         color: #5cd150;
     }
 
-    .bt-level-6 {
+    .bt-level-6,
+    .bt-level-12 {
         border-top: 5px solid #5cd150;
     }
 
-    .pricing-plan .plan-description ul .li-level-6:before {
+    .pricing-plan .plan-description ul .li-level-6:before,
+    .pricing-plan .plan-description ul .li-level-12:before {
         color: #5cd150;
     }
 
-    .btn-level-6 {
+    .btn-level-6,
+    .btn-level-12 {
         color: #fff;
         background-color: #5cd150;
         border-color: #5cd150;
