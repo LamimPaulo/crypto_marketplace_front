@@ -24,8 +24,10 @@
                                     Compra de Key Code
                                 </h3>
                             </div>
-                            <div class="pricing-plans row no-gutters">
-                                <div class="pricing-plan col-sm-3 with-hover-effect" v-if="level.id > 1" v-for="level in levels">
+                            <div class="pricing-plans row no-gutters justify-content-center">
+                                <div class="pricing-plan col-sm-6 col-md-4 col-lg-3  with-hover-effect"
+                                     v-if="(user.user_level_id - 1) < level.id && level.id!== 1 "
+                                     v-for="level in levels">
                                     <div :class="'plan-head bt-level-' + level.id">
                                         <div :class="'plan-name level-' + level.id">
                                             {{ level.name }}
@@ -38,33 +40,76 @@
                                             </li>
 
                                             <li :class="'li-level-' + level.id">
-                                                {{ level.btcDiary}} BTC
+                                                {{ level.btcDiary}} Envio Crypto
                                             </li>
-                                            <li :class="'li-level-' + level.id">
-                                                R$ {{ level.brlDiary}}
+
+                                            <li :class="'li-level-' + level.id" v-if="level.type===1">
+                                                {{ level.brlDiary}} Saque
                                             </li>
-                                            <li :class="'li-level-' + level.id">
-                                                {{ level.transactionAuto}} BTC/auto
+
+                                            <li :class="'li-level-' + level.id" v-if="user.user_level_id < level.id"
+                                            v-tooltip.top="'O valor de desconto é calculado em cima do valor pago pelo seu Keycode atual.'">
+                                                Bônus de Desc. {{ user.level.product.bonus_percent }}%
                                             </li>
-                                            <li :class="'li-level-' + level.id">
-                                                {{ level.brokeragePercent}}% de Corretagem
+
+                                            <li :class="'li-level-' + level.id" v-else>
+                                                Seu Nível Atual
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="plan-body pb-4">
+                                    <div class="plan-body pb-2 pt-4">
 
                                         <div class="plan-btn-w px-3" v-if="user.user_level_id < level.id">
-                                            <a class="btn btn-primary btn-block"
-                                               @click.prevent="showTokenPinModal('buyLevelLqx', action, level.id)"
-                                               href="#">{{ level.product.lqxValue }}LQX</a>
+                                            <div v-if="user.level.product.bonus_percent>0">
+                                                <!--BRL-->
+                                                De:
+                                                <span class="price-crossed">
+                                                 {{ level.product.lqxValue }}LQX <br>
+                                                </span>
 
-                                            <a :class="'btn btn-block py-3 btn-' + level.name"
-                                               @click.prevent="showTokenPinModal('buyLevelBrl', action, level.id)"
-                                               href="#">{{ level.product.brlValue }}</a>
+                                                <a :class="'btn btn-block btn-level-' + level.id"
+                                                   @click.prevent="showTokenPinModal('buyLevelLqx', action, level.id)"
+                                                   href="#">Por: {{ parseFloat(level.product.lqxValue) -
+                                                    (parseFloat(user.level.product.lqxValue) *
+                                                    parseFloat(user.level.product.bonus_percent) / 100) |
+                                                    fixValue}}LQX</a>
+
+                                                <br>
+                                                ou
+                                                <br>
+                                                <br>
+                                                De:
+                                                <span class="price-crossed">
+                                                 {{ level.product.brlValue }} <br>
+                                            </span>
+
+                                                <!--BRL-->
+                                                <a class="btn btn-block btn-outline-secondary"
+                                                   @click.prevent="showTokenPinModal('buyLevelBrl', action, level.id)"
+                                                   href="#">Por: R$ {{ parseFloat(level.product.value) -
+                                                    (parseFloat(user.level.product.value) *
+                                                    parseFloat(user.level.product.bonus_percent) / 100) | currency}}</a>
+
+
+                                            </div>
+
+                                            <div v-else>
+                                                <a :class="'btn btn-block btn-level-' + level.id"
+                                                   @click.prevent="showTokenPinModal('buyLevelLqx', action, level.id)"
+                                                   href="#">{{ level.product.lqxValue }}LQX</a>
+
+                                                <a class="btn btn-block btn-outline-secondary"
+                                                   @click.prevent="showTokenPinModal('buyLevelBrl', action, level.id)"
+                                                   href="#">{{ level.product.brlValue }}</a>
+                                            </div>
+
+
                                         </div>
 
-                                        <div class="plan-btn-w px-3 mb-4" v-else>
-                                            <a class="btn btn-outline-secondary btn-block" href="#">Já Adquirido</a>
+                                        <div class="plan-btn-w px-5 mb-5 mt-5" v-else>
+                                            <br>
+                                            <a class="btn btn-grey btn-block" href="#">Já Adquirido</a>
+                                            <br>
                                         </div>
 
                                     </div>
@@ -95,13 +140,13 @@
 			return {
 				levels: [],
 				loader: true,
-                isTokenPinVisible: false,
+				isTokenPinVisible: false,
 				token: {
 					code: null,
 					pin: null
 				},
-                action: 11,
-                level: null
+				action: 11,
+				level: null
 			}
 		},
 		methods: {
@@ -124,15 +169,15 @@
 				this.$store.dispatch('buyLevel', {
 					level_id: this.level,
 					abbr: "LQX",
-                    action: this.action,
+					action: this.action,
 					code: this.token.code,
 					pin: this.token.pin,
 				})
 					.then(response => {
 						this.loader = false
 						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
-                        this.$store.dispatch('retrieveUser')
-                        this.retrieveLevels()
+						this.$store.dispatch('retrieveUser')
+						this.retrieveLevels()
 					})
 					.catch(error => {
 						this.loader = false
@@ -141,20 +186,20 @@
 						}
 					})
 			},
-            buyLevelBrl() {
+			buyLevelBrl() {
 				this.loader = true
 				this.$store.dispatch('buyLevel', {
 					level_id: this.level,
 					abbr: "BRL",
-                    action: this.action,
+					action: this.action,
 					code: this.token.code,
 					pin: this.token.pin,
 				})
 					.then(response => {
 						this.loader = false
 						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
-                        this.$store.dispatch('retrieveUser')
-                        this.retrieveLevels()
+						this.$store.dispatch('retrieveUser')
+						this.retrieveLevels()
 					})
 					.catch(error => {
 						this.loader = false
@@ -163,7 +208,7 @@
 						}
 					})
 			},
-            showTokenPinModal(method, action, level) {
+			showTokenPinModal(method, action, level) {
 				this.level = level;
 				this.isTokenPinVisible = true
 				this.$refs.tokenPinComponent.setData(method, action)
@@ -175,13 +220,13 @@
 				this.token.code = data.code
 				this.token.pin = data.pin
 
-                if(data.method==='buyLevelLqx'){
-                	this.buyLevelLqx()
-                }
+				if (data.method === 'buyLevelLqx') {
+					this.buyLevelLqx()
+				}
 
-                if(data.method==='buyLevelBrl'){
-                	this.buyLevelBrl()
-                }
+				if (data.method === 'buyLevelBrl') {
+					this.buyLevelBrl()
+				}
 			},
 		},
 		mounted() {
@@ -196,7 +241,7 @@
 			TopMenu,
 			TopMenuUser,
 			Footer,
-            TokenPin
+			TokenPin
 		}
 	}
 </script>
@@ -205,60 +250,98 @@
     .alert {
         color: #fff;
     }
+
     .level-2 {
         color: #94d1e4;
     }
+
     .bt-level-2 {
         border-top: 5px solid #94d1e4;
     }
+
     .pricing-plan .plan-description ul .li-level-2:before {
         color: #94d1e4;
     }
+
     .btn-level-2 {
         color: #fff;
         background-color: #94d1e4;
         border-color: #94d1e4;
     }
+
     .level-3 {
         color: #4eb3d3;
     }
+
     .bt-level-3 {
         border-top: 5px solid #4eb3d3;
     }
+
     .pricing-plan .plan-description ul .li-level-3:before {
         color: #4eb3d3;
     }
+
     .btn-level-3 {
         color: #fff;
         background-color: #4eb3d3;
         border-color: #4eb3d3;
     }
+
     .level-4 {
         color: #2b8cbe;
     }
+
     .bt-level-4 {
         border-top: 5px solid #2b8cbe;
     }
+
     .pricing-plan .plan-description ul .li-level-4:before {
         color: #2b8cbe;
     }
-    .btn-level-4{
+
+    .btn-level-4 {
         color: #fff;
         background-color: #2b8cbe;
         border-color: #2b8cbe;
     }
+
     .level-5 {
         color: #ffbd1b;
     }
+
     .bt-level-5 {
         border-top: 5px solid #ffbd1b;
     }
+
     .pricing-plan .plan-description ul .li-level-5:before {
         color: #ffbd1b;
     }
-    .btn-level-5  {
+
+    .btn-level-5 {
         color: #fff;
         background-color: #ffbd1b;
         border-color: #ffbd1b;
+    }
+
+    .level-6 {
+        color: #5cd150;
+    }
+
+    .bt-level-6 {
+        border-top: 5px solid #5cd150;
+    }
+
+    .pricing-plan .plan-description ul .li-level-6:before {
+        color: #5cd150;
+    }
+
+    .btn-level-6 {
+        color: #fff;
+        background-color: #5cd150;
+        border-color: #5cd150;
+    }
+
+    .price-crossed {
+        text-decoration: line-through;
     }
 </style>
