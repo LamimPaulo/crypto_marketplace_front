@@ -220,6 +220,7 @@
 			showLevelDetailsModal(level, buyType) {
 				this.level_popup = level
 				this.level_popup.buyType = buyType
+                this.isModalVisible = true
 			},
 			retrieveLevels() {
 				this.loader = true
