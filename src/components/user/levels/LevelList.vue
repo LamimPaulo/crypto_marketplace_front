@@ -68,7 +68,7 @@
                                                 </span>
 
                                                 <a :class="'btn btn-block btn-level-' + level.id"
-                                                   @click.prevent="showTokenPinModal('buyLevelLqx', action, level.id)"
+                                                   @click.prevent="showLevelDetailsModal(level, 'buyLevelLqx')"
                                                    href="#">Por: {{ parseFloat(level.product.lqxValue) -
                                                     (parseFloat(user.level.product.lqxValue) *
                                                     parseFloat(user.level.product.bonus_percent) / 100) |
@@ -84,8 +84,8 @@
 
                                                 <!--BRL-->
                                                 <a class="btn btn-block btn-outline-secondary"
-                                                    v-if="level.type===1"
-                                                   @click.prevent="showTokenPinModal('buyLevelBrl', action, level.id)"
+                                                   v-if="level.type===1"
+                                                   @click.prevent="showLevelDetailsModal(level, 'buyLevelBrl')"
                                                    href="#">Por: R$ {{ parseFloat(level.product.value) -
                                                     (parseFloat(user.level.product.value) *
                                                     parseFloat(user.level.product.bonus_percent) / 100) | currency}}</a>
@@ -95,11 +95,11 @@
 
                                             <div v-else>
                                                 <a :class="'btn btn-block btn-level-' + level.id"
-                                                   @click.prevent="showTokenPinModal('buyLevelLqx', action, level.id)"
+                                                   @click.prevent="showLevelDetailsModal(level, 'buyLevelLqx')"
                                                    href="#">{{ level.product.lqxValue }}LQX</a>
 
                                                 <a class="btn btn-block btn-outline-secondary"
-                                                   @click.prevent="showTokenPinModal('buyLevelBrl', action, level.id)"
+                                                   @click.prevent="showLevelDetailsModal(level, 'buyLevelBrl')"
                                                    href="#">{{ level.product.brlValue }}</a>
                                             </div>
 
@@ -122,6 +122,66 @@
             </div>
         </div>
         <Footer></Footer>
+
+        <modal v-if="isModalVisible&&level_popup">
+            <template slot="header">
+                <h6 class="pull-left ml-3 mt-2">
+                    Atenção: regras para este Keycode
+                </h6>
+                <button class="btn btn-grey pull-right mt-3 mr-3 mb-3" type="button" @click="closeThisModal">
+                    <i class="os-icon os-icon-close"></i>
+                </button>
+            </template>
+
+            <template slot="body">
+                <div class="py-0 px-5 text-center">
+                    <h4 v-if="level_popup.buyType==='buyLevelLqx'" class="text-success font-5">
+                        Valor do Keycode: {{ parseFloat(level_popup.product.lqxValue) -
+                                                    (parseFloat(user.level.product.lqxValue) *
+                                                    parseFloat(user.level.product.bonus_percent) / 100) |
+                                                    fixValue }} LQX</h4>
+
+                    <h4 v-else> Valor do Keycode: R$ {{ parseFloat(level_popup.product.value) -
+                                                    (parseFloat(user.level.product.value) *
+                                                    parseFloat(user.level.product.bonus_percent) / 100) | currency}}</h4>
+
+                    <p> - Depósitos e documentos: 48 horas úteis</p>
+                    <p> - Envio de Criptomoedas: <span v-if="level_popup.limit_btc_diary>0">SIM</span> <span v-else>NÃO</span></p>
+                    <p> - Limite de saque por retirada: {{level_popup.brlDiary }}</p>
+                    <p> - Limite de envio de Criptomoeda: {{level_popup.btcDiary }}</p>
+
+                    <p> - Taxa de corretagem Nanotech BTC: {{level_popup.nanotechBtcPercent }}%</p>
+                    <p> - Taxa de corretagem Nanotech LQX: {{level_popup.nanotechLqxPercent }}%</p>
+                    <p> - Taxa de corretagem Masternode: {{level_popup.masternodePercent }}%</p>
+
+                    <p v-if="level_popup.type===2"> - Saque em Moeda Fiat:
+                        <span v-if="level_popup.id!==1&&level_popup.id!==7">SIM</span>
+                        <span v-else>NÃO</span>
+                    </p>
+
+                    <p> - Taxa de envio de Criptomoeda: {{level_popup.tax_crypto[0].value | roundValue}} %</p>
+                    <p v-if="level_popup.type===2"> - Taxa por operação: R$ {{ level_popup.tax_brl[0].value | currency}}</p>
+
+                    <p> - Valor mínimo para retirada e deposito: R$ {{ level_popup.minWithdrawal }}</p>
+                    <p> - Envio mínimo de Criptomoeda (se disponível): {{level_popup.minCryptoSubmission }}</p>
+                    <p> - Bônus para Upgrade: {{ user.level.product.bonus_percent }}%</p>
+
+                    <p> Para mais informações, use nosso suporte via chat.</p>
+
+                    <h3 class="text-primary">Este Keycode atende às suas necessidades?</h3>
+                </div>
+            </template>
+
+            <template slot="footer">
+                <div class="row justify-content-center" style="width: 100%">
+                    <button class="btn btn-lg btn-danger pull-left" @click.prevent="closeThisModal">Cancelar</button>
+                    <button class="btn btn-lg btn-success pull-right"
+                            @click.prevent="showTokenPinModal(level_popup.buyType, action, level_popup.id)">Contratar
+                    </button>
+                </div>
+            </template>
+        </modal>
+
         <token-pin v-show="isTokenPinVisible" ref="tokenPinComponent"
                    @close-token-pin-modal="closeTokenPinModal" @token-data="handleTokenPinData"/>
     </div>
@@ -133,14 +193,17 @@
 	import TopMenuUser from './../../menu/TopMenuUser';
 	import Footer from './../../layouts/Footer';
 	import TokenPin from '../../verifications/TokenPin'
+	import Modal from '../../layouts/Modal'
 
 	export default {
 		name: "LevelList",
 		data() {
 			return {
 				levels: [],
+				level_popup: null,
 				loader: true,
 				isTokenPinVisible: false,
+				isModalVisible: false,
 				token: {
 					code: null,
 					pin: null
@@ -150,6 +213,14 @@
 			}
 		},
 		methods: {
+			closeThisModal() {
+				this.level_popup = null
+                this.isModalVisible = false
+			},
+			showLevelDetailsModal(level, buyType) {
+				this.level_popup = level
+				this.level_popup.buyType = buyType
+			},
 			retrieveLevels() {
 				this.loader = true
 				this.$store.dispatch('retrieveLevels')
@@ -166,6 +237,7 @@
 			},
 			buyLevelLqx() {
 				this.loader = true
+                this.isModalVisible = false
 				this.$store.dispatch('buyLevel', {
 					level_id: this.level,
 					abbr: "LQX",
@@ -177,7 +249,7 @@
 						this.loader = false
 						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
 						this.$store.dispatch('retrieveUser')
-						this.retrieveLevels()
+						this.refresh()
 					})
 					.catch(error => {
 						this.loader = false
@@ -188,6 +260,7 @@
 			},
 			buyLevelBrl() {
 				this.loader = true
+                this.isModalVisible = false
 				this.$store.dispatch('buyLevel', {
 					level_id: this.level,
 					abbr: "BRL",
@@ -199,7 +272,7 @@
 						this.loader = false
 						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
 						this.$store.dispatch('retrieveUser')
-						this.retrieveLevels()
+						this.refresh()
 					})
 					.catch(error => {
 						this.loader = false
@@ -208,9 +281,15 @@
 						}
 					})
 			},
+            refresh(){
+				setTimeout(function () {
+					location.reload()
+				}, 2000)
+            },
 			showTokenPinModal(method, action, level) {
 				this.level = level;
 				this.isTokenPinVisible = true
+                this.isModalVisible = false
 				this.$refs.tokenPinComponent.setData(method, action)
 			},
 			closeTokenPinModal() {
@@ -241,7 +320,8 @@
 			TopMenu,
 			TopMenuUser,
 			Footer,
-			TokenPin
+			TokenPin,
+			Modal
 		}
 	}
 </script>
@@ -287,6 +367,7 @@
         color: #4eb3d3;
     }
 
+    .btn-level-3,
     .btn-level-9 {
         color: #fff;
         background-color: #4eb3d3;
