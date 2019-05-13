@@ -33,16 +33,17 @@
                 </div>
             </div>
 
-            <form @submit.prevent="sendDraft" v-if="user.user_level_id>1 && user.timezoneSettings.withdrawal_day && user.timezoneSettings.withdrawal_time">
+            <form @submit.prevent="sendDraft"
+                  v-if="user.user_level_id>1 && user.timezoneSettings.withdrawal_day && user.timezoneSettings.withdrawal_time">
 
 
                 <div class="row">
-                    <div class="col-sm-6 col-md-8 col-lg-8">
+                    <div class="col-12">
                         <div class="row">
                             <div class="col-12">
                                 <label> Selecione a conta de destino:</label>
                             </div>
-                            <div class="col-sm-12 col-md-12 col-lg-6" v-for="account in accounts">
+                            <div class="col-sm-12 col-md-4 col-lg-4" v-for="account in accounts">
                                 <div class="profile-tile">
                                     <div class="profile-tile-meta">
                                         <ul>
@@ -81,43 +82,61 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-4 col-lg-4" v-if="draft.user_account_id">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label> Quanto quer sacar?</label>
 
-                                <vue-numeric class="form-control" v-if="user.country_id===31" placeholder="Valor"
-                                             :min="0" :max="wallet.balance" :minus="false" :precision="2"
-                                             @input="retrieveDraftTax" v-model="draft.amount" currency="R$"
-                                             decimal-separator=","
-                                             thousand-separator="."></vue-numeric>
+                    <div class="col-sm-12 col-md-12 col-lg-12" v-if="draft.user_account_id">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group">
+                                    <label> Quanto quer sacar?</label>
 
-                                <vue-numeric class="form-control" v-else placeholder="Value"
-                                             :min="0" :max="wallet.balance" :minus="false" :precision="2"
-                                             @input="retrieveDraftTax" v-model="draft.amount" currency="$"
-                                             decimal-separator="."
-                                             thousand-separator=","></vue-numeric>
+                                    <vue-numeric class="form-control" v-if="user.country_id===31" placeholder="Valor"
+                                                 :min="0" :max="wallet.balance" :minus="false" :precision="2"
+                                                 v-model="draft.amount" currency="R$"
+                                                 @blur="calcWithdrawalTax"
+                                                 decimal-separator=","
+                                                 thousand-separator="."></vue-numeric>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>Prazo de Pagamento</label>
+                                    <select class="form-control" v-model="draft.tax_id" @change="calcWithdrawalTax">
+                                        <option value="0">Selecione o prazo</option>
+                                        <option :value="tax.id" v-for="tax in taxes">{{ tax.deadline + ' dias / ' +
+                                            tax.tax
+                                            + '%'}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Pagamento em: </label>
+                                    <input class="form-control" v-model="draft.deadline" readonly type="text">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <span>Taxa: </span>
-                                <input class="form-control" v-model="draft.fee" disabled type="text">
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <span>Ted: </span>
-                                <input class="form-control" v-model="draft.tax" disabled type="text">
+
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group">
+                                    <label>Taxa: </label>
+                                    <input class="form-control" v-model="draft.tax" readonly type="text">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>TED: </label>
+                                    <input class="form-control" v-model="draft.ted" readonly type="text">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Total do Saque: </label>
+                                    <input class="form-control" v-model="draft.total" readonly type="text">
+                                </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
                 <div class="form-buttons-w text-right">
-          <span
-                  class="pull-left badge badge-primary p-2">Total da Transação: {{ draft.total }} {{wallet.coin.abbr}}</span>
-                    <button class="btn btn-primary" :disabled='!isFilled'
+                    <button class="btn btn-success" :disabled='!isFilled'
                             @click.prevent="showTokenPinModal('sendDraft', 1)"
                             type="button"> Solicitar
                     </button>
@@ -139,7 +158,6 @@
 	import VueNumeric from 'vue-numeric'
 	import TokenPin from './../../verifications/TokenPin'
 	import {mapGetters} from 'vuex'
-	import debounce from 'lodash/debounce'
 
 	Vue.use(VueNumeric)
 
@@ -151,12 +169,15 @@
 				accounts: {},
 				draft: {
 					amount: 0,
+					tax_id: 0,
 					tax: 0,
-					fee: 0,
+					ted: 0,
 					total: 0,
+					deadline: 0,
 					user_account_id: null,
 					action: 1
 				},
+				taxes: {},
 				token: {
 					code: null,
 					pin: null
@@ -180,7 +201,7 @@
 				'user'
 			]),
 			isFilled() {
-				return this.draft.user_account_id && this.draft.total;
+				return this.draft.user_account_id && this.draft.tax_id;
 			},
 		},
 		methods: {
@@ -188,6 +209,7 @@
 				this.$store.dispatch('sendDraft', {
 					user_account_id: this.draft.user_account_id,
 					amount: this.draft.amount,
+					tax_id: this.draft.tax_id,
 					code: this.token.code,
 					pin: this.token.pin,
 					action: this.draft.action
@@ -215,24 +237,37 @@
 
 					})
 			},
-			retrieveDraftTax: debounce(function (e) {
-				if (this.draft.amount > 0) {
-					this.$store.dispatch('retrieveDraftTax', {
-						user_account_id: this.draft.user_account_id,
-						amount: this.draft.amount,
-					})
+			retrieveWithdrawalTax() {
+				this.$store.dispatch('retrieveWithdrawalTax')
+					.then(response => {
+						this.taxes = response.data
+					}).catch(error => {
+					if (error.response) {
+						this.handleErrors(error.response)
+					}
+				})
+			},
+			calcWithdrawalTax() {
+				if (this.draft.amount > 0 && this.draft.tax_id > 0) {
+					this.$store.dispatch('calcWithdrawalTax', this.draft)
 						.then(response => {
-							this.draft.fee = response.data.fee
 							this.draft.tax = response.data.tax
+							this.draft.ted = response.data.ted
 							this.draft.total = response.data.total
+							this.draft.deadline = response.data.deadline
 						}).catch(error => {
 						if (error.response) {
 							this.handleErrors(error.response)
 						}
-
 					})
+				} else {
+					this.$toasted.show('preencha o valor solicitado', {
+						position: 'top-center',
+						type: "error"
+					}).goAway(3000)
+					this.draft.tax_id = 0
 				}
-			}, 500),
+			},
 			resetToken() {
 				this.token.code = null
 				this.token.pin = null
@@ -256,10 +291,13 @@
 				this.sendDraft()
 			},
 
-		},
+		}
+		,
 		mounted() {
 			this.retrieveAccounts()
-		},
+			this.retrieveWithdrawalTax()
+		}
+		,
 
 		components: {
 			TokenPin,

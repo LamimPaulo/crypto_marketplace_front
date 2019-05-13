@@ -535,9 +535,20 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-		retrieveDraftTax(context, draft) {
+		retrieveWithdrawalTax() {
 			return new Promise((resolve, reject) => {
-				axios.post('/draft/tax', draft)
+				axios.get('/withdrawal/deadlines')
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		calcWithdrawalTax(context, withdrawal) {
+			return new Promise((resolve, reject) => {
+				axios.post('/withdrawal/calc', withdrawal)
 					.then(response => {
 						resolve(response)
 					})

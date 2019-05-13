@@ -2,8 +2,8 @@
     <div class="content-box">
         <div class="loader" v-if="loader"></div>
         <vue-headful title="Dados de Pagamento - Liquidex" description="Liquidex"/>
-        <div class="row" v-if="this.$store.state.user.country_id===31">
 
+        <div class="row" v-if="this.$store.state.user.country_id===31">
             <div class="col-sm-6">
                 <div class="element-wrapper">
                     <div class="element-box">
@@ -127,7 +127,8 @@
                 <payment-accounts-list refs="accountList"></payment-accounts-list>
             </div>
         </div>
-        <div class="row">
+
+        <div class="row" v-else>
             <div class="col-md-12 alert alert-info">
                 Your profile does not allow bank account registration.
             </div>
