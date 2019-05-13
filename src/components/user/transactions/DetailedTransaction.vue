@@ -114,7 +114,7 @@
           </tr>
           <tr>
             <td> Status</td>
-            <td> {{ transaction.statusName }}</td>
+            <td> {{ transaction.statusClient }}</td>
           </tr>
           <tr class="background-dark">
             <td> Tipo</td>

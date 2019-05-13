@@ -93,7 +93,7 @@
 
                 <div class="receipt__cart">
                     <div class="d-flex justify-content-end">
-                        <strong class="pr-1">Status:</strong> <span :class="'badge badge-' + transaction.statusClass">{{ transaction.statusName }}</span>
+                        <strong class="pr-1">Status:</strong> <span :class="'badge badge-' + transaction.statusClass">{{ transaction.statusClient }}</span>
                     </div>
 
 

@@ -98,7 +98,7 @@
                     <span v-if="transaction.type===2" class="badge badge-danger">{{ transaction.amountRounded }}</span>
 
                 </td>
-                <td class="text-center"> {{ transaction.statusName}}</td>
+                <td class="text-center"> {{ transaction.statusClient}}</td>
             </tr>
 
 
