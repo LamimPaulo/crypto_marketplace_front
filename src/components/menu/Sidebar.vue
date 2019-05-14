@@ -38,9 +38,13 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="">Quantidade</label>
-                                <input class="form-control" placeholder="Quantidade..." type="text"
-                                       v-if="conversor.base!==conversor.quote"
-                                       @input="retrieveConversion" v-model="conversor.amount">
+                                <vue-numeric class="form-control" placeholder="Quantidade..."
+                                         v-if="conversor.base!==conversor.quote"
+                                         @input="retrieveConversion" v-model="conversor.amount"
+                                         :min="0" :minus="false" :precision="5"
+                                         currency="" decimal-separator="."
+                                         thousand-separator=""></vue-numeric>
+
                             </div>
                         </div>
                         <div class="col-6">
@@ -279,6 +283,10 @@
 	import {mapGetters} from 'vuex'
 	import Pin from './../verifications/Pin'
 	import debounce from 'lodash/debounce'
+    import Vue from 'vue'
+    import VueNumeric from 'vue-numeric'
+
+    Vue.use(VueNumeric)
 
 	export default {
 		name: "Sidebar",
@@ -288,7 +296,7 @@
 				conversor: {
 					base: 'BTC',
 					quote: 'BRL',
-					amount: null,
+					amount: 0,
 					total: null,
 					message: false
 				},
@@ -327,8 +335,8 @@
 						}
 					})
 			},
-			retrieveConversion: debounce(function (e) {
-				if (e.target.value.length > 0) {
+			retrieveConversion: debounce(function () {
+				if (this.conversor.amount > 0) {
 					this.$store.dispatch('retrieveConversion', this.conversor)
 						.then(response => {
 							this.conversor.total = response.data.amount
@@ -421,11 +429,11 @@
 					})
 			},
 			conversorBaseChange() {
-				this.conversor.amount = null
+				this.conversor.amount = 0
 				this.conversor.total = null
 			},
 			conversorQuoteChange() {
-				this.conversor.amount = null
+				this.conversor.amount = 0
 				this.conversor.total = null
 			},
 			copyAddress() {
@@ -450,7 +458,8 @@
 			this.myCoinsList()
 		},
 		components: {
-			Pin
+			Pin,
+            VueNumeric
 		}
 	}
 </script>

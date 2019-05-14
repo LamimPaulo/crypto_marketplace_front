@@ -49,7 +49,7 @@
 
                                             <li :class="'li-level-' + level.id" v-if="user.user_level_id < level.id"
                                                 v-tooltip.top="'O valor de desconto é calculado em cima do valor pago pelo seu Keycode atual.'">
-                                                Bônus de Desc. {{ user.level.product.bonus_percent }}%
+                                                Bônus de Desc. {{ level.product.bonus_percent }}%
                                             </li>
 
                                             <li :class="'li-level-' + level.id" v-else>
@@ -71,7 +71,7 @@
                                                    @click.prevent="showLevelDetailsModal(level, 'buyLevelLqx')"
                                                    href="#">Por: {{ parseFloat(level.product.lqxValue) -
                                                     (parseFloat(user.level.product.lqxValue) *
-                                                    parseFloat(user.level.product.bonus_percent) / 100) |
+                                                    parseFloat(level.product.bonus_percent) / 100) |
                                                     fixValue}}LQX</a>
 
                                                 <span v-if="level.type===1">
@@ -88,7 +88,7 @@
                                                    @click.prevent="showLevelDetailsModal(level, 'buyLevelBrl')"
                                                    href="#">Por: R$ {{ parseFloat(level.product.value) -
                                                     (parseFloat(user.level.product.value) *
-                                                    parseFloat(user.level.product.bonus_percent) / 100) | currency}}</a>
+                                                    parseFloat(level.product.bonus_percent) / 100) | currency}}</a>
 
 
                                             </div>
@@ -138,12 +138,12 @@
                     <h4 v-if="level_popup.buyType==='buyLevelLqx'" class="text-success font-5">
                         Valor do Keycode: {{ parseFloat(level_popup.product.lqxValue) -
                                                     (parseFloat(user.level.product.lqxValue) *
-                                                    parseFloat(user.level.product.bonus_percent) / 100) |
+                                                    parseFloat(level.product.bonus_percent) / 100) |
                                                     fixValue }} LQX</h4>
 
                     <h4 v-else> Valor do Keycode: R$ {{ parseFloat(level_popup.product.value) -
                                                     (parseFloat(user.level.product.value) *
-                                                    parseFloat(user.level.product.bonus_percent) / 100) | currency}}</h4>
+                                                    parseFloat(level_popup.product.bonus_percent) / 100) | currency}}</h4>
 
                     <p> - Depósitos e documentos: 48 horas úteis</p>
                     <p> - Envio de Criptomoedas: <span v-if="level_popup.limit_btc_diary>0">SIM</span> <span v-else>NÃO</span></p>
@@ -159,12 +159,15 @@
                         <span v-else>NÃO</span>
                     </p>
 
-                    <p> - Taxa de envio de Criptomoeda: {{level_popup.tax_crypto[0].value | roundValue}} %</p>
-                    <p v-if="level_popup.type===2"> - Taxa por operação: R$ {{ level_popup.tax_brl[0].value | currency}}</p>
+                    <p v-if="level_popup.tax_crypto[0]"> - Taxa de envio de Criptomoeda: {{level_popup.tax_crypto[0].value | roundValue}} %</p>
+                    <p v-else> - Taxa de envio de Criptomoeda: 0 %</p>
+
+                    <p v-if="level_popup.type===2&&level_popup.tax_brl[0]"> - Taxa por operação: R$ {{ level_popup.tax_brl[0].value | currency }}</p>
+                    <p v-else> - Taxa por operação: R$ 0,00</p>
 
                     <p> - Valor mínimo para retirada e deposito: R$ {{ level_popup.minWithdrawal }}</p>
                     <p> - Envio mínimo de Criptomoeda (se disponível): {{level_popup.minCryptoSubmission }}</p>
-                    <p> - Bônus para Upgrade: {{ user.level.product.bonus_percent }}%</p>
+                    <p> - Bônus para Upgrade: {{ level_popup.product.bonus_percent }}%</p>
 
                     <p> Para mais informações, use nosso suporte via chat.</p>
 

@@ -39,8 +39,11 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Quantidade</label>
-                                    <input class="form-control" placeholder="Quantidade..." type="text"
-                                           @input="retrieveBuyConversion" v-model="buyOrder.amount">
+                                    <vue-numeric class="form-control" placeholder="Quantidade..."
+                                         @input="retrieveBuyConversion" v-model="buyOrder.amount"
+                                         :min="0" :minus="false" :precision="5"
+                                         currency="" decimal-separator="."
+                                         thousand-separator=""></vue-numeric>
                                 </div>
                             </div>
                         </div>
@@ -91,8 +94,11 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Quantidade</label>
-                                    <input class="form-control" placeholder="Quantidade..." type="text"
-                                           @input="retrieveSellConversion" v-model="sellOrder.amount">
+                                    <vue-numeric class="form-control" placeholder="Quantidade..."
+                                         @input="retrieveSellConversion" v-model="sellOrder.amount"
+                                         :min="0" :minus="false" :precision="5"
+                                         currency="" decimal-separator="."
+                                         thousand-separator=""></vue-numeric>
                                 </div>
                             </div>
                         </div>
@@ -146,6 +152,11 @@
 	import {mapGetters} from 'vuex'
 	import Pin from './../../verifications/Pin'
 
+    import Vue from 'vue'
+    import VueNumeric from 'vue-numeric'
+
+    Vue.use(VueNumeric)
+
 	export default {
 		name: "OrderWindow",
 		props: ['coin'],
@@ -155,14 +166,14 @@
 				buyOrder: {
 					base: 'BTC',
 					quote: 'BRL',
-					amount: null,
+					amount: 0,
 					total: null,
 					message: false
 				},
 				sellOrder: {
 					base: 'BTC',
 					quote: 'BRL',
-					amount: null,
+					amount: 0,
 					total: null,
 					message: false
 				},
@@ -192,8 +203,8 @@
 						}
 					})
 			},
-			retrieveBuyConversion: debounce(function (e) {
-				if (e.target.value.length > 0) {
+			retrieveBuyConversion: debounce(function () {
+				if (this.buyOrder.amount > 0) {
 					this.$store.dispatch('retrieveBuyConversion', {
 						base: this.buyOrder.base,
 						amount: this.buyOrder.amount,
@@ -209,8 +220,8 @@
 						})
 				}
 			}, 500),
-			retrieveSellConversion: debounce(function (e) {
-				if (e.target.value.length > 0) {
+			retrieveSellConversion: debounce(function () {
+				if (this.sellOrder.amount > 0) {
 					this.$store.dispatch('retrieveConversion', {
 						base: this.sellOrder.base,
 						quote: this.sellOrder.quote,
@@ -340,7 +351,8 @@
 		},
 		components: {
 			Modal,
-			Pin
+			Pin,
+            VueNumeric
 		},
 		mounted() {
 			this.myCoinsList()
