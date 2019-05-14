@@ -100,8 +100,13 @@
         position: relative;
         padding: 20px 10px;
         color: #0a0b0b !important;
-        overflow: auto;
-        height: 80vh;
+        overflow-y: auto !important;
+        height: 60vh !important;
+    }
+
+    .modal-body{
+        overflow-y: auto !important;
+        height: 60vh !important;
     }
 
     .btn-close {
