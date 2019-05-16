@@ -100,16 +100,17 @@
                     <hr/>
 
                     <ul class="receipt__cart-list">
-                        <li class="receipt__cart-item">
+                        <li class="receipt__cart-item" v-if="transaction.fee">
                             <span class="receipt__item-name" v-if="transaction.category===2">Fee:</span>
+                            <span class="receipt__item-name" v-else-if="transaction.category===4">TED:</span>
                             <span class="receipt__item-name" v-else>Taxa:</span>
+
                             <span class="receipt__item-price" v-if="transaction.coin.is_crypto">{{ transaction.feeRounded }} {{transaction.coin.abbr}}</span>
                             <span class="receipt__item-price" v-else> {{transaction.coin.shortname}} {{ transaction.feeRounded }}</span>
                         </li>
 
-                        <li class="receipt__cart-item">
-                            <span class="receipt__item-name" v-if="transaction.category===4">TED:</span>
-                            <span class="receipt__item-name" v-else>Taxa:</span>
+                        <li class="receipt__cart-item" v-if="transaction.tax">
+                            <span class="receipt__item-name">Taxa:</span>
                             <span class="receipt__item-price" v-if="transaction.coin.is_crypto">{{ transaction.taxRounded }} {{transaction.coin.abbr}}</span>
                             <span class="receipt__item-price" v-else> {{transaction.coin.shortname}} {{ transaction.taxRounded }}</span>
                         </li>
@@ -128,6 +129,7 @@
                     </ul>
 
                     <hr/>
+                    <span class="receipt__date d-flex justify-content-center" v-if="transaction.info">{{transaction.info}}<br><br></span>
                     <span class="receipt__date d-flex justify-content-center"><strong class="pr-1">Transação efetuada em:</strong>{{transaction.dateLocal}}</span>
                 </div>
 
