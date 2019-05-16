@@ -49,7 +49,7 @@
         </div>
 
         <div class="form-buttons-w text-right mb-5">
-            <button :disabled='!isFilled' @click.prevent="showTokenPinModal('sendTransfer', 18)"
+            <button :disabled='!isFilled' @click.prevent="showTokenPinModal('sendTransfer', 19)"
                     class="btn btn-success" type="button"> Enviar
             </button>
         </div>
@@ -78,7 +78,7 @@
 				transfer: {
 					amount: 0,
 					toAddress: null,
-					action: 18
+					action: 19
 				},
 				token: {
 					code: null,
