@@ -47,7 +47,7 @@
                                     <div class="col-sm-4">
                                         <a class="btn btn-primary d-sm-inline-flex mb-1 btn-block p-4 f-1rem" href="#"
                                            @click="openSendWindow">
-                                            <i class="os-icon os-icon-arrow-up-right f-1rem"></i><span>Enviar</span>
+                                            <i class="os-icon os-icon-arrow-up-right f-1rem"></i><span>Enviar Credminer</span>
                                         </a>
                                     </div>
 
