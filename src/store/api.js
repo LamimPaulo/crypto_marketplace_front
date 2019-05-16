@@ -959,7 +959,7 @@ export const store = new Vuex.Store({
 		},
 		sendTransfer(context, transfer) {
 			return new Promise((resolve, reject) => {
-				axios.post('/transactions/transfer', transfer)
+				axios.post('/draft/credminer', transfer)
 					.then(response => {
 						resolve(response)
 					})

@@ -23,8 +23,7 @@
                                         </h5>
                                         <div class="element-inner-desc text-danger">
                                             Validações de documentos e cpf são necessárias para operações com moeda
-                                            Brasileira
-                                            (BRL)
+                                            Brasileira (BRL)
                                         </div>
                                     </div>
                                 </div>
