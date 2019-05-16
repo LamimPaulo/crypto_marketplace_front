@@ -100,16 +100,14 @@
                     <hr/>
 
                     <ul class="receipt__cart-list">
-                        <li class="receipt__cart-item" v-if="transaction.fee">
-                            <span class="receipt__item-name" v-if="transaction.category===2">Fee:</span>
-                            <span class="receipt__item-name" v-else-if="transaction.category===4">TED:</span>
-                            <span class="receipt__item-name" v-else>Taxa:</span>
-
+                        <li class="receipt__cart-item" v-if="transaction.fee>0">
+                            <span class="receipt__item-name" v-if="transaction.category===4">TED:</span>
+                            <span class="receipt__item-name" v-else>Fee:</span>
                             <span class="receipt__item-price" v-if="transaction.coin.is_crypto">{{ transaction.feeRounded }} {{transaction.coin.abbr}}</span>
                             <span class="receipt__item-price" v-else> {{transaction.coin.shortname}} {{ transaction.feeRounded }}</span>
                         </li>
 
-                        <li class="receipt__cart-item" v-if="transaction.tax">
+                        <li class="receipt__cart-item" v-if="transaction.tax>0">
                             <span class="receipt__item-name">Taxa:</span>
                             <span class="receipt__item-price" v-if="transaction.coin.is_crypto">{{ transaction.taxRounded }} {{transaction.coin.abbr}}</span>
                             <span class="receipt__item-price" v-else> {{transaction.coin.shortname}} {{ transaction.taxRounded }}</span>
