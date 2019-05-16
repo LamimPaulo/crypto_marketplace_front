@@ -24,32 +24,31 @@
                             <strong class="pr-2">Transação:</strong>
                             <!--transactions-->
                             <span v-if="transaction.category===1">
-                  {{ transaction.coin.abbr}} {{ transaction.type === 1 ? 'Recebido' : 'Enviado' }}
-                </span>
+                              {{ transaction.coin.abbr}} {{ transaction.type === 1 ? 'Recebido' : 'Enviado' }}
+                            </span>
+
                             <!--orders-->
                             <span v-if="transaction.category===2">
-                  {{ transaction.type === 1 ? 'Ordem de Compra' : 'Ordem de Venda' }}
-                </span>
+                              {{ transaction.type === 1 ? 'Ordem de Compra' : 'Ordem de Venda' }}
+                            </span>
+
                             <!--deposits-->
                             <div class="value" v-if="transaction.category===3">
                                 Depósito {{ transaction.coin.abbr}}
                             </div>
+
                             <!--drafts-->
                             <div class="value" v-if="transaction.category===4">
                                 Saque {{ transaction.coin.abbr}}
                             </div>
+
                             <!--conversions-->
                             <div class="value" v-if="transaction.category===6">
                                 Conversão {{ transaction.coin.abbr}}
                                 <i class="os-icon os-icon-arrow-down-left text-success" v-if="transaction.type===1"></i>
                                 <i class="os-icon os-icon-arrow-down-right text-danger" v-if="transaction.type===2"></i>
                             </div>
-                            <!--mining-->
-                            <div class="value" v-if="transaction.category===7">
-                                <span v-if="transaction.type===1">Lucro </span>
-                                <span v-if="transaction.type===2">Contratação </span>
-                                Mineração
-                            </div>
+
                             <!--transfer-->
                             <div class="value" v-if="transaction.category===8">
                                 Transferência
@@ -67,6 +66,10 @@
                                 <span v-if="transaction.type===1">Venda</span>
                                 <span v-if="transaction.type===2">Aquisição</span>
                                 Index Fund
+                            </div>
+                            <!--Envio Credminer-->
+                            <div class="value" v-if="transaction.category===18">
+                                Envio R$ Credminer
                             </div>
                         </div>
                         <div class="receipt__ref d-flex justify-content-end">
