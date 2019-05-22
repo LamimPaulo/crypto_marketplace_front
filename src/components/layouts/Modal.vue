@@ -101,12 +101,12 @@
         padding: 20px 10px;
         color: #0a0b0b !important;
         overflow-y: auto !important;
-        height: 60vh !important;
+        /*height: 60vh !important;*/
     }
 
     .modal-body{
         overflow-y: auto !important;
-        height: 60vh !important;
+        /*height: 60vh !important;*/
     }
 
     .btn-close {
