@@ -29462,7 +29462,7 @@ Contents:
   }
 
   .menu-mobile .menu-and-user {
-    display: block;
+    display: none;
   }
 
   .menu-mobile ul.sub-menu {
