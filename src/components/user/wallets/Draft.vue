@@ -27,14 +27,8 @@
                 </div>
             </div>
 
-            <div class="row alert alert-warning" v-if="user.user_level_id<=1">
-                <div class="col-sm-12">
-                    Seu nível de usuário não permite saques.
-                </div>
-            </div>
-
             <form @submit.prevent="sendDraft"
-                  v-if="user.user_level_id>1 && user.timezoneSettings.withdrawal_day && user.timezoneSettings.withdrawal_time">
+                  v-if="user.timezoneSettings.withdrawal_day && user.timezoneSettings.withdrawal_time">
 
 
                 <div class="row">
