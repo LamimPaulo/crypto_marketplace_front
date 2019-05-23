@@ -84,7 +84,7 @@
                                     <label> Quanto quer sacar?</label>
 
                                     <vue-numeric class="form-control" v-if="user.country_id===31" placeholder="Valor"
-                                                 :min="0" :max="wallet.balance" :minus="false" :precision="2"
+                                                 :min="0" :max="parseFloat(wallet.balance)" :minus="false" :precision="2"
                                                  v-model="draft.amount" currency="R$"
                                                  @blur="calcWithdrawalTax"
                                                  decimal-separator=","
