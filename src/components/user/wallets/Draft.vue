@@ -255,7 +255,7 @@
 						}
 					})
 				} else {
-					this.$toasted.show('preencha o valor solicitado', {
+					this.$toasted.show('preencha o valor e o prazo para completar a solicitação', {
 						position: 'top-center',
 						type: "error"
 					}).goAway(3000)
