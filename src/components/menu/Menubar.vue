@@ -81,8 +81,7 @@
         <!-------------------- END - Mobile Menu -------------------->
 
         <!-------------------- START - Main Menu -------------------->
-        <div
-                class="menu-w selected-menu-color-light menu-has-selected-link menu-activated-on-click color-scheme-light color-style-default sub-menu-color-light menu-position-side menu-side-left menu-layout-compact sub-menu-style-inside">
+        <div class="menu-w selected-menu-color-light menu-has-selected-link menu-activated-on-click color-scheme-light color-style-default sub-menu-color-light menu-position-side menu-side-left menu-layout-compact sub-menu-style-inside">
             <!-- <div class="logo-w">
               <a class="logo" href="/dashboard">
                 <img src="https://s3.amazonaws.com/navi-public/api/clients/3/cbed47c0-5323-4873-baf7-0284f80bbf0a.png" class="logo">

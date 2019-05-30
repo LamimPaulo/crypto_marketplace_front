@@ -28,7 +28,7 @@
 
                         </div>
 
-                        <div class="element-wrapper pb-4 mb-0">
+                        <div class="element-wrapper pb-4 mb-0" v-if="user.country_id===31">
                             <div class="element-box-tp">
 
                                 <div class="row">
@@ -77,6 +77,7 @@
 	import Draft from './Draft';
 	import FiatSend from './FiatSend';
 	import TransactionsListWallet from './../transactions/TransactionsListWallet';
+    import {mapGetters} from 'vuex'
 
 	export default {
 		name: "WalletFiat",
@@ -101,6 +102,11 @@
 				draftWindow: false,
 				sendWindow: false,
 			}
+		},
+        computed: {
+			...mapGetters([
+				'user'
+			]),
 		},
 		methods: {
 			openSendWindow() {

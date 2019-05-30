@@ -10,6 +10,10 @@
                                  @click="showModalOrder(coin, 'sell', 'BRL')">
                                 R$ {{ coin.quote[0].sell_quote | currency }}
                             </div>
+                            <div class="marketlastchange red" v-else
+                                 @click="showModalOrder(coin, 'sell', 'USD')">
+                                $ {{ coin.quote[0].sell_quote }}
+                            </div>
                         </div>
                     </div>
                     <div class="marketchangedata">
@@ -20,6 +24,10 @@
                         <div class="marketpercent green" v-if="user.country_id===31"
                              @click="showModalOrder(coin, 'buy', 'BRL')">
                             R$ {{ coin.quote[0].buy_quote | currency }}
+                        </div>
+                        <div class="marketpercent green" v-else
+                             @click="showModalOrder(coin, 'buy', 'USD')">
+                            $ {{ coin.quote[0].buy_quote }}
                         </div>
                     </div>
                 </div>
@@ -109,6 +117,7 @@
     .dark-bg {
         background-color: #293144;
         padding: 3px 10px;
+        z-index: 20
     }
 
     .market {
@@ -184,5 +193,6 @@
     .green {
         color: #26c281;
     }
+
 
 </style>
