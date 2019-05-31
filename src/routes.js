@@ -98,12 +98,12 @@ const routes = [
 				component: PaymentAccounts,
 				meta: {requiresAuth: true}
 			},
-			// {
-			// 	path: '/payment-account/:id',
-			// 	name: 'payment-account',
-			// 	component: PaymentAccount,
-			// 	meta: {requiresAuth: true}
-			// },
+			{
+				path: '/payment-account/:id',
+				name: 'payment-account',
+				component: PaymentAccount,
+				meta: {requiresAuth: true}
+			},
 		]
 	},
 	{
