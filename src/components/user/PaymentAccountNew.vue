@@ -187,6 +187,7 @@
 						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
 						this.$refs.accountList.retrieveAccounts()
 						this.loader = false
+                        location.reload()
 					})
 					.catch(error => {
 						if (error.response) {

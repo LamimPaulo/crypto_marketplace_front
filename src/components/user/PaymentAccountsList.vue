@@ -26,7 +26,10 @@
           </td>
           <td class="text-right">
             <div class="value">
-              <router-link class="btn btn-sm btn-primary" :to="{ name: 'payment-account', params: { id: account.id }}">alterar</router-link>
+              <a href="#" class="btn btn-danger btn-sm"
+                 @click.prevent="showTokenPinModal('deleteAccount', 9)">
+                Excluir</a>
+<!--              <router-link class="btn btn-sm btn-primary" :to="{ name: 'payment-account', params: { id: account.id }}">alterar</router-link>-->
             </div>
             <span class="sub-value">{{ account.bank.code + ' - '+ account.bank.name }}</span>
           </td>
@@ -34,18 +37,27 @@
 
       </table>
     </div>
+    <token-pin v-show="isTokenPinVisible" ref="tokenPinComponent"
+               @close-token-pin-modal="closeTokenPinModal" @token-data="handleTokenPinData"/>
   </div>
 </template>
 
 <script>
+  import TokenPin from './../verifications/TokenPin'
+
   export default {
     name: "PaymentAccountsList",
     data() {
       return {
         loader: true,
+        isTokenPinVisible: false,
         accounts: [],
         count: null,
-        loading: true
+        loading: true,
+        token: {
+          code: null,
+          pin: null
+        }
       }
     },
     methods: {
@@ -62,7 +74,53 @@
             this.loading = false
             this.loader = false
           })
-      }
+      },
+      showTokenPinModal(method, action) {
+        this.isTokenPinVisible = true
+        this.$refs.tokenPinComponent.setData(method, action)
+      },
+      closeTokenPinModal() {
+        this.isTokenPinVisible = false;
+      },
+      handleTokenPinData(data) {
+        this.token.code = data.code
+        this.token.pin = data.pin
+
+        if (data.method === 'deleteAccount') {
+          this.deleteAccount()
+        }
+
+        if (data.method === 'storeAccount') {
+          this.storeAccount()
+        }
+      },
+      resetToken() {
+        this.token.code = null
+        this.token.pin = null
+        this.$refs.tokenPinComponent.resetData()
+      },
+      deleteAccount() {
+        this.$store.dispatch('deleteAccount', {
+          account: this.$route.params.id,
+          action: 9,
+          code: this.token.code,
+          pin: this.token.pin,
+        })
+                .then(this.$toasted.show('salvando seus dados...', {position: 'bottom-left'}).goAway(5000))
+                .then(response => {
+                  this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+                  this.$router.push({name: 'payment-accounts'})
+                })
+                .catch(error => {
+                  if (error.response) {
+                    this.handleErrors(error.response)
+                    this.resetToken()
+                  }
+                })
+      },
+    },
+    components: {
+      TokenPin
     },
     mounted() {
       this.retrieveAccounts()

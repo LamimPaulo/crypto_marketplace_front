@@ -230,6 +230,7 @@
 					.then(response => {
 						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
 						this.$router.push({name: 'payment-accounts'})
+                        location.reload()
 					})
 					.catch(error => {
 						if (error.response) {
