@@ -27,7 +27,7 @@
           <td class="text-right">
             <div class="value">
               <a href="#" class="btn btn-danger btn-sm"
-                 @click.prevent="showTokenPinModal('deleteAccount', 9)">
+                 @click.prevent="showTokenPinModal('deleteAccount', 9, account.id)">
                 Excluir</a>
 <!--              <router-link class="btn btn-sm btn-primary" :to="{ name: 'payment-account', params: { id: account.id }}">alterar</router-link>-->
             </div>
@@ -57,7 +57,8 @@
         token: {
           code: null,
           pin: null
-        }
+        },
+        delete_account: null
       }
     },
     methods: {
@@ -75,7 +76,8 @@
             this.loader = false
           })
       },
-      showTokenPinModal(method, action) {
+      showTokenPinModal(method, action, delete_account=null) {
+        this.delete_account = delete_account
         this.isTokenPinVisible = true
         this.$refs.tokenPinComponent.setData(method, action)
       },
@@ -101,7 +103,7 @@
       },
       deleteAccount() {
         this.$store.dispatch('deleteAccount', {
-          account: this.$route.params.id,
+          account: this.delete_account,
           action: 9,
           code: this.token.code,
           pin: this.token.pin,
@@ -110,11 +112,13 @@
                 .then(response => {
                   this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
                   this.$router.push({name: 'payment-accounts'})
+                  location.reload()
                 })
                 .catch(error => {
                   if (error.response) {
                     this.handleErrors(error.response)
                     this.resetToken()
+                    this.delete_account = null
                   }
                 })
       },
