@@ -1166,6 +1166,28 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
+		buyLevelUsd(context, data) {
+			return new Promise((resolve, reject) => {
+				axios.post('/levels/buyUsd', data)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		buyLevelLqx(context, data) {
+			return new Promise((resolve, reject) => {
+				axios.post('/levels/buyLqx', data)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
 		retrieveMasternodes() {
 			return new Promise((resolve, reject) => {
 				axios.get('/masternode/list')

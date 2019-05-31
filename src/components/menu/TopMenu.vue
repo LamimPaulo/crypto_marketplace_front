@@ -32,12 +32,12 @@
 
                 <ul class="main-menu">
                     <li class="selected" v-tooltip.right="'Perfil'">
-                        <a href="/profile">
+                        <router-link to="/profile">
                             <div class="icon-w">
                                 <div class="os-icon os-icon-user-male-circle2"></div>
                             </div>
                             <span>Detalhes do Perfil</span>
-                        </a>
+                        </router-link>
                     </li>
 
                     <li class="">
@@ -76,9 +76,10 @@
         <div class="menu-w color-scheme-light color-style-default menu-position-top menu-layout-compact sub-menu-style-over sub-menu-color-bright selected-menu-color-bright menu-activated-on-hover menu-has-selected-link">
             <h1 class="menu-page-header">Liquidex</h1>
 
-            <top-menu-list v-if="user.country_id===31" style="margin-bottom: 25px"></top-menu-list>
-            <top-menu-list v-else></top-menu-list>
+            <top-menu-list></top-menu-list>
         </div>
+
+        <topbar></topbar>
     </div>
 </template>
 
@@ -86,12 +87,14 @@
 	import {mapGetters} from 'vuex'
 	import DropdownProfile from './DropdownProfile'
 	import TopMenuList from './TopMenuList'
+    import Topbar from './Topbar'
 
 	export default {
 		name: "TopMenu",
 		components: {
 			DropdownProfile,
-			TopMenuList
+			TopMenuList,
+            Topbar
 		},
 		computed: {
 			...mapGetters([

@@ -6,14 +6,14 @@
 
         <top-menu></top-menu>
 
-        <vue-headful title="Dashboard Liquidex" description="Liquidex"/>
+        <vue-headful title="Comprar Key Code Liquidex" description="Liquidex"/>
         <div class="all-wrapper with-side-panel solid-bg-all">
             <div class="layout-w">
 
 
                 <div class="content-w">
 
-                    <!-- <topbar v-if="user.country_id===31"></topbar> -->
+                    <!-- <topbar></topbar> -->
 
                     <div class="content-i">
                         <!--Content-->
@@ -57,7 +57,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="plan-body pb-2 pt-4">
+                                    <div class="plan-body pb-2 pt-4" v-if="user.country_id===31">
 
                                         <div class="plan-btn-w px-3" v-if="user.user_level_id < level.id">
                                             <div v-if="user.level.product.bonus_percent>0">
@@ -114,6 +114,63 @@
 
                                     </div>
 
+                                    <div class="plan-body pb-2 pt-4" v-else>
+
+                                        <div class="plan-btn-w px-3" v-if="user.user_level_id < level.id">
+                                            <div v-if="user.level.product.bonus_percent>0">
+                                                <!--BRL-->
+                                                De:
+                                                <span class="price-crossed">
+                                                 {{ level.product.lqxValue }}LQX <br>
+                                                </span>
+
+                                                <a :class="'btn btn-block btn-level-' + level.id"
+                                                   @click.prevent="showLevelDetailsModal(level, 'buyLevelLqx')"
+                                                   href="#">Por: {{ parseFloat(level.product.lqxValue) -
+                                                    (parseFloat(user.level.product.lqxValue) *
+                                                    parseFloat(level.product.bonus_percent) / 100) |
+                                                    fixValue}}LQX</a>
+
+                                                <span v-if="level.type===1">
+                                                    <br> ou <br><br>
+                                                    De:
+                                                    <span class="price-crossed">
+                                                     $ {{ level.product.value_usd }} <br>
+                                                    </span>
+                                                </span>
+
+                                                <!--BRL-->
+                                                <a class="btn btn-block btn-outline-secondary"
+                                                   v-if="level.type===1"
+                                                   @click.prevent="showLevelDetailsModal(level, 'buyLevelUsd')"
+                                                   href="#">Por: $ {{ parseFloat(level.product.value_usd) -
+                                                    (parseFloat(user.level.product.value_usd) *
+                                                    parseFloat(level.product.bonus_percent) / 100) }}</a>
+
+
+                                            </div>
+
+                                            <div v-else>
+                                                <a :class="'btn btn-block btn-level-' + level.id"
+                                                   @click.prevent="showLevelDetailsModal(level, 'buyLevelLqx')"
+                                                   href="#">{{ level.product.lqxValue }}LQX</a>
+
+                                                <a class="btn btn-block btn-outline-secondary"
+                                                   @click.prevent="showLevelDetailsModal(level, 'buyLevelUsd')"
+                                                   href="#">$ {{ level.product.value_usd }}</a>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="plan-btn-w px-5 mb-5 mt-5" v-else>
+                                            <br>
+                                            <a class="btn btn-grey btn-block" href="#">Já Adquirido</a>
+                                            <br>
+                                        </div>
+
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -135,18 +192,24 @@
 
             <template slot="body">
                 <div class="py-0 px-5 text-center">
+
                     <h4 v-if="level_popup.buyType==='buyLevelLqx'" class="text-success font-5">
                         Valor do Keycode: {{ parseFloat(level_popup.product.lqxValue) -
-                                                    (parseFloat(user.level.product.lqxValue) *
-                                                    parseFloat(level.product.bonus_percent) / 100) |
-                                                    fixValue }} LQX</h4>
+                        (parseFloat(user.level.product.lqxValue) *
+                        parseFloat(level.product.bonus_percent) / 100) |
+                        fixValue }} LQX</h4>
 
-                    <h4 v-else> Valor do Keycode: R$ {{ parseFloat(level_popup.product.value) -
-                                                    (parseFloat(user.level.product.value) *
-                                                    parseFloat(level_popup.product.bonus_percent) / 100) | currency}}</h4>
+                    <h4 v-if="level_popup.buyType==='buyLevelBrl'" > Valor do Keycode: R$ {{ parseFloat(level_popup.product.value) -
+                        (parseFloat(user.level.product.value) *
+                        parseFloat(level_popup.product.bonus_percent) / 100) | currency}}</h4>
+
+                    <h4 v-if="level_popup.buyType==='buyLevelUsd'" > Valor do Keycode: $ {{ parseFloat(level_popup.product.value_usd) -
+                        (parseFloat(user.level.product.value_usd) *
+                        parseFloat(level_popup.product.bonus_percent) / 100) | currency}}</h4>
 
                     <p> - Depósitos e documentos: 48 horas úteis</p>
-                    <p> - Envio de Criptomoedas: <span v-if="level_popup.limit_btc_diary>0">SIM</span> <span v-else>NÃO</span></p>
+                    <p> - Envio de Criptomoedas: <span v-if="level_popup.limit_btc_diary>0">SIM</span> <span
+                            v-else>NÃO</span></p>
                     <p> - Limite de saque por retirada: {{level_popup.brlDiary }}</p>
                     <p> - Limite de envio de Criptomoeda: {{level_popup.btcDiary }}</p>
 
@@ -159,10 +222,12 @@
                         <span v-else>NÃO</span>
                     </p>
 
-                    <p v-if="level_popup.tax_crypto[0]"> - Taxa de envio de Criptomoeda: {{level_popup.tax_crypto[0].value | roundValue}} %</p>
+                    <p v-if="level_popup.tax_crypto[0]"> - Taxa de envio de Criptomoeda:
+                        {{level_popup.tax_crypto[0].value | roundValue}} %</p>
                     <p v-else> - Taxa de envio de Criptomoeda: 0 %</p>
 
-                    <p v-if="level_popup.type===2&&level_popup.tax_brl[0]"> - Taxa por operação: R$ {{ level_popup.tax_brl[0].value | currency }}</p>
+                    <p v-if="level_popup.type===2&&level_popup.tax_brl[0]"> - Taxa por operação: R$ {{
+                        level_popup.tax_brl[0].value | currency }}</p>
                     <p v-else> - Taxa por operação: R$ 0,00</p>
 
                     <p> - Valor mínimo para retirada e deposito: R$ {{ level_popup.minWithdrawal }}</p>
@@ -218,12 +283,12 @@
 		methods: {
 			closeThisModal() {
 				this.level_popup = null
-                this.isModalVisible = false
+				this.isModalVisible = false
 			},
 			showLevelDetailsModal(level, buyType) {
 				this.level_popup = level
 				this.level_popup.buyType = buyType
-                this.isModalVisible = true
+				this.isModalVisible = true
 			},
 			retrieveLevels() {
 				this.loader = true
@@ -241,7 +306,7 @@
 			},
 			buyLevelLqx() {
 				this.loader = true
-                this.isModalVisible = false
+				this.isModalVisible = false
 				this.$store.dispatch('buyLevel', {
 					level_id: this.level,
 					abbr: "LQX",
@@ -264,7 +329,7 @@
 			},
 			buyLevelBrl() {
 				this.loader = true
-                this.isModalVisible = false
+				this.isModalVisible = false
 				this.$store.dispatch('buyLevel', {
 					level_id: this.level,
 					abbr: "BRL",
@@ -285,15 +350,38 @@
 						}
 					})
 			},
-            refresh(){
+			buyLevelUsd() {
+				this.loader = true
+				this.isModalVisible = false
+				this.$store.dispatch('buyLevelUsd', {
+					level_id: this.level,
+					abbr: "USD",
+					action: this.action,
+					code: this.token.code,
+					pin: this.token.pin,
+				})
+					.then(response => {
+						this.loader = false
+						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$store.dispatch('retrieveUser')
+						this.refresh()
+					})
+					.catch(error => {
+						this.loader = false
+						if (error.response) {
+							this.handleErrors(error.response)
+						}
+					})
+			},
+			refresh() {
 				setTimeout(function () {
 					location.reload()
 				}, 2000)
-            },
+			},
 			showTokenPinModal(method, action, level) {
 				this.level = level;
 				this.isTokenPinVisible = true
-                this.isModalVisible = false
+				this.isModalVisible = false
 				this.$refs.tokenPinComponent.setData(method, action)
 			},
 			closeTokenPinModal() {
@@ -309,6 +397,10 @@
 
 				if (data.method === 'buyLevelBrl') {
 					this.buyLevelBrl()
+				}
+
+				if (data.method === 'buyLevelUsd') {
+					this.buyLevelUsd()
 				}
 			},
 		},

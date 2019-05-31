@@ -27,14 +27,8 @@
                 </div>
             </div>
 
-            <div class="row alert alert-warning" v-if="user.user_level_id<=1">
-                <div class="col-sm-12">
-                    Seu nível de usuário não permite saques.
-                </div>
-            </div>
-
             <form @submit.prevent="sendDraft"
-                  v-if="user.user_level_id>1 && user.timezoneSettings.withdrawal_day && user.timezoneSettings.withdrawal_time">
+                  v-if="user.timezoneSettings.withdrawal_day && user.timezoneSettings.withdrawal_time">
 
 
                 <div class="row">
@@ -90,7 +84,7 @@
                                     <label> Quanto quer sacar?</label>
 
                                     <vue-numeric class="form-control" v-if="user.country_id===31" placeholder="Valor"
-                                                 :min="0" :max="wallet.balance" :minus="false" :precision="2"
+                                                 :min="0" :max="parseFloat(wallet.balance)" :minus="false" :precision="2"
                                                  v-model="draft.amount" currency="R$"
                                                  @blur="calcWithdrawalTax"
                                                  decimal-separator=","
@@ -261,7 +255,7 @@
 						}
 					})
 				} else {
-					this.$toasted.show('preencha o valor solicitado', {
+					this.$toasted.show('preencha o valor e o prazo para completar a solicitação', {
 						position: 'top-center',
 						type: "error"
 					}).goAway(3000)
