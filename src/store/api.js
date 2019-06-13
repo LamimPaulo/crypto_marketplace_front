@@ -915,6 +915,17 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
+		sendTransferUsd(context, transfer) {
+			return new Promise((resolve, reject) => {
+				axios.post('/draft-usd/credminer', transfer)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
 		retrieveLastTrades(context) {
 			return new Promise((resolve, reject) => {
 				axios.get('/exchange/last-trades')

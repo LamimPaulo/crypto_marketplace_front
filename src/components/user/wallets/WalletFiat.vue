@@ -28,7 +28,7 @@
 
                         </div>
 
-                        <div class="element-wrapper pb-4 mb-0" v-if="user.country_id===31">
+                        <div class="element-wrapper pb-4 mb-0">
                             <div class="element-box-tp">
 
                                 <div class="row">
@@ -66,7 +66,9 @@
         <draft :wallet="wallet" v-if="draftWindow"></draft>
         <fiat-send :wallet="wallet" v-if="sendWindow"></fiat-send>
 
-        <transactions-list-wallet :symbol="wallet.coin.abbr" :address="wallet.address" v-if="wallet.type===1"
+        <transactions-list-wallet :symbol="wallet.coin.abbr"
+                                  :address="wallet.address"
+                                  v-if="wallet.type===1"
                                   ref="transactionsList"></transactions-list-wallet>
 
     </div>

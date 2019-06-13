@@ -19,7 +19,7 @@
             <!-- <form @submit.prevent="sendDeposit"> -->
             <div class="pricing-plans row no-gutters">
 
-                <div class="pricing-plan with-hover-effect col-md-4 col-sm-12 col-xs-12"
+                <div class="pricing-plan with-hover-effect col-md-6 col-sm-12 col-xs-12"
                      v-for="account in accounts"
                 >
                     <div class="plan-description">
@@ -28,16 +28,12 @@
                             <span>Identificação:</span>
                             <strong>{{account.document}}</strong>
                         </p>
+                        <h6>{{ account.bank.name }}</h6>
                         <p>
-                            <span v-if="account.type==2">Email:</span>
-                            <strong>{{account.email}}</strong>
-                        </p>
-                        <h6 v-if="account.type==1">{{ account.bank.name }}</h6>
-                        <p v-if="account.type==1">
-                            <span>Agência</span>
+                            <span v-if="user.country_id===31">Agência</span>
                             <strong>{{account.agency}} {{account.agency_digit}}</strong>
                             <br>
-                            <span>Conta</span>
+                            <span v-if="user.country_id===31">Conta</span>
                             <strong>{{account.account}} {{account.account_digit}}</strong>
                             <br>
                         </p>
@@ -71,7 +67,6 @@
 	import Vue from "vue";
 	import VueNumeric from "vue-numeric";
 	import DepositModalBank from "./deposit/DepositModalBank";
-	import DepositModalNeteller from "./deposit/DepositModalNeteller";
 	import {mapGetters} from "vuex";
 
 	Vue.use(VueNumeric);
@@ -80,6 +75,7 @@
 		name: "Deposit",
 		data() {
 			return {
+				loader: false,
 				isDepositBankVisible: false,
 				isDepositNetellerVisible: false,
 				accounts: {},
@@ -110,8 +106,7 @@
 		},
 		components: {
 			VueNumeric,
-			DepositModalBank,
-			DepositModalNeteller
+			DepositModalBank
 		},
 		methods: {
 			loadFile() {

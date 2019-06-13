@@ -49,14 +49,9 @@
                                                 <strong>{{account.nickname}}</strong>
                                             </li>
 
-                                            <li v-if="account.type==2">
-                                                Email:<strong>{{account.email}}</strong>
-                                            </li>
-
                                             <li v-if="account.type==1">
                                                 <strong>{{account.bank.name}}</strong>
                                             </li>
-
 
                                         </ul>
                                         <div class="pt-btn">
@@ -84,11 +79,26 @@
                                     <label> Quanto quer sacar?</label>
 
                                     <vue-numeric class="form-control" v-if="user.country_id===31" placeholder="Valor"
-                                                 :min="0" :max="parseFloat(wallet.balance)" :minus="false" :precision="2"
+                                                 :min="0" :max="parseFloat(wallet.balance)" :minus="false"
+                                                 :precision="2"
                                                  v-model="draft.amount" currency="R$"
                                                  @blur="calcWithdrawalTax"
                                                  decimal-separator=","
                                                  thousand-separator="."></vue-numeric>
+
+                                    <vue-numeric
+                                            class="form-control"
+                                            v-else
+                                            placeholder="Value"
+                                            :min="0"
+                                            :minus="false"
+                                            :precision="2"
+                                            v-model="draft.amount"
+                                            @blur="calcWithdrawalTax"
+                                            currency="$"
+                                            decimal-separator="."
+                                            thousand-separator=","
+                                    ></vue-numeric>
                                 </div>
 
 
@@ -136,9 +146,6 @@
                     </button>
                 </div>
             </form>
-
-            <span class="badge badge-danger-inverted" v-if="user.user_level_id===1">É necessário confirmar sua conta para realizar saques.
-        <a href="/profile">Clique para Confirmar</a></span>
 
         </div>
 

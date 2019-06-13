@@ -3,7 +3,7 @@
         <div class="loader" v-if="loader"></div>
         <vue-headful title="Dados de Pagamento - Liquidex" description="Liquidex"/>
 
-        <div class="row" v-if="this.$store.state.user.country_id===31">
+        <div class="row">
             <div class="col-sm-6">
                 <div class="element-wrapper">
                     <div class="element-box">
@@ -17,7 +17,7 @@
                                     <h5 class="element-inner-header">
                                         Adicionar Conta
                                     </h5>
-                                    <div class="element-inner-desc">
+                                    <div class="element-inner-desc" v-if="this.$store.state.user.country_id===31">
                                         Contas Bancárias são necessárias apenas para operações com moeda Brasileira
                                         (BRL)
                                     </div>
@@ -51,12 +51,19 @@
 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group" v-if="this.$store.state.user.country_id===31">
                                             <label> Banco</label>
                                             <model-list-select :list="banks" v-model="account.bank_id" option-value="id"
                                                                option-text="name"
                                                                placeholder="buscar banco">
                                             </model-list-select>
+                                        </div>
+                                        <div class="form-group" v-else>
+                                            <label> Nome do Banco</label>
+                                            <input class="form-control" placeholder="Nome do Banco" type="text"
+                                                   id="bank_name" required
+                                                   v-model="account.bank_name"
+                                            >
                                         </div>
                                     </div>
                                     <input type="hidden" v-model="account.provider_id" value="1">
@@ -128,12 +135,6 @@
             </div>
         </div>
 
-        <div class="row" v-else>
-            <div class="col-md-12 alert alert-info">
-                Your profile does not allow bank account registration.
-            </div>
-        </div>
-
     </div>
 </template>
 
@@ -155,7 +156,7 @@
 					account_digit: null,
 					observation: null,
 					nickname: null,
-					email: null,
+					bank_name: null,
 					bank_id: 22,
 					category: 1,
 					type: 1
@@ -177,8 +178,8 @@
 					account_digit: this.account.account_digit,
 					observation: this.account.observation,
 					nickname: this.account.nickname,
-					email: this.account.email,
 					bank_id: this.account.bank_id,
+					bank_name: this.account.bank_name,
 					category: this.account.category,
 					type: this.account.type
 				})
@@ -187,7 +188,9 @@
 						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
 						this.$refs.accountList.retrieveAccounts()
 						this.loader = false
-                        location.reload()
+                        setTimeout(function () {
+                            location.reload()
+                        }, 2000)
 					})
 					.catch(error => {
 						if (error.response) {

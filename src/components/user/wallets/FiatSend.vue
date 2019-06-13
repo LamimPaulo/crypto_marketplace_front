@@ -29,8 +29,15 @@
 
                                 <vue-numeric class="form-control" placeholder="Valor"
                                              :min="0" :max="parseFloat(wallet.balance)" :minus="false" :precision="2"
+                                              v-if="user.country_id===31"
                                              v-model="transfer.amount" currency="R$" decimal-separator=","
                                              thousand-separator="."></vue-numeric>
+
+                                <vue-numeric class="form-control" placeholder="Valor"
+                                             :min="0" :max="parseFloat(wallet.balance)" :minus="false" :precision="2"
+                                             v-else
+                                             v-model="transfer.amount" currency="$" decimal-separator="."
+                                             thousand-separator=","></vue-numeric>
                             </div>
                         </div>
 
@@ -49,8 +56,14 @@
         </div>
 
         <div class="form-buttons-w text-right mb-5">
-            <button :disabled='!isFilled' @click.prevent="showTokenPinModal('sendTransfer', 19)"
-                    class="btn btn-success" type="button"> Enviar
+            <button :disabled='!isFilled' @click.prevent="showTokenPinModal('sendTransfer', 18)"
+                     v-if="this.$store.state.user.country_id===31"
+                    class="btn btn-success" type="button"> Enviar R$
+            </button>
+
+            <button :disabled='!isFilled' @click.prevent="showTokenPinModal('sendTransferUsd', 19)"
+                    v-else
+                    class="btn btn-success" type="button"> Enviar USD
             </button>
         </div>
 
@@ -127,6 +140,26 @@
 					}
 				})
 			},
+            sendTransferUsd() {
+				this.$store.dispatch('sendTransferUsd', {
+					amount: this.transfer.amount,
+					toAddress: this.transfer.toAddress,
+					code: this.token.code,
+					pin: this.token.pin,
+					action: this.transfer.action
+				})
+					.then(
+						this.$toasted.show('enviando...', {position: 'bottom-left'}).goAway(3000)
+					)
+					.then(response => {
+						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.refresh()
+					}).catch(error => {
+					if (error.response) {
+						this.handleErrors(error.response)
+					}
+				})
+			},
 
 			retrieveSearchEmail: debounce(function (e) {
 				if (this.beneficiary.email) {
@@ -164,7 +197,15 @@
 			handleTokenPinData(data) {
 				this.token.code = data.code
 				this.token.pin = data.pin
-				this.sendTransfer()
+				this.transfer.action = data.action
+
+                if(data.method==='sendTransfer') {
+	                this.sendTransfer()
+                }
+
+                if(data.method==='sendTransferUsd') {
+	                this.sendTransferUsd()
+                }
 			},
 		},
 

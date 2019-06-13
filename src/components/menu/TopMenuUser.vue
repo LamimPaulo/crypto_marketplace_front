@@ -43,7 +43,7 @@
                                                     <span>Detalhes do Perfil</span>
                                                 </a>
                                             </li>
-                                            <li v-if="this.$store.state.user.country_id===31">
+                                            <li>
                                                 <a href="/payment-accounts">
                                                     <i class="os-icon os-icon-coins-4"></i>
                                                     <span>Dados de Pagamento</span>
