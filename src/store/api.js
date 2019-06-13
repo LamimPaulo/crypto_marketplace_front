@@ -788,39 +788,7 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-		retrieveGatewayKey(context, order) {
-			return new Promise((resolve, reject) => {
-				axios.get('/gateway/get-key', order)
-					.then(response => {
-						resolve(response)
-					})
-					.catch(error => {
-						reject(error)
-					})
-			})
-		},
-		storeGatewayKey(context, order) {
-			return new Promise((resolve, reject) => {
-				axios.post('/gateway/new-key', order)
-					.then(response => {
-						resolve(response)
-					})
-					.catch(error => {
-						reject(error)
-					})
-			})
-		},
-		updateGatewayKey(context, order) {
-			return new Promise((resolve, reject) => {
-				axios.post('/gateway/update-key', order)
-					.then(response => {
-						resolve(response)
-					})
-					.catch(error => {
-						reject(error)
-					})
-			})
-		},
+
 		retrievePharaosGatewayKey(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.get('/pharaos-gateway/get-key', order)
@@ -876,28 +844,7 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-		retrieveGatewayPaymentsList(context, page) {
-			return new Promise((resolve, reject) => {
-				axios.get('/gateway/list-payments?page=' + page)
-					.then(response => {
-						resolve(response)
-					})
-					.catch(error => {
-						reject(error)
-					})
-			})
-		},
-		retrieveGatewayPayment(context, tx) {
-			return new Promise((resolve, reject) => {
-				axios.get('/gateway/tx/' + tx)
-					.then(response => {
-						resolve(response)
-					})
-					.catch(error => {
-						reject(error)
-					})
-			})
-		},
+
 		updateGatewayPayment(context, transaction) {
 			return new Promise((resolve, reject) => {
 				axios.post('/gateway/update-tx/', transaction)
