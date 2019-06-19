@@ -122,7 +122,7 @@
 						address: this.address
 					})
 						.then(response => {
-							this.transaction.fee = parseFloat(response.data.fee) + parseFloat(response.data.tax)
+							this.transaction.fee = (parseFloat(response.data.fee) + parseFloat(response.data.tax)).toFixed(8)
 						}).catch(error => {
 						if (error.response) {
 							this.handleErrors(error.response)
