@@ -27,6 +27,8 @@ import UserGatewayPdv from './components/user/gateway/UserGatewayPdv';
 import Gateway from './components/user/gateway/Gateway';
 import IndexFunds from './components/user/funds/IndexFunds';
 import LevelList from './components/user/levels/LevelList';
+import NotificationsList from './components/user/notifications/NotificationsList';
+import ReadNotification from './components/user/notifications/ReadNotification';
 
 const routes = [
 	{
@@ -95,6 +97,16 @@ const routes = [
 				path: '/payment-account/:id',
 				name: 'payment-account',
 				component: PaymentAccount,
+				meta: {requiresAuth: true}
+			}, {
+				path: '/notifications',
+				name: 'notifications',
+				component: NotificationsList,
+				meta: {requiresAuth: true}
+			}, {
+				path: '/notification/:id',
+				name: 'read-notification',
+				component: ReadNotification,
 				meta: {requiresAuth: true}
 			},
 		]
