@@ -204,9 +204,9 @@
 					code: this.token.code,
 					pin: this.token.pin,
 				})
-					.then(this.$toasted.show('salvando seus dados...', {position: 'bottom-left'}).goAway(5000))
+					.then(this.$toasted.show('salvando seus dados...', {position: 'bottom-left', type: 'info'}).goAway(5000))
 					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						this.$router.push({name: 'payment-accounts'})
 					})
 					.catch(error => {
@@ -222,9 +222,9 @@
 					code: this.token.code,
 					pin: this.token.pin,
 				})
-					.then(this.$toasted.show('salvando seus dados...', {position: 'bottom-left'}).goAway(5000))
+					.then(this.$toasted.show('salvando seus dados...', {position: 'bottom-left', type: 'info'}).goAway(5000))
 					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						this.$router.push({name: 'payment-accounts'})
                         location.reload()
 					})
