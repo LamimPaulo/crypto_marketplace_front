@@ -65,7 +65,7 @@
         border-radius: 6px;
         bottom: 15px;
         box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 6px -6px;
-        left: 15px;
+        right: 15px;
         text-decoration: none;
     }
 
