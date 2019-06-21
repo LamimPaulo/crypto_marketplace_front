@@ -270,6 +270,29 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
+		/**MENSAGENS DO SISTEMA**/
+		retrieveNotificationsList(context, page) {
+			return new Promise((resolve, reject) => {
+				axios.get('/admin/messages/notifications?page=' + page)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		retrieveNotification(context, message) {
+			return new Promise((resolve, reject) => {
+				axios.get('/admin/messages/edit/' + message)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
 		retrievePrices() {
 			return new Promise((resolve, reject) => {
 				axios.get('/coins/prices')

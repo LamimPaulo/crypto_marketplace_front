@@ -21064,8 +21064,10 @@ Chat Styles
 }
 
 .ae-list-w .ae-list {
-  height: 1000px;
-  overflow: hidden;
+  /*height: auto;*/
+  /*min-height: 250px;*/
+  max-height: 800px;
+  overflow: auto;
   position: relative;
 }
 

@@ -16,56 +16,14 @@
                     </div>
                     <div class="col-9 d-flex justify-content-end">
                         <div class="top-menu-controls">
+                            <!--------------------START - Notification System-------------------->
+                            <dropdown-messages></dropdown-messages>
+                            <!--------------------END - Notification System-------------------->
+                            
                             <!--------------------START - User avatar and menu in secondary top menu-------------------->
-                            <div class="logged-user-w">
-                                <div class="logged-user-i">
-                                    <div class="avatar-w">
-                                        <img :src="require(`@/assets/img/avatar-dev.png`)" :alt="this.$store.state.user.name">
-                                    </div>
-                                    <div class="logged-user-menu color-style-bright">
-                                        <div class="logged-user-avatar-info">
-                                            <div class="avatar-w">
-                                                <img :src="require(`@/assets/img/avatar-dev.png`)" :alt="this.$store.state.user.name">
-                                            </div>
-                                            <div class="logged-user-info-w">
-                                                <div class="logged-user-name">{{ this.$store.state.user.name }}</div>
-                                                <div class="logged-user-role">{{ this.$store.state.user.username }}</div>
-                                                <div class="logged-user-role">{{ this.$store.state.user.level.name }}</div>
-                                            </div>
-                                        </div>
-                                        <div class="bg-icon">
-                                            <i class="os-icon os-icon-wallet-loaded"></i>
-                                        </div>
-                                        <ul>
-                                            <li>
-                                                <a href="/profile">
-                                                    <i class="os-icon os-icon-user-male-circle2"></i>
-                                                    <span>Detalhes do Perfil</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/payment-accounts">
-                                                    <i class="os-icon os-icon-coins-4"></i>
-                                                    <span>Dados de Pagamento</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/tickets">
-                                                    <i class="os-icon os-icon-anchor"></i>
-                                                    <span>Suporte</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/logout">
-                                                    <i class="os-icon os-icon-signs-11"></i>
-                                                    <span>Sair</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            <dropdown-profile></dropdown-profile>
                             <!--------------------END - User avatar and menu in secondary top menu-------------------->
+
                         </div>
                         <!--------------------END - Top Menu Controls-------------------->
                     </div>
@@ -79,13 +37,15 @@
 
 <script>
     import DropdownProfile from './DropdownProfile'
+    import DropdownMessages from './DropdownMessages'
     import MenuList from './MenuList'
 
     export default {
         name: "TopMenuUser",
         components: {
+            MenuList,
             DropdownProfile,
-            MenuList
+            DropdownMessages
         },
         data() {
             return {}
