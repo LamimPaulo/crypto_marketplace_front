@@ -94,9 +94,9 @@
 					code: this.token.code,
 					action: this.pin.action
 				})
-					.then(this.$toasted.show('atualizando seu pin...', {position: 'bottom-left'}).goAway(5000))
+					.then(this.$toasted.show('atualizando seu pin...', {position: 'bottom-left', type: 'info'}).goAway(5000))
 					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						this.$emit('refresh')
 					})
 					.catch(error => {

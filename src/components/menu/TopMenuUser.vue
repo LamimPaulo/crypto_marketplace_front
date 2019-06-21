@@ -50,6 +50,12 @@
                                                 </a>
                                             </li>
                                             <li>
+                                                <a href="/tickets">
+                                                    <i class="os-icon os-icon-anchor"></i>
+                                                    <span>Suporte</span>
+                                                </a>
+                                            </li>
+                                            <li>
                                                 <a href="/logout">
                                                     <i class="os-icon os-icon-signs-11"></i>
                                                     <span>Sair</span>

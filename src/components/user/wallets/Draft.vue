@@ -216,10 +216,10 @@
 					action: this.draft.action
 				})
 					.then(
-						this.$toasted.show('solicitando...', {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show('solicitando...', {position: 'bottom-left', type: 'info'}).goAway(3000)
 					)
 					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						setTimeout(function () {
 							location.reload()
 						}, 3000)

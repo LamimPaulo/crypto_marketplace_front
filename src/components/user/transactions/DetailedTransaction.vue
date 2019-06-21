@@ -169,10 +169,10 @@
         this.$emit('close-token-modal')
       },
       cancelDraft() {
-        this.$toasted.show('enviando solicitação...', {position: 'bottom-left'}).goAway(3000)
+        this.$toasted.show('enviando solicitação...', {position: 'bottom-left', type: 'info'}).goAway(3000)
         this.$store.dispatch('sendCancelDraft', this.token)
           .then(response => {
-            this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+            this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
             this.closeThisModal()
             this.$emit('retrieve-transactions')
           })

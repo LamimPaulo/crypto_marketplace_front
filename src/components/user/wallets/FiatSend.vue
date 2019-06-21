@@ -129,10 +129,10 @@
 					action: this.transfer.action
 				})
 					.then(
-						this.$toasted.show('enviando...', {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show('enviando...', {position: 'bottom-left', type: 'info'}).goAway(3000)
 					)
 					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						this.refresh()
 					}).catch(error => {
 					if (error.response) {
@@ -149,10 +149,10 @@
 					action: this.transfer.action
 				})
 					.then(
-						this.$toasted.show('enviando...', {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show('enviando...', {position: 'bottom-left', type: 'info'}).goAway(3000)
 					)
 					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						this.refresh()
 					}).catch(error => {
 					if (error.response) {

@@ -247,9 +247,9 @@
 						action: 10,
 						pin: this.token.pin,
 					})
-						.then(this.$toasted.show('enviando solicitação...', {position: 'bottom-left'}).goAway(5000))
+						.then(this.$toasted.show('enviando solicitação...', {position: 'bottom-left', type: 'info'}).goAway(5000))
 						.then(response => {
-							this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+							this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 							this.refresh()
 						})
 						.catch(error => {
@@ -270,9 +270,9 @@
 					action: 10,
 					pin: this.token.pin,
 				})
-					.then(this.$toasted.show('enviando solicitação...', {position: 'bottom-left'}).goAway(5000))
+					.then(this.$toasted.show('enviando solicitação...', {position: 'bottom-left', type: 'info'}).goAway(5000))
 					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						this.refresh()
 					})
 					.catch(error => {

@@ -67,15 +67,16 @@ Vue.mixin({
 			let toasted = this.$toasted;
 			if (response.status === 401 || response.data.status === 401) {
 				toasted.show("Sua sessão expirou, favor logar novamente!", {
-					position: 'top-center'
-				}).goAway(5000)
+					position: 'top-center',
+					type: 'info'
+				}).goAway(1500)
 				this.$router.push({name: 'login'})
 			} else {
-				toasted.show(response.data.message, {position: 'top-center'}).goAway(5000)
+				toasted.show(response.data.message, {position: 'top-center', type: 'error'}).goAway(5000)
 				if (response.data.errors) {
 					let errors = response.data.errors
 					map(errors, function (value, key) {
-						toasted.show(value, {position: 'top-center'}).goAway(5000)
+						toasted.show(value, {position: 'top-center', type: 'error'}).goAway(5000)
 					});
 				}
 			}

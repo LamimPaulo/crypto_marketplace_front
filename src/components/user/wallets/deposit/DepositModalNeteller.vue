@@ -89,12 +89,12 @@
 					.dispatch("sendNetellerDeposit", this.formData)
 					.then(
 						this.$toasted
-							.show("enviando...", {position: "bottom-left"})
+							.show("enviando...", {position: 'bottom-left', type: 'info'})
 							.goAway(3000)
 					)
 					.then(response => {
 						this.$toasted
-							.show(response.data.message, {position: "bottom-left"})
+							.show(response.data.message, {position: 'bottom-left', type: 'success'})
 							.goAway(3000);
 						setTimeout(function () {
 							location.reload();

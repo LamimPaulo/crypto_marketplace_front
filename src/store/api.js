@@ -1157,5 +1157,60 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
+		retrieveUserTicketsStatus() {
+			return new Promise((resolve, reject) => {
+				axios.get('/user/tickets/status')
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		retrieveUserTicketsDepartments() {
+			return new Promise((resolve, reject) => {
+				axios.get('/user/tickets/departments')
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		retrieveUserTicketsList(context, page) {
+			return new Promise((resolve, reject) => {
+				axios.get('/user/tickets?page=' + page)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		storeUserTicket(context, ticket) {
+			return new Promise((resolve, reject) => {
+				axios.post('/user/tickets', ticket)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		storeUserTicketMessage(context, message) {
+			return new Promise((resolve, reject) => {
+				axios.post('/user/tickets/message', message)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
 	}
 })

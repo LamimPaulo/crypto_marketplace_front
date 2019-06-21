@@ -87,9 +87,9 @@
           pin: this.token.pin,
           code: this.token.code,
         })
-                .then(this.$toasted.show('atualizando sua senha...', {position: 'bottom-left'}).goAway(5000))
+                .then(this.$toasted.show('atualizando sua senha...', {position: 'bottom-left', type: 'info'}).goAway(5000))
                 .then(response => {
-                  this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+                  this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
                   this.$emit('refresh')
                 })
                 .catch(error => {
@@ -104,7 +104,7 @@
           this.isTokenPinVisible = true
           this.$refs.tokenPinComponent.setData(method, action)
         } else {
-          this.$toasted.show('As senhas não correspondem. Tente novamente.', {position: 'bottom-left'}).goAway(5000)
+          this.$toasted.show('As senhas não correspondem. Tente novamente.', {position: 'bottom-left', type: 'error'}).goAway(5000)
         }
       },
       closeTokenPinModal() {

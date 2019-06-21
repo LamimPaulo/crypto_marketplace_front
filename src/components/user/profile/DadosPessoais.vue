@@ -110,7 +110,7 @@
 					this.$store.dispatch('retrieveCpf', {
 						document: this.user.document
 					})
-						.then(this.$toasted.show('buscando seus dados...', {position: 'bottom-left'}).goAway(3000))
+						.then(this.$toasted.show('buscando seus dados...', {position: 'bottom-left', type: 'info'}).goAway(3000))
 						.then(response => {
 							this.user.name = response.data.user.name
 							this.user.birthdate = response.data.user.birthdate
@@ -134,9 +134,9 @@
 					code: this.token.code,
 					pin: this.token.pin,
 				})
-					.then(this.$toasted.show('salvando seus dados...', {position: 'bottom-left'}).goAway(5000))
+					.then(this.$toasted.show('salvando seus dados...', {position: 'bottom-left', type: 'info'}).goAway(5000))
 					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						this.$emit('refresh')
 					})
 					.catch(error => {
