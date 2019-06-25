@@ -132,8 +132,10 @@
                 <payment-accounts-list refs="accountList"></payment-accounts-list>
             </div>
 
-            <token-pin v-show="isTokenPinVisible" ref="tokenPinComponent"
-                       @close-token-pin-modal="closeTokenPinModal" @token-data="handleTokenPinData"/>
+            <token-pin v-show="isTokenPinVisible"
+                       ref="tokenPinComponent"
+                       @close-token-pin-modal="closeTokenPinModal"
+                       @token-data="handleTokenPinData"/>
         </div>
 
     </div>
