@@ -41,9 +41,6 @@
                 this.$store.dispatch('retrieveNotificationsList')
                     .then(response => {
                         this.messages = response.data
-                        console.log('mensagens')
-                        console.log(this.messages.total)
-
                         this.loader = false
                     })
                     .catch(error => {
