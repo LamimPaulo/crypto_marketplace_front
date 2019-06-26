@@ -1,5 +1,5 @@
-import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
+import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import VerifyEmail from './components/auth/VerifyEmail';
 import SendResetPassword from './components/auth/SendResetPassword';
