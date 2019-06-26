@@ -10,7 +10,8 @@
         <div class="auth-box-w">
           <div class="logo-w">
             <a href="">
-              <img src="https://s3.amazonaws.com/navi-public/api/clients/3/cbed47c0-5323-4873-baf7-0284f80bbf0a.png" alt="Liquidex" class="logo">
+              <img src="https://s3.amazonaws.com/navi-public/api/clients/3/cbed47c0-5323-4873-baf7-0284f80bbf0a.png"
+                   alt="Liquidex" class="logo">
             </a>
           </div>
           <div class="row">
@@ -28,38 +29,13 @@
                   </div>
 
                   <table class="table table-lightborder" v-if="exists">
-                    <tr v-if="payment.address">
+                    <tr>
                       <td class="qr_code">
-                        <qr-code :text="payment.address" :size="qrcode_size" error-level="L"></qr-code>
+                        <qr-code :text="'bitcoin:'+payment.address+'?amount='+payment.amount" :size="qrcode_size" error-level="L"></qr-code>
                       </td>
                     </tr>
 
-                    <tr v-else class="box-tp">
-                      <td class="row">
-                        <span class="block mb-3">Escolha como prefere realizar o pagamento:</span>
-
-                        <div class="col-6" v-for="coin in coins" v-tooltip="coin.coin_name">
-                          <a class="element-box el-tablo centered smaller mb-1"
-                             @click.prevent="updatePayment(coin.coin_abbr, payment.tx)" href="#">
-                            <div class="pt-avatar-w">
-                              <img alt="" width="30vw" :src="require(`@/assets/img/${coin.icon}`)">
-                            </div>
-                            <div class="label">
-                              {{ coin.coin_abbr }}
-                            </div>
-                            <div class="value">
-                              {{ parseFloat(coin.amount) | fixValue }}
-                            </div>
-                          </a>
-                          <button class="btn btn-primary btn-block mb-3"
-                                  @click.prevent="updatePayment(coin.coin_abbr, payment.tx)">Selecionar
-                          </button>
-                        </div>
-
-                      </td>
-                    </tr>
-
-                    <tr v-show="payment.address">
+                    <tr>
                       <td class="text-center">
                         {{ payment.address }}
                       </td>
@@ -127,32 +103,12 @@
     },
     computed: {},
     methods: {
-      updatePayment(coin, tx) {
-        if (confirm("Esta ação não pode ser desfeita. Tem ceteza que deseja pagar com a moeda selecionada?")) {
-          this.loader = true
-          this.$store.dispatch('updateGatewayPayment', {
-            coin: coin,
-            tx: tx
-          })
-            .then(response => {
-              this.payment = response.data.payment
-              this.loader = false
-            })
-            .catch(error => {
-              if (error.response) {
-                this.handleErrors(error.response)
-              }
-              this.loader = false
-            })
-        }
-      },
       retrieveGatewayPayment() {
         this.loader = true
         this.$store.dispatch('retrieveGatewayPayment', this.$route.params.tx)
           .then(response => {
             if (response.data.message === "success") {
               this.payment = response.data.payment
-              this.coins = response.data.coins
               this.exists = true
             } else {
               this.exists = false
@@ -173,6 +129,9 @@
     },
     mounted() {
       this.retrieveGatewayPayment()
+      this.timer = setInterval(function () {
+				this.retrieveGatewayPayment();
+			}.bind(this), 60000);
     }
 
   }
