@@ -77,6 +77,7 @@
                         }
                         this.loader = false
                     })
+
             },
             refresh() {
                 setTimeout(function () {
