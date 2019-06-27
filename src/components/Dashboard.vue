@@ -151,6 +151,8 @@
 
         <Footer></Footer>
 
+        <notification-modal v-show="isModalVisible" @close-modal="closeModal"></notification-modal>
+
     </div>
 </template>
 
@@ -160,6 +162,7 @@
     import TopMenu from './menu/TopMenu';
     import TopMenuUser from './menu/TopMenuUser';
     import Footer from './layouts/Footer';
+    import NotificationModal from './user/notifications/NotificationModal';
     import {mapGetters} from 'vuex'
 
 	export default {
@@ -169,12 +172,15 @@
 			TopMenu,
 			TopMenuUser,
 			Footer,
+            NotificationModal,
 			Sidebar
 		},
 		data() {
 			return {
+			    isModalVisible: false,
 				wallets: [],
 				products: [],
+                generalNotification: [],
 				product_total: {
 					value_lqx: 0,
 					value_brl: 0,
@@ -212,10 +218,32 @@
 						}
 					})
 			},
+            retrieveNotifications() {
+                this.$store.dispatch('retrieveNotificationsList')
+                    .then(response => {
+                        this.generalNotification = response.data.data
+
+                        console.log('geral')
+                        console.log(this.generalNotification[1].type)
+
+                        if (this.generalNotification.length) {
+                            this.isModalVisible = true
+                        }
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.handleErrors(error.response)
+                        }
+                    })
+            },
+            closeModal(){
+                this.isModalVisible = false
+            }
 		},
 		mounted() {
 			this.retrieveWallets()
 			this.retrieveProducts()
+            this.retrieveNotifications()
 		},
 		beforeCreate: function () {
 			document.body.className = 'menu-position-side menu-side-left full-screen with-content-panel';
