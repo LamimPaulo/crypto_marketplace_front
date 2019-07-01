@@ -10,7 +10,8 @@
                 <div class="auth-box-w">
                     <div class="logo-w">
                         <a href="">
-                            <img src="https://s3.amazonaws.com/navi-public/api/clients/3/cbed47c0-5323-4873-baf7-0284f80bbf0a.png" alt="Liquidex" class="logo">
+                            <img src="https://s3.amazonaws.com/navi-public/api/clients/3/cbed47c0-5323-4873-baf7-0284f80bbf0a.png"
+                                 alt="Liquidex" class="logo">
                         </a>
                     </div>
                     <h4 class="text-center pb-3">
@@ -33,7 +34,8 @@
 
                         <div class="form-group">
                             <label>2FA </label>
-                            <i class="os-icon os-icon-info pull-right" v-tooltip="'Preencha apenas se tiver ativado a Autenticação em 2 fatores'"></i>
+                            <i class="os-icon os-icon-info pull-right"
+                               v-tooltip="'Preencha apenas se tiver ativado a Autenticação em 2 fatores'"></i>
                             <input class="form-control" placeholder="Código 2FA" type="text" name="code_2fa"
                                    v-model="code_2fa">
                         </div>
@@ -47,10 +49,16 @@
                             </vue-recaptcha>
                         </div>
 
-                        <button type="submit" :disabled='!isFilled' class="btn btn-block btn-success btn-login"><strong>Entrar</strong></button>
+                        <button type="submit" :disabled='!isFilled' class="btn btn-block btn-success btn-login"><strong>Entrar</strong>
+                        </button>
+
+                        <div class="alert alert-danger mt-3" v-if="error" v-html="error">
+                        </div>
 
                         <div class="buttons-w">
-                            <router-link class="pull-right" to="/register"><i class="fas fa-sign-in-alt"></i> Criar Conta</router-link>
+                            <router-link class="pull-right" to="/register"><i class="fas fa-sign-in-alt"></i> Criar
+                                Conta
+                            </router-link>
                         </div>
 
                     </form>
@@ -60,26 +68,27 @@
     </div>
 </template>
 <script>
-	import VueRecaptcha from 'vue-recaptcha';
+    import VueRecaptcha from 'vue-recaptcha';
 
-	export default {
-		name: 'Login',
-		data() {
-			return {
-				username: null,
-				password: null,
-				recaptcha: '',
-				code_2fa: null,
-				loader: false,
-				recaptcha_key: `${process.env.INVISIBLE_RECAPTCHA_KEY}`
-			}
-		},
-		computed: {
-			isFilled() {
-				return this.password && this.username;
-			}
-		},
-		methods: {
+    export default {
+        name: 'Login',
+        data() {
+            return {
+                error: null,
+                username: null,
+                password: null,
+                recaptcha: '',
+                code_2fa: null,
+                loader: false,
+                recaptcha_key: `${process.env.INVISIBLE_RECAPTCHA_KEY}`
+            }
+        },
+        computed: {
+            isFilled() {
+                return this.password && this.username;
+            }
+        },
+        methods: {
 
             FormSubmit() {
                 this.loader = true;
@@ -87,31 +96,31 @@
 
             },
             onCaptchaVerified(token) {
-
-				this.loader = true;
-				this.$store.dispatch('retrieveToken', {
-					username: this.username,
-					password: this.password,
+                this.error = null
+                this.loader = true;
+                this.$store.dispatch('retrieveToken', {
+                    username: this.username,
+                    password: this.password,
                     recaptcha: token,
-					code_2fa: this.code_2fa,
-				})
-					.then(this.$toasted.show('Verificando seus dados', {position: 'top-center'}).goAway(3000))
-					.then(this.password = null)
-					.then(this.$refs.recaptcha.reset())
-					.then(response => {
-						this.$store.dispatch('retrieveUser')
-						location.reload()
-					}).catch(error => {
-					this.loader = false;
-					if (error.response) {
-						this.handleErrors(error.response)
-					}
-					this.$refs.recaptcha.reset();
-				})
-			},
-		},
-		components: {VueRecaptcha},
-	}
+                    code_2fa: this.code_2fa,
+                })
+                    .then(this.$toasted.show('Verificando seus dados', {position: 'top-center'}).goAway(3000))
+                    .then(this.password = null)
+                    .then(this.$refs.recaptcha.reset())
+                    .then(response => {
+                        this.$store.dispatch('retrieveUser')
+                        location.reload()
+                    }).catch(error => {
+                    this.loader = false;
+                    if (error.response) {
+                        this.error = error.response.data.message
+                    }
+                    this.$refs.recaptcha.reset();
+                })
+            },
+        },
+        components: {VueRecaptcha},
+    }
 </script>
 
 <style scoped>
@@ -122,23 +131,23 @@
     .auth-wrapper.with-pattern {
         position: relative;
     }
-     
-    .auth-wrapper:after, .auth-wrapper:before{
-        position:absolute;
-        top:0;
-        bottom:0;
-        left:0;
-        right:0;
-        content:"";
-        z-index:-1;
+
+    .auth-wrapper:after, .auth-wrapper:before {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        content: "";
+        z-index: -1;
     }
 
 
-    .auth-wrapper {    
+    .auth-wrapper {
         min-height: 100%;
-        min-width: 1024px;            
+        min-width: 1024px;
         width: 100%;
-        height: auto;            
+        height: auto;
         position: fixed;
         top: 0;
         left: 0;
