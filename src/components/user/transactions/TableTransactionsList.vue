@@ -77,19 +77,19 @@
                     <!--transactions-->
                     <a target="_blank" :href="transaction.coin.tx_explorer + transaction.tx"
                        v-if="transaction.category===1">
-                        {{ transaction.tx }}
+                        {{ transaction.tx | shortStr }}
                     </a>
                     <!--orders-->
                     <a target="_blank" :href="'/order/' + transaction.tx" v-else-if="transaction.category===2">
-                        {{ transaction.tx }}
+                        {{ transaction.tx | shortStr }}
                     </a>
                     <!--conversions-->
                     <a target="_blank" :href="'/conversion/' + transaction.tx"
                        v-else-if="transaction.category===6||transaction.category===8">
-                        {{ transaction.tx }}
+                        {{ transaction.tx | shortStr }}
                     </a>
                     <!--others-->
-                    <span v-else> {{ transaction.tx }} </span>
+                    <span v-else> {{ transaction.tx | shortStr }} </span>
                 </td>
                 <td> {{ transaction.coin.abbr}}</td>
                 <td>
@@ -98,7 +98,7 @@
                     <span v-if="transaction.type===2" class="badge badge-danger">{{ transaction.amountRounded }}</span>
 
                 </td>
-                <td class="text-center"> {{ transaction.statusName}}</td>
+                <td class="text-center"> {{ transaction.statusClient}}</td>
             </tr>
 
 

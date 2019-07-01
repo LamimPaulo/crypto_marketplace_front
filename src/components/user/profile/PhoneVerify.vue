@@ -81,9 +81,9 @@
         this.$store.dispatch('updatePhone', {
           phone: this.user.phone
         })
-          .then(this.$toasted.show('enviando mensagem para seu telefone...', {position: 'bottom-left'}).goAway(5000))
+          .then(this.$toasted.show('enviando mensagem para seu telefone...', {position: 'bottom-left', type: 'info'}).goAway(5000))
           .then(response => {
-            this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+            this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
           })
           .catch(error => {
             if (error.response) {
@@ -95,9 +95,9 @@
         this.$store.dispatch('validatePhone', {
           code: this.code
         })
-          .then(this.$toasted.show('verificando seu código...', {position: 'bottom-left'}).goAway(5000))
+          .then(this.$toasted.show('verificando seu código...', {position: 'bottom-left', type: 'info'}).goAway(5000))
           .then(response => {
-            this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+            this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
             this.refresh()
           })
           .catch(error => {

@@ -141,9 +141,9 @@
 					action: this.g2fa_activate.action,
 					pin: this.token.pin,
 				})
-					.then(this.$toasted.show('atualizando autenticação...', {position: 'bottom-left'}).goAway(5000))
+					.then(this.$toasted.show('atualizando autenticação...', {position: 'bottom-left', type: 'info'}).goAway(5000))
 					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						this.$emit('refresh')
 					})
 					.catch(error => {
@@ -157,9 +157,9 @@
 				this.$store.dispatch('deactivate2Fa', {
 					pin: this.token.pin,
 				})
-					.then(this.$toasted.show('atualizando autenticação...', {position: 'bottom-left'}).goAway(5000))
+					.then(this.$toasted.show('atualizando autenticação...', {position: 'bottom-left', type: 'info'}).goAway(5000))
 					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						this.$emit('refresh')
 					})
 					.catch(error => {

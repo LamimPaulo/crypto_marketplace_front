@@ -19,18 +19,24 @@
             <!-- <form @submit.prevent="sendDeposit"> -->
             <div class="pricing-plans row no-gutters">
 
-                <div class="pricing-plan with-hover-effect col-md-4 col-sm-12 col-xs-12"
+                <div class="pricing-plan with-hover-effect col-md-6 col-sm-12 col-xs-12"
                      v-for="account in accounts"
                 >
-                    <div class="plan-body">
-                        <div class="plan-price-w">
-                            <img
-                                    v-if="account.type==1"
-                                    width="90px"
-                                    src="@/assets/img/logo-caixa-economica-federal-256.png"
-                                    alt
-                            >
-                        </div>
+                    <div class="plan-description">
+                        <h6>{{account.name}}</h6>
+                        <p>
+                            <span>Identificação:</span>
+                            <strong>{{account.document}}</strong>
+                        </p>
+                        <h6>{{ account.bank.name }}</h6>
+                        <p>
+                            <span v-if="user.country_id===31">Agência</span>
+                            <strong>{{account.agency}} {{account.agency_digit}}</strong>
+                            <br>
+                            <span v-if="user.country_id===31">Conta</span>
+                            <strong>{{account.account}} {{account.account_digit}}</strong>
+                            <br>
+                        </p>
                         <div class="plan-btn-w">
                             <button
                                     class="btn btn-primary btn-rounded"
@@ -40,51 +46,6 @@
                             </button>
 
                         </div>
-                    </div>
-                    <div class="plan-description">
-                        <h6>{{account.name}}</h6>
-                        <p>
-                            <span>Identificação:</span>
-                            <strong>{{account.document}}</strong>
-                        </p>
-                        <p>
-                            <span v-if="account.type==2">Email:</span>
-                            <strong>{{account.email}}</strong>
-                        </p>
-                        <h6 v-if="account.type==1">CAIXA ECONÔMICA FEDERAL</h6>
-                        <p v-if="account.type==1">
-                            <span>Agência</span>
-                            <strong>{{account.agency}} {{account.agency_digit}}</strong>
-                            <br>
-                            <span>Conta</span>
-                            <strong>{{account.account}} {{account.account_digit}}</strong>
-                            <br>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="pricing-plan with-hover-effect col-md-4 col-sm-12 col-xs-12">
-                    <div class="plan-body">
-                        <div class="plan-price-w">
-                            <img width="90px" src="@/assets/img/neteller.png" alt>
-                        </div>
-                        <div class="plan-btn-w">
-                            <button class="btn btn-primary btn-rounded"
-                                    @click.prevent="depositModalNeteller(account)">
-                                Selecionar
-                            </button>
-                        </div>
-                    </div>
-                    <div class="plan-description">
-                        <h6>Liquidex Ledger Safe LTDA</h6>
-                        <p>
-                            <span>Identificação</span>
-                            <strong>20.924.974/0001-79</strong>
-                        </p>
-                        <p>
-                            <span>Email:</span>
-                            <strong>vendasnavi@hotmail.com</strong>
-                        </p>
                     </div>
                 </div>
             </div>
@@ -98,11 +59,6 @@
                 ref="DepositModalBank"
         ></deposit-modal-bank>
 
-        <deposit-modal-neteller
-                v-show="isDepositNetellerVisible"
-                @close-deposit-modal="closeDepositModalNeteller"
-                ref="DepositModalNeteller"
-        ></deposit-modal-neteller>
 
     </div>
 </template>
@@ -111,7 +67,6 @@
 	import Vue from "vue";
 	import VueNumeric from "vue-numeric";
 	import DepositModalBank from "./deposit/DepositModalBank";
-	import DepositModalNeteller from "./deposit/DepositModalNeteller";
 	import {mapGetters} from "vuex";
 
 	Vue.use(VueNumeric);
@@ -120,6 +75,7 @@
 		name: "Deposit",
 		data() {
 			return {
+				loader: false,
 				isDepositBankVisible: false,
 				isDepositNetellerVisible: false,
 				accounts: {},
@@ -150,8 +106,7 @@
 		},
 		components: {
 			VueNumeric,
-			DepositModalBank,
-			DepositModalNeteller
+			DepositModalBank
 		},
 		methods: {
 			loadFile() {
@@ -173,18 +128,10 @@
 				this.isDepositBankVisible = true;
 				this.$refs.DepositModalBank.setAccount(account);
 			},
-			depositModalNeteller(account) {
-				this.isDepositNetellerVisible = true;
-				this.$refs.DepositModalNeteller.setAccount(account);
-			},
 			closeDepositModalBank() {
-				this.$emit("close-deposit-modal");
 				this.isDepositBankVisible = false;
 			},
-			closeDepositModalNeteller() {
-				this.$emit("close-deposit-modal");
-				this.isDepositNetellerVisible = false;
-			}
+
 		},
 		mounted() {
 			this.retrieveSystemAccounts()

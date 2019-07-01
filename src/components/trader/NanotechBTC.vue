@@ -10,18 +10,9 @@
                         <i class="os-icon os-icon-external-link"></i><span> Nanotech LQX</span>
                     </a>
                 </div>
-                <h6>
-                    Nanotech {{ investment_data.coin }}
-                    <span class="animate-border my-3"></span>
+                <h6 class="element-header mb-0">
+                    {{ investment_data.name }}
                 </h6>
-
-                <div class="element-box-tp">
-                    <div class="row">
-                        <div class="col-12 col-sm-4 col-xxl-3">
-                            <btc-area-chart></btc-area-chart>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="element-box-tp mb-2">
                     <div class="row">
@@ -314,6 +305,19 @@
 
             <div class="row">
                 <div class="col-12">
+                    <h6>
+                        Lucros Diários
+                        <span class="animate-border my-3"></span>
+                    </h6>
+
+                    <div class="element-box-tp mb-2">
+                        <lqx-area-chart :chartData="investment_data.chart"></lqx-area-chart>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
                     <last-trades></last-trades>
                 </div>
             </div>
@@ -330,7 +334,7 @@
 	import LastTrades from './LastTrades'
 	import Modal from './../layouts/Modal'
 	import Pin from './../verifications/Pin'
-    import BtcAreaChart from  './../charts/BtcAreaChart'
+    import LqxAreaChart from './../charts/LqxAreaChart'
 
 	export default {
 		name: "Arbitrage",
@@ -363,7 +367,9 @@
 					user_investment: 0,
 					user_profit: 0,
 					total_user_investment: 0,
-					coin: 'BTC'
+					coin: 'BTC',
+					name: 'Nanotech',
+                    chart: []
 				},
 				token: {
 					pin: null
@@ -399,6 +405,7 @@
 				this.loader = true
 				this.$store.dispatch('retrieveInvestmentData', 2)
 					.then(response => {
+						this.investment_data.name = response.data.name
 						this.investment_data.average_profits.base = response.data.average_profits.base
 						this.investment_data.average_profits.current_month = response.data.average_profits.current_month
 						this.investment_data.average_profits.current_day = response.data.average_profits.current_day
@@ -409,6 +416,7 @@
 						this.investment_data.user_profit = response.data.user_profit
 						this.investment_data.total_user_investment = response.data.total_user_investment
 						this.investment_data.coin = response.data.coin
+                        this.investment_data.chart = response.data.chart_data
 						this.loader = false
 					})
 					.catch(error => {
@@ -430,7 +438,7 @@
 					pin: this.token.pin,
 				})
 					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						this.refresh()
 					})
 					.catch(error => {
@@ -453,7 +461,7 @@
 					pin: this.token.pin,
 				})
 					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						this.refresh()
 					})
 					.catch(error => {
@@ -506,7 +514,7 @@
 			}
 		},
 		components: {
-            BtcAreaChart,
+            LqxAreaChart,
 			LastTrades,
 			Modal,
 			Pin

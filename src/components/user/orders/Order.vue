@@ -39,7 +39,7 @@
             </tr>
             <tr>
               <td> Status</td>
-              <td class="text-right"> {{ transaction.statusName }}</td>
+              <td class="text-right"> {{ transaction.statusClient }}</td>
             </tr>
             <tr>
               <td> Atualização</td>

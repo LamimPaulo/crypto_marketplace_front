@@ -437,7 +437,7 @@
           pin: this.token.pin,
           action: this.newKey.action
         })
-          .then(this.$toasted.show('gerando chave...', {position: 'bottom-left'}).goAway(3000))
+          .then(this.$toasted.show('gerando chave...', {position: 'bottom-left', type: 'info'}).goAway(3000))
           .then(response => {
             this.key.api_key = response.data.key.api_key
             this.key.secret = response.data.key.secret
@@ -463,7 +463,7 @@
           pin: this.token.pin,
           action: this.newKey.action
         })
-          .then(this.$toasted.show('atualizando sua chave...', {position: 'bottom-left'}).goAway(3000))
+          .then(this.$toasted.show('atualizando sua chave...', {position: 'bottom-left', type: 'info'}).goAway(3000))
           .then(response => {
             this.key.api_key = response.data.key.api_key
             this.key.secret = response.data.key.secret

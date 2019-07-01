@@ -42,6 +42,10 @@ Vue.filter('roundValue', function (value) {
 	return parseFloat(value).toFixed(0);
 });
 
+Vue.filter('shortStr', function (value) {
+	return value.substring(1, 32)
+});
+
 Vue.filter('formatValue', function (value) {
 	let val = parseFloat(value).toFixed(2).replace('.', ',')
 	return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
@@ -63,15 +67,16 @@ Vue.mixin({
 			let toasted = this.$toasted;
 			if (response.status === 401 || response.data.status === 401) {
 				toasted.show("Sua sessão expirou, favor logar novamente!", {
-					position: 'top-center'
-				}).goAway(5000)
+					position: 'top-center',
+					type: 'info'
+				}).goAway(1500)
 				this.$router.push({name: 'login'})
 			} else {
-				toasted.show(response.data.message, {position: 'top-center'}).goAway(5000)
+				toasted.show(response.data.message, {position: 'top-center', type: 'error'}).goAway(5000)
 				if (response.data.errors) {
 					let errors = response.data.errors
 					map(errors, function (value, key) {
-						toasted.show(value, {position: 'top-center'}).goAway(5000)
+						toasted.show(value, {position: 'top-center', type: 'error'}).goAway(5000)
 					});
 				}
 			}

@@ -422,10 +422,10 @@
             action: this.orderBuy.action,
             pin: this.token.pin,
           }).then(
-            this.$toasted.show('enviando...', {position: 'bottom-left'}).goAway(3000)
+            this.$toasted.show('enviando...', {position: 'bottom-left', type: 'info'}).goAway(3000)
           )
             .then(response => {
-              this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+              this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
               this.$router.push({name: 'order', params: {id: response.data.transaction.tx}})
             }).catch(error => {
             if (error.response) {
@@ -442,10 +442,10 @@
             action: this.orderSell.action,
             pin: this.token.pin,
           }).then(
-            this.$toasted.show('enviando...', {position: 'bottom-left'}).goAway(3000)
+            this.$toasted.show('enviando...', {position: 'bottom-left', type: 'info'}).goAway(3000)
           )
             .then(response => {
-              this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+              this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
               this.$router.push({name: 'order', params: {id: response.data.transaction.tx}})
             }).catch(error => {
             if (error.response) {

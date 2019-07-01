@@ -569,9 +569,20 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-		retrieveDraftTax(context, draft) {
+		retrieveWithdrawalTax() {
 			return new Promise((resolve, reject) => {
-				axios.post('/draft/tax', draft)
+				axios.get('/withdrawal/deadlines')
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		calcWithdrawalTax(context, withdrawal) {
+			return new Promise((resolve, reject) => {
+				axios.post('/withdrawal/calc', withdrawal)
 					.then(response => {
 						resolve(response)
 					})
@@ -811,39 +822,7 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-		retrieveGatewayKey(context, order) {
-			return new Promise((resolve, reject) => {
-				axios.get('/gateway/get-key', order)
-					.then(response => {
-						resolve(response)
-					})
-					.catch(error => {
-						reject(error)
-					})
-			})
-		},
-		storeGatewayKey(context, order) {
-			return new Promise((resolve, reject) => {
-				axios.post('/gateway/new-key', order)
-					.then(response => {
-						resolve(response)
-					})
-					.catch(error => {
-						reject(error)
-					})
-			})
-		},
-		updateGatewayKey(context, order) {
-			return new Promise((resolve, reject) => {
-				axios.post('/gateway/update-key', order)
-					.then(response => {
-						resolve(response)
-					})
-					.catch(error => {
-						reject(error)
-					})
-			})
-		},
+
 		retrievePharaosGatewayKey(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.get('/pharaos-gateway/get-key', order)
@@ -899,28 +878,7 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-		retrieveGatewayPaymentsList(context, page) {
-			return new Promise((resolve, reject) => {
-				axios.get('/gateway/list-payments?page=' + page)
-					.then(response => {
-						resolve(response)
-					})
-					.catch(error => {
-						reject(error)
-					})
-			})
-		},
-		retrieveGatewayPayment(context, tx) {
-			return new Promise((resolve, reject) => {
-				axios.get('/gateway/tx/' + tx)
-					.then(response => {
-						resolve(response)
-					})
-					.catch(error => {
-						reject(error)
-					})
-			})
-		},
+
 		updateGatewayPayment(context, transaction) {
 			return new Promise((resolve, reject) => {
 				axios.post('/gateway/update-tx/', transaction)
@@ -982,7 +940,18 @@ export const store = new Vuex.Store({
 		},
 		sendTransfer(context, transfer) {
 			return new Promise((resolve, reject) => {
-				axios.post('/transactions/transfer', transfer)
+				axios.post('/draft/credminer', transfer)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		sendTransferUsd(context, transfer) {
+			return new Promise((resolve, reject) => {
+				axios.post('/draft-usd/credminer', transfer)
 					.then(response => {
 						resolve(response)
 					})
@@ -1189,6 +1158,28 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
+		buyLevelUsd(context, data) {
+			return new Promise((resolve, reject) => {
+				axios.post('/levels/buyUsd', data)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		buyLevelLqx(context, data) {
+			return new Promise((resolve, reject) => {
+				axios.post('/levels/buyLqx', data)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
 		retrieveMasternodes() {
 			return new Promise((resolve, reject) => {
 				axios.get('/masternode/list')
@@ -1200,6 +1191,71 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-
+		retrieveUserTicketsStatus() {
+			return new Promise((resolve, reject) => {
+				axios.get('/user/tickets/status')
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		retrieveUserTicketsDepartments() {
+			return new Promise((resolve, reject) => {
+				axios.get('/user/tickets/departments')
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		retrieveUserTicketsList(context, page) {
+			return new Promise((resolve, reject) => {
+				axios.get('/user/tickets?page=' + page)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		storeUserTicket(context, ticket) {
+			return new Promise((resolve, reject) => {
+				axios.post('/user/tickets', ticket)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+		storeUserTicketMessage(context, message) {
+			return new Promise((resolve, reject) => {
+				axios.post('/user/tickets/message', message)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
+    retrieveGatewayPayment(context, tx) {
+      return new Promise((resolve, reject) => {
+        axios.get('/credminer/gateway/status/' + tx)
+          .then(response => {
+            resolve(response)
+          })
+          .catch(error => {
+            reject(error)
+          })
+      })
+    },
 	}
 })

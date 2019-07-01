@@ -15,7 +15,9 @@
                             <div class="form-group">
                                 <label for="">De</label>
                                 <select class="form-control" v-model="conversor.base" @change="conversorBaseChange">
-                                    <option :value="coin.abbr" v-for="coin in myCoins" selected> {{coin.abbr}}</option>
+                                    <option :value="coin.abbr" v-for="coin in myCoins" selected
+                                            v-if="coin.abbr!=='LQX'"> {{coin.abbr}}
+                                    </option>
 
                                 </select>
                             </div>
@@ -36,9 +38,13 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="">Quantidade</label>
-                                <input class="form-control" placeholder="Quantidade..." type="text"
-                                       v-if="conversor.base!==conversor.quote"
-                                       @input="retrieveConversion" v-model="conversor.amount">
+                                <vue-numeric class="form-control" placeholder="Quantidade..."
+                                         v-if="conversor.base!==conversor.quote"
+                                         @input="retrieveConversion" v-model="conversor.amount"
+                                         :min="0" :minus="false" :precision="5"
+                                         currency="" decimal-separator="."
+                                         thousand-separator=""></vue-numeric>
+
                             </div>
                         </div>
                         <div class="col-6">
@@ -111,7 +117,8 @@
             <div class="element-box-tp">
 
                 <div class="todo-list">
-                    <a class="todo-item" href="/levels" v-if="!user.api_key" style="border: 1px solid rgb(4, 123, 248);">
+                    <a class="todo-item" href="/levels" v-if="!user.api_key"
+                       style="border: 1px solid rgb(4, 123, 248);">
                         <div class="ti-info">
                             <div class="ti-header"> Key Code</div>
                             <div class="ti-sub-header"> Você não possui Key Code</div>
@@ -121,7 +128,8 @@
                         </div>
                     </a>
 
-                    <a class="todo-item" v-tooltip.right="'Clique para Copiar'" @click="copyAddress" v-else style="border: 1px solid rgb(4, 123, 248);">
+                    <a class="todo-item" v-tooltip.right="'Clique para Copiar'" @click="copyAddress" v-else
+                       style="border: 1px solid rgb(4, 123, 248);">
                         <div class="ti-success">
                             <div class="ti-header"> Key Code</div>
                             <div class="ti-sub-header"> {{ user.api_key }}</div>
@@ -131,28 +139,31 @@
                         </div>
                     </a>
 
-                    <a class="todo-item" href="/payment-accounts" v-if="!count_accounts" >
-                        <div class="ti-info">
-                            <div class="ti-header"> Contas Bancárias</div>
-                            <div class="ti-sub-header"> Você não possui contas cadastradas</div>
-                        </div>
-                        <div class="ti-icon">
-                            <i class="os-icon os-icon-arrow-right7"></i>
-                        </div>
-                    </a>
-
-                    <a class="todo-item complete" href="/payment-accounts" v-if="count_accounts">
-                        <div class="ti-info">
-                            <div class="ti-header"> Contas Bancárias</div>
-                            <div class="ti-sub-header"> Você possui {{count_accounts}} conta{{count_accounts>1 ? 's' :
-                                ''}}
-                                cadastrada{{count_accounts>1 ? 's' : ''}}
+                    <div v-if="user.country_id===31">
+                        <a class="todo-item" href="/payment-accounts" v-if="!count_accounts">
+                            <div class="ti-info">
+                                <div class="ti-header"> Contas Bancárias</div>
+                                <div class="ti-sub-header"> Você não possui contas cadastradas</div>
                             </div>
-                        </div>
-                        <div class="ti-icon">
-                            <i class="os-icon os-icon-check"></i>
-                        </div>
-                    </a>
+                            <div class="ti-icon">
+                                <i class="os-icon os-icon-arrow-right7"></i>
+                            </div>
+                        </a>
+
+                        <a class="todo-item complete" href="/payment-accounts" v-if="count_accounts">
+                            <div class="ti-info">
+                                <div class="ti-header"> Contas Bancárias</div>
+                                <div class="ti-sub-header"> Você possui {{count_accounts}} conta{{count_accounts>1 ? 's'
+                                    :
+                                    ''}}
+                                    cadastrada{{count_accounts>1 ? 's' : ''}}
+                                </div>
+                            </div>
+                            <div class="ti-icon">
+                                <i class="os-icon os-icon-check"></i>
+                            </div>
+                        </a>
+                    </div>
 
                     <a class="todo-item error" href="/profile"
                        v-if="!user.pin_filled">
@@ -272,6 +283,10 @@
 	import {mapGetters} from 'vuex'
 	import Pin from './../verifications/Pin'
 	import debounce from 'lodash/debounce'
+    import Vue from 'vue'
+    import VueNumeric from 'vue-numeric'
+
+    Vue.use(VueNumeric)
 
 	export default {
 		name: "Sidebar",
@@ -281,7 +296,7 @@
 				conversor: {
 					base: 'BTC',
 					quote: 'BRL',
-					amount: null,
+					amount: 0,
 					total: null,
 					message: false
 				},
@@ -320,8 +335,8 @@
 						}
 					})
 			},
-			retrieveConversion: debounce(function (e) {
-				if (e.target.value.length > 0) {
+			retrieveConversion: debounce(function () {
+				if (this.conversor.amount > 0) {
 					this.$store.dispatch('retrieveConversion', this.conversor)
 						.then(response => {
 							this.conversor.total = response.data.amount
@@ -342,9 +357,9 @@
 					action: 10,
 					pin: this.token.pin,
 				})
-					.then(this.$toasted.show('enviando solicitação...', {position: 'bottom-left'}).goAway(5000))
+					.then(this.$toasted.show('enviando solicitação...', {position: 'bottom-left', type: 'info'}).goAway(5000))
 					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						this.refresh()
 					})
 					.catch(error => {
@@ -414,11 +429,11 @@
 					})
 			},
 			conversorBaseChange() {
-				this.conversor.amount = null
+				this.conversor.amount = 0
 				this.conversor.total = null
 			},
 			conversorQuoteChange() {
-				this.conversor.amount = null
+				this.conversor.amount = 0
 				this.conversor.total = null
 			},
 			copyAddress() {
@@ -433,7 +448,7 @@
 				selBox.select();
 				document.execCommand('copy');
 				document.body.removeChild(selBox);
-				this.$toasted.show('Copiado!', {position: 'bottom-left'}).goAway(3000)
+				this.$toasted.show('Copiado!', {position: 'bottom-left', type: 'info'}).goAway(3000)
 			}
 		},
 		mounted() {
@@ -443,7 +458,8 @@
 			this.myCoinsList()
 		},
 		components: {
-			Pin
+			Pin,
+            VueNumeric
 		}
 	}
 </script>

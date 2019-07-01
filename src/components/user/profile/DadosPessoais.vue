@@ -15,6 +15,16 @@
 
             <form @submit.prevent="updateUser" v-if="data_group">
                 <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input class="form-control" placeholder="Seu Nome" type="text" id="username"
+                                   v-model="user.username"
+                                   disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="cpf"> Cpf</label>
@@ -100,7 +110,7 @@
 					this.$store.dispatch('retrieveCpf', {
 						document: this.user.document
 					})
-						.then(this.$toasted.show('buscando seus dados...', {position: 'bottom-left'}).goAway(3000))
+						.then(this.$toasted.show('buscando seus dados...', {position: 'bottom-left', type: 'info'}).goAway(3000))
 						.then(response => {
 							this.user.name = response.data.user.name
 							this.user.birthdate = response.data.user.birthdate
@@ -124,9 +134,9 @@
 					code: this.token.code,
 					pin: this.token.pin,
 				})
-					.then(this.$toasted.show('salvando seus dados...', {position: 'bottom-left'}).goAway(5000))
+					.then(this.$toasted.show('salvando seus dados...', {position: 'bottom-left', type: 'info'}).goAway(5000))
 					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						this.$emit('refresh')
 					})
 					.catch(error => {
@@ -175,6 +185,7 @@
     .form-desc {
         border-bottom: none;
     }
+
     .personal-data {
         background-image: url(../../../assets/img/icons/personal-data.png);
         background-size: 80px;

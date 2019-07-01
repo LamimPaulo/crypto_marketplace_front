@@ -416,7 +416,7 @@
 					pin: this.token.pin,
 				})
 					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						this.refresh()
 					})
 					.catch(error => {
@@ -439,7 +439,7 @@
 					pin: this.token.pin,
 				})
 					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						this.refresh()
 					})
 					.catch(error => {

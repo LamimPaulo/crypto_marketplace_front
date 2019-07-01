@@ -15,7 +15,7 @@
           </div>
         </div>
 
-        <div v-if="this.hist" class="activity-box-w">
+        <div v-if="!logs.length" class="activity-box-w">
           <div class="alert alert-warning borderless">
             <h5 class="alert-heading">Sem Atividades Recentes!</h5>
           </div>

@@ -1,5 +1,5 @@
-import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
+import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import VerifyEmail from './components/auth/VerifyEmail';
 import SendResetPassword from './components/auth/SendResetPassword';
@@ -23,6 +23,7 @@ import Masternode from './components/masternode/Masternode';
 import UserGateway from './components/user/gateway/UserGateway';
 import PharaosGateway from './components/user/pharaos-gateway/PharaosGateway';
 import UserGatewayPayments from './components/user/gateway/UserGatewayPayments';
+import UserTickets from './components/user/UserTickets';
 import UserGatewayPdv from './components/user/gateway/UserGatewayPdv';
 import Gateway from './components/user/gateway/Gateway';
 import IndexFunds from './components/user/funds/IndexFunds';
@@ -61,6 +62,12 @@ const routes = [
 		meta: {requiresVisitor: true}
 	},
 	{
+		path: '/signup',
+		name: 'signup',
+		component: Register,
+		meta: {requiresVisitor: true}
+	},
+	{
 		path: '/register/verify',
 		name: 'register-verify',
 		component: VerifyEmail,
@@ -93,7 +100,8 @@ const routes = [
 				name: 'payment-accounts',
 				component: PaymentAccounts,
 				meta: {requiresAuth: true}
-			}, {
+			},
+			{
 				path: '/payment-account/:id',
 				name: 'payment-account',
 				component: PaymentAccount,
@@ -220,6 +228,12 @@ const routes = [
 		path: '/levels',
 		name: 'levels',
 		component: LevelList,
+		meta: {requiresAuth: true}
+	},
+	{
+		path: '/tickets',
+		name: 'tickets',
+		component: UserTickets,
 		meta: {requiresAuth: true}
 	},
 ];

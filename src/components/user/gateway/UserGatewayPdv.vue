@@ -212,7 +212,7 @@
         this.$store.dispatch('storeGatewayPayment', {
           amount: this.newPayment.amount
         }).then(response => {
-          this.$toasted.show(response.data.message, {position: 'bottom-left'}).goAway(3000)
+          this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
           this.payment = response.data.payment
           this.gateway_link = process.env.API_ROOT + '/gateway/tx/' + response.data.payment.tx
           this.isRecentKey = true
