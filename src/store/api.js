@@ -282,6 +282,17 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
+		retrieveTotalNotifications(){
+			return new Promise((resolve, reject) => {
+				axios.get('/messages/total')
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
 		retrieveNotification(context, message) {
 			return new Promise((resolve, reject) => {
 				axios.get('/messages/edit/' + message)

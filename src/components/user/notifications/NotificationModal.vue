@@ -1,7 +1,6 @@
 <template>
-    <div class="vue-modal-backdrop">
+    <div class="vue-modal-backdrop" v-if="slides.length">
         <div class="modal" id="modal-one" aria-hidden="true">
-
             <nav class="nav-container">
                 <svg viewBox="0 0 13 20" class="nav nav--prev" @click="nav(-1)" title="Prev">
                     <polyline points="10,3 3,10 10,17"></polyline>
@@ -11,31 +10,24 @@
                     <polyline points="10,3 3,10 10,17" transform="rotate(180 6.5,10)"></polyline>
                 </svg>
             </nav>
-
             <transition-group tag="div" class="slide-group"
                               :name="transitionName"
                               @before-leave="sgBeforeLeave">
-
                 <h1 class="text-white" key="title">Aviso Liquidex </h1>
-
                 <div :key="current" class="slide" @click="nav(1)">
                     <h4 v-html="slides[current].subject"></h4>
                     <div v-html="slides[current].content"></div>
                 </div>
-
                 <footer class="slide-group__footer text-info" key="footer" @click="closeThisModal">
                     <h4 class="pointer text-info" @click="closeThisModal">X FECHAR</h4>
                 </footer>
-
             </transition-group>
-
         </div>
     </div>
 </template>
 
 <script>
     import Modal from './../../layouts/Modal'
-
     export default {
         name: "NotificationModal",
         data() {
@@ -44,15 +36,18 @@
                 dir: 0,
                 current: 0,
                 use3d: true,
-                slides: ['carregando...']
+                slides: []
             }
         },
         methods: {
             retrieveNotifications() {
                 this.$store.dispatch('retrieveNotificationsList')
                     .then(response => {
-                        this.slides = response.data.data
-                        this.loader = false
+                        for (let i = 0; i <= response.data.data.length; i++ ) {
+                            if(response.data.data[i].statuses[0].status == 0 && response.data.data[i].type == 0){
+                                this.slides.push(response.data.data[i])
+                            }
+                        }
                     })
                     .catch(error => {
                         if (error.response) {
@@ -67,7 +62,6 @@
                 // Loop around the array so last slide goes to first slide & vice-versa.
                 this.current = ( ( this.current + dir % len) + len ) % len;
             },
-
             // When transitioning an element out, applying `position: absolute` or `position: fixed` keeps the container from snapping in size dramatically and helps the whole transition run smoother.
             // You can use CSS on the `-leave-active` class (see commented out CSS in the CSS tab), but that often leads to the element flying out in weird directions or snapping to the edges of the container.
             // Instead, let's apply the positioning in JavaScript with `position: fixed` and the right positioning + sizing to elements that are leaving so they don't snap in odd ways.

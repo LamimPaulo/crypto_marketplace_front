@@ -2,7 +2,7 @@
     <!--------------------START - Notification System-------------------->
     <router-link to="/notifications" class="messages-notifications os-dropdown-trigger os-dropdown-position-left">
         <i class="os-icon os-icon-mail-14"></i>
-        <div class="new-messages-count">{{this.messages.total}}</div>
+        <div class="new-messages-count">{{this.total}}</div>
 
 <!--        <div class="os-dropdown light message-list">-->
 <!--            <ul>-->
@@ -26,33 +26,24 @@
         name: "DropdownMessages",
         data() {
             return {
-                count:null,
-                messages: {
-                    total: 0,
-                    per_page: 10,
-                    from: 1,
-                    to: 0,
-                    current_page: 1
-                }
+                total: 0
             }
         },
         methods: {
-            retrieveNotifications() {
-                this.$store.dispatch('retrieveNotificationsList')
+            retrieveTotalNotifications() {
+                this.$store.dispatch('retrieveTotalNotifications')
                     .then(response => {
-                        this.messages = response.data
-                        this.loader = false
+                        this.total = response.data
                     })
                     .catch(error => {
                         if (error.response) {
                             this.handleErrors(error.response)
                         }
-                        this.loader = false
                     })
             }
         },
         mounted() {
-            this.retrieveNotifications()
+           this.retrieveTotalNotifications()
         }
     }
 </script>
