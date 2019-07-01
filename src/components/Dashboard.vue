@@ -187,7 +187,8 @@
 				},
 				chart: [1, 2, 3, 4],
 				count: null,
-				loader: true,
+                totalMsg: null,
+				loader: true
 			}
 		},
 		methods: {
@@ -218,15 +219,13 @@
 						}
 					})
 			},
-            retrieveNotifications() {
-                this.$store.dispatch('retrieveNotificationsList')
+            retrieveTotalNotifications() {
+                this.$store.dispatch('retrieveTotalNotifications')
                     .then(response => {
-                        this.generalNotification = response.data.data
-
-                        console.log('geral')
-                        console.log(this.generalNotification[1].type)
-
-                        if (this.generalNotification.length) {
+                        this.totalMsg = response.data
+                        console.log('this.totalMsg')
+                        console.log(this.totalMsg)
+                        if (this.totalMsg > 0) {
                             this.isModalVisible = true
                         }
                     })
@@ -243,7 +242,7 @@
 		mounted() {
 			this.retrieveWallets()
 			this.retrieveProducts()
-            this.retrieveNotifications()
+            this.retrieveTotalNotifications()
 		},
 		beforeCreate: function () {
 			document.body.className = 'menu-position-side menu-side-left full-screen with-content-panel';
