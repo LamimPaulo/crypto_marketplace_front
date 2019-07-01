@@ -70,8 +70,6 @@
                 this.$store.dispatch('retrieveNotificationsList', this.messages.current_page)
                     .then(response => {
                         this.messages = response.data
-                        console.log('mensagens:')
-                        console.log(this.messages);
                         this.count = response.data.count
                         this.loader = false
                     })

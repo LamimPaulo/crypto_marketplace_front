@@ -273,7 +273,7 @@ export const store = new Vuex.Store({
 		/**MENSAGENS DO SISTEMA**/
 		retrieveNotificationsList(context, page) {
 			return new Promise((resolve, reject) => {
-				axios.get('/admin/messages/notifications?page=' + page)
+				axios.get('/messages/notifications?page=' + page)
 					.then(response => {
 						resolve(response)
 					})
@@ -284,7 +284,7 @@ export const store = new Vuex.Store({
 		},
 		retrieveNotification(context, message) {
 			return new Promise((resolve, reject) => {
-				axios.get('/admin/messages/edit/' + message)
+				axios.get('/messages/edit/' + message)
 					.then(response => {
 						resolve(response)
 					})
