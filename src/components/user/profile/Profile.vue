@@ -40,6 +40,8 @@
               <personal-data :user="user" :documents="documents" @retrieve-documents="retrieveDocuments()"
                              v-else></personal-data>
 
+              <address-data v-if="user.country_id == 31" :user="user"></address-data>
+
               <password-change :user="user" @refresh="refresh()"
                                @reset-token="resetToken()"></password-change>
 
@@ -66,6 +68,7 @@
   import PinChange from './PinChange'
   import DadosPessoais from "./DadosPessoais";
   import PersonalData from "./PersonalData";
+  import AddressData from "./AddressData";
   import Documents from "./Documents";
   import Google2fa from "./Google2fa";
 
@@ -103,8 +106,7 @@
           }
           this.loader = false
         })
-      },
-
+      }
     },
     computed: {
       ...mapGetters([
@@ -114,6 +116,7 @@
     components: {
       DadosPessoais,
       PersonalData,
+      AddressData,
       ActivityLog,
       PasswordChange,
       PinChange,

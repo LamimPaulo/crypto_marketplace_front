@@ -359,6 +359,7 @@
             if (error.response) {
               this.handleErrors(error.response);
             }
+            this.loader = false
           });
       },
       storeTicketMessage() {

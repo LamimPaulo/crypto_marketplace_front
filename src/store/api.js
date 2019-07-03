@@ -458,6 +458,27 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
+		retrieveZipCode(context, zipcode) {
+			return new Promise((resolve, reject) => {
+				axios.get('/user/address/get/' + zipcode)
+					.then(response => {
+						resolve(response)
+					}).catch(error => {
+						reject(error)
+				})
+			})
+		},
+		updateUserAddress(context, address) {
+			return new Promise((resolve, reject) => {
+				axios.post('/user/address/store', address)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
 		retrieveAccounts(context) {
 			return new Promise((resolve, reject) => {
 				axios.get('/user/accountsList/')

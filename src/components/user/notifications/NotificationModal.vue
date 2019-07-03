@@ -1,5 +1,5 @@
 <template>
-    <div class="vue-modal-backdrop" v-if="slides.length">
+    <div class="vue-modal-backdrop" v-if="this.slides.length">
         <div class="modal" id="modal-one" aria-hidden="true">
             <nav class="nav-container">
                 <svg viewBox="0 0 13 20" class="nav nav--prev" @click="nav(-1)" title="Prev">
@@ -36,18 +36,21 @@
                 dir: 0,
                 current: 0,
                 use3d: true,
-                slides: []
+                slides: [{}]
             }
         },
         methods: {
             retrieveNotifications() {
+                //
                 this.$store.dispatch('retrieveNotificationsList')
                     .then(response => {
+                        // this.slides = response.data.data[0];
                         for (let i = 0; i <= response.data.data.length; i++ ) {
                             if(response.data.data[i].statuses[0].status == 0 && response.data.data[i].type == 0){
                                 this.slides.push(response.data.data[i])
                             }
                         }
+
                     })
                     .catch(error => {
                         if (error.response) {
@@ -86,7 +89,9 @@
         },
         mounted() {
           this.retrieveNotifications()
-          setTimeout(()=>{ this.nav(1); },200);
+          setTimeout(()=>{ this.nav(1); },200)
+          this.slides.splice(0,1)
+
         },
         components: {
             Modal

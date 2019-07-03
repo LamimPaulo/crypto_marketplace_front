@@ -185,7 +185,8 @@
 				},
 				chart: [1, 2, 3, 4],
 				count: null,
-                totalMsg: null,
+                totalMsg: 0,
+                typeMsg: null,
 				loader: true
 			}
 		},
@@ -221,9 +222,9 @@
                 this.$store.dispatch('retrieveTotalNotifications')
                     .then(response => {
                         this.totalMsg = response.data
-                        console.log('this.totalMsg')
-                        console.log(this.totalMsg)
-                        if (this.totalMsg > 0) {
+                        this.typeMsg
+
+                        if (this.totalMsg >= 1) {
                             this.isModalVisible = true
                         }
                     })
