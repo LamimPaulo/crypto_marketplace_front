@@ -51,19 +51,19 @@
                                         <div class="plan-btn-w px-3" v-if="user.user_level_id < level.id">
                                             <div v-if="user.level.product.bonus_percent>0">
                                                 <!--LQX-->
-                                                De:
-                                                <span class="price-crossed">
-                                                 {{ level.product.lqxValue }}LQX <br>
-                                                </span>
-                                                <a :class="'btn btn-block btn-level-' + level.id"
-                                                   @click.prevent="showLevelDetailsModal(level, 'buyLevelLqx')"
-                                                   href="#">Por: {{ parseFloat(level.product.lqxValue) -
-                                                    (parseFloat(user.level.product.lqxValue) *
-                                                    parseFloat(level.product.bonus_percent) / 100) |
-                                                    fixValue}}LQX</a>
+                                                <!--De:-->
+                                                <!--<span class="price-crossed">-->
+                                                 <!--{{ level.product.lqxValue }}LQX <br>-->
+                                                <!--</span>-->
+                                                <!--<a :class="'btn btn-block btn-level-' + level.id"-->
+                                                   <!--@click.prevent="showLevelDetailsModal(level, 'buyLevelLqx')"-->
+                                                   <!--href="#">Por: {{ parseFloat(level.product.lqxValue) - -->
+                                                    <!--(parseFloat(user.level.product.lqxValue) *-->
+                                                    <!--parseFloat(level.product.bonus_percent) / 100) |-->
+                                                    <!--fixValue}}LQX</a>-->
 
                                                 <span v-if="level.type===1">
-                                                    <br> ou <br><br>
+                                                    <!--<br> ou <br><br>-->
                                                     De:
                                                     <span class="price-crossed">
                                                      {{ level.product.brlValue }} <br>
@@ -78,9 +78,9 @@
                                                     parseFloat(level.product.bonus_percent) / 100) | currency}}</a>
                                             </div>
                                             <div v-else>
-                                                <a :class="'btn btn-block btn-level-' + level.id"
-                                                   @click.prevent="showLevelDetailsModal(level, 'buyLevelLqx')"
-                                                   href="#">{{ level.product.lqxValue }}LQX</a>
+                                                <!--<a :class="'btn btn-block btn-level-' + level.id"-->
+                                                   <!--@click.prevent="showLevelDetailsModal(level, 'buyLevelLqx')"-->
+                                                   <!--href="#">{{ level.product.lqxValue }}LQX</a>-->
                                                 <a class="btn btn-block btn-outline-secondary"
                                                    @click.prevent="showLevelDetailsModal(level, 'buyLevelBrl')"
                                                    href="#">{{ level.product.brlValue }}</a>
@@ -98,20 +98,20 @@
                                         <div class="plan-btn-w px-3" v-if="user.user_level_id < level.id">
                                             <div v-if="user.level.product.bonus_percent>0">
                                                 <!--LQX-->
-                                                De:
-                                                <span class="price-crossed">
-                                                 {{ level.product.lqxValue }}LQX <br>
-                                                </span>
-                                                <a :class="'btn btn-block btn-level-' + level.id"
-                                                   @click.prevent="showLevelDetailsModal(level, 'buyLevelLqx')"
-                                                   href="#">
-                                                    Por: {{ parseFloat(level.product.lqxValue) -
-                                                    (parseFloat(user.level.product.lqxValue) *
-                                                    parseFloat(level.product.bonus_percent) / 100) |
-                                                    fixValue}} LQX </a>
+                                                <!--De:-->
+                                                <!--<span class="price-crossed">-->
+                                                 <!--{{ level.product.lqxValue }}LQX <br>-->
+                                                <!--</span>-->
+                                                <!--<a :class="'btn btn-block btn-level-' + level.id"-->
+                                                   <!--@click.prevent="showLevelDetailsModal(level, 'buyLevelLqx')"-->
+                                                   <!--href="#">-->
+                                                    <!--Por: {{ parseFloat(level.product.lqxValue) - -->
+                                                    <!--(parseFloat(user.level.product.lqxValue) *-->
+                                                    <!--parseFloat(level.product.bonus_percent) / 100) |-->
+                                                    <!--fixValue}} LQX </a>-->
 
                                                 <span v-if="level.type===2">
-                                                    <br> ou <br><br>
+                                                    <!--<br> ou <br><br>-->
                                                     De:
                                                     <span class="price-crossed">
                                                      $ {{ level.product.value_usd }} <br>
@@ -126,9 +126,9 @@
                                                     parseFloat(level.product.bonus_percent) / 100)).toFixed(2) }}</a>
                                             </div>
                                             <div v-else>
-                                                <a :class="'btn btn-block btn-level-' + level.id"
-                                                   @click.prevent="showLevelDetailsModal(level, 'buyLevelLqx')"
-                                                   href="#">{{ level.product.lqxValue }}LQX</a>
+                                                <!--<a :class="'btn btn-block btn-level-' + level.id"-->
+                                                   <!--@click.prevent="showLevelDetailsModal(level, 'buyLevelLqx')"-->
+                                                   <!--href="#">{{ level.product.lqxValue }}LQX</a>-->
                                                 <a class="btn btn-block btn-outline-secondary"
                                                    @click.prevent="showLevelDetailsModal(level, 'buyLevelUsd')"
                                                    href="#">$ {{ level.product.value_usd }}</a>
