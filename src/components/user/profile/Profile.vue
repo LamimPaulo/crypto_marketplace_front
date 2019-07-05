@@ -48,6 +48,8 @@
               <documents :documents="documents" v-if="user.country_id===31"
                          @retrieve-documents="retrieveDocuments()"></documents>
 
+              <cancel-account :user="user"></cancel-account>
+
             </div>
           </div>
         </div>
@@ -71,6 +73,7 @@
   import AddressData from "./AddressData";
   import Documents from "./Documents";
   import Google2fa from "./Google2fa";
+  import CancelAccount from "./CancelAccount";
 
   export default {
     name: "profile",
@@ -121,7 +124,8 @@
       PasswordChange,
       PinChange,
       Documents,
-      Google2fa
+      Google2fa,
+      CancelAccount,
     },
     mounted() {
       this.retrieveDocuments()

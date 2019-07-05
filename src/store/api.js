@@ -244,6 +244,17 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
+		cancelUser(context, data) {
+			return new Promise((resolve, reject) => {
+				axios.post('/user/cancel', data)
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
 		updatePhone(context, user) {
 			return new Promise((resolve, reject) => {
 				axios.post('/user/verify-phone', {
