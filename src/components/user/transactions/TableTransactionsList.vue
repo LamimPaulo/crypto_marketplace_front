@@ -7,7 +7,6 @@
                 <th> Criação</th>
                 <th> Transação</th>
                 <th> Tx</th>
-                <th> Moeda</th>
                 <th> Valor</th>
                 <th class="text-center"> Status</th>
             </tr>
@@ -27,7 +26,7 @@
                     </div>
                     <!--orders-->
                     <div class="value" v-else-if="transaction.category===2">
-                        {{ transaction.type === 1 ? 'Ordem de Compra' : 'Ordem de Venda' }}
+                        {{ transaction.type === 1 ? 'Ordem de Compra' : 'Ordem de Venda' }} {{ transaction.coin.abbr}}
                     </div>
                     <!--deposits-->
                     <div class="value" v-else-if="transaction.category===3">
@@ -48,23 +47,24 @@
                         Transferência
                         <span v-if="transaction.type===1">Recebida</span>
                         <span v-if="transaction.type===2">Efetuada</span>
+                        {{ transaction.coin.abbr}}
                     </div>
                     <!--Investimento-->
                     <div class="value" v-else-if="transaction.category===9">
                         <span v-if="transaction.type===1">Resgate</span>
                         <span v-if="transaction.type===2">Investimento</span>
-                        Nanotech
+                        Nanotech {{ transaction.coin.abbr}}
                     </div>
                     <!--Index Fund-->
                     <div class="value" v-else-if="transaction.category===10">
                         <span v-if="transaction.type===1">Resgate</span>
                         <span v-if="transaction.type===2">Aquisição</span>
-                        Fundo
+                        Fundo {{ transaction.coin.abbr}}
                     </div>
 
                     <!--Credminer-->
                     <div class="value" v-else-if="transaction.category===11">
-                        Credminer
+                        Credminer {{ transaction.coin.abbr}}
                     </div>
 
                     <!--Level-->
@@ -91,7 +91,6 @@
                     <!--others-->
                     <span v-else> {{ transaction.tx | shortStr }} </span>
                 </td>
-                <td> {{ transaction.coin.abbr}}</td>
                 <td>
 
                     <span v-if="transaction.type===1" class="badge badge-success">{{ transaction.amountRounded }}</span>
