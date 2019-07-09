@@ -27,9 +27,8 @@
                     email de confirmação do cancelamento.
                 </div>
 
-
                 <button class="btn btn-danger" type="button"
-                        @click.prevent="showTokenPinModal()"> Cancelar
+                        @click.prevent="showTokenPinModal()"> EXCLUIR CONTA
                 </button>
             </fieldset>
         </div>
