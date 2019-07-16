@@ -23,7 +23,7 @@
                             conta.
                         </li>
                     </ul>
-                    Ao clicar em "Cancelar" você declara estar ciente dos itens mencionados acima. Você receberá um
+                    Ao clicar em "EXCLUIR CONTA" você declara estar ciente dos itens mencionados acima. Você receberá um
                     email de confirmação do cancelamento.
                 </div>
 

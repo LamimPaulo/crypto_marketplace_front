@@ -98,18 +98,22 @@
                                                             <th></th>
                                                             <th>Produto</th>
                                                             <th>LQX</th>
-                                                            <th>BRL</th>
+                                                            <th v-if="user.country_id===31">BRL</th>
+                                                            <th v-else>USD</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
                                                         <tr v-for="(product, i) in products">
                                                             <td></td>
-                                                            <td><span
-                                                                    :class="'marker-left color-' + i">{{product.name}}</span>
+                                                            <td>
+                                                                <span :class="'marker-left color-' + i">{{product.name}}</span>
                                                             </td>
                                                             <td>{{product.value_lqx | fixValue}}</td>
-                                                            <td>
+                                                            <td v-if="user.country_id===31">
                                                                 R$ {{product.value_brl | formatValue}}
+                                                            </td>
+                                                            <td v-else>
+                                                                $ {{product.value_usd }}
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -120,9 +124,14 @@
                                                                     {{product_total.value_lqx | fixValue}} LQX
                                                                 </button>
                                                             </td>
-                                                            <td>
+                                                            <td v-if="user.country_id===31">
                                                                 <button class="btn btn-success">R$
                                                                     {{product_total.value_brl | formatValue}}
+                                                                </button>
+                                                            </td>
+                                                            <td v-else>
+                                                                <button class="btn btn-success">$
+                                                                    {{product_total.value_usd }}
                                                                 </button>
                                                             </td>
 
@@ -163,61 +172,62 @@
     import NotificationModal from './user/notifications/NotificationModal';
     import {mapGetters} from 'vuex'
 
-	export default {
-		name: "Dashboard",
-		components: {
-			PieChart,
-			TopMenu,
-			TopMenuUser,
-			Footer,
+    export default {
+        name: "Dashboard",
+        components: {
+            PieChart,
+            TopMenu,
+            TopMenuUser,
+            Footer,
             NotificationModal,
-			Sidebar
-		},
-		data() {
-			return {
-			    isModalVisible: false,
-				wallets: [],
-				products: [],
+            Sidebar
+        },
+        data() {
+            return {
+                isModalVisible: false,
+                wallets: [],
+                products: [],
                 generalNotification: [],
-				product_total: {
-					value_lqx: 0,
-					value_brl: 0,
-				},
-				chart: [1, 2, 3, 4],
-				count: null,
+                product_total: {
+                    value_lqx: 0,
+                    value_brl: 0,
+                    value_usd: 0,
+                },
+                chart: [1, 2, 3, 4],
+                count: null,
                 totalMsg: 0,
                 typeMsg: null,
-				loader: true
-			}
-		},
-		methods: {
-			retrieveWallets() {
-				this.$store.dispatch('retrieveWallets')
-					.then(response => {
-						this.wallets = response.data.wallets
-						this.count = response.data.count
-						this.loader = false
-					})
-					.catch(error => {
-						if (error.response) {
-							this.handleErrors(error.response)
-						}
-					})
-			},
-			retrieveProducts() {
-				this.$store.dispatch('retrieveDashboard')
-					.then(response => {
-						this.chart = response.data.chart
-						this.$refs.chartComponent.setData(this.chart)
-						this.products = response.data.products
-						this.product_total = response.data.product_total
-					})
-					.catch(error => {
-						if (error.response) {
-							this.handleErrors(error.response)
-						}
-					})
-			},
+                loader: true
+            }
+        },
+        methods: {
+            retrieveWallets() {
+                this.$store.dispatch('retrieveWallets')
+                    .then(response => {
+                        this.wallets = response.data.wallets
+                        this.count = response.data.count
+                        this.loader = false
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.handleErrors(error.response)
+                        }
+                    })
+            },
+            retrieveProducts() {
+                this.$store.dispatch('retrieveDashboard')
+                    .then(response => {
+                        this.chart = response.data.chart
+                        this.$refs.chartComponent.setData(this.chart)
+                        this.products = response.data.products
+                        this.product_total = response.data.product_total
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.handleErrors(error.response)
+                        }
+                    })
+            },
             retrieveTotalNotifications() {
                 this.$store.dispatch('retrieveTotalNotifications')
                     .then(response => {
@@ -234,24 +244,24 @@
                         }
                     })
             },
-            closeModal(){
+            closeModal() {
                 this.isModalVisible = false
             }
-		},
-		mounted() {
-			this.retrieveWallets()
-			this.retrieveProducts()
+        },
+        mounted() {
+            this.retrieveWallets()
+            this.retrieveProducts()
             this.retrieveTotalNotifications()
-		},
-		beforeCreate: function () {
-			document.body.className = 'menu-position-side menu-side-left full-screen with-content-panel';
-		},
-		computed: {
-			...mapGetters([
-				'user'
-			]),
-		}
-	}
+        },
+        beforeCreate: function () {
+            document.body.className = 'menu-position-side menu-side-left full-screen with-content-panel';
+        },
+        computed: {
+            ...mapGetters([
+                'user'
+            ]),
+        }
+    }
 
 </script>
 

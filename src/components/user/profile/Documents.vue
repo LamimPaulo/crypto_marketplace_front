@@ -72,7 +72,9 @@
             A foto enviada deve ser uma selfie sua segurando o mesmo documento de identificação enviado
             anteriormente<br>
             Os formatos aceitos são: pdf, png e jpeg<br>
-            O tamanho do arquivo não deve passar de 1MB
+            O tamanho do arquivo não deve passar de 1MB <br><br>
+            Escreva em um papel a frase "QUERO COMPRAR BITCOINS" e coloque a data atual <br><br>
+            <img :src="require(`@/assets/img/selfie.jpeg`)" style="width: 34vw;" alt="">
           </div>
           <div class="form-group">
             <div class="upload-btn-wrapper">

@@ -392,7 +392,7 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-		retrieveDashboard(context) {
+		retrieveDashboard() {
 			return new Promise((resolve, reject) => {
 				axios.get('/user/dashboard')
 					.then(response => {
@@ -403,7 +403,7 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-		retrieveSecWallet(context) {
+		retrieveSecWallet() {
 			return new Promise((resolve, reject) => {
 				axios.get('/user/secondaryWallet/')
 					.then(response => {
