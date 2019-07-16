@@ -799,7 +799,7 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-		retrieveLevels(context) {
+		retrieveLevels() {
 			return new Promise((resolve, reject) => {
 				axios.get('/user/levels')
 					.then(response => {
@@ -810,9 +810,9 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-		retrieveUserMiningGatewayPending() {
+		retrieveMiningStatus() {
 			return new Promise((resolve, reject) => {
-				axios.get('/mining/pending-gateway')
+				axios.get('/mining/status')
 					.then(response => {
 						resolve(response)
 					})
@@ -821,9 +821,9 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-		retrieveUserMiningStats() {
+		retrieveMiningBlocks(context, page) {
 			return new Promise((resolve, reject) => {
-				axios.get('/mining/user-stats')
+				axios.get('/mining/blocks?page=' + page)
 					.then(response => {
 						resolve(response)
 					})
@@ -832,9 +832,9 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-		retrieveUserRewardChart() {
+		retrieveMiningRewards() {
 			return new Promise((resolve, reject) => {
-				axios.get('/mining/user-reward-chart')
+				axios.get('/mining/rewards')
 					.then(response => {
 						resolve(response)
 					})
@@ -843,18 +843,6 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-		sendBuyThs(context, order) {
-			return new Promise((resolve, reject) => {
-				axios.post('/mining/buy-ths', order)
-					.then(response => {
-						resolve(response)
-					})
-					.catch(error => {
-						reject(error)
-					})
-			})
-		},
-
 		retrievePharaosGatewayKey(context, order) {
 			return new Promise((resolve, reject) => {
 				axios.get('/pharaos-gateway/get-key', order)

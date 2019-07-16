@@ -1,72 +1,66 @@
 <template>
     <ul class="main-menu">
         <li class="selected" v-tooltip.right="'Dashboard'">
-            <a href="/dashboard">
+            <router-link to="/dashboard">
                 <div class="icon-w">
                     <div class="os-icon os-icon-layout"></div>
                 </div>
                 <span>Dashboard</span>
-            </a>
+            </router-link>
         </li>
         <li class="" v-tooltip.right="'Carteiras'">
-            <a href="/wallets/list">
+            <router-link to="/wallets/list">
                 <div class="icon-w">
                     <div class="os-icon os-icon-wallet-loaded"></div>
                 </div>
                 <span>Carteiras</span>
-            </a>
+            </router-link>
         </li>
         <li class="" v-tooltip.right="'Transações'">
-            <a href="/transactions/list">
+            <router-link to="/transactions/list">
                 <div class="icon-w">
                     <div class="os-icon os-icon-refresh-cw"></div>
                 </div>
                 <span>Transações</span>
-            </a>
+            </router-link>
         </li>
 
         <li class="" v-tooltip.right="'Masternode'">
-            <a href="/masternode">
+            <router-link to="/masternode">
                 <div class="icon-w">
                     <div class="os-icon os-icon-zap"></div>
                 </div>
                 <span>Masternode</span>
-            </a>
+            </router-link>
         </li>
 
-
         <li class="" v-tooltip.right="'Investimentos'">
-            <a href="/index/fund">
+            <router-link to="/index/fund">
                 <div class="icon-w">
                     <div class="os-icon os-icon-target"></div>
                 </div>
                 <span>Investimentos</span>
-            </a>
+            </router-link>
         </li>
 
         <li class="" v-tooltip.right="'Nanotech'">
-            <a href="/nanotech">
+            <router-link to="/nanotech">
                 <div class="icon-w">
                     <div class="os-icon os-icon-activity"></div>
                 </div>
                 <span>Nanotech</span>
-            </a>
+            </router-link>
         </li>
 
-        <li class="has-sub-menu" v-tooltip.right="'Gateway'" v-if="user.level.is_gateway_elegible">
-            <a href="#">
+        <li class="" v-tooltip.right="'Mining'">
+            <router-link to="/mining">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-ui-54"></div>
+                    <div class="fa fa-calculator"></div>
                 </div>
-                <span>Gateway</span>
-            </a>
-            <ul class="sub-menu">
-                <li><a href="/gateway">Api Key</a></li>
-                <li><a href="/gateway/pdv">PDV</a></li>
-                <li><a href="/gateway/payments">Transações</a></li>
-
-            </ul>
+                <span>Mining</span>
+            </router-link>
         </li>
+
 
     </ul>
 </template>

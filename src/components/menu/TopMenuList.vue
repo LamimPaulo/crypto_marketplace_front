@@ -2,56 +2,76 @@
     <div>
         <ul class="main-menu">
             <li>
-                <a href="/dashboard">
+                <router-link to="/dashboard">
                     <div class="icon-w">
-                        <img :src="require(`@/assets/img/svg_icons/customize-view.png`)" width="30px" alt="">
+                        <img :src="require(`@/assets/img/svg_icons/customize-view.png`)"
+                             width="30px" alt="">
                     </div>
                     <span>Dashboard</span>
-                </a>
+                </router-link>
             </li>
             <li>
-                <a href="/wallets/list">
-                    <div class="icon-w"><img :src="require(`@/assets/img/svg_icons/icons8-wallet-40.png`)" width="30px"
-                                             alt=""></div>
-                    <span>Carteiras</span>
-                </a>
-            </li>
-            <li>
-                <a href="/transactions/list">
+                <router-link to="/wallets/list">
                     <div class="icon-w">
-                        <img :src="require(`@/assets/img/svg_icons/icons8-exchange-40.png`)" width="30px" alt="">
+                        <img :src="require(`@/assets/img/svg_icons/icons8-wallet-40.png`)"
+                             width="30px" alt="">
+                    </div>
+                    <span>Carteiras</span>
+                </router-link>
+            </li>
+            <li>
+                <router-link to="/transactions/list">
+                    <div class="icon-w">
+                        <img :src="require(`@/assets/img/svg_icons/icons8-exchange-40.png`)"
+                             width="30px" alt="">
                     </div>
                     <span>Transações</span>
-                </a>
+                </router-link>
             </li>
             <li>
-                <a href="/masternode">
+                <router-link to="/masternode">
                     <div class="icon-w">
-                        <img :src="require(`@/assets/img/svg_icons/icons8-expensive-price-40.png`)" width="30px" alt="">
+                        <img :src="require(`@/assets/img/svg_icons/icons8-expensive-price-40.png`)"
+                             width="30px" alt="">
                     </div>
                     <span>Masternode</span>
-                </a>
+                </router-link>
             </li>
             <li>
-                <a href="/levels">
-                    <div class="icon-w"><img :src="require(`@/assets/img/svg_icons/icons8-coins-40.png`)" width="30px"
-                                             alt=""></div>
+                <router-link to="/levels">
+                    <div class="icon-w">
+                        <img :src="require(`@/assets/img/svg_icons/icons8-coins-40.png`)"
+                             width="30px" alt="">
+                    </div>
                     <span>Keycodes</span>
-                </a>
+                </router-link>
             </li>
             <li>
-                <a href="/index/fund">
-                    <div class="icon-w"><img :src="require(`@/assets/img/svg_icons/line-chart.png`)" width="30px"
-                                             alt=""></div>
+                <router-link to="/index/fund">
+                    <div class="icon-w">
+                        <img :src="require(`@/assets/img/svg_icons/line-chart.png`)"
+                             width="30px" alt="">
+                    </div>
                     <span>Investimentos</span>
-                </a>
+                </router-link>
             </li>
             <li>
-                <a href="/nanotech/lqx">
-                    <div class="icon-w"><img :src="require(`@/assets/img/svg_icons/icons8-increase-40.png`)"
-                                             width="30px" alt=""></div>
+                <router-link to="/nanotech/lqx">
+                    <div class="icon-w">
+                        <img :src="require(`@/assets/img/svg_icons/icons8-increase-40.png`)"
+                             width="30px" alt="">
+                    </div>
                     <span>Nanotech</span>
-                </a>
+                </router-link>
+            </li>
+            <li class="">
+                <router-link to="/mining">
+                    <div class="icon-w">
+                        <img :src="require(`@/assets/img/icons/mining.png`)"
+                             width="30px" alt="">
+                    </div>
+                    <span>Mining</span>
+                </router-link>
             </li>
 
 
@@ -60,20 +80,25 @@
 </template>
 
 <script>
-	import {mapGetters} from 'vuex'
-	export default {
-		name: "TopMenuList",
-		computed: {
-			...mapGetters([
-				'user'
-			]),
-		}
-	}
+    import {mapGetters} from 'vuex'
+
+    export default {
+        name: "TopMenuList",
+        computed: {
+            ...mapGetters([
+                'user'
+            ]),
+        }
+    }
 </script>
 
 <style scoped>
     .main-menu {
         border-bottom: 1px solid #fff;
+    }
+
+    .main-menu li span {
+        font-size: 0.9em;
     }
 
     ul.main-menu li:hover {
@@ -90,7 +115,7 @@
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     @media only screen and (max-width: 1250px) {
         .menu-w.menu-layout-compact ul.main-menu > li > a {
-            /*font-size: 0.6rem;*/
+            font-size: 0.8rem;
         }
     }
 
