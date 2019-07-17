@@ -77,11 +77,12 @@
                                     <button class="btn btn-success" @click="showModal('invest')"
                                             type="button"> Investir
                                     </button>
-                                    <button class="btn btn-grey" @click="showModal('withdrawal')"
-                                            v-if="investment_data.user_profit>0"
+                                    <button class="btn btn-grey" disabled
+                                            v-if="investment_data.user_investment<=0&&investment_data.user_profit<=0"
                                             type="button"> Saque
                                     </button>
-                                    <button class="btn btn-grey" disabled v-if="investment_data.user_profit<=0"
+                                    <button class="btn btn-grey" @click="showModal('withdrawal')"
+                                            v-else
                                             type="button"> Saque
                                     </button>
                                 </div>
@@ -103,13 +104,17 @@
                                     </a>
                                 </li>
                                 <li class="nav-item col-md-6 text-center">
-                                    <a :class="tabclass_withdrawal" href="#" v-if="investment_data.user_profit>0"
+                                    <a :class="tabclass_withdrawal" href="#"
+                                       v-if="investment_data.user_investment<=0&&investment_data.user_profit<=0"
+                                    >
+                                        <span class="tab-label">Saque</span>
+                                    </a>
+                                    <a :class="tabclass_withdrawal" href="#"
+                                       v-else
                                        @click="showWithdrawalWindow">
                                         <span class="tab-label">Saque</span>
                                     </a>
-                                    <a :class="tabclass_withdrawal" href="#" v-if="investment_data.user_profit<=0">
-                                        <span class="tab-label">Saque</span>
-                                    </a>
+
                                 </li>
                             </ul>
                         </div>
