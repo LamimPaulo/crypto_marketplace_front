@@ -249,7 +249,7 @@
                                 <label class="col-form-label col-sm-4" for="amount_out"> Quantidade</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        
+
                                         <vue-numeric class="form-control"
                                                      :disabled="investment_out.operation_type===6"
                                                      :min="0" :minus="false" :precision="5"

@@ -353,6 +353,7 @@
             this.file = null
             this.isTicketVisible = false
             this.isTicketMessageVisible = false
+            this.formData = new FormData()
 
           })
           .catch(error => {
