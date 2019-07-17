@@ -10,117 +10,78 @@
                         <i class="os-icon os-icon-external-link"></i><span> Nanotech LQX</span>
                     </a>
                 </div>
-                <h6 class="element-header mb-0">
+                <h6 class="element-header mb-3">
                     {{ investment_data.name }}
                 </h6>
 
                 <div class="element-box-tp mb-2">
                     <div class="row">
 
-                        <div class="col-12 col-sm-4 col-xxl-3">
+                        <div class="col-6 col-sm-3 col-xxl-3">
                             <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
                                 <div class="label"> {{ investment_data.coin }} Sob Gestão</div>
                                 <div class="value"> {{ investment_data.under_managment }}</div>
                             </a>
                         </div>
 
-                        <div class="col-12 col-sm-4 col-xxl-3">
+                        <div class="col-6 col-sm-3 col-xxl-3">
                             <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
                                 <div class="label"> Lucro Médio</div>
                                 <div class="value"> {{ investment_data.average_profits.base }} %</div>
                             </a>
                         </div>
 
-                        <div class="col-12 col-sm-4 col-xxl-3">
+                        <div class="col-6 col-sm-3 col-xxl-3">
                             <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
                                 <div class="label"> Lucro Médio Mensal</div>
                                 <div class="value"> {{ investment_data.average_profits.current_month }} %</div>
                             </a>
                         </div>
 
-                        <div class="col-12 col-sm-4 col-xxl-3">
+                        <div class="col-6 col-sm-3 col-xxl-3">
                             <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
                                 <div class="label"> Lucro Médio Diário</div>
                                 <div class="value"> {{ investment_data.average_profits.current_day }} %</div>
                             </a>
                         </div>
 
-                        <div class="col-12 col-sm-4 col-xxl-3">
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-6 col-sm-3 col-xxl-3">
                             <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
                                 <div class="label"> Meu Investimento</div>
                                 <div class="value"> {{ investment_data.user_investment }}</div>
                             </a>
                         </div>
 
-                        <div class="col-12 col-sm-4 col-xxl-3">
+                        <div class="col-6 col-sm-3 col-xxl-3">
                             <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
-                                <div class="label"> Meu Lucro <i class="os-icon os-icon-external-link"></i></div>
+                                <div class="label"> Meu Lucro</div>
                                 <div class="value"> {{ investment_data.user_profit }}</div>
                             </a>
                         </div>
 
-                        <div class="col-12 col-sm-4 col-xxl-3">
+                        <div class="col-6 col-sm-3 col-xxl-3">
                             <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
                                 <div class="label"> Total</div>
                                 <div class="value"> {{ investment_data.total_user_investment }}</div>
                             </a>
                         </div>
 
-                        <div class="col-12 col-sm-4 d-sm-inline-block d-xxl-none">
+                        <div class="col-6 col-sm-3 col-xxl-3">
                             <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
                                 <div class="label mb-1"></div>
                                 <div class="value">
-                                    <button class="btn btn-success" type="button"
-                                            @click="showModal('invest')"
+                                    <button class="btn btn-success" @click="showModal('invest')"
+                                            type="button"> Investir
+                                    </button>
+                                    <button class="btn btn-grey" @click="showModal('withdrawal')"
                                             v-if="investment_data.user_profit>0"
-                                    >
-                                        Reinvestir
-                                    </button>
-                                    <button class="btn btn-grey" disabled v-else type="button">
-                                        Reinvestir
-                                    </button>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-12 col-sm-4 d-sm-inline-block d-xxl-none">
-                            <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
-                                <div class="label mb-1"></div>
-                                <div class="value">
-                                    <button class="btn btn-primary" type="button"
-                                            @click="showModal('withdrawal')"
-                                            v-if="investment_data.user_investment>0||investment_data.user_profit>0"
-                                    >
-                                        Saque
-                                    </button>
-                                    <button class="btn btn-grey" disabled v-else
                                             type="button"> Saque
                                     </button>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-12 col-xxl-3 d-none d-sm-none d-xxl-inline-block">
-                            <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
-                                <div class="label mb-1"></div>
-                                <div class="value">
-                                    <button class="btn btn-success" type="button"
-                                            @click="showModal('invest')"
-                                            v-if="investment_data.user_profit>0"
-                                    >
-                                        Reinvestir
-                                    </button>
-                                    <button class="btn btn-grey" disabled v-else type="button">
-                                        Reinvestir
-                                    </button>
-
-                                    <button class="btn btn-primary" type="button"
-                                            @click="showModal('withdrawal')"
-                                            v-if="investment_data.user_investment>0"
-                                    >
-                                        Saque
-                                    </button>
-                                    <button class="btn btn-grey" disabled v-else
+                                    <button class="btn btn-grey" disabled v-if="investment_data.user_profit<=0"
                                             type="button"> Saque
                                     </button>
                                 </div>
@@ -131,28 +92,22 @@
                 </div>
             </div>
 
-            <modal v-show="isModalVisible">
+            <modal @close="closeModal" v-show="isModalVisible">
                 <template slot="header">
                     <div class="os-tabs-w">
                         <div class="os-tabs-controls os-tabs-complex">
                             <ul class="nav nav-tabs">
                                 <li class="nav-item col-md-6 text-center">
-                                    <a :class="tabclass_invest" href="#"
-                                       v-if="investment_data.user_profit>0"
-                                       @click.prevent="showInvestWindow">
-                                        <span class="tab-label">Reinvestir</span>
-                                    </a>
-                                    <a :class="tabclass_invest" href="#" v-else>
-                                        <span class="tab-label">Reinvestir</span>
+                                    <a :class="tabclass_invest" href="#" @click="showInvestWindow">
+                                        <span class="tab-label">Investir</span>
                                     </a>
                                 </li>
                                 <li class="nav-item col-md-6 text-center">
-                                    <a :class="tabclass_draft" href="#"
-                                       v-if="investment_data.user_investment>0||investment_data.user_profit>0"
-                                       @click.prevent="showDraftWindow">
+                                    <a :class="tabclass_withdrawal" href="#" v-if="investment_data.user_profit>0"
+                                       @click="showWithdrawalWindow">
                                         <span class="tab-label">Saque</span>
                                     </a>
-                                    <a :class="tabclass_draft" href="#" v-else>
+                                    <a :class="tabclass_withdrawal" href="#" v-if="investment_data.user_profit<=0">
                                         <span class="tab-label">Saque</span>
                                     </a>
                                 </li>
@@ -165,11 +120,39 @@
                     <div v-show="isInvestWindowVisible">
                         <form>
                             <div class="form-group row mb-0">
-                                <label class="col-form-label col-sm-4"> Disponível</label>
+                                <label class="col-form-label col-sm-4"> Investimento</label>
                                 <div class="col-sm-8">
-                                    <span class="alert alert-success py-1"
-                                          v-tooltip="'clique para adicionar o total'"
-                                          @click.prevent="investment_in.amount=investment_data.user_profit">{{ investment_data.user_profit }}</span>
+                                    <div class="pt-btn">
+                                        <button type="button" class="btn btn-grey btn-md"
+                                                v-if="investment_in.operation_type !== 1"
+                                                @click="setSourceInvestment(1)">
+                                            Saldo
+                                        </button>
+                                        <button type="button" class="btn btn-success btn-md"
+                                                v-if="investment_in.operation_type === 1"
+                                                @click="setSourceInvestment(1)">
+                                            Saldo
+                                        </button>
+                                    </div>
+
+                                    <div class="pt-btn" v-if="investment_data.user_profit<=0">
+                                        <button type="button" class="btn btn-grey btn-md" disabled> Lucro</button>
+                                    </div>
+
+                                    <div class="pt-btn" v-if="investment_data.user_profit>0">
+                                        <button type="button" class="btn btn-grey btn-md"
+                                                v-if="investment_in.operation_type !== 5"
+                                                @click="setSourceInvestment(5)">
+                                            Lucro
+                                        </button>
+                                        <button type="button" class="btn btn-success btn-md"
+                                                v-if="investment_in.operation_type === 5"
+                                                @click="setSourceInvestment(5)">
+                                            Lucro
+                                        </button>
+                                    </div>
+
+
                                 </div>
                             </div>
 
@@ -179,26 +162,27 @@
                                 <label class="col-form-label col-sm-4" for="amount_in"> Quantidade</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <input id="amount_in" class="form-control" type="text" required
-                                               v-model="investment_in.amount" min="0">
+
+                                        <vue-numeric class="form-control"
+                                                     :min="0" :minus="false" :precision="5"
+                                                     v-model="investment_in.amount" currency="" decimal-separator="."
+                                                     thousand-separator=" "></vue-numeric>
+
                                         <div class="input-group-append">
                                             <div class="input-group-text">
-                                                {{ investment_data.coin }}
+                                                BTC
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-
                             <hr>
 
                             <div class="row mt-5 mb-0">
                                 <div class="col-12 text-center">
-                                    <button class="btn btn-grey" type="button" @click.prevent="closeModal"> Fechar
-                                    </button>
+                                    <button class="btn btn-grey" type="button" @click="closeModal"> Fechar</button>
                                     <button class="btn btn-primary" type="button"
-                                            :disabled="!isReinvestmentFilled"
                                             @click.prevent="showPinModal('sendInvestment')"> Confirmar
                                     </button>
                                 </div>
@@ -207,57 +191,54 @@
                         </form>
                     </div>
 
-                    <div v-show="isDraftWindowVisible">
+                    <div v-show="isWithdrawalWindowVisible">
                         <form>
                             <div class="form-group row mb-0">
-                                <div class="col-sm-12 text-center align-center">
-                                    <span class="aler alert-warning block py-1 mb-2"
-                                          v-if="!this.investment_out.operation_type">Selecione o valor para retirada.</span>
-                                    <div class="pt-btn" v-if="investment_data.user_investment>0">
+                                <label class="col-form-label col-sm-4"> Origem</label>
+                                <div class="col-sm-8">
+                                    <div class="pt-btn">
+                                        <button type="button" class="btn btn-grey btn-md"
+                                                v-if="investment_out.operation_type !== 3"
+                                                @click="investment_out.operation_type = 3">
+                                            Saldo
+                                        </button>
                                         <button type="button" class="btn btn-success btn-md"
                                                 v-if="investment_out.operation_type === 3"
-                                                @click.prevent="() => { investment_out.operation_type = 3; investment_out.amount = investment_data.user_investment }">
-                                            Saldo ({{investment_data.user_investment | fixValue}} {{
-                                            investment_data.coin}})
+                                                @click="investment_out.operation_type = 3">
+                                            Saldo
                                         </button>
-                                        <button type="button" class="btn btn-grey btn-md"
-                                                v-else
-                                                @click.prevent="() => { investment_out.operation_type = 3; investment_out.amount = investment_data.user_investment }">
-                                            Saldo ({{investment_data.user_investment | fixValue}} {{
-                                            investment_data.coin}})
-                                        </button>
+                                    </div>
+
+                                    <div class="pt-btn" v-if="investment_data.user_profit<=0">
+                                        <button type="button" class="btn btn-grey btn-md" disabled> Lucro</button>
                                     </div>
 
                                     <div class="pt-btn" v-if="investment_data.user_profit>0">
+                                        <button type="button" class="btn btn-grey btn-md"
+                                                v-if="investment_out.operation_type !== 4"
+                                                @click="investment_out.operation_type = 4">
+                                            Lucro
+                                        </button>
                                         <button type="button" class="btn btn-success btn-md"
                                                 v-if="investment_out.operation_type === 4"
-                                                @click.prevent="() => { investment_out.operation_type = 4; investment_out.amount = investment_data.user_profit }">
-                                            Lucro ({{investment_data.user_profit | fixValue}} {{ investment_data.coin}})
+                                                @click="investment_out.operation_type = 4">
+                                            Lucro
                                         </button>
-
-                                        <button type="button" class="btn btn-grey btn-md"
-                                                v-else
-                                                @click.prevent="() => { investment_out.operation_type = 4; investment_out.amount = investment_data.user_profit }">
-                                            Lucro ({{investment_data.user_profit | fixValue}} {{ investment_data.coin}})
-                                        </button>
-
                                     </div>
 
                                     <div class="pt-btn">
+                                        <button type="button" class="btn btn-grey btn-md"
+                                                v-if="investment_out.operation_type !== 6"
+                                                @click="investment_out.operation_type = 6">
+                                            Total
+                                        </button>
                                         <button type="button" class="btn btn-success btn-md"
                                                 v-if="investment_out.operation_type === 6"
-                                                @click.prevent="() => { investment_out.operation_type = 6; investment_out.amount = investment_data.total_user_investment }">
-                                            Total ({{investment_data.total_user_investment | fixValue}}
-                                            {{ investment_data.coin}})
-                                        </button>
-
-                                        <button type="button" class="btn btn-grey btn-md"
-                                                v-else
-                                                @click.prevent="() => { investment_out.operation_type = 6; investment_out.amount = investment_data.total_user_investment }">
-                                            Total ({{investment_data.total_user_investment | fixValue}}
-                                            {{investment_data.coin}})
+                                                @click="investment_out.operation_type = 6">
+                                            Total
                                         </button>
                                     </div>
+
 
                                 </div>
                             </div>
@@ -268,27 +249,26 @@
                                 <label class="col-form-label col-sm-4" for="amount_out"> Quantidade</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <input id="amount_out" class="form-control" type="text" required
-                                               v-model="investment_out.amount" min="0"
-                                               :disabled="investment_out.operation_type===6">
+                                        
+                                        <vue-numeric class="form-control"
+                                                     :disabled="investment_out.operation_type===6"
+                                                     :min="0" :minus="false" :precision="5"
+                                                     v-model="investment_out.amount" currency="" decimal-separator="."
+                                                     thousand-separator=" "></vue-numeric>
+
                                         <div class="input-group-append">
                                             <div class="input-group-text">
-                                                {{ investment_data.coin }}
+                                                BTC
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-
-                            <hr>
-
                             <div class="row mt-5 mb-0">
                                 <div class="col-12 text-center">
-                                    <button class="btn btn-grey" type="button" @click.prevent="closeModal"> Fechar
-                                    </button>
+                                    <button class="btn btn-grey" type="button" @click="closeModal"> Fechar</button>
                                     <button class="btn btn-primary" type="button"
-                                            :disabled="!isWithdrawalFilled"
                                             @click.prevent="showPinModal('withdrawalInvestment')"> Confirmar
                                     </button>
                                 </div>
@@ -299,7 +279,10 @@
                 </template>
 
                 <template slot="footer">
-                    <span> Taxa de Corretagem: 0 <i class="os-icon os-icon-percent"></i></span>
+                    <span v-if="isInvestWindowVisible"> Taxa de Corretagem: {{ investment_data.brokerage_fee }} <i
+                            class="os-icon os-icon-percent"></i></span>
+                    <span v-if="isWithdrawalWindowVisible"> Taxa de Corretagem: 0 <i
+                            class="os-icon os-icon-percent"></i></span>
                 </template>
             </modal>
 
@@ -330,196 +313,211 @@
 </template>
 
 <script>
-	import {mapGetters} from 'vuex'
-	import LastTrades from './LastTrades'
-	import Modal from './../layouts/Modal'
-	import Pin from './../verifications/Pin'
+    import {mapGetters} from 'vuex'
+    import LastTrades from './LastTrades'
+    import Modal from './../layouts/Modal'
+    import Pin from './../verifications/Pin'
     import LqxAreaChart from './../charts/LqxAreaChart'
+    import Vue from 'vue'
+    import VueNumeric from 'vue-numeric'
 
-	export default {
-		name: "Arbitrage",
-		data() {
-			return {
-				loader: true,
-				isPinVisible: false,
-				isModalVisible: false,
-				isInvestWindowVisible: false,
-				isDraftWindowVisible: false,
-				tabclass_invest: 'nav-link active',
-				tabclass_draft: 'nav-link',
-				investment_in: {
-					amount: 0,
-					coin: 3,
-				},
-				investment_out: {
-					amount: 0,
-					coin: 3,
-					operation_type: null
-				},
-				investment_data: {
-					average_profits: {
-						base: 0,
-						current_month: 0,
-						current_day: 0,
-					},
-					brokerage_fee: 0,
-					under_managment: 0,
-					user_investment: 0,
-					user_profit: 0,
-					total_user_investment: 0,
-					coin: 'BTC',
-					name: 'Nanotech',
+    Vue.use(VueNumeric)
+
+    export default {
+        name: "Arbitrage",
+        data() {
+            return {
+                loader: true,
+                isPinVisible: false,
+                isModalVisible: false,
+                isInvestWindowVisible: false,
+                isWithdrawalWindowVisible: false,
+                tabclass_invest: 'nav-link active',
+                tabclass_withdrawal: 'nav-link',
+                investment_in: {
+                    amount: 0,
+                    coin: 1,
+                    operation_type: 1
+                },
+                investment_out: {
+                    amount: 0,
+                    coin: 1,
+                    operation_type: null
+                },
+                investment_data: {
+                    average_profits: {
+                        base: 0,
+                        current_month: 0,
+                        current_day: 0,
+                    },
+                    brokerage_fee: 0,
+                    under_managment: 0,
+                    user_investment: 0,
+                    user_profit: 0,
+                    total_user_investment: 0,
+                    coin: 'BTC',
+                    name: 'Nanotech',
                     chart: []
-				},
-				token: {
-					pin: null
-				},
-			}
-		},
-		methods: {
-			showModal(type) {
-				this.isModalVisible = true
-				if (type === 'invest') {
-					this.showInvestWindow()
-				}
-				if (type === 'withdrawal') {
-					this.showDraftWindow()
-				}
-			},
-			closeModal() {
-				this.isModalVisible = false;
-			},
-			showInvestWindow() {
-				this.isInvestWindowVisible = true
-				this.isDraftWindowVisible = false
-				this.tabclass_invest = 'nav-link active'
-				this.tabclass_draft = 'nav-link'
-			},
-			showDraftWindow() {
-				this.isDraftWindowVisible = true
-				this.isInvestWindowVisible = false
-				this.tabclass_invest = 'nav-link'
-				this.tabclass_draft = 'nav-link active'
-			},
-			retrieveInvestmentData() {
-				this.loader = true
-				this.$store.dispatch('retrieveInvestmentData', 2)
-					.then(response => {
-						this.investment_data.name = response.data.name
-						this.investment_data.average_profits.base = response.data.average_profits.base
-						this.investment_data.average_profits.current_month = response.data.average_profits.current_month
-						this.investment_data.average_profits.current_day = response.data.average_profits.current_day
+                },
+                token: {
+                    pin: null
+                },
+            }
+        },
+        methods: {
+            showModal(type) {
+                this.isModalVisible = true
+                if (type === 'invest') {
+                    this.showInvestWindow()
+                }
+                if (type === 'withdrawal') {
+                    this.showWithdrawalWindow()
+                }
+            },
+            setSourceInvestment(source) {
+                this.investment_in.operation_type = source
+            },
+            closeModal() {
+                this.isModalVisible = false;
+            },
+            showInvestWindow() {
+                this.isInvestWindowVisible = true
+                this.isWithdrawalWindowVisible = false
+                this.tabclass_invest = 'nav-link active'
+                this.tabclass_withdrawal = 'nav-link'
+            },
+            showWithdrawalWindow() {
+                this.isWithdrawalWindowVisible = true
+                this.isInvestWindowVisible = false
+                this.tabclass_invest = 'nav-link'
+                this.tabclass_withdrawal = 'nav-link active'
+            },
+            retrieveInvestmentData() {
+                this.loader = true
+                this.$store.dispatch('retrieveInvestmentData', 2)
+                    .then(response => {
+                        this.investment_data.name = response.data.name
+                        this.investment_data.average_profits.base = response.data.average_profits.base
+                        this.investment_data.average_profits.current_month = response.data.average_profits.current_month
+                        this.investment_data.average_profits.current_day = response.data.average_profits.current_day
 
-						this.investment_data.brokerage_fee = response.data.brokerage_fee
-						this.investment_data.under_managment = response.data.under_managment
-						this.investment_data.user_investment = response.data.user_investment
-						this.investment_data.user_profit = response.data.user_profit
-						this.investment_data.total_user_investment = response.data.total_user_investment
-						this.investment_data.coin = response.data.coin
+                        this.investment_data.brokerage_fee = response.data.brokerage_fee
+                        this.investment_data.under_managment = response.data.under_managment
+                        this.investment_data.user_investment = response.data.user_investment
+                        this.investment_data.user_profit = response.data.user_profit
+                        this.investment_data.total_user_investment = response.data.total_user_investment
+                        this.investment_data.coin = response.data.coin
                         this.investment_data.chart = response.data.chart_data
-						this.loader = false
-					})
-					.catch(error => {
-						if (error.response) {
-							this.handleErrors(error.response)
-							this.loader = false
-						}
-					})
-			},
-			sendInvestment() {
-				this.loader = true
-				this.isModalVisible = false
+                        this.loader = false
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.handleErrors(error.response)
+                            this.loader = false
+                        }
+                    })
+            },
+            sendInvestment() {
+                this.loader = true
+                this.isModalVisible = false
 
-				this.$store.dispatch('sendInvestment', {
-					amount: this.investment_in.amount,
-					type: 2,
-					coin: this.investment_in.coin,
-					operation_type: 5,
-					pin: this.token.pin,
-				})
-					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
-						this.refresh()
-					})
-					.catch(error => {
-						if (error.response) {
-							this.handleErrors(error.response)
-							this.resetPin()
-						}
-						this.loader = false
-					})
-			},
-			withdrawalInvestment() {
-				this.loader = true
-				this.isModalVisible = false
+                this.$store.dispatch('sendInvestment', {
+                    amount: this.investment_in.amount,
+                    type: 2,
+                    coin: 1,
+                    operation_type: this.investment_in.operation_type,
+                    pin: this.token.pin,
+                })
+                    .then(response => {
+                        this.$toasted.show(response.data.message, {
+                            position: 'bottom-left',
+                            type: 'success'
+                        }).goAway(3000)
+                        this.refresh()
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.handleErrors(error.response)
+                            this.resetPin()
+                        }
+                        this.loader = false
+                    })
+            },
+            withdrawalInvestment() {
+                this.loader = true
+                this.isModalVisible = false
 
-				this.$store.dispatch('withdrawalInvestment', {
-					amount: this.investment_out.amount,
-					type: 2,
-					coin: this.investment_out.coin,
-					operation_type: this.investment_out.operation_type,
-					pin: this.token.pin,
-				})
-					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
-						this.refresh()
-					})
-					.catch(error => {
-						if (error.response) {
-							this.handleErrors(error.response)
-							this.resetPin()
-						}
-						this.loader = false
-					})
-			},
-			resetPin() {
-				this.token.pin = null
-				this.$refs.pinComponent.resetData()
-			},
-			refresh() {
-				this.loader = false
-				this.retrieveInvestmentData()
-			},
-			showPinModal(method) {
-				this.isPinVisible = true
-				this.$refs.pinComponent.setData(method)
-			},
-			closePinModal() {
-				this.isPinVisible = false;
-			},
-			handlePinData(data) {
-				this.token.pin = data.pin
+                this.$store.dispatch('withdrawalInvestment', {
+                    amount: this.investment_out.amount,
+                    type: 2,
+                    coin: this.investment_out.coin,
+                    operation_type: this.investment_out.operation_type,
+                    pin: this.token.pin,
+                })
+                    .then(response => {
+                        this.$toasted.show(response.data.message, {
+                            position: 'bottom-left',
+                            type: 'success'
+                        }).goAway(3000)
+                        this.refresh()
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.handleErrors(error.response)
+                            this.resetPin()
+                        }
+                        this.loader = false
+                    })
+            },
+            resetPin() {
+                this.token.pin = null
+                this.$refs.pinComponent.resetData()
+            },
+            refresh() {
+                this.loader = false
+                this.retrieveInvestmentData()
+            },
+            showPinModal(method) {
+                this.isPinVisible = true
+                this.$refs.pinComponent.setData(method)
+            },
+            closePinModal() {
+                this.isPinVisible = false;
+            },
+            handlePinData(data) {
+                this.token.pin = data.pin
 
-				if (data.method === 'sendInvestment') {
-					this.sendInvestment()
-				}
+                if (data.method === 'sendInvestment') {
+                    this.sendInvestment()
+                }
 
-				if (data.method === 'withdrawalInvestment') {
-					this.withdrawalInvestment()
-				}
-			},
-		},
-		mounted() {
-			this.retrieveInvestmentData()
-		},
-		computed: {
-			...mapGetters([
-				'user'
-			]),
-			isReinvestmentFilled() {
-				return (parseFloat(this.investment_in.amount) <= parseFloat(this.investment_data.user_profit)) && this.investment_in.amount > 0 && true
-			},
-			isWithdrawalFilled() {
-				return (parseFloat(this.investment_out.amount) <= parseFloat(this.investment_data.total_user_investment)) && this.investment_out.amount > 0 && this.investment_out.operation_type && true
-			}
-		},
-		components: {
+                if (data.method === 'withdrawalInvestment') {
+                    this.withdrawalInvestment()
+                }
+            },
+        },
+        mounted() {
+            this.retrieveInvestmentData()
+        },
+        computed: {
+            ...mapGetters([
+                'user'
+            ]),
+            isReinvestmentFilled() {
+                return this.investment_in.amount > 0 && true
+            },
+            isWithdrawalFilled() {
+                return this.investment_out.amount > 0 && this.investment_out.operation_type && true
+            }
+        },
+        components: {
             LqxAreaChart,
-			LastTrades,
-			Modal,
-			Pin
-		}
-	}
+            LastTrades,
+            Modal,
+            Pin,
+            VueNumeric
+        }
+    }
 </script>
 
 <style scoped>
