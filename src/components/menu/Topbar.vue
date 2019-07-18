@@ -71,12 +71,7 @@
 				if (type === 'buy') {
 					this.$refs.orderWindow.showBuyWindow()
 				} else {
-					if (coin.abbr === 'LQX') {
-						this.$refs.orderWindow.showBuyWindow()
-					} else {
-						this.$refs.orderWindow.showSellWindow()
-					}
-
+					this.$refs.orderWindow.showSellWindow()
 				}
 
 				this.isOrderWindowVisible = true

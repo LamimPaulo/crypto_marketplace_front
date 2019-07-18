@@ -12,7 +12,7 @@
                                     <span class="tab-label">Comprar</span>
                                 </a>
                             </li>
-                            <li class="nav-item col-md-6 text-center" v-if="sellOrder.base!=='LQX'">
+                            <li class="nav-item col-md-6 text-center">
                                 <a :class="tabclass_sell" href="#" @click="showSellWindow">
                                     <span class="tab-label">Vender</span>
                                 </a>
@@ -79,7 +79,7 @@
 
                 </div>
                 <div v-else>
-                    <form v-if="sellOrder.base!=='LQX'">
+                    <form>
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
@@ -239,7 +239,7 @@
 				}
 			}, 500),
 			convertAmount() {
-				if (this.sellOrder.base !== 'LQX') {
+				if (this.sellOrder.base !== 'LQXD') {
 					this.$store.dispatch('convertAmount', {
 						base: this.sellOrder.base,
 						quote: this.sellOrder.quote,

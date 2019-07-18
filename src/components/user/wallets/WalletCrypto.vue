@@ -27,7 +27,7 @@
               </div>
             </div>
 
-            <div class="row" v-if="wallet.coin.abbr!=='LQX'">
+            <div class="row" v-if="wallet.coin.is_wallet">
               <div class="col-xl-6 col-sm-6 mb-3">
                 <div @click="openAddressWindow" class="btn-receber text-white bg-success o-hidden h-100">
                   <div class="card-body">

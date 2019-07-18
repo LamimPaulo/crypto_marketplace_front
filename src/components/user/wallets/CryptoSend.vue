@@ -1,5 +1,5 @@
 <template>
-    <div class="element-wrapper mb-0 pb-0" v-if="abbr!='LQX'">
+    <div class="element-wrapper mb-0 pb-0" v-if="abbr!='LQXD'">
         <div class="loader" v-if="loader"></div>
         <div class="element-box">
 
@@ -35,7 +35,7 @@
                     <div class="col-sm-6 col-lg-5">
                         <div class="form-group">
                             <label> Endereço</label>
-                            <input class="form-control" data-minlength="16" placeholder="bitcoin address"
+                            <input class="form-control" data-minlength="16" placeholder="address"
                                    @input="retrieveFee" v-model="transaction.toAddress" type="text">
                         </div>
                     </div>
