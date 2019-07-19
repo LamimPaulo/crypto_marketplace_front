@@ -381,7 +381,7 @@
             },
             setSourceInvestment(source) {
                 this.investment_in.operation_type = source
-                if(source===5){
+                if (source === 5) {
                     this.investment_in.amount = this.investment_data.user_profit
                 }
             },
@@ -484,6 +484,13 @@
             refresh() {
                 this.loader = false
                 this.retrieveInvestmentData()
+                this.investment_in.amount = 0
+                this.investment_in.coin = 1
+                this.investment_in.operation_type = 1
+
+                this.investment_out.amount = 0
+                this.investment_out.coin = 1
+                this.investment_out.operation_type = null
             },
             showPinModal(method) {
                 this.isPinVisible = true
