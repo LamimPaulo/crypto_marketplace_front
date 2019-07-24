@@ -56,12 +56,12 @@
         </div>
 
         <div class="form-buttons-w text-right mb-5">
-            <button :disabled='!isFilled' @click.prevent="showTokenPinModal('sendTransfer', 18)"
+            <button :disabled='!isFilled' @click.prevent="showTokenPinModal('sendTransfer', 19)"
                      v-if="this.$store.state.user.country_id===31"
                     class="btn btn-success" type="button"> Enviar R$
             </button>
 
-            <button :disabled='!isFilled' @click.prevent="showTokenPinModal('sendTransferUsd', 19)"
+            <button :disabled='!isFilled' @click.prevent="showTokenPinModal('sendTransferUsd', 21)"
                     v-else
                     class="btn btn-success" type="button"> Enviar USD
             </button>
