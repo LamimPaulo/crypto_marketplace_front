@@ -1,10 +1,13 @@
 <template>
-  <div class="paging_simple_numbers">
-    <span class="pull-left">Mostrando de {{ pagination.from }} à {{ pagination.to }} do total de {{ pagination.total }} registros</span>
-    <ul class="pagination pull-right">
+  <div class="paging_simple_numbers text-center">
+
+    <span>Mostrando de {{ pagination.from }} à {{ pagination.to }} do total de {{ pagination.total }} registros</span>
+    <br>
+    <br>
+    <ul class="pagination">
       <li class="paginate_button page-item previous" v-if="pagination.current_page > 1">
         <a class="page-link" href="javascript:void(0)" aria-label="Anterior" v-on:click.prevent="changePage(pagination.current_page - 1)">
-          <span aria-hidden="true">Anterior</span>
+          <span aria-hidden="true"> < </span>
         </a>
       </li>
       <li v-for="page in pagesNumber"
@@ -13,7 +16,7 @@
       </li>
       <li class="paginate_button page-item next" v-if="pagination.current_page < pagination.last_page">
         <a class="page-link" href="javascript:void(0)" aria-label="Próxima" v-on:click.prevent="changePage(pagination.current_page + 1)">
-          <span aria-hidden="true">Próxima</span>
+          <span aria-hidden="true"> > </span>
         </a>
       </li>
     </ul>
@@ -24,7 +27,8 @@
   export default {
     name: 'Pagination',
     props: {
-      pagination: {},
+      pagination: {
+      },
       offset: {}
     },
     computed: {
@@ -55,3 +59,12 @@
     }
   }
 </script>
+<style scoped>
+  ul.pagination{
+    display: inline;
+  }
+
+  li.page-item {
+    display: inline-block !important;
+  }
+</style>
