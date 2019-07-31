@@ -5,7 +5,7 @@
       <div class="element-info">
         <div class="element-info-with-icon">
           <div class="element-info-icon">
-            <img alt="" :src="require(`@/assets/img/${icon}`)">
+            <img alt="" style="width: 30px !important;" :src="require(`@/assets/img/${icon}`)">
           </div>
           <div class="element-info-text">
             <h5 class="element-inner-header">
