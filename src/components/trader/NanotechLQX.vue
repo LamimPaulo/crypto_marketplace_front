@@ -7,7 +7,7 @@
             <div class="element-wrapper">
                 <div class="element-actions d-sm-block">
                     <a class="btn btn-primary btn-sm" href="/nanotech/btc">
-                        <i class="os-icon os-icon-external-link"></i><span> Nanotech LQX</span>
+                        <i class="os-icon os-icon-external-link"></i><span> Nanotech BTC</span>
                     </a>
                 </div>
                 <h6 class="element-header mb-3">
