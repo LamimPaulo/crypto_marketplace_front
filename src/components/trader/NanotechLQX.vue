@@ -6,6 +6,15 @@
         <div class="content-box">
             <div class="element-wrapper">
                 <div class="element-actions d-sm-block">
+                    
+
+                    <button class="btn btn-primary btn-sm" type="button"
+                                            @click="showModal('pendingOperations')"
+                    >
+                    <i class="fas fa-business-time"></i><span> Operaçoes pendentes</span>
+                    </button>
+
+
                     <a class="btn btn-primary btn-sm" href="/nanotech/btc">
                         <i class="os-icon os-icon-external-link"></i><span> Nanotech BTC</span>
                     </a>
@@ -135,7 +144,16 @@
                 <template slot="header">
                     <div class="os-tabs-w">
                         <div class="os-tabs-controls os-tabs-complex">
-                            <ul class="nav nav-tabs">
+                            <ul v-if="isPendingOperations === true" class="nav nav-tabs">
+                                <li class="nav-item col-md-12 text-center">
+                                       <a class="nav-link active">
+                                           <span class="tab-label">Operaçoes Pendentes</span>
+                                        </a>
+                                </li>
+
+                            </ul>
+                            
+                            <ul v-else class="nav nav-tabs">
                                 <li class="nav-item col-md-6 text-center">
                                     <a :class="tabclass_invest" href="#"
                                        v-if="investment_data.user_profit>0"
@@ -296,10 +314,46 @@
 
                         </form>
                     </div>
+
+                    <div v-show="isPendingOperationsVisible">
+                        <div class="form group row mb-0">
+                            <div class="col-sm-12 text-center align-center">
+                                    <span class="aler alert-warning block py-1 mb-2"
+                                    >As seguintes transações encontram-se pendentes</span>
+                                <table class="table table-padded">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">Data</th>
+                                        <!-- <th class="text-center">Moeda</th> -->
+                                        <th class="text-center">Valor</th>
+                                        <th class="text-center">Tipo</th>
+                                        <th class="text-center">Estado</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="(list, index) in lists" v-bind:key="index">
+                                        <td>{{ list.createdLocal }}</td>
+                                        <td>{{ list.amountLocal }}</td>
+                                        <td>{{ list.typeName }}</td>
+                                        <td>{{ list.statusName }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="button" class="btn btn-grey btn-md"
+                                @click.prevent="closeModal()">
+                                Fechar
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
                 </template>
 
                 <template slot="footer">
-                    <span> Taxa de Corretagem: 0 <i class="os-icon os-icon-percent"></i></span>
+                    <span v-if="isPendingOperations === false"> Taxa de Corretagem: 0 <i class="os-icon os-icon-percent"></i></span>
+                    <span v-else> footer test</span>
                 </template>
             </modal>
 
@@ -342,7 +396,9 @@
 			return {
 				loader: true,
 				isPinVisible: false,
-				isModalVisible: false,
+                isModalVisible: false,
+                isPendingOperations: false, 
+                isPendingOperationsVisible: false,
 				isInvestWindowVisible: false,
 				isDraftWindowVisible: false,
 				tabclass_invest: 'nav-link active',
@@ -373,7 +429,10 @@
 				},
 				token: {
 					pin: null
-				},
+                },
+                lists: {
+                    type: ''
+                },
 			}
 		},
 		methods: {
@@ -385,15 +444,26 @@
 				if (type === 'withdrawal') {
 					this.showDraftWindow()
 				}
+				if (type === 'pendingOperations') {
+					this.showPendingOperations()
+				}
 			},
 			closeModal() {
-				this.isModalVisible = false;
+                this.isModalVisible = false;
+                this.isPendingOperations = false;
+                this.isPendingOperationsVisible = false;
 			},
 			showInvestWindow() {
 				this.isInvestWindowVisible = true
 				this.isDraftWindowVisible = false
 				this.tabclass_invest = 'nav-link active'
 				this.tabclass_draft = 'nav-link'
+			},
+			showPendingOperations() {
+                this.isPendingOperations = true
+                this.isPendingOperationsVisible = true
+                this.isInvestWindowVisible = false
+                this.isDraftWindowVisible = false
 			},
 			showDraftWindow() {
 				this.isDraftWindowVisible = true
@@ -478,7 +548,8 @@
 			},
 			refresh() {
 				this.loader = false
-				this.retrieveInvestmentData()
+                this.retrieveInvestmentData()
+                this.retrievePendingOperations()
 			},
 			showPinModal(method) {
 				this.isPinVisible = true
@@ -497,10 +568,22 @@
 				if (data.method === 'withdrawalInvestment') {
 					this.withdrawalInvestment()
 				}
-			},
+            },
+            retrievePendingOperations() {
+				this.$store.dispatch('retrievePendingOperations')
+					.then(response => {
+                        this.lists = response.data
+					})
+					.catch(error => {
+						if (error.response) {
+							this.handleErrors(error.response)
+						}
+					})
+			}
 		},
 		mounted() {
 			this.retrieveInvestmentData()
+			this.retrievePendingOperations()
 		},
 		computed: {
 			...mapGetters([

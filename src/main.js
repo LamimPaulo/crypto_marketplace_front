@@ -16,7 +16,7 @@ import map from 'lodash/map'
 import VuePhoneNumberInput from 'vue-phone-number-input';
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 
-import 'vue-directive-tooltip/css/index.css';
+// import 'vue-directive-tooltip/css/index.css';
 
 Vue.component('vue-phone-number-input', VuePhoneNumberInput);
 
