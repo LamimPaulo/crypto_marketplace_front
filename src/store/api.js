@@ -1277,9 +1277,20 @@ export const store = new Vuex.Store({
 			})
 		})
 		},
-		retrievePendingOperations() {
+		retrievePendingLqxOperations() {
 		return new Promise((resolve, reject) => {
-			axios.get('nanotech/list')
+			axios.get('nanotech/pendinglqx')
+			.then(response => {
+				resolve(response)
+			})
+			.catch(error => {
+				reject(error)
+			})
+		})
+		},
+		retrievePendingBtcOperations() {
+		return new Promise((resolve, reject) => {
+			axios.get('nanotech/pendingbtc')
 			.then(response => {
 				resolve(response)
 			})

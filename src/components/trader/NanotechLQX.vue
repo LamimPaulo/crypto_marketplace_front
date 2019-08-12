@@ -6,15 +6,11 @@
         <div class="content-box">
             <div class="element-wrapper">
                 <div class="element-actions d-sm-block">
-                    
-
                     <button class="btn btn-primary btn-sm" type="button"
                                             @click="showModal('pendingOperations')"
                     >
                     <i class="fas fa-business-time"></i><span> Operaçoes pendentes</span>
                     </button>
-
-
                     <a class="btn btn-primary btn-sm" href="/nanotech/btc">
                         <i class="os-icon os-icon-external-link"></i><span> Nanotech BTC</span>
                     </a>
@@ -150,9 +146,7 @@
                                            <span class="tab-label">Operaçoes Pendentes</span>
                                         </a>
                                 </li>
-
                             </ul>
-                            
                             <ul v-else class="nav nav-tabs">
                                 <li class="nav-item col-md-6 text-center">
                                     <a :class="tabclass_invest" href="#"
@@ -324,7 +318,7 @@
                                     <thead>
                                     <tr>
                                         <th class="text-center">Data</th>
-                                        <!-- <th class="text-center">Moeda</th> -->
+                                        <th class="text-center">Moeda</th>
                                         <th class="text-center">Valor</th>
                                         <th class="text-center">Tipo</th>
                                         <th class="text-center">Estado</th>
@@ -333,6 +327,7 @@
                                     <tbody>
                                     <tr v-for="(list, index) in lists" v-bind:key="index">
                                         <td>{{ list.createdLocal }}</td>
+                                        <td>LQX</td>
                                         <td>{{ list.amountLocal }}</td>
                                         <td>{{ list.typeName }}</td>
                                         <td>{{ list.statusName }}</td>
@@ -353,7 +348,7 @@
 
                 <template slot="footer">
                     <span v-if="isPendingOperations === false"> Taxa de Corretagem: 0 <i class="os-icon os-icon-percent"></i></span>
-                    <span v-else> footer test</span>
+                    <span v-else> </span>
                 </template>
             </modal>
 
@@ -549,7 +544,7 @@
 			refresh() {
 				this.loader = false
                 this.retrieveInvestmentData()
-                this.retrievePendingOperations()
+                this.retrievePendingLqxOperations()
 			},
 			showPinModal(method) {
 				this.isPinVisible = true
@@ -569,8 +564,8 @@
 					this.withdrawalInvestment()
 				}
             },
-            retrievePendingOperations() {
-				this.$store.dispatch('retrievePendingOperations')
+            retrievePendingLqxOperations() {
+				this.$store.dispatch('retrievePendingLqxOperations')
 					.then(response => {
                         this.lists = response.data
 					})
@@ -583,7 +578,7 @@
 		},
 		mounted() {
 			this.retrieveInvestmentData()
-			this.retrievePendingOperations()
+			this.retrievePendingLqxOperations()
 		},
 		computed: {
 			...mapGetters([
