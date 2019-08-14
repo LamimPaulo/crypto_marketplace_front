@@ -6,6 +6,11 @@
         <div class="content-box">
             <div class="element-wrapper">
                 <div class="element-actions d-sm-block">
+                    <button class="btn btn-primary btn-sm" type="button"
+                                            @click="showModal('pendingOperations')"
+                    >
+                    <i class="fas fa-business-time"></i><span> Operaçoes pendentes</span>
+                    </button>
                     <a class="btn btn-primary btn-sm" href="/nanotech/btc">
                         <i class="os-icon os-icon-external-link"></i><span> Nanotech BTC</span>
                     </a>
@@ -97,7 +102,14 @@
                 <template slot="header">
                     <div class="os-tabs-w">
                         <div class="os-tabs-controls os-tabs-complex">
-                            <ul class="nav nav-tabs">
+                            <ul v-if="isPendingOperations === true" class="nav nav-tabs">
+                                <li class="nav-item col-md-12 text-center">
+                                       <a class="nav-link active">
+                                           <span class="tab-label">Operaçoes Pendentes</span>
+                                        </a>
+                                </li>
+                            </ul>
+                            <ul v-else class="nav nav-tabs">
                                 <li class="nav-item col-md-6 text-center">
                                     <a :class="tabclass_invest" href="#" @click="showInvestWindow">
                                         <span class="tab-label">Investir</span>
@@ -281,9 +293,47 @@
 
                         </form>
                     </div>
+
+                    <div v-show="isPendingOperationsVisible">
+                        <div class="form group row mb-0">
+                            <div class="col-sm-12 text-center align-center">
+                                    <span class="aler alert-warning block py-1 mb-2"
+                                    >As seguintes transações encontram-se pendentes</span>
+                                <table class="table table-padded">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">Data</th>
+                                        <th class="text-center">Moeda</th>
+                                        <th class="text-center">Valor</th>
+                                        <th class="text-center">Tipo</th>
+                                        <th class="text-center">Estado</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="(list, index) in lists" v-bind:key="index">
+                                        <td>{{ list.createdLocal }}</td>
+                                        <td>LQX</td>
+                                        <td>{{ list.amountLocal }}</td>
+                                        <td>{{ list.typeName }}</td>
+                                        <td>{{ list.statusName }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="button" class="btn btn-grey btn-md"
+                                @click.prevent="closeModal()">
+                                Fechar
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
                 </template>
 
                 <template slot="footer">
+                    <span v-if="isPendingOperations === false"> Taxa de Corretagem: 0 <i class="os-icon os-icon-percent"></i></span>
+                    <span v-else> </span>
                     <span v-if="isInvestWindowVisible"> Taxa de Corretagem: {{ investment_data.brokerage_fee }} <i
                             class="os-icon os-icon-percent"></i></span>
                     <span v-if="isWithdrawalWindowVisible"> Taxa de Corretagem: 0 <i
@@ -326,6 +376,95 @@
     import Vue from 'vue'
     import VueNumeric from 'vue-numeric'
 
+	export default {
+		name: "Arbitrage",
+		data() {
+			return {
+				loader: true,
+				isPinVisible: false,
+                isModalVisible: false,
+                isPendingOperations: false, 
+                isPendingOperationsVisible: false,
+				isInvestWindowVisible: false,
+				isDraftWindowVisible: false,
+				tabclass_invest: 'nav-link active',
+				tabclass_draft: 'nav-link',
+				investment_in: {
+					amount: 0,
+					coin: 3,
+				},
+				investment_out: {
+					amount: 0,
+					coin: 3,
+					operation_type: null
+				},
+				investment_data: {
+					average_profits: {
+						base: 0,
+						current_month: 0,
+						current_day: 0,
+					},
+					brokerage_fee: 0,
+					under_managment: 0,
+					user_investment: 0,
+					user_profit: 0,
+					total_user_investment: 0,
+					coin: 'LQX',
+                    chart: [],
+                    name: ''
+				},
+				token: {
+					pin: null
+                },
+                lists: {
+                    type: ''
+                },
+			}
+		},
+		methods: {
+			showModal(type) {
+				this.isModalVisible = true
+				if (type === 'invest') {
+					this.showInvestWindow()
+				}
+				if (type === 'withdrawal') {
+					this.showDraftWindow()
+				}
+				if (type === 'pendingOperations') {
+					this.showPendingOperations()
+				}
+			},
+			closeModal() {
+                this.isModalVisible = false;
+                this.isPendingOperations = false;
+                this.isPendingOperationsVisible = false;
+			},
+			showInvestWindow() {
+				this.isInvestWindowVisible = true
+				this.isDraftWindowVisible = false
+				this.tabclass_invest = 'nav-link active'
+				this.tabclass_draft = 'nav-link'
+			},
+			showPendingOperations() {
+                this.isPendingOperations = true
+                this.isPendingOperationsVisible = true
+                this.isInvestWindowVisible = false
+                this.isDraftWindowVisible = false
+			},
+			showDraftWindow() {
+				this.isDraftWindowVisible = true
+				this.isInvestWindowVisible = false
+				this.tabclass_invest = 'nav-link'
+				this.tabclass_draft = 'nav-link active'
+			},
+			retrieveInvestmentData() {
+				this.loader = true
+				this.$store.dispatch('retrieveInvestmentData', 1)
+					.then(response => {
+						this.investment_data.name = response.data.name
+						this.investment_data.average_profits.base = response.data.average_profits.base
+						this.investment_data.average_profits.current_month = response.data.average_profits.current_month
+						this.investment_data.average_profits.current_day = response.data.average_profits.current_day
     Vue.use(VueNumeric)
 
     export default {
@@ -429,6 +568,43 @@
                 this.loader = true
                 this.isModalVisible = false
 
+				this.$store.dispatch('withdrawalInvestment', {
+					amount: this.investment_out.amount,
+					type: 1,
+					coin: this.investment_out.coin,
+					operation_type: this.investment_out.operation_type,
+					pin: this.token.pin,
+				})
+					.then(response => {
+						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
+						this.refresh()
+					})
+					.catch(error => {
+						if (error.response) {
+							this.handleErrors(error.response)
+							this.resetPin()
+						}
+						this.loader = false
+					})
+			},
+			resetPin() {
+				this.token.pin = null
+				this.$refs.pinComponent.resetData()
+			},
+			refresh() {
+				this.loader = false
+                this.retrieveInvestmentData()
+                this.retrievePendingLqxOperations()
+			},
+			showPinModal(method) {
+				this.isPinVisible = true
+				this.$refs.pinComponent.setData(method)
+			},
+			closePinModal() {
+				this.isPinVisible = false;
+			},
+			handlePinData(data) {
+				this.token.pin = data.pin
                 this.$store.dispatch('sendInvestment', {
                     amount: this.investment_in.amount,
                     type: 1,
@@ -488,6 +664,44 @@
                 this.investment_in.coin = 10
                 this.investment_in.operation_type = 1
 
+				if (data.method === 'withdrawalInvestment') {
+					this.withdrawalInvestment()
+				}
+            },
+            retrievePendingLqxOperations() {
+				this.$store.dispatch('retrievePendingLqxOperations')
+					.then(response => {
+                        this.lists = response.data
+					})
+					.catch(error => {
+						if (error.response) {
+							this.handleErrors(error.response)
+						}
+					})
+			}
+		},
+		mounted() {
+			this.retrieveInvestmentData()
+			this.retrievePendingLqxOperations()
+		},
+		computed: {
+			...mapGetters([
+				'user'
+			]),
+			isReinvestmentFilled() {
+				return (parseFloat(this.investment_in.amount) <= parseFloat(this.investment_data.user_profit)) && this.investment_in.amount > 0 && true
+			},
+			isWithdrawalFilled() {
+				return (parseFloat(this.investment_out.amount) <= parseFloat(this.investment_data.total_user_investment)) && this.investment_out.amount > 0 && this.investment_out.operation_type && true
+			}
+		},
+		components: {
+			LqxAreaChart,
+			LastTrades,
+			Modal,
+			Pin
+		}
+	}
                 this.investment_out.amount = 0
                 this.investment_out.coin = 10
                 this.investment_out.operation_type = null

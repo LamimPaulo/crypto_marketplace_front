@@ -1266,16 +1266,38 @@ export const store = new Vuex.Store({
 					})
 			})
 		},
-    retrieveGatewayPayment(context, tx) {
-      return new Promise((resolve, reject) => {
-        axios.get('/credminer/gateway/status/' + tx)
-          .then(response => {
-            resolve(response)
-          })
-          .catch(error => {
-            reject(error)
-          })
-      })
-    },
+		retrieveGatewayPayment(context, tx) {
+		return new Promise((resolve, reject) => {
+			axios.get('/credminer/gateway/status/' + tx)
+			.then(response => {
+				resolve(response)
+			})
+			.catch(error => {
+				reject(error)
+			})
+		})
+		},
+		retrievePendingLqxOperations() {
+		return new Promise((resolve, reject) => {
+			axios.get('nanotech/pendinglqx')
+			.then(response => {
+				resolve(response)
+			})
+			.catch(error => {
+				reject(error)
+			})
+		})
+		},
+		retrievePendingBtcOperations() {
+		return new Promise((resolve, reject) => {
+			axios.get('nanotech/pendingbtc')
+			.then(response => {
+				resolve(response)
+			})
+			.catch(error => {
+				reject(error)
+			})
+		})
+		},
 	}
 })

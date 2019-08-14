@@ -6,6 +6,11 @@
         <div class="content-box">
             <div class="element-wrapper">
                 <div class="element-actions d-sm-block">
+                    <button class="btn btn-primary btn-sm" type="button"
+                                            @click="showModal('pendingOperations')"
+                    >
+                    <i class="fas fa-business-time"></i><span> Operaçoes pendentes</span>
+                    </button>
                     <a class="btn btn-primary btn-sm" href="/nanotech/lqx">
                         <i class="os-icon os-icon-external-link"></i><span> Nanotech LQX</span>
                     </a>
@@ -97,7 +102,16 @@
                 <template slot="header">
                     <div class="os-tabs-w">
                         <div class="os-tabs-controls os-tabs-complex">
-                            <ul class="nav nav-tabs">
+                            <ul v-if="isPendingOperations === true" class="nav nav-tabs">
+                                <li class="nav-item col-md-12 text-center">
+                                       <a class="nav-link active">
+                                           <span class="tab-label">Operaçoes Pendentes</span>
+                                        </a>
+                                </li>
+
+                            </ul>
+                            
+                            <ul v-else class="nav nav-tabs">
                                 <li class="nav-item col-md-6 text-center">
                                     <a :class="tabclass_invest" href="#" @click="showInvestWindow">
                                         <span class="tab-label">Investir</span>
@@ -281,6 +295,42 @@
 
                         </form>
                     </div>
+
+                    <div v-show="isPendingOperationsVisible">
+                        <div class="form group row mb-0">
+                            <div class="col-sm-12 text-center align-center">
+                                    <span class="aler alert-warning block py-1 mb-2"
+                                    >As seguintes transações encontram-se pendentes</span>
+                                <table class="table table-padded">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">Data</th>
+                                        <th class="text-center">Moeda</th>
+                                        <th class="text-center">Valor</th>
+                                        <th class="text-center">Tipo</th>
+                                        <th class="text-center">Estado</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="(list, index) in lists" v-bind:key="index">
+                                        <td>{{ list.createdLocal }}</td>
+                                        <td>BTC</td>
+                                        <td>{{ list.amountLocal }}</td>
+                                        <td>{{ list.typeName }}</td>
+                                        <td>{{ list.statusName }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="button" class="btn btn-grey btn-md"
+                                @click.prevent="closeModal()">
+                                Fechar
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
                 </template>
 
                 <template slot="footer">
@@ -288,6 +338,7 @@
                             class="os-icon os-icon-percent"></i></span>
                     <span v-if="isWithdrawalWindowVisible"> Taxa de Corretagem: 0 <i
                             class="os-icon os-icon-percent"></i></span>
+                    <span v-if="isPendingOperationsVisible"> </span>
                 </template>
             </modal>
 
@@ -337,6 +388,7 @@
                 isModalVisible: false,
                 isInvestWindowVisible: false,
                 isWithdrawalWindowVisible: false,
+                isPendingOperationsVisible: false,
                 tabclass_invest: 'nav-link active',
                 tabclass_withdrawal: 'nav-link',
                 investment_in: {
@@ -378,6 +430,9 @@
                 if (type === 'withdrawal') {
                     this.showWithdrawalWindow()
                 }
+                if (type === 'pendingOperations') {
+					this.showPendingOperations()
+				}
             },
             setSourceInvestment(source) {
                 this.investment_in.operation_type = source
@@ -387,6 +442,8 @@
             },
             closeModal() {
                 this.isModalVisible = false;
+                this.isPendingOperations = false;
+                this.isPendingOperationsVisible = false;
             },
             showInvestWindow() {
                 this.isInvestWindowVisible = true
@@ -394,6 +451,12 @@
                 this.tabclass_invest = 'nav-link active'
                 this.tabclass_withdrawal = 'nav-link'
             },
+            showPendingOperations() {
+                this.isPendingOperations = true
+                this.isPendingOperationsVisible = true
+                this.isInvestWindowVisible = false
+                this.isDraftWindowVisible = false
+			},
             showWithdrawalWindow() {
                 this.isWithdrawalWindowVisible = true
                 this.isInvestWindowVisible = false
@@ -484,6 +547,7 @@
             refresh() {
                 this.loader = false
                 this.retrieveInvestmentData()
+                this.retrievePendingBtcOperations()
                 this.investment_in.amount = 0
                 this.investment_in.coin = 1
                 this.investment_in.operation_type = 1
@@ -510,9 +574,21 @@
                     this.withdrawalInvestment()
                 }
             },
+            retrievePendingBtcOperations() {
+				this.$store.dispatch('retrievePendingBtcOperations')
+					.then(response => {
+                        this.lists = response.data
+					})
+					.catch(error => {
+						if (error.response) {
+							this.handleErrors(error.response)
+						}
+					})
+			}
         },
         mounted() {
             this.retrieveInvestmentData()
+            this.retrievePendingBtcOperations()
         },
         computed: {
             ...mapGetters([
