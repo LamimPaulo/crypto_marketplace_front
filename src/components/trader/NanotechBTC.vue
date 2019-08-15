@@ -353,7 +353,7 @@
                         <div class="form group row mb-0">
                             <div class="col-sm-12 text-center align-center">
                                     <span class="aler alert-warning block py-1 mb-2"
-                                    >Transaçoes de lucro dos ultimos xx dias</span>
+                                    >Todas as suas Transações de lucro </span>
                                 <table class="table table-padded">
                                     <thead>
                                     <tr>
