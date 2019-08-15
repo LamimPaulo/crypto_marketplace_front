@@ -1,6 +1,6 @@
 <template>
     <div>
-        <vue-headful title="Nanotech BTC" description="Liquidex"/>
+        <vue-headful title="Nanotech LQX" description="Liquidex"/>
         <div class="loader" v-if="loader"></div>
 
         <div class="content-box">
@@ -313,7 +313,7 @@
                                     <tbody>
                                     <tr v-for="(list, index) in lists" v-bind:key="index">
                                         <td>{{ list.createdLocal }}</td>
-                                        <td>BTC</td>
+                                        <td>LQX</td>
                                         <td>{{ list.amountLocal }}</td>
                                         <td>{{ list.typeName }}</td>
                                         <td>{{ list.statusName }}</td>
@@ -454,7 +454,7 @@
                 this.isPendingOperations = true
                 this.isPendingOperationsVisible = true
                 this.isInvestWindowVisible = false
-                this.isDraftWindowVisible = false
+                this.isWithdrawalWindowVisible = false
 			},
             showWithdrawalWindow() {
                 this.isWithdrawalWindowVisible = true
@@ -574,7 +574,7 @@
                 }
             },
             retrievePendingBtcOperations() {
-				this.$store.dispatch('retrievePendingBtcOperations')
+				this.$store.dispatch('retrievePendingLqxOperations')
 					.then(response => {
                         this.lists = response.data
 					})

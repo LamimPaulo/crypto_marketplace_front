@@ -455,7 +455,7 @@
                 this.isPendingOperations = true
                 this.isPendingOperationsVisible = true
                 this.isInvestWindowVisible = false
-                this.isDraftWindowVisible = false
+                this.isWithdrawalWindowVisible = false
 			},
             showWithdrawalWindow() {
                 this.isWithdrawalWindowVisible = true
