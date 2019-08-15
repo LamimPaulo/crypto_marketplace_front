@@ -9,14 +9,22 @@
                     <button class="btn btn-primary btn-sm" type="button"
                                             @click="showModal('pendingOperations')"
                     >
-                    <i class="fas fa-business-time"></i><span> Operaçoes pendentes</span>
+                    <i class="fas fa-business-time"></i><span> Operações pendentes</span>
                     </button>
-                    <a class="btn btn-primary btn-sm" href="/nanotech/btc">
-                        <i class="os-icon os-icon-external-link"></i><span> Nanotech BTC</span>
-                    </a>
+
+                    <button class="btn btn-primary btn-sm" type="button"
+                                            @click="showModal('profitOperations')"
+                    >
+                    <i class="fas fa-coins"></i><span>Operações de Lucros</span>
+                    </button>
                 </div>
                 <h6 class="element-header mb-3">
                     {{ investment_data.name }}
+                    <span class="container">
+                        <a class="btn btn-success btn-sm" href="/nanotech/btc">
+                            <i class="os-icon os-icon-external-link"></i><span> Nanotech BTC</span>
+                        </a>
+                    </span>
                 </h6>
                 <div class="element-box-tp mb-2">
                     <div class="row">
@@ -104,7 +112,15 @@
                             <ul v-if="isPendingOperations" class="nav nav-tabs">
                                 <li class="nav-item col-md-12 text-center">
                                        <a class="nav-link active">
-                                           <span class="tab-label">Operaçoes Pendentes</span>
+                                           <span class="tab-label">Operações Pendentes</span>
+                                        </a>
+                                </li>
+
+                            </ul>
+                            <ul v-else-if="isProfitOperations" class="nav nav-tabs">
+                                <li class="nav-item col-md-12 text-center">
+                                       <a class="nav-link active">
+                                           <span class="tab-label">Operações de Lucro</span>
                                         </a>
                                 </li>
 
@@ -311,15 +327,52 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr v-for="(list, index) in lists" v-bind:key="index">
-                                        <td>{{ list.createdLocal }}</td>
+                                    <tr v-for="(lst, index) in pendingList" v-bind:key="index">
+                                        <td>{{ lst.createdLocal }}</td>
                                         <td>LQX</td>
-                                        <td>{{ list.amountLocal }}</td>
-                                        <td>{{ list.typeName }}</td>
-                                        <td>{{ list.statusName }}</td>
+                                        <td>{{ lst.amountLocal }}</td>
+                                        <td>{{ lst.typeName }}</td>
+                                        <td>{{ lst.statusName }}</td>
                                     </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="button" class="btn btn-grey btn-md"
+                                @click.prevent="closeModal()">
+                                Fechar
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div v-show="isProfitOperationsVisible">
+                        <div class="form group row mb-0">
+                            <div class="col-sm-12 text-center align-center">
+                                    <span class="aler alert-warning block py-1 mb-2"
+                                    >Todas as suas Transaçoes de lucro </span>
+                                <table class="table table-padded">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">Data</th>
+                                        <th class="text-center">Moeda</th>
+                                        <th class="text-center">Valor</th>
+                                        <th class="text-center">Tipo</th>
+                                        <th class="text-center">Estado</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="(lst, index) in profitPaginate.data" v-bind:key="index">
+                                        <td>{{ lst.createdLocal }}</td>
+                                        <td>LQX</td>
+                                        <td>{{ lst.amountLocal }}</td>
+                                        <td>{{ lst.typeName }}</td>
+                                        <td>{{ lst.statusName }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            <pagination :pagination="profitPaginate" @paginate="retrieveProfitLqxOperations()" :offset="5"/>
                             </div>
                             <div class="col-12 text-center">
                                 <button type="button" class="btn btn-grey btn-md"
@@ -338,6 +391,7 @@
                     <span v-if="isWithdrawalWindowVisible"> Taxa de Corretagem: 0 <i
                             class="os-icon os-icon-percent"></i></span>
                     <span v-if="isPendingOperationsVisible"> </span>
+                    <span v-if="isProfitOperationsVisible"> </span>
                 </template>
             </modal>
 
@@ -375,6 +429,7 @@
     import LqxAreaChart from './../charts/LqxAreaChart'
     import Vue from 'vue'
     import VueNumeric from 'vue-numeric'
+    import Pagination from './../layouts/Pagination'
 
     Vue.use(VueNumeric)
 
@@ -389,9 +444,20 @@
                 isWithdrawalWindowVisible: false,
                 isPendingOperations: false,
                 isPendingOperationsVisible: false,
+                isProfitOperations: false,
+                isProfitOperationsVisible: false,
                 tabclass_invest: 'nav-link active',
                 tabclass_withdrawal: 'nav-link',
-                lists: [],
+                pendingList: [],
+                profitList: [],
+                offset: 5,
+                profitPaginate: {
+                    total: 0,
+                    per_page: 5,
+                    from: 1,
+                    to: 0,
+                    current_page: 1
+                },
                 investment_in: {
                     amount: 0,
                     coin: 10,
@@ -434,6 +500,9 @@
                 if (type === 'pendingOperations') {
 					this.showPendingOperations()
 				}
+                if (type === 'profitOperations') {
+					this.showProfitOperations()
+				}
             },
             setSourceInvestment(source) {
                 this.investment_in.operation_type = source
@@ -445,6 +514,11 @@
                 this.isModalVisible = false;
                 this.isPendingOperations = false;
                 this.isPendingOperationsVisible = false;
+                this.isProfitOperations = false;
+                this.isProfitOperationsVisible = false;
+                this.isInvestWindowVisible = false
+                this.isWithdrawalWindowVisible = false
+
             },
             showInvestWindow() {
                 this.isInvestWindowVisible = true
@@ -455,8 +529,11 @@
             showPendingOperations() {
                 this.isPendingOperations = true
                 this.isPendingOperationsVisible = true
-                this.isInvestWindowVisible = false
-                this.isWithdrawalWindowVisible = false
+                
+			},
+            showProfitOperations() {
+                this.isProfitOperations = true
+                this.isProfitOperationsVisible = true
 			},
             showWithdrawalWindow() {
                 this.isWithdrawalWindowVisible = true
@@ -548,7 +625,8 @@
             refresh() {
                 this.loader = false
                 this.retrieveInvestmentData()
-                this.retrievePendingBtcOperations()
+                this.retrievePendingLqxOperations()
+                this.retrieveProfitLqxOperations()
                 this.investment_in.amount = 0
                 this.investment_in.coin = 10
                 this.investment_in.operation_type = 1
@@ -575,21 +653,35 @@
                     this.withdrawalInvestment()
                 }
             },
-            retrievePendingBtcOperations() {
+            retrievePendingLqxOperations() {
 				this.$store.dispatch('retrievePendingLqxOperations')
 					.then(response => {
-                        this.lists = response.data
+                        this.pendingList = response.data
 					})
 					.catch(error => {
 						if (error.response) {
 							this.handleErrors(error.response)
 						}
 					})
-			}
+			},
+            retrieveProfitLqxOperations() {
+                this.loader = true
+				this.$store.dispatch('retrieveProfitLqxOperations', this.profitPaginate.current_page)
+					.then(response => {
+                        this.profitPaginate = response.data
+                        this.loader = false
+					})
+					.catch(error => {
+						if (error.response) {
+							this.handleErrors(error.response)
+						}
+					})
+			},
         },
         mounted() {
             this.retrieveInvestmentData()
-            this.retrievePendingBtcOperations()
+            this.retrievePendingLqxOperations()
+            this.retrieveProfitLqxOperations()
         },
         computed: {
             ...mapGetters([
@@ -607,7 +699,8 @@
             LastTrades,
             Modal,
             Pin,
-            VueNumeric
+            VueNumeric,
+            Pagination
         }
     }
 </script>

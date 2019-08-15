@@ -1277,27 +1277,49 @@ export const store = new Vuex.Store({
 			})
 		})
 		},
+		retrieveProfitLqxOperations(contex, data) {
+			return new Promise((resolve, reject) => {
+				axios.get('nanotech/profitlqx?page=' + data)
+				.then(response => {
+					resolve(response)
+				})
+				.catch(error => {
+					reject(error)
+				})
+			})
+		},
 		retrievePendingLqxOperations() {
-		return new Promise((resolve, reject) => {
-			axios.get('nanotech/pendinglqx')
-			.then(response => {
-				resolve(response)
+			return new Promise((resolve, reject) => {
+				axios.get('nanotech/pendinglqx')
+				.then(response => {
+					resolve(response)
+				})
+				.catch(error => {
+					reject(error)
+				})
 			})
-			.catch(error => {
-				reject(error)
-			})
-		})
 		},
 		retrievePendingBtcOperations() {
-		return new Promise((resolve, reject) => {
-			axios.get('nanotech/pendingbtc')
-			.then(response => {
-				resolve(response)
+			return new Promise((resolve, reject) => {
+				axios.get('nanotech/pendingbtc')
+				.then(response => {
+					resolve(response)
+				})
+				.catch(error => {
+					reject(error)
+				})
 			})
-			.catch(error => {
-				reject(error)
-			})
-		})
 		},
+		retrieveProfitBtcOperations(contex, data) {
+			return new Promise((resolve, reject) => {
+				axios.get('nanotech/profitbtc?page=' + data)
+				.then(response => {
+					resolve(response)
+				})
+				.catch(error => {
+					reject(error)
+				})
+			})
+		}
 	}
 })
