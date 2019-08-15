@@ -387,9 +387,11 @@
                 isModalVisible: false,
                 isInvestWindowVisible: false,
                 isWithdrawalWindowVisible: false,
+                isPendingOperations: false,
                 isPendingOperationsVisible: false,
                 tabclass_invest: 'nav-link active',
                 tabclass_withdrawal: 'nav-link',
+                lists: [],
                 investment_in: {
                     amount: 0,
                     coin: 10,
