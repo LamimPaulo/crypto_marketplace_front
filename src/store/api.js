@@ -1320,6 +1320,17 @@ export const store = new Vuex.Store({
 					reject(error)
 				})
 			})
-		}
+		},
+		retrieveTicketsConfig() {
+			return new Promise((resolve, reject) => {
+				axios.get('/user/tickets/config')
+					.then(response => {
+						resolve(response)
+					})
+					.catch(error => {
+						reject(error)
+					})
+			})
+		},
 	}
 })
