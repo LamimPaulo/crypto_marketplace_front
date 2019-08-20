@@ -182,12 +182,19 @@
 
                     <div class="element-box">
 
+                      <div class="row alert alert-warning" v-show="isSupportClosed">
+                        <div class="col-sm-11">
+                          Abertura de Tickets Fechada para o fim de semana, após às {{ this.configs.fri_close_time }}. <br>
+                          Reabertura na Segunda, às <strong>{{ this.configs.mon_opening_time }}</strong>
+                        </div>
+                      </div>
+
                       <div class="element-info mb-0 ">
                         <h5 class="element-inner-header">
                           Meus Tickets
-                          <div class="element-actions">
+                          <div class="element-actions">                            
                             <button class="btn btn-success btn-sm"
-                                    @click.prevent="isTicketVisible=true">
+                                    @click.prevent="teste()">
                               <i class="os-icon os-icon-plus"></i><span> Abrir Ticket</span>
                             </button>
                           </div>
@@ -284,7 +291,13 @@
       return {
         isTicketVisible: false,
         isTicketMessageVisible: false,
+        isSupportClosed: false,
         loader: true,
+        configs: {
+          days_off: '6,0',
+          fri_close_time: '00:00:00',
+          mon_opening_time: '00:00:00'
+        },
         ticket: {
           subject: null,
           message: null,
@@ -412,6 +425,18 @@
             this.loader = false
           })
       },
+      retrieveTicketsConfig() {
+        this.$store.dispatch('retrieveTicketsConfig')
+          .then(response => {
+            this.configs = response.data.config
+            // this.configs = JSON.parse(JSON.stringify(response))
+          })
+          .catch(error => {
+            if (error.response) {
+              this.handleErrors(error.response)
+            }
+          })
+      },
       retrieveTicketsStatus() {
         this.$store.dispatch('retrieveUserTicketsStatus')
           .then(response => {
@@ -434,11 +459,29 @@
             }
           })
       },
+      teste() {
+        var d = new Date()
+        var today = String(d.getDay())
+        var time = d.getHours()+':'+d.getMinutes()
+        var array = (this.configs.days_off.split(","))
+
+        if(array.includes(today)) {
+          this.isSupportClosed = true
+        }
+        else if(today == 5 && time >= this.configs.fri_close_time || today == 1 && time <= this.configs.mon_opening_time) {
+          this.isSupportClosed = true
+        }
+        else{
+          this.isSupportClosed = false
+          this.isTicketVisible = true
+        }
+      },
     },
     mounted() {
       this.retrieveTicketsDepartments()
       this.retrieveTicketsStatus()
       this.retrieveTicketsList()
+      this.retrieveTicketsConfig()
     },
     computed: {
       ...mapGetters([

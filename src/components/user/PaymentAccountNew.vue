@@ -39,14 +39,14 @@
                                                        v-model="account.category">Conta Corrente</label>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <!-- <div class="col-sm-6">
                                         <div class="form-check">
                                             <label class="form-check-label">
                                                 <input class="form-check-input" name="account_type" type="radio"
                                                        value="2"
                                                        v-model="account.category">Conta Poupança</label>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="row">

@@ -6,10 +6,14 @@
         <fieldset class="post-content form-group">
             <legend v-if="data_group" @click.prevent="data_group=false">
                 <span class="pull-left">Dados Pessoais</span>
+                 <span class="badge badge-success mb-2" v-if="isUserFilled">Valido</span>
+
                 <span class="pull-right"><i class="os-icon os-icon-arrow-down2"></i></span>
             </legend>
             <legend v-if="!data_group" @click.prevent="data_group=true">
                 <span class="pull-left">Dados Pessoais</span>
+                 <span class="badge badge-success mb-2" v-if="isUserFilled">Valido</span>
+
                 <span class="pull-right"><i class="os-icon os-icon-arrow-right3"></i></span>
             </legend>
 
@@ -27,7 +31,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="cpf"> Cpf</label>
+                            <label for="cpf"> Cpf</label> <span v-if="this.cpf" class="pull-right" id="cpf-validado"> Cpf Valido</span>
                             <input class="form-control" placeholder="Cpf" required="required" type="text" id="cpf"
                                    @input="retrieveCpf"
                                    autocomplete="false"
@@ -190,5 +194,11 @@
         background-image: url(../../../assets/img/icons/personal-data.png);
         background-size: 80px;
         background-repeat: no-repeat;
+    }
+
+    #cpf-validado {
+        color: rgb(16, 165, 16);
+        font-size: 11px;
+        padding-top: 8px
     }
 </style>

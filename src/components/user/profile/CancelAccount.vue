@@ -22,6 +22,10 @@
                         <li>você não poderá cadastrar uma nova conta utilizando o mesmo email e cpf confirmados na atual
                             conta.
                         </li>
+
+                        <li>
+                            Estará excluindo sua conta da Liquidex. Sua conta bancária Continuara operando normalmente.
+                        </li>
                     </ul>
                     Ao clicar em "EXCLUIR CONTA" você declara estar ciente dos itens mencionados acima. Você receberá um
                     email de confirmação do cancelamento.
