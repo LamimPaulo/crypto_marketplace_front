@@ -1,6 +1,6 @@
 <template>
     <div>
-        <marquee-text class="dark-bg" :repeat="5" :duration="60">
+        <marquee-text class="dark-bg test" :repeat="5" :duration="60">
             <div>
                 <div class="market" v-for="coin in quotes">
                     <div class="market-share">
@@ -187,6 +187,13 @@
 
     .green {
         color: #26c281;
+    }
+
+    @media (max-width: 767px) {
+        .test {
+            max-width: 100%
+        }      
+
     }
 
 
