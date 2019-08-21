@@ -48,6 +48,8 @@
     .modal {
         display: block;
         color: #000;
+        overflow: scroll;        
+
     }
 
     .vue-modal-backdrop {
