@@ -204,7 +204,7 @@
 
                                         <div class="input-group-append">
                                             <div class="input-group-text">
-                                                BTC
+                                                LQX
                                             </div>
                                         </div>
                                     </div>
@@ -292,7 +292,7 @@
 
                                         <div class="input-group-append">
                                             <div class="input-group-text">
-                                                BTC
+                                                LQX
                                             </div>
                                         </div>
                                     </div>

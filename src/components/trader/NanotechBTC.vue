@@ -367,7 +367,7 @@
                                     <tbody>
                                     <tr v-for="(lst, index) in profitPaginate.data" v-bind:key="index">
                                         <td>{{ lst.createdLocal }}</td>
-                                        <td>LQX</td>
+                                        <td>BTC</td>
                                         <td>{{ lst.amountLocal }}</td>
                                         <td>{{ lst.typeName }}</td>
                                         <td>{{ lst.statusName }}</td>
