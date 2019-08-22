@@ -119,4 +119,12 @@
         }
     }
 
+     /* Portrait phones and smaller */
+    @media (max-width: 480px) {
+      
+      .menu-w.menu-layout-compact ul.main-menu > li > a {
+            font-size: 0.5rpx;
+        }  
+    }
+
 </style>

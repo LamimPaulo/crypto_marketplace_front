@@ -61,7 +61,9 @@
                                                         </div>
                                                     </a>
                                                 </div>
+
                                             </div>
+                                         <MobileConverter class="mConverter"> </MobileConverter>
                                         </div>
                                     </div>
                                 </div>
@@ -120,7 +122,7 @@
                                                             <td></td>
                                                             <td class="text-center">Total</td>
                                                             <td>
-                                                                <button class="btn btn-primary">
+                                                                <button class="btn btn-primary" id="button1">
                                                                     {{product_total.value_lqx | fixValue}} LQX
                                                                 </button>
                                                             </td>
@@ -140,6 +142,7 @@
                                                     </table>
                                                 </div>
                                             </div>
+                                                <MobileViewProfile class="mProfile"> </MobileViewProfile>
                                         </div>
 
                                     </div>
@@ -156,6 +159,7 @@
             <div class="display-type"></div>
         </div>
 
+
         <Footer></Footer>
 
         <notification-modal v-show="isModalVisible" @close-modal="closeModal"></notification-modal>
@@ -168,6 +172,8 @@
     import PieChart from './charts/PieChart';
     import TopMenu from './menu/TopMenu';
     import TopMenuUser from './menu/TopMenuUser';
+    import MobileViewProfile from './menu/MobileViewProfile';
+    import MobileConverter from './menu/mobileCurrencyConverter';
     import Footer from './layouts/Footer';
     import NotificationModal from './user/notifications/NotificationModal';
     import {mapGetters} from 'vuex'
@@ -178,6 +184,8 @@
             PieChart,
             TopMenu,
             TopMenuUser,
+            MobileConverter,
+            MobileViewProfile,
             Footer,
             NotificationModal,
             Sidebar
@@ -267,7 +275,7 @@
 
 <style scoped>
     .layout-w {
-        /*min-height: 100vh;*/
+        /* min-height: 100vh; */
     }
 
     .trending-up {
@@ -276,5 +284,44 @@
 
     .trending-down {
         left: 0px;
+    }
+
+    .mConverter,
+    .mProfile {
+        display: none;
+    }
+    
+            /* Large desktops and laptops */
+    @media (max-width: 1150px) {
+        .mConverter {
+            display: block;
+            font-size: 13px;
+        }
+        .mProfile {
+            display: block;
+        }
+
+    }
+
+    /* Landscape tablets and medium desktops */
+    @media (min-width: 992px) and (max-width: 1199px) {
+
+    }
+
+    /* Portrait tablets and small desktops */
+    @media (min-width: 768px) and (max-width: 991px) {
+
+    }
+
+    /* Landscape phones and portrait tablets */
+    @media (max-width: 767px) {
+
+    }
+
+    /* Portrait phones and smaller */
+    @media (max-width: 480px) {    
+        .mConverter {
+            font-size: 10px;
+        }
     }
 </style>
