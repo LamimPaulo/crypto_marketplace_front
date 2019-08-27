@@ -302,7 +302,8 @@
 				}
 			},
 			closeModal() {
-                this.isModalVisible = false;
+				this.isModalVisible = false
+				this.isConfirmWithdrawalVisible = false
 			},
 			showConfirmWithdrawal(){
 				this.isConfirmWithdrawalVisible = true
