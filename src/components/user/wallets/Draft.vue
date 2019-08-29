@@ -141,13 +141,99 @@
                 </div>
                 <div class="form-buttons-w text-right">
                     <button class="btn btn-success" :disabled='!isFilled'
-                            @click.prevent="showTokenPinModal('sendDraft', 1)"
+                            @click="showModal('confirmWithdrawal')"
                             type="button"> Solicitar
                     </button>
                 </div>
             </form>
+			<br>
+			
+                            
+			
+			
 
         </div>
+
+	            <modal @close="closeModal" v-show="isModalVisible">
+                
+				<template slot="header">
+					<div class="os-tabs-w">
+						<div class="os-tabs-controls os-tabs-complex">
+							<ul v-if="isConfirmWithdrawalVisible == true" class="nav nav-tabs">
+								<li class="nav-item col-md-12 text-center">
+										<a class="nav-link active">
+											<span class="tab-label text-dark">Confirmação de Saque</span>
+										</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+                </template>
+                <template slot="body" id="test">
+                    <div class="">
+				<div class="alert text-dark block py-1 mb-2">
+					<div class="alert col-sm-13">
+						<span class="span12 text-center">Atenção<br> </span><br>
+						Você está agendando seu saque para o dia {{ draft.deadline }}, onde o banco efetuará o pagamento.
+						<br><br>
+						Antes de confirmar o agendamento verifique se sua conta está cadastrada em nosso sistema corretamente.
+						<br><br>
+						<b>Motivos mais comuns para um saque não ser pago na data agendada.</b> 
+						<ul>
+							<li>
+								Erros na conta cadastrada;
+							</li>
+							<li>
+								Erro de transmissão de dados;
+							</li>
+								Conta poupança cadastrada;
+							<li>
+								Conta Salário.
+							</li>
+							<li>
+								Conta digital.
+							</li>
+							<li>
+								Conta em nome de terceiros; 
+							</li>
+							<li>
+								Valores inferiores a R$ 1.000,00.
+							</li>
+						</ul>
+						
+						<span>
+							Caso seu saque não seja efetuado na data agendada você deverá abrir um ticket informando seu nome completo, seu CPF, valor e data do seu saque. 
+							<br><br>
+							Não atenderemos reclamações de terceiros.
+							<br><br>
+							Prazo de respostas de ticket 48 horas.
+							<br><br>
+							Confirme seu agendamento somente se estiver ciente dos dados acima.
+						</span>
+						<br><br>
+					</div>
+					
+                            <div class="col-12 text-center">
+                                <button type="button" class="btn btn-success btn-md"
+								@click.prevent="showTokenPinModal('sendDraft', 1)">
+                                Confirmar
+                                </button>
+                                <button type="button" class="btn btn-danger btn-md"
+                                @click.prevent="closeModal()">
+                                Fechar
+                                </button>
+                            </div>
+            </div>	
+					</div>
+                </template>
+					
+                <template slot="footer">
+					<span></span>
+                </template>
+            </modal>
+
+
 
         <token-pin v-show="isTokenPinVisible" ref="tokenPinComponent"
                    @close-token-pin-modal="closeTokenPinModal" @token-data="handleTokenPinData"/>
@@ -159,6 +245,7 @@
 	import VueNumeric from 'vue-numeric'
 	import TokenPin from './../../verifications/TokenPin'
 	import {mapGetters} from 'vuex'
+	import Modal from './../../layouts/Modal'
 
 	Vue.use(VueNumeric)
 
@@ -166,7 +253,9 @@
 		name: "Draft",
 		data() {
 			return {
+				isModalVisible: false,
 				isTokenPinVisible: false,
+				isConfirmWithdrawalVisible: false,
 				accounts: {},
 				draft: {
 					amount: 0,
@@ -206,6 +295,19 @@
 			},
 		},
 		methods: {
+			showModal(type) {
+                this.isModalVisible = true
+                if (type === 'confirmWithdrawal') {
+                    this.showConfirmWithdrawal()
+				}
+			},
+			closeModal() {
+				this.isModalVisible = false
+				this.isConfirmWithdrawalVisible = false
+			},
+			showConfirmWithdrawal(){
+				this.isConfirmWithdrawalVisible = true
+			},
 			sendDraft() {
 				this.$store.dispatch('sendDraft', {
 					user_account_id: this.draft.user_account_id,
@@ -302,11 +404,17 @@
 
 		components: {
 			TokenPin,
-			VueNumeric
+			VueNumeric,
+			Modal
 		}
 	}
 </script>
 
 <style scoped>
+#test {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
 
 </style>
