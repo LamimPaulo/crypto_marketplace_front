@@ -19,8 +19,11 @@
                 <tr v-for="account in accounts">
                     <td>
                         <div class="value">
-                            {{ account.nickname }} - {{ account.account }}{{ account.account_digit }} <br>
-                            {{ account.agency }}{{ account.agency_digit }} <br>
+                            Apelido: {{ account.nickname }} <br>
+                            Conta: {{ account.account }} <br>
+                            Dígito Conta: {{ account.account_digit }} <br>
+                            Agência:{{ account.agency }} <br>
+                            Dígito Agência:{{ account.agency_digit }} <br>
                         </div>
                         <span class="sub-value" v-if="user.country_id===31">{{ account.bank.code + ' - '+ account.bank.name }}</span>
                         <span class="sub-value" v-else>{{ account.bank_name }}</span>
