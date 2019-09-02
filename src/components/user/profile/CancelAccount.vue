@@ -7,7 +7,7 @@
 
             <fieldset class="post-content form-group">
                 <legend>
-                    <span class="pull-left">Cancelar Conta</span>
+                    <span class="pull-left">EXCLUIR CONTA DA LIQUIDEX</span>
                 </legend>
 
                 <div class="element-inner-desc text-danger mb-2">
@@ -19,20 +19,19 @@
                             cancelamento, por tanto efetue as retiradas necessárias antes de efetuar o cancelamento.
                         </li>
 
-                        <li>você não poderá cadastrar uma nova conta utilizando o mesmo email e cpf confirmados na atual
+                        <li>você não poderá cadastrar uma nova conta utilizando o mesmo email, cpf e telefone confirmados na atual
                             conta.
                         </li>
 
                         <li>
-                            Estará excluindo sua conta da Liquidex. Sua conta bancária Continuara operando normalmente.
+                            Estará excluindo sua conta da Liquidex, e não a sua conta bancária, para conta bancária, acesse o menu Dados de Pagamentos.
                         </li>
                     </ul>
-                    Ao clicar em "EXCLUIR CONTA" você declara estar ciente dos itens mencionados acima. Você receberá um
-                    email de confirmação do cancelamento.
+                    Ao clicar em "EXCLUIR CONTA DA LIQUIDEX" você declara estar ciente dos itens mencionados acima. Você receberá um email de confirmação do cancelamento.
                 </div>
 
                 <button class="btn btn-danger" type="button"
-                        @click.prevent="showTokenPinModal()"> EXCLUIR CONTA
+                        @click.prevent="showTokenPinModal()"> EXCLUIR CONTA DA LIQUIDEX
                 </button>
             </fieldset>
         </div>

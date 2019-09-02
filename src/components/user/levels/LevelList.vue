@@ -262,7 +262,7 @@
 			buyLevelLqx() {
 				this.loader = true
 				this.isModalVisible = false
-				this.$store.dispatch('buyLevel', {
+				this.$store.dispatch('buyLevelLqx', {
 					level_id: this.level,
 					abbr: "LQX",
 					action: this.action,

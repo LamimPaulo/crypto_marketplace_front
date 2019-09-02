@@ -179,6 +179,10 @@
 						<br><br>
 						Antes de confirmar o agendamento verifique se sua conta está cadastrada em nosso sistema corretamente.
 						<br><br>
+                        <span class="alert alert-danger d-block mb-2">
+                            Não efetuamos pagamento em conta Poupança e/ou de terceiros.
+                        </span>
+                        <br>
 						<b>Motivos mais comuns para um saque não ser pago na data agendada.</b> 
 						<ul>
 							<li>
