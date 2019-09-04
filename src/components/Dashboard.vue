@@ -164,6 +164,8 @@
 
         <notification-modal v-show="isModalVisible" @close-modal="closeModal"></notification-modal>
 
+
+
     </div>
 </template>
 
@@ -192,7 +194,7 @@
         },
         data() {
             return {
-                isModalVisible: false,
+                isModalVisible: true,
                 wallets: [],
                 products: [],
                 generalNotification: [],

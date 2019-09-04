@@ -1,9 +1,7 @@
 <template>
     <div>
-        <vue-headful
-                title="Liquidex - Acessar Conta"
-                description="Entrar na Liquidex"
-        />
+        <vue-headful title="Liquidex - Acessar Conta" description="Entrar na Liquidex"/>
+
         <div class="auth-wrapper">
             <div class="loader" v-if="loader"></div>
             <div class="all-wrapper menu-side with-pattern">
@@ -19,7 +17,8 @@
                     </h4>
                     <form action="#" @submit.prevent="FormSubmit">
                         <div class="form-group">
-                            <label>Usuário, Email ou Telefone</label><input class="form-control" placeholder="Seu Login"
+                            <label>Usuário, Email ou Telefone</label>
+                            <input class="form-control" placeholder="Seu Login"
                                                                             type="text"
                                                                             name="username"
                                                                             v-model="username" required>
@@ -56,7 +55,8 @@
                         </div>
 
                         <div class="buttons-w">
-                            <router-link class="pull-right" to="/register"><i class="fas fa-sign-in-alt"></i> Criar
+                            <router-link class="pull-right" to="/register">
+                                <i class="fas fa-sign-in-alt"></i> Criar
                                 Conta
                             </router-link>
                         </div>
