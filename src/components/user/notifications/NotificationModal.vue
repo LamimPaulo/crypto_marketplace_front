@@ -16,7 +16,6 @@
                 <h1 class="text-white" key="title">Aviso Liquidex </h1>
                 <div :key="current" class="slide" @click="nav(1)">
                     <h4>Prezado(a) Parceiro(a)</h4>
-                    {{user.fiat_balance_}}
                     <div style="font-size: 16px">
                         <p>
                             Tendo em vista as diversas dificuldades operacionais ocasionadas fundamentalmente pela
