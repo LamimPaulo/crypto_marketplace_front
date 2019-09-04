@@ -22,19 +22,19 @@
                     <tbody>
                     <tr v-for="trade in trades">
                         <td>{{trade.dateLocal}}</td>
-                        <td>{{trade.symbol}}</td>
+                        <td>BTC/BRL</td>
                         <td>
                             <img alt="" :src="require(`@/assets/img/${trade.quote_exchange}.jpg`)">
                         </td>
                         <td>
-                            R$ {{trade.quotePriceLocal }}<br>
+                            {{trade.quotePriceBRL }}<br>
                             <small>{{trade.amountLocal }} BTC</small>
                         </td>
                         <td>
                             <img alt="" :src="require(`@/assets/img/${trade.base_exchange}.jpg`)">
                         </td>
                         <td>
-                            R$ {{trade.basePriceLocal }}<br>
+                            {{trade.basePriceBRL }}<br>
                             <small>{{trade.amountLocal }} BTC</small>
                         </td>
                         <td>
@@ -42,7 +42,7 @@
                             <small>{{trade.profitPercentLocal }} %</small>
                         </td>
                         <td>
-                            <small>R$ {{trade.totalLocal }}</small>
+                            <small>{{trade.profitBRL }}</small>
                         </td>
                     </tr>
                     </tbody>
@@ -53,35 +53,35 @@
 </template>
 
 <script>
-	export default {
-		name: "LastTrades",
-		data() {
-			return {
-				trades: {},
-				timer: null,
-			}
-		},
-		methods: {
-			retrieveLastTrades() {
-				this.$store.dispatch('retrieveLastTrades')
-					.then(response => {
-						this.trades = response.data
-					})
-					.catch(error => {
-						if (error.response) {
-							this.handleErrors(error.response)
-						}
-					})
-			}
-			,
-		},
-		mounted() {
-			this.retrieveLastTrades();
-			this.timer = setInterval(function () {
-				this.retrieveLastTrades();
-			}.bind(this), 15000);
-		}
-	}
+    export default {
+        name: "LastTrades",
+        data() {
+            return {
+                trades: {},
+                timer: null,
+            }
+        },
+        methods: {
+            retrieveLastTrades() {
+                this.$store.dispatch('retrieveLastTrades')
+                    .then(response => {
+                        this.trades = response.data
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.handleErrors(error.response)
+                        }
+                    })
+            }
+            ,
+        },
+        mounted() {
+            this.retrieveLastTrades();
+            this.timer = setInterval(function () {
+                this.retrieveLastTrades();
+            }.bind(this), 15000);
+        }
+    }
 </script>
 
 <style scoped>
