@@ -1,5 +1,5 @@
 <template>
-    <div class="vue-modal-backdrop">
+    <div class="vue-modal-backdrop" v-if="user.fiat_balance_">
         <div class="modal" id="modal-one" aria-hidden="true">
             <nav class="nav-container">
                 <svg viewBox="0 0 13 20" class="nav nav--prev" @click="nav(-1)" title="Prev">
@@ -16,6 +16,7 @@
                 <h1 class="text-white" key="title">Aviso Liquidex </h1>
                 <div :key="current" class="slide" @click="nav(1)">
                     <h4>Prezado(a) Parceiro(a)</h4>
+                    {{user.fiat_balance_}}
                     <div style="font-size: 16px">
                         <p>
                             Tendo em vista as diversas dificuldades operacionais ocasionadas fundamentalmente pela
@@ -55,6 +56,32 @@
                             Criptomoedas CONTINUARÃO funcionando normalmente.
                         </p>
 
+                        <p class="text-center">
+                            Seu saldo disponível em reais na plataforma é:
+                            <span class="badge-success badge">{{ user.fiat_balance }}</span>
+
+                            <br>
+
+                            Migrando para Bitcoin terá: <span
+                                class="badge-warning badge">{{ user.fiat_to_btc }}</span>
+
+                            <br>
+
+                            Migrando para LQX terá: <span class="badge-info badge">
+                            {{ user.fiat_to_lqx }}</span> +
+                            10% de bônus
+                        </p>
+
+                        <p class="text-center">
+
+                            <button class="btn btn-info" type="button" @click="confirm('LQX')"> CONVERSÃO PARA LQX
+                            </button>
+
+                            <button class="btn btn-warning" type="button" @click="confirm('BTC')"> CONVERSÃO PARA BTC
+                            </button>
+
+                        </p>
+
                     </div>
                 </div>
                 <footer class="slide-group__footer text-info" key="footer" @click="closeThisModal">
@@ -62,21 +89,55 @@
                 </footer>
             </transition-group>
         </div>
+
+        <modal @close="closeConfirmModal" v-show="isConfirmModalVisible">
+            <template slot="header">
+                <span class="tab-label text-dark">Confirmação de Operação</span>
+            </template>
+            <template slot="body">
+                <p class="alert alert-danger">
+                    Esta ação é IRREVERSÍVEL, ao clicar em "CONFIRMO A CONVERSÃO",
+                    seus {{user.fiat_balance }} serão convertidos em
+                    <span v-if="conversion_abbr==='LQX'">{{ user.fiat_to_lqx }}</span>
+                    <span v-else>{{ user.fiat_to_btc  }}</span>
+                </p>
+
+                <p class="text-center">
+                    <button class="btn btn-success" type="button" @click.prevent="showTokenPinModal('convert', action)">
+                        CONFIRMO A CONVERSÃO {{ conversion_abbr}}
+                    </button>
+
+                </p>
+            </template>
+        </modal>
+
+        <token-pin v-show="isTokenPinVisible" ref="tokenPinComponent"
+                   @close-token-pin-modal="closeTokenPinModal" @token-data="handleTokenPinData"/>
     </div>
 </template>
 
 <script>
     import Modal from './../../layouts/Modal'
+    import {mapGetters} from 'vuex'
+    import TokenPin from "../../../../../liquidex-admin/src/components/verifications/TokenPin";
 
     export default {
         name: "NotificationModal",
         data() {
             return {
+                isTokenPinVisible: false,
                 count: null,
                 dir: 0,
                 current: 0,
                 use3d: true,
-                slides: [{}]
+                slides: [{}],
+                isConfirmModalVisible: false,
+                conversion_abbr: '',
+                action: 10,
+                token: {
+                    code: null,
+                    pin: null,
+                },
             }
         },
         methods: {
@@ -86,7 +147,7 @@
                     .then(response => {
                         // this.slides = response.data.data[0];
                         for (let i = 0; i <= response.data.data.length; i++) {
-                            if (response.data.data[i].statuses[0].status == 0 && response.data.data[i].type == 0) {
+                            if (response.data.data[i].statuses[0].status === 0 && response.data.data[i].type === 0) {
                                 this.slides.push(response.data.data[i])
                             }
                         }
@@ -101,26 +162,77 @@
             },
             nav(dir) {
                 this.dir = dir;
-                var len = this.slides.length;
+                let len = this.slides.length;
                 // Loop around the array so last slide goes to first slide & vice-versa.
                 this.current = ((this.current + dir % len) + len) % len;
             },
-            // When transitioning an element out, applying `position: absolute` or `position: fixed` keeps the container from snapping in size dramatically and helps the whole transition run smoother.
-            // You can use CSS on the `-leave-active` class (see commented out CSS in the CSS tab), but that often leads to the element flying out in weird directions or snapping to the edges of the container.
-            // Instead, let's apply the positioning in JavaScript with `position: fixed` and the right positioning + sizing to elements that are leaving so they don't snap in odd ways.
             sgBeforeLeave(el) {
-                var rect = el.getBoundingClientRect();
+                let rect = el.getBoundingClientRect();
                 el.style.width = (rect.right - rect.left) + 'px';
                 el.style.height = (rect.bottom - rect.top) + 'px';
                 el.style.position = 'fixed';
                 el.style.top = rect.top + 'px';
                 el.style.left = rect.left + 'px';
             },
+            closeConfirmModal() {
+                this.isConfirmModalVisible = false
+            },
+            confirm(abbr) {
+                this.isConfirmModalVisible = true
+                this.conversion_abbr = abbr
+            },
             closeThisModal() {
                 this.$emit('close-modal')
-            }
+            },
+            convert() {
+                this.$store.dispatch('sendFiatConversion', {
+                    code: this.token.code,
+                    pin: this.token.pin,
+                    action: this.action,
+                    abbr: this.conversion_abbr
+                })
+                    .then(
+                        this.$toasted.show('solicitando...', {position: 'bottom-left', type: 'info'}).goAway(3000)
+                    )
+                    .then(response => {
+                        this.$toasted.show(response.data.message, {
+                            position: 'bottom-left',
+                            type: 'success'
+                        }).goAway(3000)
+                        this.refresh()
+                    }).catch(error => {
+                    if (error.response) {
+                        this.handleErrors(error.response)
+                    }
+                })
+            },
+            resetToken() {
+                this.token.code = null
+                this.token.pin = null
+                this.$refs.tokenPinComponent.resetData()
+            },
+            refresh() {
+                setTimeout(function () {
+                    location.reload()
+                }, 3000)
+            },
+            showTokenPinModal(method, action) {
+                this.isTokenPinVisible = true
+                this.$refs.tokenPinComponent.setData(method, action)
+            },
+            closeTokenPinModal() {
+                this.isTokenPinVisible = false;
+            },
+            handleTokenPinData(data) {
+                this.token.code = data.code
+                this.token.pin = data.pin
+                this.convert()
+            },
         },
         computed: {
+            ...mapGetters([
+                'user'
+            ]),
             transitionName() {
                 return 'sg-' +
                     (this.use3d ? '3d-' : '') +
@@ -136,6 +248,7 @@
 
         },
         components: {
+            TokenPin,
             Modal
         }
     }
@@ -248,7 +361,7 @@
         border: solid 1px #ccc;
         padding: 1rem;
         margin: 1rem 0;
-        max-height: 40rem;
+        max-height: 50rem;
         overflow: auto;
     }
 

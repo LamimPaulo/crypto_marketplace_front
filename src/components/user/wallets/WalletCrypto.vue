@@ -38,7 +38,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-xl-6 col-sm-6 mb-3">
+              <div class="col-xl-6 col-sm-6 mb-3" v-if="wallet.coin.abbr==='LQX'">
                 <div @click="openSendWindow" class="btn-receber text-white bg-primary o-hidden h-100">
                   <div class="card-body">
                     <div class="card-body-icon">
@@ -57,7 +57,7 @@
 
     <crypto-address v-if="addressWindow && wallet.type===1" :address="wallet.address" :icon="wallet.coin.icon" :abbr="wallet.coin.abbr"/>
 
-    <crypto-send :icon="wallet.coin.icon" :address="wallet.address" :abbr="wallet.coin.abbr" v-if="sendWindow && wallet.type===1" @retrieve-transactions="retrieveTransactions"></crypto-send>
+    <crypto-send :icon="wallet.coin.icon" :address="wallet.address" :abbr="wallet.coin.abbr" v-if="sendWindow && wallet.type===1 && wallet.coin.abbr==='LQX'" @retrieve-transactions="retrieveTransactions"></crypto-send>
 
     <transactions-list-wallet :symbol="wallet.coin.abbr" :address="wallet.address" v-if="wallet.type===1" ref="transactionsList" ></transactions-list-wallet>
 

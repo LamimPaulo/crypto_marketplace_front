@@ -165,9 +165,6 @@
 
         <span class="animate-border"></span>
 
-        <pin v-show="isPinVisible" ref="pinComponent"
-             @close-pin-modal="closePinModal" @pin-data="handlePinData"/>
-
     </div>
 </template>
 

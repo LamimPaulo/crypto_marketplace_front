@@ -28,43 +28,12 @@
 
                         </div>
 
-                        <div class="element-wrapper pb-4 mb-0">
-                            <div class="element-box-tp">
-
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <a class="btn btn-success d-sm-inline-flex mb-1 btn-block p-4 f-1rem" href="#"
-                                           @click="openDepositWindow">
-                                            <i class="os-icon os-icon-arrow-down-left f-1rem"></i><span>Depositar</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <a class="btn btn-grey d-sm-inline-flex mb-1 btn-block p-4 f-1rem" href="#"
-                                           @click="openDraftWindow">
-                                            <i class="os-icon os-icon-arrow-up-right f-1rem"></i><span>Saque</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <a class="btn btn-primary d-sm-inline-flex mb-1 btn-block p-4 f-1rem" href="#"
-                                           @click="openSendWindow">
-                                            <i class="os-icon os-icon-arrow-up-right f-1rem"></i><span>Enviar Credminer</span>
-                                        </a>
-                                    </div>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
         </div>
 
-        <deposit :wallet="wallet" v-if="depositWindow"></deposit>
-        <draft :wallet="wallet" v-if="draftWindow"></draft>
-        <fiat-send :wallet="wallet" v-if="sendWindow"></fiat-send>
+        <fiat-send :wallet="wallet"></fiat-send>
 
         <transactions-list-wallet :symbol="wallet.coin.abbr"
                                   :address="wallet.address"
@@ -75,77 +44,73 @@
 </template>
 
 <script>
-	import Deposit from './Deposit';
-	import Draft from './Draft';
-	import FiatSend from './FiatSend';
-	import TransactionsListWallet from './../transactions/TransactionsListWallet';
+    import FiatSend from './FiatSend';
+    import TransactionsListWallet from './../transactions/TransactionsListWallet';
     import {mapGetters} from 'vuex'
 
-	export default {
-		name: "WalletFiat",
-		data() {
-			return {
-				transactions: {
-					data: []
-				},
-				count: null,
-				loading: false,
-				wallet: {
-					coin: {
-						name: 'carregando...',
-						icon: 'brl_icon.png',
-						shortname: 'R$'
-					},
-					balance_rounded: 'carregando...',
-					address: 'carregando...',
-				},
-				loader: true,
-				depositWindow: false,
-				draftWindow: false,
-				sendWindow: false,
-			}
-		},
+    export default {
+        name: "WalletFiat",
+        data() {
+            return {
+                transactions: {
+                    data: []
+                },
+                count: null,
+                loading: false,
+                wallet: {
+                    coin: {
+                        name: 'carregando...',
+                        icon: 'brl_icon.png',
+                        shortname: 'R$'
+                    },
+                    balance_rounded: 'carregando...',
+                    address: 'carregando...',
+                },
+                loader: true,
+                depositWindow: false,
+                draftWindow: false,
+                sendWindow: false,
+            }
+        },
         computed: {
-			...mapGetters([
-				'user'
-			]),
-		},
-		methods: {
-			openSendWindow() {
-				this.draftWindow = this.depositWindow = false
-				this.sendWindow = true
-			},
-			openDepositWindow() {
-				this.draftWindow = this.sendWindow = false
-				this.depositWindow = true
-			},
-			openDraftWindow() {
-				this.depositWindow = this.sendWindow = false
-				this.draftWindow = true
-			},
-			retrieveWallet() {
-				this.$store.dispatch('retrieveWallet', this.$route.params.symbol)
-					.then(response => {
-						this.wallet = response.data.wallet
-						this.loader = false
-					})
-					.catch(error => {
-						if (error.response) {
-							this.handleErrors(error.response)
-						}
-					})
-			},
-		},
-		components: {
-			Deposit,
-			Draft,
-			FiatSend,
-			TransactionsListWallet
-		},
-		mounted() {
-			this.retrieveWallet()
-		},
-	}
+            ...mapGetters([
+                'user'
+            ]),
+        },
+        methods: {
+            openSendWindow() {
+                this.draftWindow = this.depositWindow = false
+                this.sendWindow = true
+            },
+            openDepositWindow() {
+                this.draftWindow = this.sendWindow = false
+                this.depositWindow = true
+            },
+            openDraftWindow() {
+                this.depositWindow = this.sendWindow = false
+                this.draftWindow = true
+            },
+            retrieveWallet() {
+                this.$store.dispatch('retrieveWallet', this.$route.params.symbol)
+                    .then(response => {
+                        this.wallet = response.data.wallet
+                        this.loader = false
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.handleErrors(error.response)
+                        }
+                    })
+            },
+        },
+        components: {
+            FiatSend,
+            TransactionsListWallet
+        },
+        mounted() {
+            this.retrieveWallet()
+        },
+    }
 </script>
 
 <style scoped>
