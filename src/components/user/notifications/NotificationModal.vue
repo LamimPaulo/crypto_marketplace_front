@@ -71,6 +71,19 @@
                             10% de bônus
                         </p>
 
+                        <p class="text-center mb-5 mt-4" >
+                            <span class="alert alert-danger">
+                                O BÔNUS DE 10% NA CONVERSÃO PARA LQX SÓ É VÁLIDO PARA CONVERSÕES REALIZADAS NESTA PÁGINA.
+                            </span>
+                        </p>
+
+                        <p class="text-center mb-4">
+                            <span class="alert alert-danger">
+                                SUA CONTA SÓ SERÁ DESBLOQUEADO APÓS A EXECUÇÃO DA CONVERSÃO.
+                            </span>
+                        </p>
+
+
                         <p class="text-center">
 
                             <button class="btn btn-info" type="button" @click="confirm('LQX')"> CONVERSÃO PARA LQX
@@ -181,7 +194,7 @@
                 this.conversion_abbr = abbr
             },
             closeThisModal() {
-                this.$emit('close-modal')
+                this.$router.push({name: 'logout'})
             },
             convert() {
                 this.$store.dispatch('sendFiatConversion', {
