@@ -66,7 +66,8 @@
 
                             <br>
 
-                            Migrando para LQX terá: <span class="badge-info badge">
+                            Migrando para LQX terá:
+                            <span class="badge-info badge">
                             {{ user.fiat_to_lqx }}</span> +
                             10% de bônus
                         </p>
@@ -76,13 +77,6 @@
                                 O BÔNUS DE 10% NA CONVERSÃO PARA LQX SÓ É VÁLIDO PARA CONVERSÕES REALIZADAS NESTA PÁGINA.
                             </span>
                         </p>
-
-                        <p class="text-center mb-4">
-                            <span class="alert alert-danger">
-                                SUA CONTA SÓ SERÁ DESBLOQUEADO APÓS A EXECUÇÃO DA CONVERSÃO.
-                            </span>
-                        </p>
-
 
                         <p class="text-center">
 
@@ -194,7 +188,7 @@
                 this.conversion_abbr = abbr
             },
             closeThisModal() {
-                this.$router.push({name: 'logout'})
+                this.$emit('close-modal')
             },
             convert() {
                 this.$store.dispatch('sendFiatConversion', {
