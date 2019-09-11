@@ -62,28 +62,12 @@
                                                     parseFloat(level.product.bonus_percent) / 100) |
                                                     fixValue}}LQX</a>
 
-                                                <span v-if="level.type===1">
-                                                    <br> ou <br><br>
-                                                    De:
-                                                    <span class="price-crossed">
-                                                     {{ level.product.brlValue }} <br>
-                                                    </span>
-                                                </span>
                                                 <!--BRL-->
-                                                <a class="btn btn-block btn-outline-secondary"
-                                                   v-if="level.type===1"
-                                                   @click.prevent="showLevelDetailsModal(level, 'buyLevelBrl')"
-                                                   href="#">Por: R$ {{ parseFloat(level.product.value) -
-                                                    (parseFloat(user.level.product.value) *
-                                                    parseFloat(level.product.bonus_percent) / 100) | currency}}</a>
                                             </div>
                                             <div v-else>
                                                 <a :class="'btn btn-block btn-level-' + level.id"
                                                    @click.prevent="showLevelDetailsModal(level, 'buyLevelLqx')"
                                                    href="#">{{ level.product.lqxValue }}LQX</a>
-                                                <a class="btn btn-block btn-outline-secondary"
-                                                   @click.prevent="showLevelDetailsModal(level, 'buyLevelBrl')"
-                                                   href="#">{{ level.product.brlValue }}</a>
                                             </div>
                                         </div>
                                         <div class="plan-btn-w px-5 mb-5 mt-5" v-else>
@@ -109,29 +93,11 @@
                                                     (parseFloat(user.level.product.lqxValue) *
                                                     parseFloat(level.product.bonus_percent) / 100) |
                                                     fixValue}} LQX </a>
-
-                                                <span v-if="level.type===2">
-                                                    <br> ou <br><br>
-                                                    De:
-                                                    <span class="price-crossed">
-                                                     $ {{ level.product.value_usd }} <br>
-                                                    </span>
-                                                </span>
-                                                <!--USD-->
-                                                <a class="btn btn-block btn-outline-secondary"
-                                                   v-if="level.type===2"
-                                                   @click.prevent="showLevelDetailsModal(level, 'buyLevelUsd')"
-                                                   href="#">Por: $ {{ (parseFloat(level.product.value_usd) -
-                                                    (parseFloat(user.level.product.value_usd) *
-                                                    parseFloat(level.product.bonus_percent) / 100)).toFixed(2) }}</a>
                                             </div>
                                             <div v-else>
                                                 <a :class="'btn btn-block btn-level-' + level.id"
                                                    @click.prevent="showLevelDetailsModal(level, 'buyLevelLqx')"
                                                    href="#">{{ level.product.lqxValue }}LQX</a>
-                                                <a class="btn btn-block btn-outline-secondary"
-                                                   @click.prevent="showLevelDetailsModal(level, 'buyLevelUsd')"
-                                                   href="#">$ {{ level.product.value_usd }}</a>
                                             </div>
                                         </div>
                                         <div class="plan-btn-w px-5 mb-5 mt-5" v-else>
