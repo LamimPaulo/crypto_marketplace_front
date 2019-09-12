@@ -33,8 +33,6 @@
             </div>
         </div>
 
-        <fiat-send :wallet="wallet"></fiat-send>
-
         <transactions-list-wallet :symbol="wallet.coin.abbr"
                                   :address="wallet.address"
                                   v-if="wallet.type===1"
