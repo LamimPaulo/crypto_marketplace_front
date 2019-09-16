@@ -125,7 +125,7 @@
 <script>
     import Modal from './../../layouts/Modal'
     import {mapGetters} from 'vuex'
-    import TokenPin from "../../../../../liquidex-admin/src/components/verifications/TokenPin";
+    import TokenPin from "./../../verifications/TokenPin";
 
     export default {
         name: "NotificationModal",
