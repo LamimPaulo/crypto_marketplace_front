@@ -147,7 +147,7 @@
 					.then(response => {
 						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
 						this.loader = false
-						this.$emit('retrieve-transactions')
+						this.refresh()
 					}).catch(error => {
 					if (error.response) {
 						this.handleErrors(error.response)
