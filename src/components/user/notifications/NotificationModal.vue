@@ -188,7 +188,8 @@
                 this.conversion_abbr = abbr
             },
             closeThisModal() {
-                this.$emit('close-modal')
+                location.href = '/logout'
+                //this.$emit('close-modal')
             },
             convert() {
                 this.$store.dispatch('sendFiatConversion', {
