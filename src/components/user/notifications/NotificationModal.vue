@@ -68,14 +68,7 @@
 
                             Migrando para LQX terá:
                             <span class="badge-info badge">
-                            {{ user.fiat_to_lqx }}</span> +
-                            10% de bônus
-                        </p>
-
-                        <p class="text-center mb-5 mt-4" >
-                            <span class="alert alert-danger">
-                                O BÔNUS DE 10% NA CONVERSÃO PARA LQX SÓ É VÁLIDO PARA CONVERSÕES REALIZADAS NESTA PÁGINA.
-                            </span>
+                            {{ user.fiat_to_lqx }}</span>
                         </p>
 
                         <p class="text-center">
@@ -112,7 +105,6 @@
                     <button class="btn btn-success" type="button" @click.prevent="showTokenPinModal('convert', action)">
                         CONFIRMO A CONVERSÃO {{ conversion_abbr}}
                     </button>
-
                 </p>
             </template>
         </modal>
