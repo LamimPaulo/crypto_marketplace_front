@@ -5,8 +5,9 @@
         </div> -->
         <div class="element-wrapper">
             <h5 class="element-header">
-                <strong><img :src="require(`@/assets/img/svg_icons/accounting.svg`)" width="30px" alt=""> Conversão
-                    Rápida</strong>
+                <strong><img :src="require(`@/assets/img/svg_icons/accounting.svg`)" width="30px" alt="">
+                    Conversão Rápida
+                </strong>
             </h5>
             <div class="element-box-tp">
                 <form action="">
@@ -15,8 +16,7 @@
                             <div class="form-group">
                                 <label for="">De</label>
                                 <select class="form-control" v-model="conversor.base" @change="conversorBaseChange">
-                                    <option :value="coin.abbr" v-for="coin in myCoins" selected
-                                            v-if="coin.abbr!=='LQXD'"> {{coin.abbr}}
+                                    <option :value="coin.abbr" v-for="coin in myCoins" selected> {{coin.abbr}}
                                     </option>
 
                                 </select>
@@ -139,31 +139,6 @@
                         </div>
                     </a>
 
-                    <div v-if="user.country_id===31">
-                        <a class="todo-item" href="/payment-accounts" v-if="!count_accounts">
-                            <div class="ti-info">
-                                <div class="ti-header"> Contas Bancárias</div>
-                                <div class="ti-sub-header"> Você não possui contas cadastradas</div>
-                            </div>
-                            <div class="ti-icon">
-                                <i class="os-icon os-icon-arrow-right7"></i>
-                            </div>
-                        </a>
-
-                        <a class="todo-item complete" href="/payment-accounts" v-if="count_accounts">
-                            <div class="ti-info">
-                                <div class="ti-header"> Contas Bancárias</div>
-                                <div class="ti-sub-header"> Você possui {{count_accounts}} conta{{count_accounts>1 ? 's'
-                                    :
-                                    ''}}
-                                    cadastrada{{count_accounts>1 ? 's' : ''}}
-                                </div>
-                            </div>
-                            <div class="ti-icon">
-                                <i class="os-icon os-icon-check"></i>
-                            </div>
-                        </a>
-                    </div>
 
                     <a class="todo-item error" href="/profile"
                        v-if="!user.pin_filled">

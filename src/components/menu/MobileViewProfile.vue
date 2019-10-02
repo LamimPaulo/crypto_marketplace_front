@@ -31,34 +31,7 @@
                         </div>
                     </a>
 
-                    <div v-if="user.country_id===31">
-                        <a class="todo-item" href="/payment-accounts" v-if="!count_accounts">
-                            <div class="ti-info">
-                                <div class="ti-header"> Contas Bancárias</div>
-                                <div class="ti-sub-header"> Você não possui contas cadastradas</div>
-                            </div>
-                            <div class="ti-icon">
-                                <i class="os-icon os-icon-arrow-right7"></i>
-                            </div>
-                        </a>
-
-                        <a class="todo-item complete" href="/payment-accounts" v-if="count_accounts">
-                            <div class="ti-info">
-                                <div class="ti-header"> Contas Bancárias</div>
-                                <div class="ti-sub-header"> Você possui {{count_accounts}} conta{{count_accounts>1 ? 's'
-                                    :
-                                    ''}}
-                                    cadastrada{{count_accounts>1 ? 's' : ''}}
-                                </div>
-                            </div>
-                            <div class="ti-icon">
-                                <i class="os-icon os-icon-check"></i>
-                            </div>
-                        </a>
-                    </div>
-
-                    <a class="todo-item error" href="/profile"
-                       v-if="!user.pin_filled">
+                    <a class="todo-item error" href="/profile" v-if="!user.pin_filled">
                         <div class="ti-info">
                             <div class="ti-header"> Pin de Segurança</div>
                             <div class="ti-sub-header"> Você ainda não criou seu pin</div>
@@ -66,8 +39,7 @@
                         <div class="ti-icon"><i class="os-icon os-icon-info"></i></div>
                     </a>
 
-                    <a class="todo-item complete" href="/profile"
-                       v-if="user.pin_filled">
+                    <a class="todo-item complete" href="/profile" v-if="user.pin_filled">
                         <div class="ti-info">
                             <div class="ti-header"> Pin de Segurança</div>
                             <div class="ti-sub-header"> pin de segurança criado</div>

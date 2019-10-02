@@ -25,12 +25,6 @@
             </a>
           </li>
           <li>
-            <a href="/payment-accounts">
-              <i class="os-icon os-icon-coins-4"></i>
-              <span>Dados de Pagamento</span>
-            </a>
-          </li>
-          <li>
             <a href="/logout">
               <i class="os-icon os-icon-signs-11"></i>
               <span>Sair</span>

@@ -30,45 +30,6 @@
                 <!-------------------- START - Mobile Menu List -------------------->
                 <top-menu-list></top-menu-list>
 
-                <!--<ul class="main-menu">-->
-                    <!--<li class="selected" v-tooltip.right="'Perfil'">-->
-                        <!--<router-link to="/profile">-->
-                            <!--<div class="icon-w">-->
-                                <!--<div class="os-icon os-icon-user-male-circle2"></div>-->
-                            <!--</div>-->
-                            <!--<span>Detalhes do Perfil</span>-->
-                        <!--</router-link>-->
-                    <!--</li>-->
-
-                    <!--<li class="">-->
-                        <!--<a href="/payment-accounts" v-tooltip.right="'Dados de Pagamento'">-->
-                            <!--<div class="icon-w">-->
-                                <!--<div class="os-icon os-icon-coins-4"></div>-->
-                            <!--</div>-->
-                            <!--<span>Dados de Pagamento</span>-->
-                        <!--</a>-->
-                    <!--</li>-->
-
-                    <!--<li class="">-->
-                        <!--<a href="/user-configs" v-tooltip.right="'Configurações'">-->
-                            <!--<div class="icon-w">-->
-                                <!--<div class="os-icon os-icon-settings"></div>-->
-                            <!--</div>-->
-                            <!--<span>Configurações</span>-->
-                        <!--</a>-->
-                    <!--</li>-->
-
-                    <!--<li class="" v-tooltip.right="'Sair'">-->
-                        <!--<a href="/logout">-->
-                            <!--<div class="icon-w">-->
-                                <!--<div class="os-icon os-icon-signs-11"></div>-->
-                            <!--</div>-->
-                            <!--<span>Sair</span>-->
-                        <!--</a>-->
-                    <!--</li>-->
-
-                <!--</ul>-->
-
                 <!-------------------- END - Mobile Menu List -------------------->
             </div>
         </div>

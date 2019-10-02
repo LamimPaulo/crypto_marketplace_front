@@ -100,49 +100,35 @@
                                                             <th></th>
                                                             <th>Produto</th>
                                                             <th>LQX</th>
-                                                            <th v-if="user.country_id===31">BRL</th>
-                                                            <th v-else>USD</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr v-for="(product, i) in products">
-                                                            <td></td>
-                                                            <td>
-                                                                <span :class="'marker-left color-' + i">{{product.name}}</span>
-                                                            </td>
-                                                            <td>{{product.value_lqx | fixValue}}</td>
-                                                            <td v-if="user.country_id===31">
-                                                                R$ {{product.value_brl | formatValue}}
-                                                            </td>
-                                                            <td v-else>
-                                                                $ {{product.value_usd }}
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td class="text-center">Total</td>
-                                                            <td>
-                                                                <button class="btn btn-primary" id="button1">
-                                                                    {{product_total.value_lqx | fixValue}} LQX
-                                                                </button>
-                                                            </td>
-                                                            <td v-if="user.country_id===31">
-                                                                <button class="btn btn-success">R$
-                                                                    {{product_total.value_brl | formatValue}}
-                                                                </button>
-                                                            </td>
-                                                            <td v-else>
-                                                                <button class="btn btn-success">$
-                                                                    {{product_total.value_usd }}
-                                                                </button>
-                                                            </td>
-
-                                                        </tr>
+                                                            <tr v-for="(product, i) in products">
+                                                                <td></td>
+                                                                <td>
+                                                                    <span :class="'marker-left color-' + i">
+                                                                        {{product.name}}
+                                                                    </span>
+                                                                </td>
+                                                                <td>
+                                                                    {{product.value_lqx | fixValue}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td class="text-center">Total</td>
+                                                                <td>
+                                                                    <button class="btn btn-primary" id="button1">
+                                                                        {{product_total.value_lqx | fixValue}} LQX
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
-                                                <MobileViewProfile class="mProfile"> </MobileViewProfile>
+
+                                            <MobileViewProfile class="mProfile"></MobileViewProfile>
                                         </div>
 
                                     </div>

@@ -735,7 +735,7 @@ export const store = new Vuex.Store({
         },
         retrieveBuyConversion(context, data) {
             return new Promise((resolve, reject) => {
-                axios.post('/convert-buy', data)
+                axios.post('/convert', data)
                     .then(response => {
                         resolve(response)
                     })
@@ -1114,7 +1114,7 @@ export const store = new Vuex.Store({
         },
         retrieveQuotes() {
             return new Promise((resolve, reject) => {
-                axios.get('/coins/quotes')
+                axios.get('/CRYPTO_TO_LQX')
                     .then(response => {
                         resolve(response)
                     })

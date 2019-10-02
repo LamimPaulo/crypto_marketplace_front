@@ -165,14 +165,14 @@
 				loader: false,
 				buyOrder: {
 					base: 'BTC',
-					quote: 'BRL',
+					quote: 'LQX',
 					amount: 0,
 					total: null,
 					message: false
 				},
 				sellOrder: {
 					base: 'BTC',
-					quote: 'BRL',
+					quote: 'LQX',
 					amount: 0,
 					total: null,
 					message: false
@@ -208,6 +208,7 @@
 					this.$store.dispatch('retrieveBuyConversion', {
 						base: this.buyOrder.base,
 						amount: this.buyOrder.amount,
+                        quote: this.buyOrder.quote,
 					})
 						.then(response => {
 							this.buyOrder.total = response.data.amount

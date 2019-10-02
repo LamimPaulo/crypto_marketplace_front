@@ -8,8 +8,6 @@ import Dashboard from './components/Dashboard';
 import Profile from './components/user/profile/Profile';
 import User from './components/layouts/User';
 import UserLayout from './components/layouts/User';
-import PaymentAccounts from './components/user/PaymentAccountNew';
-import PaymentAccount from './components/user/PaymentAccount';
 import Transactions from './components/layouts/Transactions';
 import TransactionsList from './components/user/transactions/TransactionsList';
 import WalletList from './components/user/wallets/WalletList';
@@ -95,17 +93,6 @@ const routes = [
                 path: '/profile',
                 name: 'profile',
                 component: Profile,
-                meta: {requiresAuth: true}
-            }, {
-                path: '/payment-accounts',
-                name: 'payment-accounts',
-                component: PaymentAccounts,
-                meta: {requiresAuth: true}
-            },
-            {
-                path: '/payment-account/:id',
-                name: 'payment-account',
-                component: PaymentAccount,
                 meta: {requiresAuth: true}
             }, {
                 path: '/notifications',
