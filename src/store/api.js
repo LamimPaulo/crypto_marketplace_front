@@ -1114,7 +1114,7 @@ export const store = new Vuex.Store({
         },
         retrieveQuotes() {
             return new Promise((resolve, reject) => {
-                axios.get('/CRYPTO_TO_LQX')
+                axios.get('/coins/quotes')
                     .then(response => {
                         resolve(response)
                     })

@@ -394,15 +394,6 @@
 					}
 				})
 			},
-			retrieveAccounts() {
-				this.$store.dispatch('retrieveAccounts')
-					.then(response => {
-						this.count_accounts = response.data.count
-					})
-					.catch(error => {
-
-					})
-			},
 			conversorBaseChange() {
 				this.conversor.amount = 0
 				this.conversor.total = null
@@ -429,7 +420,6 @@
 		mounted() {
 			this.conversionList()
 			this.retrieveDocuments()
-			this.retrieveAccounts()
 			this.myCoinsList()
 		},
 		components: {

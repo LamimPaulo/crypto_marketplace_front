@@ -2,12 +2,15 @@
     <div>
         <marquee-text class="dark-bg test" :repeat="5" :duration="60">
             <div>
-                <div class="market" style="width: 190px !important;" v-for="coin in quotes">
+                <div class="market" v-for="coin in quotes">
                     <div class="market-share">
                         <h5 class="share-name" style="color: #FFF">{{ coin.abbr }}</h5>
                         <div class="marketdata">
-                            <div class="marketlastchange red">
-                                {{ coin.quote.sell_quote }} LQX
+                            <div class="marketlastchange red" v-if="user.country_id===31">
+                                R$ {{ coin.quote[0].sell_quote | currency }}
+                            </div>
+                            <div class="marketlastchange red" v-else>
+                                $ {{ coin.quote[0].sell_quote }}
                             </div>
                         </div>
                     </div>
@@ -16,18 +19,17 @@
                             <i class="fa fa-caret-up green"></i>
                             <i class="fa fa-caret-down red"></i>
                         </div>
-                        <div class="marketpercent green">
-                            {{ coin.quote.buy_quote }} LQX
+                        <div class="marketpercent green" v-if="user.country_id===31">
+                            R$ {{ coin.quote[0].buy_quote | currency }}
+                        </div>
+                        <div class="marketpercent green" v-else>
+                            $ {{ coin.quote[0].buy_quote }}
                         </div>
                     </div>
                 </div>
 
             </div>
         </marquee-text>
-
-
-        <order-window :coin="coin" ref="orderWindow" @close-modal="closeModalOrder"
-                      v-show="isOrderWindowVisible"></order-window>
 
     </div>
 </template>
