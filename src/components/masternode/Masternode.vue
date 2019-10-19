@@ -267,8 +267,8 @@
       showMasternode(masternode) {
         this.masternode = masternode
         this.processing = []
-        this.machine.ram = masternode.status >= 4 ? "0MB / 8GB" : (masternode.status === 2 ? this.getRandomNumber(1, 5).toFixed(2) + "GB / 8GB" : this.getRandomNumber(300, 500).toFixed() + 'MB / 8GB');
-        this.machine.cpu = masternode.status >= 4 ? "0MB / 8GB" : (masternode.status === 2 ? getRandomNumber(50, 80).toFixed() + "%" : this.getRandomNumber(1, 10).toFixed() + '%');
+        this.machine.ram = masternode.status >= 4 ? "0MB / 8GB" : (masternode.status === 2 ? (this.getRandomNumber(1, 5).toFixed(2) + "GB / 8GB") : (this.getRandomNumber(300, 500).toFixed() + 'MB / 8GB'));
+        this.machine.cpu = masternode.status >= 4 ? "0MB / 8GB" : (masternode.status === 2 ? this.getRandomNumber(50, 80).toFixed() + "%" : this.getRandomNumber(1, 10).toFixed() + '%');
       },
       activateMasternode(masternode) {
         this.processing = masternode
@@ -309,7 +309,7 @@
         this.$store.dispatch('processingMasternode')
           .then(response => {
             this.loader = false
-            this.processing = response.data
+            this.activateMasternode(response.data)
           })
           .catch(error => {
             if (error.response) {
