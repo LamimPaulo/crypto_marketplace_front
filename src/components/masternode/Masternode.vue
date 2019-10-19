@@ -29,7 +29,8 @@
           <div class="centered-header"><h6>Realizações</h6></div>
           <div class="os-progress-bar primary">
             <div class="bar-labels">
-              <div class="bar-label-left"><span>Progresso</span><span class="positive">+ {{ masternodes.total }}</span></div>
+              <div class="bar-label-left"><span>Progresso</span><span class="positive">+ {{ masternodes.total }}</span>
+              </div>
               <div class="bar-label-right"><span class="info">{{ info.percent }}/100</span></div>
             </div>
             <div class="bar-level-1" style="width: 100%">
@@ -124,7 +125,9 @@
                       <div class="bar-label-left">
                         <span class="bigger">{{ processing.payment_address}}</span>
                       </div>
-                      <div class="bar-label-right"><span class="info">copiar</span></div>
+                      <div class="bar-label-right"><span class="info">
+                        <a style="cursor: pointer" @click="copyAddress(processing.payment_address)">copiar</a>
+                      </span></div>
                     </div>
                     <hr>
                   </div>
@@ -137,7 +140,9 @@
                       <div class="bar-label-left">
                         <span class="bigger">{{ processing.fee_address}}</span>
                       </div>
-                      <div class="bar-label-right"><span class="info">copiar</span></div>
+                      <div class="bar-label-right"><span class="info">
+                        <a style="cursor: pointer" @click="copyAddress(processing.fee_address)">copiar</a>
+                      </span></div>
                     </div>
                     <hr>
                   </div>
@@ -318,6 +323,20 @@
             }
           })
       },
+      copyAddress(address) {
+        const selBox = document.createElement('textarea');
+        selBox.style.position = 'fixed';
+        selBox.style.left = '0';
+        selBox.style.top = '0';
+        selBox.style.opacity = '0';
+        selBox.value = address;
+        document.body.appendChild(selBox);
+        selBox.focus();
+        selBox.select();
+        document.execCommand('copy');
+        document.body.removeChild(selBox);
+        this.$toasted.show('Copiado!', {position: 'bottom-left', type: 'info'}).goAway(3000)
+      }
     },
     mounted() {
       this.get()
