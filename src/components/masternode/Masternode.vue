@@ -1,534 +1,342 @@
 <template>
-    <div>
-        <vue-headful title="Masternode" description="Liquidex"/>
-        <div class="loader" v-if="loader"></div>
+  <div>
+    <vue-headful title="Masternode" description="Liquidex"/>
+    <div class="loader" v-if="loader"></div>
 
-        <div class="content-box">
-            <div class="element-wrapper">
-                <h6>
-                    Investimento Masternode
-                    <span class="animate-border mt-2 mb-3"></span>
-                </h6>
+    <div class="content-box">
 
-                <div class="element-box-tp mb-2">
-                    <div class="row">
-
-                        <div class="col-12 col-sm-4 col-xxl-3">
-                            <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
-                                <div class="label"> {{ investment_data.coin }} Sob Gestão</div>
-                                <div class="value"> {{ investment_data.under_managment }}</div>
-                            </a>
-                        </div>
-
-                        <div class="col-12 col-sm-4 col-xxl-3">
-                            <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
-                                <div class="label"> Lucro Médio</div>
-                                <div class="value"> {{ investment_data.average_profits.base }} %</div>
-                            </a>
-                        </div>
-
-                        <div class="col-12 col-sm-4 col-xxl-3">
-                            <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
-                                <div class="label"> Lucro Médio Mensal</div>
-                                <div class="value"> {{ investment_data.average_profits.current_month }} %</div>
-                            </a>
-                        </div>
-
-                        <div class="col-12 col-sm-4 col-xxl-3">
-                            <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
-                                <div class="label"> Lucro Médio Diário</div>
-                                <div class="value"> {{ investment_data.average_profits.current_day }} %</div>
-                            </a>
-                        </div>
-
-                        <div class="col-12 col-sm-4 col-xxl-3">
-                            <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
-                                <div class="label"> Meu Investimento</div>
-                                <div class="value"> {{ investment_data.user_investment }}</div>
-                            </a>
-                        </div>
-
-                        <div class="col-12 col-sm-4 col-xxl-3">
-                            <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
-                                <div class="label"> Meu Lucro <i class="os-icon os-icon-external-link"></i></div>
-                                <div class="value"> {{ investment_data.user_profit }}</div>
-                            </a>
-                        </div>
-
-                        <div class="col-12 col-sm-4 col-xxl-3">
-                            <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
-                                <div class="label"> Total</div>
-                                <div class="value"> {{ investment_data.total_user_investment }}</div>
-                            </a>
-                        </div>
-
-                        <div class="col-12 col-sm-4 d-sm-inline-block d-xxl-none">
-                            <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
-                                <div class="label mb-1"></div>
-                                <div class="value">
-                                    <button class="btn btn-success" type="button"
-                                            @click="showModal('invest')"
-                                            v-if="investment_data.user_profit>0"
-                                    >
-                                        Reinvestir
-                                    </button>
-                                    <button class="btn btn-grey" disabled v-else type="button">
-                                        Reinvestir
-                                    </button>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-12 col-sm-4 d-sm-inline-block d-xxl-none">
-                            <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
-                                <div class="label mb-1"></div>
-                                <div class="value">
-                                    <button class="btn btn-primary" type="button"
-                                            @click="showModal('withdrawal')"
-                                            v-if="investment_data.user_investment>0||investment_data.user_profit>0"
-                                    >
-                                        Saque
-                                    </button>
-                                    <button class="btn btn-grey" disabled v-else
-                                            type="button"> Saque
-                                    </button>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-12 col-xxl-3 d-none d-sm-none d-xxl-inline-block">
-                            <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
-                                <div class="label mb-1"></div>
-                                <div class="value">
-                                    <button class="btn btn-success" type="button"
-                                            @click="showModal('invest')"
-                                            v-if="investment_data.user_profit>0"
-                                    >
-                                        Reinvestir
-                                    </button>
-                                    <button class="btn btn-grey" disabled v-else type="button">
-                                        Reinvestir
-                                    </button>
-
-                                    <button class="btn btn-primary" type="button"
-                                            @click="showModal('withdrawal')"
-                                            v-if="investment_data.user_investment>0"
-                                    >
-                                        Saque
-                                    </button>
-                                    <button class="btn btn-grey" disabled v-else
-                                            type="button"> Saque
-                                    </button>
-                                </div>
-                            </a>
-                        </div>
-
-                    </div>
+      <div class="element-box mb-5">
+        <div class="padded m-b">
+          <div class="centered-header"><h6>Masternode LQX Mondial Founder</h6></div>
+          <div class="row">
+            <div class="col-6 b-r b-b">
+              <div class="el-tablo centered padded-v-big highlight bigger">
+                <div class="label">Recompensas da Rede</div>
+                <div class="value size-5">{{ info.rewards }}
+                  <small>LQX</small>
                 </div>
+              </div>
+            </div>
+            <div class="col-6 b-b">
+              <div class="el-tablo centered padded-v-big highlight bigger">
+                <div class="label">Meus Nodes</div>
+                <div class="value size-5">{{ masternodes.total }} (mín. 3)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="padded m-b">
+          <div class="centered-header"><h6>Realizações</h6></div>
+          <div class="os-progress-bar primary">
+            <div class="bar-labels">
+              <div class="bar-label-left"><span>Progresso</span><span class="positive">+ {{ masternodes.total }}</span></div>
+              <div class="bar-label-right"><span class="info">{{ info.percent }}/100</span></div>
+            </div>
+            <div class="bar-level-1" style="width: 100%">
+              <div class="bar-level-2" :style="'width:' + (info.percent > 99 ? 100 : info.percent) +'%'">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-wrapper" v-if="processing.id||masternode.id">
+        <h6 v-if="processing.id"> Ativar Masternode <span class="animate-border mt-2 mb-3"></span></h6>
+        <h6 v-else> Detalhes do Masternode <span class="animate-border mt-2 mb-3"></span></h6>
+
+        <div class="element-box-tp mb-2">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+
+              <div class="element-wrapper">
+                <div class="element-box">
+                  <h5 class="element-box-header">Ubuntu Server 18.04</h5>
+
+                  <div class="os-progress-bar primary">
+                    <div class="bar-labels">
+                      <div class="bar-label-left">
+                        <i class="mdi mdi-wan size-5"></i>
+                        <span class="bigger">IP</span>
+                      </div>
+                      <div class="bar-label-right"><span class="info">{{ processing.ip }}</span></div>
+                    </div>
+                    <hr>
+                  </div>
+                  <div class="os-progress-bar primary">
+                    <div class="bar-labels">
+                      <div class="bar-label-left">
+                        <i class="mdi mdi-cpu-64-bit size-5"></i>
+                        <span class="bigger">CPU</span>
+                      </div>
+                      <div class="bar-label-right">
+                        <span class="info">1 núcleo ({{ machine.cpu }})</span>
+                      </div>
+                    </div>
+                    <hr>
+                  </div>
+                  <div class="os-progress-bar primary">
+                    <div class="bar-labels">
+                      <div class="bar-label-left">
+                        <i class="mdi mdi-memory size-5"></i>
+                        <span class="bigger">RAM</span>
+                      </div>
+                      <div class="bar-label-right">
+                        <span class="info">{{ machine.ram }}</span>
+                      </div>
+                    </div>
+                    <hr>
+                  </div>
+                  <div class="os-progress-bar primary">
+                    <div class="bar-labels">
+                      <div class="bar-label-left">
+                        <i class="mdi mdi-harddisk size-5"></i>
+                        <span class="bigger">HD</span>
+                      </div>
+                      <div class="bar-label-right"><span class="info">1.6GB / 10GB</span></div>
+                    </div>
+                    <hr>
+                  </div>
+                  <div class="os-progress-bar primary">
+                    <div class="bar-labels">
+                      <div class="bar-label-left">
+                        <i class="mdi mdi-lan size-5"></i>
+                        <span class="bigger">Rede</span>
+                      </div>
+                      <div class="bar-label-right"><span class="info">10/ 100 / 1000</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <modal v-show="isModalVisible">
-                <template slot="header">
-                    <div class="os-tabs-w">
-                        <div class="os-tabs-controls os-tabs-complex">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item col-md-6 text-center">
-                                    <a :class="tabclass_invest" href="#"
-                                       v-if="investment_data.user_profit>0"
-                                       @click.prevent="showInvestWindow">
-                                        <span class="tab-label">Reinvestir</span>
-                                    </a>
-                                    <a :class="tabclass_invest" href="#" v-else>
-                                        <span class="tab-label">Reinvestir</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item col-md-6 text-center">
-                                    <a :class="tabclass_draft" href="#"
-                                       v-if="investment_data.user_investment>0||investment_data.user_profit>0"
-                                       @click.prevent="showDraftWindow">
-                                        <span class="tab-label">Saque</span>
-                                    </a>
-                                    <a :class="tabclass_draft" href="#" v-else>
-                                        <span class="tab-label">Saque</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+            <div class="col-sm-12 col-md-6">
+
+              <div class="element-wrapper">
+                <div class="element-box">
+                  <h5 class="element-box-header">Dados para Ativação</h5>
+
+                  <div class="os-progress-bar primary"
+                       v-tooltip.top="'Enviar 1000LQX para este endereço de ativação'"
+                       v-if="processing.id&&processing.status>1">
+                    <span class="text-info">Endereço de Ativação </span>
+                    <br>
+                    <div class="bar-labels">
+                      <div class="bar-label-left">
+                        <span class="bigger">{{ processing.payment_address}}</span>
+                      </div>
+                      <div class="bar-label-right"><span class="info">copiar</span></div>
                     </div>
-                </template>
+                    <hr>
+                  </div>
 
-                <template slot="body">
-                    <div v-show="isInvestWindowVisible">
-                        <form>
-                            <div class="form-group row mb-0">
-                                <label class="col-form-label col-sm-4"> Disponível</label>
-                                <div class="col-sm-8">
-                                    <span class="alert alert-success py-1"
-                                          v-tooltip="'clique para adicionar o total'"
-                                          @click.prevent="investment_in.amount=investment_data.user_profit">{{ investment_data.user_profit }}</span>
-                                </div>
-                            </div>
-
-                            <hr>
-
-                            <div class="form-group row">
-                                <label class="col-form-label col-sm-4" for="amount_in"> Quantidade</label>
-                                <div class="col-sm-8">
-                                    <div class="input-group">
-                                        <input id="amount_in" class="form-control" type="text" required
-                                               v-model="investment_in.amount" min="0">
-                                        <div class="input-group-append">
-                                            <div class="input-group-text">
-                                                {{ investment_data.coin }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <hr>
-
-                            <div class="row mt-5 mb-0">
-                                <div class="col-12 text-center">
-                                    <button class="btn btn-grey" type="button" @click.prevent="closeModal"> Fechar
-                                    </button>
-                                    <button class="btn btn-primary" type="button"
-                                            :disabled="!isReinvestmentFilled"
-                                            @click.prevent="showPinModal('sendInvestment')"> Confirmar
-                                    </button>
-                                </div>
-                            </div>
-
-                        </form>
+                  <div class="os-progress-bar primary"
+                       v-tooltip.top="'Enviar 0.10000LQX para este endereço da fee de ativação'"
+                       v-if="processing.id&&processing.status>1">
+                    <span class="text-info">Endereço da Fee para Ativação </span><br>
+                    <div class="bar-labels">
+                      <div class="bar-label-left">
+                        <span class="bigger">{{ processing.fee_address}}</span>
+                      </div>
+                      <div class="bar-label-right"><span class="info">copiar</span></div>
                     </div>
+                    <hr>
+                  </div>
 
-                    <div v-show="isDraftWindowVisible">
-                        <form>
-                            <div class="form-group row mb-0">
-                                <div class="col-sm-12 text-center align-center">
-                                    <span class="aler alert-warning block py-1 mb-2"
-                                          v-if="!this.investment_out.operation_type">Selecione o valor para retirada.</span>
-                                    <div class="pt-btn" v-if="investment_data.user_investment>0">
-                                        <button type="button" class="btn btn-success btn-md"
-                                                v-if="investment_out.operation_type === 3"
-                                                @click.prevent="() => { investment_out.operation_type = 3; investment_out.amount = investment_data.user_investment }">
-                                            Saldo ({{investment_data.user_investment | fixValue}} {{
-                                            investment_data.coin}})
-                                        </button>
-                                        <button type="button" class="btn btn-grey btn-md"
-                                                v-else
-                                                @click.prevent="() => { investment_out.operation_type = 3; investment_out.amount = investment_data.user_investment }">
-                                            Saldo ({{investment_data.user_investment | fixValue}} {{
-                                            investment_data.coin}})
-                                        </button>
-                                    </div>
-
-                                    <div class="pt-btn" v-if="investment_data.user_profit>0">
-                                        <button type="button" class="btn btn-success btn-md"
-                                                v-if="investment_out.operation_type === 4"
-                                                @click.prevent="() => { investment_out.operation_type = 4; investment_out.amount = investment_data.user_profit }">
-                                            Lucro ({{investment_data.user_profit | fixValue}} {{ investment_data.coin}})
-                                        </button>
-
-                                        <button type="button" class="btn btn-grey btn-md"
-                                                v-else
-                                                @click.prevent="() => { investment_out.operation_type = 4; investment_out.amount = investment_data.user_profit }">
-                                            Lucro ({{investment_data.user_profit | fixValue}} {{ investment_data.coin}})
-                                        </button>
-
-                                    </div>
-
-                                    <div class="pt-btn">
-                                        <button type="button" class="btn btn-success btn-md"
-                                                v-if="investment_out.operation_type === 6"
-                                                @click.prevent="() => { investment_out.operation_type = 6; investment_out.amount = investment_data.total_user_investment }">
-                                            Total ({{investment_data.total_user_investment | fixValue}}
-                                            {{ investment_data.coin}})
-                                        </button>
-
-                                        <button type="button" class="btn btn-grey btn-md"
-                                                v-else
-                                                @click.prevent="() => { investment_out.operation_type = 6; investment_out.amount = investment_data.total_user_investment }">
-                                            Total ({{investment_data.total_user_investment | fixValue}}
-                                            {{investment_data.coin}})
-                                        </button>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <hr>
-
-                            <div class="form-group row">
-                                <label class="col-form-label col-sm-4" for="amount_out"> Quantidade</label>
-                                <div class="col-sm-8">
-                                    <div class="input-group">
-                                        <input id="amount_out" class="form-control" type="text" required
-                                               v-model="investment_out.amount" min="0"
-                                               :disabled="investment_out.operation_type===6">
-                                        <div class="input-group-append">
-                                            <div class="input-group-text">
-                                                {{ investment_data.coin }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <hr>
-
-                            <div class="row mt-5 mb-0">
-                                <div class="col-12 text-center">
-                                    <button class="btn btn-grey" type="button" @click.prevent="closeModal"> Fechar
-                                    </button>
-                                    <button class="btn btn-primary" type="button"
-                                            :disabled="!isWithdrawalFilled"
-                                            @click.prevent="showPinModal('withdrawalInvestment')"> Confirmar
-                                    </button>
-                                </div>
-                            </div>
-
-                        </form>
+                  <div class="os-progress-bar primary">
+                    <span class="text-success">Endereço das Recompensas</span><br>
+                    <div class="bar-labels">
+                      <div class="bar-label-left">
+                        <span class="bigger">{{ processing.reward_address}}</span>
+                      </div>
                     </div>
-                </template>
+                    <hr>
+                  </div>
 
-                <template slot="footer">
-                    <span> Taxa de Corretagem: 0 <i class="os-icon os-icon-percent"></i></span>
-                </template>
-            </modal>
+                  <div class="alert alert-info" v-if="processing.id&&processing.status===2">
+                    <h6>Atenção</h6>
 
-            <div class="row">
-                <div class="col-12">
-                    <masternode-data></masternode-data>
+                    <small>Para ativar seu masternode você deve enviar 1000LQX para o endereço de ativação.</small>
+                    <small>Também deve ser enviado 0.10000LQX para o endereço da Fee de Ativação.</small>
+                    <small>Após isso aguardar o processamento da blockchain e em algum tempo seu masternode estará
+                      operacional.
+                    </small>
+                    <br>
+                    <small>Se o envio já foi realizado, é necessário aguardar o término da configuração do servidor que
+                      se dará automaticamente.
+                    </small>
+                  </div>
+
+                  <div class="alert alert-info" v-else>
+                    <h6>Atenção</h6>
+
+                    <small>As recompensas do seu masternode são recebidas automáticamente no endereço acima.
+                    </small>
+                  </div>
+
                 </div>
+              </div>
             </div>
+
+          </div>
 
         </div>
+      </div>
 
-        <pin v-show="isPinVisible" ref="pinComponent"
-             @close-pin-modal="closePinModal" @pin-data="handlePinData"/>
+      <div class="element-wrapper">
+        <h6>
+          Meus Masternodes <span class="animate-border mt-2 mb-3"></span>
+        </h6>
+
+        <div class="element-box-tp mb-2">
+          <div class="row">
+
+            <table class="table table-lightborder table-striped">
+              <thead>
+              <tr>
+                <th></th>
+                <th> Solicitado em</th>
+                <th> Carteira</th>
+                <th> Recompensa</th>
+                <th> Status</th>
+                <th> Últ. Atualização</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="masternode in masternodes.data">
+                <td>
+                  <button class="btn btn-rounded btn-sm btn-primary"
+                          v-if="masternode.status > 2"
+                          @click.prevent="showMasternode(masternode)">
+                    <i class="os-icon os-icon-search"></i></button>
+
+                  <button class="btn btn-rounded btn-sm btn-primary"
+                          v-else
+                          @click.prevent="activateMasternode(masternode)">
+                    <i class="os-icon os-icon-search"></i></button>
+                </td>
+                <td> {{ masternode.createdLocal }}</td>
+                <td> {{ masternode.reward_address }}</td>
+                <td> {{ masternode.balance }}</td>
+                <td><span :class="'badge badge-' + masternode.statusColor">{{masternode.statusName}}</span></td>
+                <td> {{ masternode.updatedLocal }}</td>
+              </tr>
+              </tbody>
+            </table>
+
+          </div>
+          <pagination :pagination="masternodes" @paginate="get()" :offset="10"/>
+        </div>
+      </div>
+
     </div>
+
+  </div>
+
 </template>
 
 <script>
-	import {mapGetters} from 'vuex'
-	import MasternodeData from './MasternodeData'
-	import Modal from './../layouts/Modal'
-	import Pin from './../verifications/Pin'
+  import {mapGetters} from 'vuex'
+  import Pagination from "./../layouts/Pagination";
 
-	export default {
-		name: "Arbitrage",
-		data() {
-			return {
-				loader: true,
-				isPinVisible: false,
-				isModalVisible: false,
-				isInvestWindowVisible: false,
-				isDraftWindowVisible: false,
-				tabclass_invest: 'nav-link active',
-				tabclass_draft: 'nav-link',
-				investment_in: {
-					amount: 0,
-					coin: 3,
-				},
-				investment_out: {
-					amount: 0,
-					coin: 3,
-					operation_type: null
-				},
-				investment_data: {
-					average_profits: {
-						base: 0,
-						current_month: 0,
-						current_day: 0,
-					},
-					brokerage_fee: 0,
-					under_managment: 0,
-					user_investment: 0,
-					user_profit: 0,
-					total_user_investment: 0,
-					coin: 'LQX'
-				},
-				token: {
-					pin: null
-				},
-			}
-		},
-		methods: {
-			showModal(type) {
-				this.isModalVisible = true
-				if (type === 'invest') {
-					this.showInvestWindow()
-				}
-				if (type === 'withdrawal') {
-					this.showDraftWindow()
-				}
-			},
-			closeModal() {
-				this.isModalVisible = false;
-			},
-			showInvestWindow() {
-				this.isInvestWindowVisible = true
-				this.isDraftWindowVisible = false
-				this.tabclass_invest = 'nav-link active'
-				this.tabclass_draft = 'nav-link'
-			},
-			showDraftWindow() {
-				this.isDraftWindowVisible = true
-				this.isInvestWindowVisible = false
-				this.tabclass_invest = 'nav-link'
-				this.tabclass_draft = 'nav-link active'
-			},
-			retrieveInvestmentData() {
-				this.loader = true
-				this.$store.dispatch('retrieveInvestmentData', 3)
-					.then(response => {
-						this.investment_data.average_profits.base = response.data.average_profits.base
-						this.investment_data.average_profits.current_month = response.data.average_profits.current_month
-						this.investment_data.average_profits.current_day = response.data.average_profits.current_day
-
-						this.investment_data.brokerage_fee = response.data.brokerage_fee
-						this.investment_data.under_managment = response.data.under_managment
-						this.investment_data.user_investment = response.data.user_investment
-						this.investment_data.user_profit = response.data.user_profit
-						this.investment_data.total_user_investment = response.data.total_user_investment
-						this.investment_data.coin = response.data.coin
-						this.loader = false
-					})
-					.catch(error => {
-						if (error.response) {
-							this.handleErrors(error.response)
-							this.loader = false
-						}
-					})
-			},
-			sendInvestment() {
-				this.loader = true
-				this.isModalVisible = false
-
-				this.$store.dispatch('sendInvestment', {
-					amount: this.investment_in.amount,
-					type: 3,
-					coin: this.investment_in.coin,
-					operation_type: 5,
-					pin: this.token.pin,
-				})
-					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
-						this.refresh()
-					})
-					.catch(error => {
-						if (error.response) {
-							this.handleErrors(error.response)
-							this.resetPin()
-						}
-						this.loader = false
-					})
-			},
-			withdrawalInvestment() {
-				this.loader = true
-				this.isModalVisible = false
-
-				this.$store.dispatch('withdrawalInvestment', {
-					amount: this.investment_out.amount,
-					type: 3,
-					coin: this.investment_out.coin,
-					operation_type: this.investment_out.operation_type,
-					pin: this.token.pin,
-				})
-					.then(response => {
-						this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
-						this.refresh()
-					})
-					.catch(error => {
-						if (error.response) {
-							this.handleErrors(error.response)
-							this.resetPin()
-						}
-						this.loader = false
-					})
-			},
-			resetPin() {
-				this.token.pin = null
-				this.$refs.pinComponent.resetData()
-			},
-			refresh() {
-				this.loader = false
-				this.retrieveInvestmentData()
-			},
-			showPinModal(method) {
-				this.isPinVisible = true
-				this.$refs.pinComponent.setData(method)
-			},
-			closePinModal() {
-				this.isPinVisible = false;
-			},
-			handlePinData(data) {
-				this.token.pin = data.pin
-
-				if (data.method === 'sendInvestment') {
-					this.sendInvestment()
-				}
-
-				if (data.method === 'withdrawalInvestment') {
-					this.withdrawalInvestment()
-				}
-			},
-		},
-		mounted() {
-			this.retrieveInvestmentData()
-		},
-		computed: {
-			...mapGetters([
-				'user'
-			]),
-			isReinvestmentFilled() {
-				return (parseFloat(this.investment_in.amount) <= parseFloat(this.investment_data.user_profit)) && this.investment_in.amount > 0 && true
-			},
-			isWithdrawalFilled() {
-				return (parseFloat(this.investment_out.amount) <= parseFloat(this.investment_data.total_user_investment)) && this.investment_out.amount > 0 && this.investment_out.operation_type && true
-			}
-		},
-		components: {
-			MasternodeData,
-			Modal,
-			Pin
-		}
-	}
+  export default {
+    name: "Masternode",
+    data() {
+      return {
+        loader: false,
+        tabclass_invest: 'nav-link active',
+        tabclass_draft: 'nav-link',
+        masternodes: {},
+        processing: [],
+        masternode: [],
+        machine: {
+          cpu: '',
+          ram: '',
+        },
+        info: {
+          nodes: 1400,
+          mynodes: 0,
+          rewards: 1400,
+          percent: 0,
+        }
+      }
+    },
+    methods: {
+      getRandomNumber(min, max) {
+        return Math.random() * (max - min) + min;
+      },
+      showMasternode(masternode) {
+        this.masternode = masternode
+        this.processing = []
+        this.machine.ram = masternode.status >= 4 ? "0MB / 8GB" : (masternode.status === 2 ? this.getRandomNumber(1, 5).toFixed(2) + "GB / 8GB" : this.getRandomNumber(300, 500).toFixed() + 'MB / 8GB');
+        this.machine.cpu = masternode.status >= 4 ? "0MB / 8GB" : (masternode.status === 2 ? getRandomNumber(50, 80).toFixed() + "%" : this.getRandomNumber(1, 10).toFixed() + '%');
+      },
+      activateMasternode(masternode) {
+        this.processing = masternode
+        this.masternode = []
+        this.machine.ram = this.getRandomNumber(300, 500).toFixed() + 'MB / 8GB';
+        this.machine.cpu = this.getRandomNumber(1, 10).toFixed() + '%';
+      },
+      get() {
+        this.loader = true
+        this.$store.dispatch('getMasternodes')
+          .then(response => {
+            this.loader = false
+            this.masternodes = response.data
+          })
+          .catch(error => {
+            if (error.response) {
+              this.handleErrors(error.response)
+              this.loader = false
+            }
+          })
+      },
+      getInfo() {
+        this.loader = true
+        this.$store.dispatch('getMasternodesInfo')
+          .then(response => {
+            this.loader = false
+            this.info = response.data
+          })
+          .catch(error => {
+            if (error.response) {
+              this.handleErrors(error.response)
+              this.loader = false
+            }
+          })
+      },
+      getProcessing() {
+        this.loader = true
+        this.$store.dispatch('processingMasternode')
+          .then(response => {
+            this.loader = false
+            this.processing = response.data
+          })
+          .catch(error => {
+            if (error.response) {
+              this.handleErrors(error.response)
+              this.loader = false
+            }
+          })
+      },
+    },
+    mounted() {
+      this.get()
+      this.getProcessing()
+      this.getInfo()
+    },
+    computed: {
+      ...mapGetters([
+        'user'
+      ]),
+    },
+    components: {Pagination}
+  }
 </script>
 
 <style scoped>
-    .el-tablo.bigger .value {
-        font-size: 2rem !important;
-    }
-
-    .trending-unconfirmed {
-        background: #047bf8;
-        color: #fff
-    }
-
-    .element-wrapper {
-        padding-bottom: 0 !important;
-    }
-
-    .os-tabs-controls.os-tabs-complex .nav-item .nav-link {
-        padding: 30px 50px;
-    }
-
-    .nav-item.col-md-6 {
-        padding-right: 0px;
-        padding-left: 0px;
-    }
-
-    form {
-        padding: 1em;
-    }
-
-    .pt-btn {
-        float: left;
-        margin-top: 5px;
-        margin-right: 5px;
-    }
+  .size-5 {
+    font-size: 20px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
 </style>
