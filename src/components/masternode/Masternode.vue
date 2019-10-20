@@ -59,7 +59,7 @@
                         <i class="mdi mdi-wan size-5"></i>
                         <span class="bigger">IP</span>
                       </div>
-                      <div class="bar-label-right"><span class="info">{{ processing.ip }}</span></div>
+                      <div class="bar-label-right"><span class="info">{{ processing.ip || masternode.ip }}</span></div>
                     </div>
                     <hr>
                   </div>
@@ -151,7 +151,7 @@
                     <span class="text-success">Endereço das Recompensas</span><br>
                     <div class="bar-labels">
                       <div class="bar-label-left">
-                        <span class="bigger">{{ processing.reward_address}}</span>
+                        <span class="bigger">{{ processing.reward_address || masternode.reward_address}}</span>
                       </div>
                     </div>
                     <hr>
