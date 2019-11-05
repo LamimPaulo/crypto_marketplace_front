@@ -41,7 +41,7 @@
         </div>
       </div>
 
-      <div class="element-wrapper" v-if="processing.id||masternode.id">
+      <div class="element-wrapper" v-if="(processing.id && processing.status>1) ||masternode.id">
         <h6 v-if="processing.id"> Ativar Masternode <span class="animate-border mt-2 mb-3"></span></h6>
         <h6 v-else> Detalhes do Masternode <span class="animate-border mt-2 mb-3"></span></h6>
 
@@ -114,7 +114,8 @@
 
               <div class="element-wrapper">
                 <div class="element-box">
-                  <h5 class="element-box-header">Dados para Ativação</h5>
+                  <h5 class="element-box-header" v-if="masternode.status===3">Masternode Ativado</h5>
+                  <h5 class="element-box-header" v-else>Dados para Ativação</h5>
 
                   <div class="os-progress-bar primary"
                        v-tooltip.top="'Enviar 1000LQX para este endereço de ativação'"
@@ -171,8 +172,8 @@
                     </small>
                   </div>
 
-                  <div class="alert alert-info" v-else>
-                    <h6>Atenção</h6>
+                  <div class="alert alert-success" v-else>
+                    <h6>Informação</h6>
 
                     <small>As recompensas do seu masternode são recebidas automáticamente no endereço acima.
                     </small>
@@ -185,6 +186,13 @@
           </div>
 
         </div>
+      </div>
+
+      <div class="alert alert-warning" v-else>
+        <h6>Atenção</h6>
+
+        <small>Seu servidor está sendo criado no momento, volte mais tarde para verificar a situação.
+        </small>
       </div>
 
       <div class="element-wrapper">
