@@ -425,6 +425,17 @@ export const store = new Vuex.Store({
           })
       })
     },
+    verifyAddressTransaction(context, address) {
+      return new Promise((resolve, reject) => {
+        axios.get('/transactions/verifyAddress/' + address)
+          .then(response => {
+            resolve(response)
+          })
+          .catch(error => {
+            reject(error)
+          })
+      })
+    },
     sendTransaction(context, transaction) {
       return new Promise((resolve, reject) => {
         axios.post('/transactions/send/', transaction)
@@ -1343,9 +1354,9 @@ export const store = new Vuex.Store({
           })
       })
     },
-    getMasternodes() {
+    getMasternodes(context, page) {
       return new Promise((resolve, reject) => {
-        axios.get('/masternode/list')
+        axios.get('/masternode/list?page=' + page)
           .then(response => {
             resolve(response)
           })

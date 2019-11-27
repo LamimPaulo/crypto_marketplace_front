@@ -20,6 +20,13 @@
       </div>
 
       <form @submit.prevent="sendTransaction">
+        <div class="row mb-4" v-if="transaction_to_address_exists">
+          <div class="col-12">
+            <span
+              class="alert alert-warning">Já existem transações enviadas anteriormente para o endereço informado.</span>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col-sm-6 col-lg-3">
             <div class="form-group">
@@ -103,6 +110,7 @@
       return {
         loader: false,
         isTokenPinVisible: false,
+        transaction_to_address_exists: false,
         transaction: {
           amount: 0,
           toAddress: '',
@@ -126,6 +134,9 @@
       },
       total() {
         return parseFloat(this.transaction.fee) + parseFloat(this.transaction.amount)
+      },
+      to_address() {
+        return this.transaction.toAddress
       }
     },
     methods: {
@@ -147,6 +158,17 @@
           })
         }
       }, 500),
+      verifyAddressTransaction() {
+        this.$store.dispatch('verifyAddressTransaction', this.transaction.toAddress)
+          .then(response => {
+            this.transaction_to_address_exists = response.data
+          }).catch(error => {
+          if (error.response) {
+            this.handleErrors(error.response)
+          }
+
+        })
+      },
       sendTransaction() {
         this.loader = true
         this.$store.dispatch('sendTransaction', {
@@ -194,6 +216,14 @@
         this.token.pin = data.pin
         this.sendTransaction()
       },
+    },
+    watch: {
+      to_address: function (val) {
+        if ((this.transaction.toAddress.length === 34) && this.transaction.toAddress.startsWith("L"))
+          this.verifyAddressTransaction()
+        else
+          this.transaction_to_address_exists = false
+      }
     },
     components: {
       TokenPin,
