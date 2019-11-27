@@ -258,7 +258,13 @@
         loader: false,
         tabclass_invest: 'nav-link active',
         tabclass_draft: 'nav-link',
-        masternodes: {},
+        masternodes: {
+          total: 0,
+          per_page: 10,
+          from: 1,
+          to: 0,
+          current_page: 1
+        },
         processing: [],
         masternode: [],
         machine: {
@@ -291,7 +297,7 @@
       },
       get() {
         this.loader = true
-        this.$store.dispatch('getMasternodes')
+        this.$store.dispatch('getMasternodes', this.masternodes.current_page)
           .then(response => {
             this.loader = false
             this.masternodes = response.data
@@ -344,6 +350,9 @@
         document.execCommand('copy');
         document.body.removeChild(selBox);
         this.$toasted.show('Copiado!', {position: 'bottom-left', type: 'info'}).goAway(3000)
+      },
+      scrollToTop() {
+        window.scrollTo(0, 600);
       }
     },
     mounted() {
@@ -355,8 +364,26 @@
       ...mapGetters([
         'user'
       ]),
+      processing_address() {
+        return this.processing.reward_address
+      },
+      masternode_address() {
+        return this.masternode.reward_address
+      }
     },
-    components: {Pagination}
+    watch: {
+      processing_address: function (val) {
+        this.scrollToTop();
+      },
+      masternode_address: function (val) {
+        this.scrollToTop();
+      },
+
+
+    },
+    components: {
+      Pagination
+    }
   }
 </script>
 
