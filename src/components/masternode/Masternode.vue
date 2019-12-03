@@ -148,11 +148,11 @@
                     <hr>
                   </div>
 
-                  <div class="os-progress-bar primary">
+                  <div class="os-progress-bar primary" v-if="masternode.fee_address">
                     <span class="text-success">Endereço das Recompensas</span><br>
                     <div class="bar-labels">
                       <div class="bar-label-left">
-                        <span class="bigger">{{ processing.reward_address || masternode.reward_address}}</span>
+                        <span class="bigger">{{ masternode.fee_address}}</span>
                       </div>
                     </div>
                     <hr>
@@ -188,7 +188,7 @@
         </div>
       </div>
 
-      <div class="alert alert-warning" v-else>
+      <div class="alert alert-warning" v-if="processing.id && !processing.status">
         <h6>Atenção</h6>
 
         <small>Seu servidor está sendo criado no momento, volte mais tarde para verificar a situação.
@@ -228,7 +228,7 @@
                     <i class="os-icon os-icon-search"></i></button>
                 </td>
                 <td> {{ masternode.createdLocal }}</td>
-                <td> {{ masternode.reward_address }}</td>
+                <td> {{ masternode.fee_address }}</td>
                 <td> {{ masternode.balance }}</td>
                 <td><span :class="'badge badge-' + masternode.statusColor">{{masternode.statusName}}</span></td>
                 <td> {{ masternode.updatedLocal }}</td>
