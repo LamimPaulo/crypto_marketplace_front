@@ -529,10 +529,10 @@
         this.isProfitOperationsVisible = true
       },
       showWithdrawalWindow() {
-        this.isWithdrawalWindowVisible = true
-        this.isInvestWindowVisible = false
-        this.tabclass_invest = 'nav-link'
-        this.tabclass_withdrawal = 'nav-link active'
+        // this.isWithdrawalWindowVisible = true
+        // this.isInvestWindowVisible = false
+        // this.tabclass_invest = 'nav-link'
+        // this.tabclass_withdrawal = 'nav-link active'
       },
       retrieveInvestmentData() {
         this.loader = true
@@ -586,30 +586,30 @@
         //   })
       },
       withdrawalInvestment() {
-        this.loader = true
-        this.isModalVisible = false
-
-        this.$store.dispatch('withdrawalInvestment', {
-          amount: this.investment_out.amount,
-          type: 2,
-          coin: this.investment_out.coin,
-          operation_type: this.investment_out.operation_type,
-          pin: this.token.pin,
-        })
-          .then(response => {
-            this.$toasted.show(response.data.message, {
-              position: 'bottom-left',
-              type: 'success'
-            }).goAway(3000)
-            this.refresh()
-          })
-          .catch(error => {
-            if (error.response) {
-              this.handleErrors(error.response)
-              this.resetPin()
-            }
-            this.loader = false
-          })
+        // this.loader = true
+        // this.isModalVisible = false
+        //
+        // this.$store.dispatch('withdrawalInvestment', {
+        //   amount: this.investment_out.amount,
+        //   type: 2,
+        //   coin: this.investment_out.coin,
+        //   operation_type: this.investment_out.operation_type,
+        //   pin: this.token.pin,
+        // })
+        //   .then(response => {
+        //     this.$toasted.show(response.data.message, {
+        //       position: 'bottom-left',
+        //       type: 'success'
+        //     }).goAway(3000)
+        //     this.refresh()
+        //   })
+        //   .catch(error => {
+        //     if (error.response) {
+        //       this.handleErrors(error.response)
+        //       this.resetPin()
+        //     }
+        //     this.loader = false
+        //   })
       },
       resetPin() {
         this.token.pin = null
