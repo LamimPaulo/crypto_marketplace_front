@@ -6,11 +6,6 @@
     <div class="content-box">
       <div class="element-wrapper">
         <div class="element-actions d-sm-block">
-          <button class="btn btn-primary btn-sm" type="button"
-                  @click="showModal('pendingOperations')"
-          >
-            <i class="fas fa-business-time"></i><span> Operaçoes pendentes</span>
-          </button>
 
           <button class="btn btn-primary btn-sm" type="button"
                   @click="showModal('profitOperations')"
@@ -21,10 +16,10 @@
         <h6 class="element-header mb-3">
           {{ investment_data.name }}
           <span class="container">
-                    <a class="btn btn-success border-0 btn-sm" href="/nanotech/lqx">
-                        <i class="os-icon os-icon-external-link"></i><span> Nanotech LQX</span>
-                    </a>
-                    </span>
+            <a class="btn btn-success border-0 btn-sm" href="/nanotech/lqx">
+                <i class="os-icon os-icon-external-link"></i><span> Nanotech LQX</span>
+            </a>
+          </span>
         </h6>
 
         <div class="element-box-tp mb-2">
@@ -110,16 +105,15 @@
         <template slot="header">
           <div class="os-tabs-w">
             <div class="os-tabs-controls os-tabs-complex">
-              <ul v-if="isPendingOperations == true" class="nav nav-tabs">
+              <ul v-if="isPendingOperations" class="nav nav-tabs">
                 <li class="nav-item col-md-12 text-center">
                   <a class="nav-link active">
                     <span class="tab-label">Operaçoes Pendentes</span>
                   </a>
                 </li>
-
               </ul>
 
-              <ul v-else-if="isProfitOperations == true" class="nav nav-tabs">
+              <ul v-else-if="isProfitOperations" class="nav nav-tabs">
                 <li class="nav-item col-md-12 text-center">
                   <a class="nav-link active">
                     <span class="tab-label">Operações de Lucro</span>
@@ -136,8 +130,7 @@
                 </li>
                 <li class="nav-item col-md-6 text-center">
                   <a :class="tabclass_withdrawal" href="#"
-                     v-if="investment_data.user_investment<=0&&investment_data.user_profit<=0"
-                  >
+                     v-if="investment_data.user_investment<=0&&investment_data.user_profit<=0">
                     <span class="tab-label">Saque</span>
                   </a>
                   <a :class="tabclass_withdrawal" href="#"
@@ -521,10 +514,10 @@
         this.isWithdrawalWindowVisible = false
       },
       showInvestWindow() {
-        this.isInvestWindowVisible = true
-        this.isWithdrawalWindowVisible = false
-        this.tabclass_invest = 'nav-link active'
-        this.tabclass_withdrawal = 'nav-link'
+        // this.isInvestWindowVisible = true
+        // this.isWithdrawalWindowVisible = false
+        // this.tabclass_invest = 'nav-link active'
+        // this.tabclass_withdrawal = 'nav-link'
       },
       showPendingOperations() {
         this.isPendingOperations = true
@@ -567,30 +560,30 @@
           })
       },
       sendInvestment() {
-        this.loader = true
-        this.isModalVisible = false
-
-        this.$store.dispatch('sendInvestment', {
-          amount: this.investment_in.amount,
-          type: 2,
-          coin: 1,
-          operation_type: this.investment_in.operation_type,
-          pin: this.token.pin,
-        })
-          .then(response => {
-            this.$toasted.show(response.data.message, {
-              position: 'bottom-left',
-              type: 'success'
-            }).goAway(3000)
-            this.refresh()
-          })
-          .catch(error => {
-            if (error.response) {
-              this.handleErrors(error.response)
-              this.resetPin()
-            }
-            this.loader = false
-          })
+        // this.loader = true
+        // this.isModalVisible = false
+        //
+        // this.$store.dispatch('sendInvestment', {
+        //   amount: this.investment_in.amount,
+        //   type: 2,
+        //   coin: 1,
+        //   operation_type: this.investment_in.operation_type,
+        //   pin: this.token.pin,
+        // })
+        //   .then(response => {
+        //     this.$toasted.show(response.data.message, {
+        //       position: 'bottom-left',
+        //       type: 'success'
+        //     }).goAway(3000)
+        //     this.refresh()
+        //   })
+        //   .catch(error => {
+        //     if (error.response) {
+        //       this.handleErrors(error.response)
+        //       this.resetPin()
+        //     }
+        //     this.loader = false
+        //   })
       },
       withdrawalInvestment() {
         this.loader = true
