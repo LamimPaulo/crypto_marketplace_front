@@ -16,7 +16,6 @@ import WalletCrypto from './components/user/wallets/WalletCrypto';
 import WalletFiat from './components/user/wallets/WalletFiat';
 import Conversion from './components/user/orders/Conversion';
 import NanotechLQX from './components/trader/NanotechLQX';
-import NanotechBTC from './components/trader/NanotechBTC';
 import Masternode from './components/masternode/Masternode';
 import UserGateway from './components/user/gateway/UserGateway';
 import PharaosGateway from './components/user/pharaos-gateway/PharaosGateway';
@@ -172,12 +171,6 @@ const routes = [
                 path: '/nanotech/lqx',
                 name: '/nanotech/lqx',
                 component: NanotechLQX,
-                meta: {requiresAuth: true}
-            },
-            {
-                path: '/nanotech/btc',
-                name: '/nanotech/btc',
-                component: NanotechBTC,
                 meta: {requiresAuth: true}
             },
             {

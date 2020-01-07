@@ -40,8 +40,6 @@
               <personal-data :user="user" :documents="documents" @retrieve-documents="retrieveDocuments()"
                              v-else></personal-data>
 
-              <address-data v-if="user.country_id == 31" :user="user"></address-data>
-
               <password-change :user="user" @refresh="refresh()"
                                @reset-token="resetToken()"></password-change>
 

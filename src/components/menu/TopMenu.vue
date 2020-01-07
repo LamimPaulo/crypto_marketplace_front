@@ -40,7 +40,7 @@
             <top-menu-list></top-menu-list>
         </div>
 
-        <topbar></topbar>
+
     </div>
 </template>
 

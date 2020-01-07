@@ -9,40 +9,37 @@
       </template>
 
       <template slot="body">
-        <div style="width: 65vw">
-          <form>
-            <div class="form-group row mb-0 full-width">
-              <div class="row">
-                <div class="col-md-6 col-sm-12 text-center mobile-none">
-                  <br>
-                  <pie-chart ref="chartComponent"></pie-chart>
-                  <br>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 col-sm-12">
-                  <table class="table table-clean table-compact" v-if="fund.coins">
-                    <thead>
-                    <tr>
-                      <th></th>
-                      <th>Moeda</th>
-                      <th>Compõe</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="(coin, i) in fund.coins">
-                      <td><span :class="'marker-left color-' + i">{{coin.coin.symbol}}</span></td>
-                      <td>{{coin.coin.abbr}}</td>
-                      <td>{{coin.percent}} %</td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
 
-              </div>
-          </form>
+
+        <div class="row">
+          <div class="col-sm-12 text-center mobile-none">
+            <br>
+            <pie-chart ref="chartComponent"></pie-chart>
+            <br>
+          </div>
         </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <table class="table table-clean table-compact" v-if="fund.coins">
+              <thead>
+              <tr>
+                <th></th>
+                <th>Moeda</th>
+                <th>Compõe</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="(coin, i) in fund.coins">
+                <td><span :class="'marker-left color-' + i">{{coin.coin.symbol}}</span></td>
+                <td>{{coin.coin.abbr}}</td>
+                <td>{{coin.percent}} %</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </template>
       <template slot="footer">
         <div class="col-12 text-center">

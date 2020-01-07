@@ -3,112 +3,43 @@
     <!-- <div class="content-panel-close">
       <i class="os-icon os-icon-close"></i>
     </div> -->
-    <div class="element-wrapper">
-      <h5 class="element-header">
-        <strong><img :src="require(`@/assets/img/svg_icons/accounting.svg`)" width="30px" alt="">
-          Conversão Rápida
-        </strong>
-      </h5>
-      <div class="element-box-tp">
-        <form action="">
-          <div class="row">
-            <div class="col-6">
-              <div class="form-group">
-                <label for="">De</label>
-                <select class="form-control" v-model="conversor.base" @change="conversorBaseChange">
-                  <option :value="coin.abbr" v-if="coin.abbr !=='LQX'" v-for="coin in myCoins" selected> {{coin.abbr}}
-                  </option>
-                </select>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for="">Para</label>
-                <select class="form-control" v-model="conversor.quote" @change="conversorQuoteChange">
-                  <option value="LQX" selected> LQX</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <div class="form-group">
-                <label for="">Quantidade</label>
-                <vue-numeric class="form-control" placeholder="Quantidade..."
-                             v-if="conversor.base!==conversor.quote"
-                             @input="retrieveConversion" v-model="conversor.amount"
-                             :min="0" :minus="false" :precision="5"
-                             currency="" decimal-separator="."
-                             thousand-separator=""></vue-numeric>
-
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for="">Total</label>
-                <input class="form-control" type="text" :value="conversor.total" readonly>
-              </div>
-            </div>
-          </div>
-
-          <div class="row" v-if="!conversor.message&&conversor.total">
-            <div class="col-12 ">
-              <span class="badge badge-danger">Saldo Insuficiente</span>
-            </div>
-          </div>
-
-          <button class="btn btn-primary btn-block btn-lg" :disabled="!isFilled"
-                  @click.prevent="showPinModal('convertAmount')">
-            <i class="os-icon os-icon-refresh-ccw"></i><span>Converter</span>
-          </button>
-        </form>
-      </div>
-    </div>
-
-    <div class="element-wrapper compact" v-if="transactions.length">
-      <h6 class="element-header">
-        Histórico
-      </h6>
-      <div class="element-box-tp">
-        <table class="table table-compact smaller text-faded mb-0">
-          <thead>
-          <tr>
-            <th>
-              Tipo
-            </th>
-            <th class="text-center">
-              Data
-            </th>
-            <th class="text-right">
-              Total
-            </th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr v-for="conversion in transactions">
-            <td>
-              <span>{{conversion.coin.abbr}}</span>
-              <i class="os-icon os-icon-arrow-down-left text-success" v-if="conversion.type===1"></i>
-              <i class="os-icon os-icon-arrow-down-right text-danger" v-if="conversion.type===2"></i>
-            </td>
-            <td class="text-center">
-              {{conversion.dateLocal}}
-            </td>
-            <td class="text-right text-bright">
-              {{ conversion.amountRounded }}
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        <a class="centered-load-more-link smaller" href="/transactions/list"
-           v-if="count > 10"><span>Ver todas</span></a>
-      </div>
-    </div>
-
     <div class="element-wrapper compact">
+      <div class="element-box-tp">
+        <div class="dark-bg ">
+          <div class="market" v-for="coin in quotes">
+            <div class="market-share">
+              <h5 class="share-name" style="color: #FFF">{{ coin.abbr }}</h5>
+              <div class="marketdata">
+                <div class="marketlastchange red" v-if="user.country_id===31">
+                  R$ {{ coin.quote[0].sell_quote | currency }}
+                </div>
+                <div class="marketlastchange red" v-else>
+                  $ {{ coin.quote[0].sell_quote }}
+                </div>
+              </div>
+            </div>
+            <div class="marketchangedata">
+              <div class="marketLast">
+                <i class="fa fa-caret-up green"></i>
+                <i class="fa fa-caret-down red"></i>
+              </div>
+              <div class="marketpercent green" v-if="user.country_id===31">
+                R$ {{ coin.quote[0].buy_quote | currency }}
+              </div>
+              <div class="marketpercent green" v-else>
+                $ {{ coin.quote[0].buy_quote }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="element-wrapper">
       <h6>
         <img :src="require(`@/assets/img/svg_icons/id-card.svg`)" width="30px" alt=""> Verificação de Perfil
-        <span class="animate-border mt-2 mb-3"></span>
+        <hr>
       </h6>
       <div class="element-box-tp">
 
@@ -242,141 +173,33 @@
       </div>
     </div>
 
-    <span class="animate-border"></span>
-
-    <pin v-show="isPinVisible" ref="pinComponent"
-         @close-pin-modal="closePinModal" @pin-data="handlePinData"/>
-
   </div>
 </template>
 
 <script>
   import {mapGetters} from 'vuex'
-  import Pin from './../verifications/Pin'
-  import debounce from 'lodash/debounce'
-  import Vue from 'vue'
-  import VueNumeric from 'vue-numeric'
-
-  Vue.use(VueNumeric)
 
   export default {
     name: "Sidebar",
     data() {
       return {
-        isPinVisible: false,
-        conversor: {
-          base: 'BTC',
-          quote: 'LQX',
-          amount: 0,
-          total: null,
-          message: false
-        },
-        token: {
-          pin: null
-        },
-        transactions: [],
         count: null,
-        count_accounts: null,
         documents: {
           selfie_status: 'not_found',
           selfie_message: 'Arquivo ainda não enviado',
           document_status: 'not_found',
           document_message: 'Arquivo ainda não enviado',
         },
-        myCoins: []
+        quotes: [],
+        timer: '',
       }
     },
     computed: {
       ...mapGetters([
         'user'
       ]),
-      isFilled() {
-        return (this.conversor.amount > 0) && this.conversor.message;
-      },
     },
     methods: {
-      myCoinsList() {
-        this.$store.dispatch('myCoinsList')
-          .then(response => {
-            this.myCoins = response.data
-          })
-          .catch(error => {
-            if (error.response) {
-              this.handleErrors(error.response)
-            }
-          })
-      },
-      retrieveConversion: debounce(function () {
-        if (this.conversor.amount > 0) {
-          this.$store.dispatch('retrieveConversion', this.conversor)
-            .then(response => {
-              this.conversor.total = response.data.amount
-              this.conversor.message = response.data.message
-            })
-            .catch(error => {
-              if (error.response) {
-                this.handleErrors(error.response)
-              }
-            })
-        }
-      }, 500),
-      convertAmount() {
-        this.$store.dispatch('convertAmount', {
-          base: this.conversor.base,
-          quote: this.conversor.quote,
-          amount: this.conversor.amount,
-          action: 10,
-          pin: this.token.pin,
-        })
-          .then(this.$toasted.show('enviando solicitação...', {position: 'bottom-left', type: 'info'}).goAway(5000))
-          .then(response => {
-            this.$toasted.show(response.data.message, {position: 'bottom-left', type: 'success'}).goAway(3000)
-            this.refresh()
-          })
-          .catch(error => {
-            if (error.response) {
-              if (error.response) {
-                this.handleErrors(error.response)
-              }
-              this.resetPin()
-            }
-          })
-      },
-      conversionList() {
-        this.$store.dispatch('conversionList')
-          .then(response => {
-            this.transactions = response.data.transactions
-            this.count = response.data.count
-          })
-          .catch(error => {
-            if (error.response) {
-              this.handleErrors(error.response)
-            }
-          })
-      },
-      resetPin() {
-        this.token.pin = null
-        this.$refs.pinComponent.resetData()
-      },
-      refresh() {
-        setTimeout(function () {
-          location.reload()
-        }, 3000)
-      },
-      showPinModal(method) {
-        this.isPinVisible = true
-        this.$refs.pinComponent.setData(method)
-      },
-      closePinModal() {
-        this.isPinVisible = false;
-      },
-      handlePinData(data) {
-        this.token.pin = data.pin
-
-        if (data.method === 'convertAmount') {
-          this.convertAmount()
-        }
-      },
       retrieveDocuments() {
         this.$store.dispatch('retrieveDocuments')
           .then(response => {
@@ -390,13 +213,16 @@
           }
         })
       },
-      conversorBaseChange() {
-        this.conversor.amount = 0
-        this.conversor.total = null
-      },
-      conversorQuoteChange() {
-        this.conversor.amount = 0
-        this.conversor.total = null
+      retrieveQuotes() {
+        this.$store.dispatch('retrieveQuotes')
+          .then(response => {
+            this.quotes = response.data
+
+          }).catch(error => {
+          if (error.response) {
+            this.handleErrors(error.response)
+          }
+        })
       },
       copyAddress() {
         const selBox = document.createElement('textarea');
@@ -414,14 +240,13 @@
       }
     },
     mounted() {
-      this.conversionList()
       this.retrieveDocuments()
-      this.myCoinsList()
+      this.retrieveQuotes();
+      this.timer = setInterval(function () {
+        this.retrieveQuotes();
+      }.bind(this), 60000);
+
     },
-    components: {
-      Pin,
-      VueNumeric
-    }
   }
 </script>
 
@@ -468,5 +293,89 @@
     100% {
       width: 80%;
     }
+  }
+
+  .dark-bg {
+    background-color: #293144;
+    padding:10px;
+    z-index: 20
+  }
+
+  .market {
+    width: 100%;
+    display: inline-block;
+    height: 36px;
+    /*padding: 10px;*/
+  }
+
+  .market .market-share {
+    float: left;
+    width: 100%;
+  }
+
+  .market .market-share .share-name {
+    float: left;
+    margin: 0;
+    font-size: .9rem;
+  }
+
+  .market .market-share .share-name a {
+    color: #fff;
+  }
+
+  .market .market-share .marketdata {
+    float: right;
+  }
+
+  .market .marketchangedata {
+    float: left;
+    width: 100%;
+  }
+
+  .market .marketchangedata .marketLast {
+    color: #fff;
+    float: left;
+    font-size: 1.3em;
+  }
+
+  .market .marketchangedata .marketlastchange {
+    float: left;
+    color: #fff;
+  }
+
+  .market .marketchangedata .marketpercent {
+    float: right;
+    color: #fff;
+  }
+
+  .market .marketchangedata .marketpercent i {
+    padding-right: 5px;
+  }
+
+  .market .marketpercent.red i, .market .marketlastchange.red, .market .marketpercent.red {
+    color: #f44336;
+    font-size: .9em;
+    cursor: pointer;
+  }
+
+  .market .marketpercent.green i, .market .marketlastchange.green, .market .marketpercent.green {
+    color: #26c281;
+    font-size: 1.1em;
+    cursor: pointer;
+  }
+
+  .red {
+    color: #f44336;
+  }
+
+  .green {
+    color: #26c281;
+  }
+
+  @media (max-width: 767px) {
+    .test {
+      max-width: 100%
+    }
+
   }
 </style>

@@ -20,11 +20,6 @@
                 </div>
                 <h6 class="element-header mb-3">
                     {{ investment_data.name }}
-                    <span class="container">
-                        <a class="btn btn-success btn-sm" href="/nanotech/btc">
-                            <i class="os-icon os-icon-external-link"></i><span> Nanotech BTC</span>
-                        </a>
-                    </span>
                 </h6>
                 <div class="element-box-tp mb-2">
                     <div class="row">
