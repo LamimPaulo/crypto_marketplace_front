@@ -17,7 +17,7 @@
         Nesse início de ano, foi necessário realizar a troca de equipamento do servidor novamente, pois o volume de
         processamento de informações com Masternodes e envios de criptomoedas aumentou em 10x.
         <br>
-        Com isso, comunicamos que até o dia 13/01, concluiremos a migração de todas as contas entre os equipamentos, se você está com sua conta bloqueada, pedimos que aguarde o término da migração, ela está sendo feita por ordem de Keycode.
+        Com isso, comunicamos que até o dia 17/01, concluiremos a migração de todas as contas entre os equipamentos, se você está com sua conta bloqueada, pedimos que aguarde o término da migração, ela está sendo feita por ordem de Keycode.
       </p>
 
       <p>
