@@ -59,8 +59,7 @@
 
             <div class="buttons-w">
               <router-link class="pull-right" to="/register">
-                <i class="fas fa-sign-in-alt"></i> Criar
-                Conta
+                <i class="fas fa-sign-in-alt"></i> Criar Conta
               </router-link>
             </div>
 
@@ -85,7 +84,7 @@
         code_2fa: null,
         loader: false,
         recaptcha_key: `${process.env.INVISIBLE_RECAPTCHA_KEY}`,
-        isModalVisible: true
+        isModalVisible: false
       }
     },
     computed: {

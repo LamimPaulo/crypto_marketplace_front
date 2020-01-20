@@ -8,26 +8,11 @@
         <div class="dark-bg ">
           <div class="market" v-for="coin in quotes">
             <div class="market-share">
-              <h5 class="share-name" style="color: #FFF">{{ coin.abbr }}</h5>
-              <div class="marketdata">
-                <div class="marketlastchange red" v-if="user.country_id===31">
-                  R$ {{ coin.quote[0].sell_quote | currency }}
-                </div>
-                <div class="marketlastchange red" v-else>
-                  $ {{ coin.quote[0].sell_quote }}
-                </div>
-              </div>
+              <strong class="share-name" style="color: #FFF">{{ coin.abbr }}</strong>
             </div>
             <div class="marketchangedata">
-              <div class="marketLast">
-                <i class="fa fa-caret-up green"></i>
-                <i class="fa fa-caret-down red"></i>
-              </div>
-              <div class="marketpercent green" v-if="user.country_id===31">
-                R$ {{ coin.quote[0].buy_quote | currency }}
-              </div>
-              <div class="marketpercent green" v-else>
-                $ {{ coin.quote[0].buy_quote }}
+              <div class="marketpercent green">
+                1CP
               </div>
             </div>
           </div>
@@ -38,7 +23,8 @@
 
     <div class="element-wrapper">
       <h6>
-        <img :src="require(`@/assets/img/svg_icons/id-card.svg`)" width="30px" alt=""> Verificação de Perfil
+        <img :src="require(`@/assets/img/svg_icons/id-card.svg`)" width="30px" alt="">
+        Verificação de Perfil
         <hr>
       </h6>
       <div class="element-box-tp">
@@ -306,17 +292,16 @@
     display: inline-block;
     height: 36px;
     /*padding: 10px;*/
+    font-size: 1.5em !important;
   }
 
   .market .market-share {
     float: left;
-    width: 100%;
   }
 
   .market .market-share .share-name {
     float: left;
     margin: 0;
-    font-size: .9rem;
   }
 
   .market .market-share .share-name a {
@@ -328,8 +313,7 @@
   }
 
   .market .marketchangedata {
-    float: left;
-    width: 100%;
+    float: right;
   }
 
   .market .marketchangedata .marketLast {
