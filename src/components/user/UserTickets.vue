@@ -119,7 +119,15 @@
 
                         <div v-for="(msgfile, i) in msg.files">
                           <a class="badge badge-default mt-2" target="_blank"
-                             :href="msgfile.file">
+                             :href="'data:image/'+msgfile.type+';base64, ' + msgfile.api_file"
+                             v-if="['jpeg','jpg','gif','png'].includes(msgfile.type)"
+                          >
+                            <i class="os-icon os-icon-ui-51"></i><span>Anexo {{i+1}}</span>
+                          </a>
+
+                          <a class="badge badge-default mt-2" target="_blank"
+                             v-else
+                             :href="'data:application/'+msgfile.type+';base64, ' + msgfile.api_file">
                             <i class="os-icon os-icon-ui-51"></i><span>Anexo {{i+1}}</span>
                           </a>
                         </div>
