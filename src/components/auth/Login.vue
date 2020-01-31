@@ -10,7 +10,7 @@
         <div class="auth-box-w">
           <div class="logo-w">
             <a href="">
-              <img src="https://s3.amazonaws.com/navi-public/api/clients/3/cbed47c0-5323-4873-baf7-0284f80bbf0a.png"
+              <img src="https://navi.inf.br/storage/api/clients/3/liquidex.png"
                    alt="Liquidex" class="logo">
             </a>
           </div>
