@@ -12,11 +12,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="transaction in transactions">
+            <tr v-for="transaction in transactions" v-if="(transaction.category!==22)||(transaction.category===22&&transaction.dateShow)">
                 <td>
                     <button @click.prevent="receiptModalTransactions(transaction)"
-                            class="btn btn-rounded btn-sm btn-primary"><i
-                            class="os-icon os-icon-search"></i></button>
+                            class="btn btn-rounded btn-sm btn-primary">
+                      <i class="os-icon os-icon-search"></i></button>
                 </td>
                 <td> {{ transaction.dateLocal }}</td>
                 <td>

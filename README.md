@@ -25,7 +25,7 @@ https://wrappixel.com/demos/admin-templates/admin-pro/horizontal/index.html
 
 #### logos
 
-1: https://s3.amazonaws.com/navi-public/api/clients/3/cbed47c0-5323-4873-baf7-0284f80bbf0a.png
+1: https://navi.inf.br/storage/api/clients/3/liquidex.png
 
 2: https://s3.amazonaws.com/navi-public/api/clients/3/logosemfundo2.png
 

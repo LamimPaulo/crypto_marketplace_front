@@ -11,9 +11,12 @@
           <div class="row">
             <div class="col-6 b-r b-b">
               <div class="el-tablo centered padded-v-big highlight bigger">
-                <div class="label">Recompensas da Rede</div>
-                <div class="value size-5">{{ info.rewards }}
-                  <small>LQX</small>
+                <div class="alert alert-info">
+                  Caros usuários, <br>
+
+                  A partir do dia 15/02 estaremos com nosso sistema de masternodes completo.
+
+                  Aguardem as novidades.
                 </div>
               </div>
             </div>
