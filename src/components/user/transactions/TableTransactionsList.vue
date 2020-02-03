@@ -8,7 +8,7 @@
                 <th> Transação</th>
                 <th> Tx</th>
                 <th> Valor</th>
-                <th class="text-center"> Status</th>
+                <th class="text-center"> Status <br> Efetivação</th>
             </tr>
             </thead>
             <tbody>
@@ -97,7 +97,12 @@
                     <span v-if="transaction.type===2" class="badge badge-danger">{{ transaction.amountRounded }}</span>
 
                 </td>
-                <td class="text-center"> {{ transaction.statusClient}}</td>
+                <td class="text-center">
+                  <span :class="'badge badge-'+transaction.statusClass">
+                    {{ transaction.statusClient}} <br>
+                    {{ transaction.paymentDateLocal || transaction.updatedLocal }}
+                  </span>
+                </td>
             </tr>
 
 

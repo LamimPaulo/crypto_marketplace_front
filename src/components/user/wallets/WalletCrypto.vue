@@ -38,6 +38,7 @@
                   </div>
                 </div>
               </div>
+
               <div class="col-xl-6 col-sm-6 mb-3" v-if="wallet.coin.abbr==='LQX'">
                 <div @click="openSendWindow" class="btn-receber text-white bg-primary o-hidden h-100">
                   <div class="card-body">
