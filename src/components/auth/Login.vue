@@ -84,7 +84,7 @@
         code_2fa: null,
         loader: false,
         recaptcha_key: `${process.env.INVISIBLE_RECAPTCHA_KEY}`,
-        isModalVisible: false
+        isModalVisible: true
       }
     },
     computed: {

@@ -76,7 +76,7 @@
                 <td>
                     <!--transactions-->
                     <a target="_blank" :href="transaction.coin.tx_explorer + transaction.tx"
-                       v-if="transaction.category===1">
+                       v-if="transaction.category===1||transaction.category===22">
                         {{ transaction.tx | shortStr }}
                     </a>
                     <!--orders-->

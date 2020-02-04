@@ -2,7 +2,7 @@
   <modal>
     <template slot="header">
       <h6 class="pull-left ml-3 mt-2">
-        Caros usuários,
+        Atenção:
       </h6>
 
       <button class="btn btn-grey pull-right"
@@ -14,10 +14,15 @@
 
     <template slot="body">
       <p>
-        Nesse início de ano, foi necessário realizar a troca de equipamento do servidor novamente, pois o volume de
-        processamento de informações com Masternodes e envios de criptomoedas aumentou em 10x.
-        <br>
-        Com isso, comunicamos que até o dia 17/01, concluiremos a migração de todas as contas entre os equipamentos, se você está com sua conta bloqueada, pedimos que aguarde o término da migração, ela está sendo feita por ordem de Keycode.
+        Todos os Masternodes INATIVOS após dia 15/02/2020,
+        serão estornados para carteira de origem.
+      </p>
+      <p>
+        As recompensas serão creditadas na carteira, bem como a opção para pagamento do servidor em LQX.
+      </p>
+      <p>
+        Vale lembrar que o PIN Founder, somente terá validade para servidores internos, qualquer usuário
+        de servidores externos não serão considerados PIN FOUNDER.
       </p>
 
       <p>
