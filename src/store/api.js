@@ -1365,6 +1365,83 @@ export const store = new Vuex.Store({
           })
       })
     },
+    getMasternodeRewards(context, data) {
+      return new Promise((resolve, reject) => {
+        axios.get('/masternode/' + data.address + '/rewards?page=' + data.page)
+          .then(response => {
+            resolve(response)
+          })
+          .catch(error => {
+            reject(error)
+          })
+      })
+    },
+    verifyMasternodePendingPayments() {
+      return new Promise((resolve, reject) => {
+        axios.get('/masternode/verifyPending')
+          .then(response => {
+            resolve(response)
+          })
+          .catch(error => {
+            reject(error)
+          })
+      })
+    },
+    getMasternodePendingPayments(context, data) {
+      return new Promise((resolve, reject) => {
+        axios.get('/masternode/pending?page=' + data.page)
+          .then(response => {
+            resolve(response)
+          })
+          .catch(error => {
+            reject(error)
+          })
+      })
+    },
+    getMasternodePayments(context, data) {
+      return new Promise((resolve, reject) => {
+        axios.get('/masternode/allPlans?page=' + data.page)
+          .then(response => {
+            resolve(response)
+          })
+          .catch(error => {
+            reject(error)
+          })
+      })
+    },
+    acceptMasternodePayment(context, data) {
+      return new Promise((resolve, reject) => {
+        axios.post('/masternode/payment/accept', data)
+          .then(response => {
+            resolve(response)
+          })
+          .catch(error => {
+            reject(error)
+          })
+      })
+    },
+    refuseMasternodePayment(context, data) {
+      return new Promise((resolve, reject) => {
+        axios.post('/masternode/payment/refuse', data)
+          .then(response => {
+            resolve(response)
+          })
+          .catch(error => {
+            reject(error)
+          })
+      })
+    },
+    undoMasternode(context, data) {
+      return new Promise((resolve, reject) => {
+        axios.post('/masternode/undo', data)
+          .then(response => {
+            resolve(response)
+          })
+          .catch(error => {
+            reject(error)
+          })
+      })
+    },
     getMasternodesInfo() {
       return new Promise((resolve, reject) => {
         axios.get('/masternode/founders-reward')

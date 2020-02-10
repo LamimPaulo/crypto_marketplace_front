@@ -2,7 +2,7 @@
     <transition name="vue-modal-fade">
         <div class="vue-modal-backdrop" @click.self="close">
             <div class="modal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-dialog modal-dialog-centered" role="document">
+                <div :class="'modal-dialog modal-dialog modal-dialog-centered ' + modal_size" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <slot name="header">
@@ -37,6 +37,12 @@
 <script>
 	export default {
 		name: 'modal',
+    props: {
+      modal_size: {
+        type: String,
+        default: ''
+      }
+    },
 		methods: {
 			close() {
 				this.$emit('close');

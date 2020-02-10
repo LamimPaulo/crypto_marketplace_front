@@ -12,7 +12,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="transaction in transactions" v-if="(transaction.category!==22)||(transaction.category===22&&transaction.dateShow)">
+            <tr v-for="transaction in transactions">
                 <td>
                     <button @click.prevent="receiptModalTransactions(transaction)"
                             class="btn btn-rounded btn-sm btn-primary">

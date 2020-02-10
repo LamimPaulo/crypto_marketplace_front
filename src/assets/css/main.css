@@ -30565,3 +30565,15 @@ td.qr_code img {
   border-right-color: #F7F9F8;
   border-left-color: #F7F9F8;
 }
+
+.modal-dialog.small {
+  max-width: 20% !important;
+}
+
+.modal-dialog.medium {
+  max-width: 45% !important;
+}
+
+.modal-dialog.large {
+  max-width: 80% !important;
+}
