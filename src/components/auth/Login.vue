@@ -58,6 +58,10 @@
             </div>
 
             <div class="buttons-w">
+              <a href="#" class="pull-left" @click="isModalVisible = true">
+                <i class="fas fa-info-circle"></i> Remover 2FA
+              </a>
+
               <router-link class="pull-right" to="/register">
                 <i class="fas fa-sign-in-alt"></i> Criar Conta
               </router-link>
@@ -84,7 +88,7 @@
         code_2fa: null,
         loader: false,
         recaptcha_key: `${process.env.INVISIBLE_RECAPTCHA_KEY}`,
-        isModalVisible: true
+        isModalVisible: false
       }
     },
     computed: {
