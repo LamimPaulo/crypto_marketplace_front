@@ -47,15 +47,6 @@
                 </router-link>
             </li>
             <li>
-                <router-link to="/index/fund">
-                    <div class="icon-w">
-                        <img :src="require(`@/assets/img/svg_icons/line-chart.png`)"
-                             width="30px" alt="">
-                    </div>
-                    <span>Investimentos</span>
-                </router-link>
-            </li>
-            <li>
                 <router-link to="/nanotech/lqx">
                     <div class="icon-w">
                         <img :src="require(`@/assets/img/svg_icons/icons8-increase-40.png`)"
@@ -121,10 +112,10 @@
 
      /* Portrait phones and smaller */
     @media (max-width: 480px) {
-      
+
       .menu-w.menu-layout-compact ul.main-menu > li > a {
             font-size: 0.5rpx;
-        }  
+        }
     }
 
 </style>
