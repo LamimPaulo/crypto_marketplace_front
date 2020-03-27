@@ -19,7 +19,7 @@
         </div>
       </div>
 
-      <form @submit.prevent="sendTransaction">
+      <!-- <form @submit.prevent="sendTransaction">
         <div class="row mb-4" v-if="transaction_to_address_exists">
           <div class="col-12">
             <span
@@ -87,7 +87,7 @@
                   type="button"> Enviar
           </button>
         </div>
-      </form>
+      </form> -->
 
       <token-pin v-show="isTokenPinVisible" ref="tokenPinComponent"
                  @close-token-pin-modal="closeTokenPinModal" @token-data="handleTokenPinData"/>

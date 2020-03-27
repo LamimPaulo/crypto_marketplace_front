@@ -16,7 +16,9 @@
         melhor atendê-lo.
       </p>
 
-      <p>Fique tranquilo(a), em breve o acesso a sua conta será restaurado.</p>
+      <p>Nosso node de LQX está em manutenção e os envios de LQX seguirão bloqueados até o término da manutenção.</p>
+
+      <p>Estimativa de retorno dos serviços em 31/03/2020.</p>
 
       <p>
         Agradecemos a compreensão. <br />

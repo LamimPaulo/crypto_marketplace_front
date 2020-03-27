@@ -18,7 +18,7 @@
         </div>
       </div>
 
-      <table class="table table-clean">
+      <!-- <table class="table table-clean">
         <tr>
           <td>
             <qr-code :text="address" :size="qrcode_size" error-level="L"></qr-code>
@@ -33,7 +33,7 @@
             </div>
           </td>
         </tr>
-      </table>
+      </table> -->
 
     </div>
   </div>
