@@ -1,11 +1,14 @@
 <template>
   <div class="element-wrapper mb-0 pb-0 pt-0">
     <div class="element-box">
-
       <div class="element-info">
         <div class="element-info-with-icon">
           <div class="element-info-icon">
-            <img alt="" style="width: 30px !important;" :src="require(`@/assets/img/${icon}`)">
+            <img
+              alt=""
+              style="width: 30px !important;"
+              :src="require(`@/assets/img/${icon}`)"
+            />
           </div>
           <div class="element-info-text">
             <h5 class="element-inner-header">
@@ -18,10 +21,21 @@
         </div>
       </div>
 
-      <!-- <table class="table table-clean">
+      <table class="table table-clean">
+        <tr>
+          <td colspan="3">
+            <span class="d-block alert alert-danger"
+              >ATENÇÃO: O address da sua carteira mudou em 31/03/2020.</span
+            >
+          </td>
+        </tr>
         <tr>
           <td>
-            <qr-code :text="address" :size="qrcode_size" error-level="L"></qr-code>
+            <qr-code
+              :text="address"
+              :size="qrcode_size"
+              error-level="L"
+            ></qr-code>
           </td>
           <td style="word-break: break-all; padding: 8px">
             <div class="value">{{ address }}</div>
@@ -33,44 +47,41 @@
             </div>
           </td>
         </tr>
-      </table> -->
-
+      </table>
     </div>
   </div>
 </template>
 
 <script>
-  import Vue from 'vue'
-  import VueQRCodeComponent from 'vue-qrcode-component'
-  Vue.component('qr-code', VueQRCodeComponent)
+import Vue from "vue";
+import VueQRCodeComponent from "vue-qrcode-component";
+Vue.component("qr-code", VueQRCodeComponent);
 
-  export default {
-    name: "CryptoAddress",
-    props: ['address', 'icon', 'abbr'],
-    data() {
-      return {
-        qrcode_size: 120
-      }
-    },
-    methods: {
-      copyAddress() {
-        const selBox = document.createElement('textarea');
-        selBox.style.position = 'fixed';
-        selBox.style.left = '0';
-        selBox.style.top = '0';
-        selBox.style.opacity = '0';
-        selBox.value = this.address;
-        document.body.appendChild(selBox);
-        selBox.focus();
-        selBox.select();
-        document.execCommand('copy');
-        document.body.removeChild(selBox);
-        this.$toasted.show('Copiado!', {position: 'top-center'}).goAway(3000)
-      }
+export default {
+  name: "CryptoAddress",
+  props: ["address", "icon", "abbr"],
+  data() {
+    return {
+      qrcode_size: 120
+    };
+  },
+  methods: {
+    copyAddress() {
+      const selBox = document.createElement("textarea");
+      selBox.style.position = "fixed";
+      selBox.style.left = "0";
+      selBox.style.top = "0";
+      selBox.style.opacity = "0";
+      selBox.value = this.address;
+      document.body.appendChild(selBox);
+      selBox.focus();
+      selBox.select();
+      document.execCommand("copy");
+      document.body.removeChild(selBox);
+      this.$toasted.show("Copiado!", { position: "top-center" }).goAway(3000);
     }
   }
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
