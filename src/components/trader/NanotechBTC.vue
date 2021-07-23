@@ -82,9 +82,9 @@
               <a class="element-box el-tablo centered trend-in-corner smaller mb-3" href="#">
                 <div class="label mb-1"></div>
                 <div class="value">
-                  <button class="btn btn-success" @click="showModal('invest')"
+                  <!-- <button class="btn btn-success" @click="showModal('invest')"
                           type="button"> Investir
-                  </button>
+                  </button> -->
                   <button class="btn btn-grey" disabled
                           v-if="investment_data.user_investment<=0&&investment_data.user_profit<=0"
                           type="button"> Saque
@@ -405,7 +405,7 @@
 
       <div class="row">
         <div class="col-12">
-          <last-trades></last-trades>
+          <!-- <last-trades></last-trades> -->
         </div>
       </div>
 
