@@ -28,7 +28,7 @@
 
             <div class="form-group">
               <label>Senha </label>
-              <router-link to="/recover/password" class="pull-right">Recuperar senha?</router-link>
+              <router-link to="#" class="pull-right">Recuperar senha?</router-link>
               <input class="form-control" placeholder="Sua Senha" type="password" name="password"
                      v-model="password" required>
             </div>
