@@ -50,7 +50,7 @@
               </vue-recaptcha>
             </div>
 
-            <button type="submit" disabled class="btn btn-block btn-success btn-login">
+            <button type="submit" :disabled='!isFilled' class="btn btn-block btn-success btn-login">
               <strong>Entrar</strong>
             </button>
 
@@ -97,7 +97,33 @@
       }
     },
     methods: {
-
+      FormSubmit() {
+        this.loader = true;
+        this.$refs.recaptcha.execute()
+      },
+      onCaptchaVerified(token) {
+        this.error = null
+        this.loader = true
+        this.$store.dispatch('retrieveToken', {
+          username: this.username,
+          password: this.password,
+          recaptcha: token,
+          code_2fa: this.code_2fa,
+        })
+          .then(this.$toasted.show('Verificando seus dados', {position: 'top-center'}).goAway(3000))
+          .then(this.password = null)
+          .then(this.$refs.recaptcha.reset())
+          .then(response => {
+            this.$store.dispatch('retrieveUser')
+            location.reload()
+          }).catch(error => {
+          this.loader = false;
+          if (error.response) {
+            this.error = error.response.data.message
+          }
+          this.$refs.recaptcha.reset();
+        })
+      },
 
       closeModal() {
         this.isModalVisible = false
